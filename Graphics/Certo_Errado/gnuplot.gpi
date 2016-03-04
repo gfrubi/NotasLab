@@ -1,0 +1,36 @@
+#set term epslatex color size 10cm, 7cm
+set term tikz size 14cm,9cm
+
+set key reverse left Left
+
+set sample 1001
+
+f(x) = x > 0 ? x < 16.5 ? 9.6685 * x + 22.3857 : 0/0 : 0/0
+
+set out "errado.tex"
+
+set style line 5 linetype 1 linewidth 2 pointtype 5 pointsize 1 linecolor rgb "black"
+
+plot "data.dat" w lp ls 5 t 'Dados experimentais'
+#, f(x) t '$y = \numprint{9,6685} \,x + \numprint{22,3857}$, $r^2 = \numprint{0,9830}$'
+
+set out "certo.tex"
+plot "data.dat" w p notitle 
+#, f(x) t '$y = \numprint{9,6685} \,x + \numprint{22,3857}$, $r^2 = \numprint{0,9830}$'
+
+set out "maiscerto.tex"
+
+set xlabel "$t$~(s)"
+set ylabel "$v$~($\\textrm{m}/\\textrm{s}$)"
+plot "data.dat" t "Dados Experimentais"
+#, f(x) t '$y = \numprint{9,6685} \,x + \numprint{22,3857}$, $r^2 = \numprint{0,9830}$'
+
+set out "graph_dois_conjuntos.tex"
+
+set xlabel "$t~(s)$"
+set ylabel "$P~(mW)$"
+set yrange[-100:2500]
+set ytics 500, 500
+
+plot "data2.dat" u 1:2 w p ls 5 lc rgb 'black' t "Equipamento 1", "" u 1:3 w p ls 9 lc rgb 'black' t "Equipamento 2"
+

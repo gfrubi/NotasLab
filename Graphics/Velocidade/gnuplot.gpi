@@ -1,0 +1,18 @@
+set term tikz size 14cm,9cm
+
+set out "vel.tex"
+
+set key reverse Left left
+
+set style line 20 linetype 1 linewidth 2 pointtype 7 pointsize 1 linecolor rgb "black"
+set style line 21 linetype 1 linewidth 2 pointtype 5 pointsize 1 linecolor rgb "black"
+
+set sample 2001
+
+f(x) = x < 1.6 ? x > 0 ? 9.9071428571*x + 22.7342857143 : 0/0 : 0/0
+
+set yrange[20:42]
+set xlabel '$t$~(s)'
+set ylabel '$v$~(m/s)'
+
+plot "data.dat" u 1:2 ls 20 t 'Dados experimentais', f(x) ls 21 t '$y(x)=\np{9.9071428571}\;x + \np{22.7342857143}$, $r^2 = \np{0.9924824357}$'

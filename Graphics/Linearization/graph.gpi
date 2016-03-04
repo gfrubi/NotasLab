@@ -1,0 +1,51 @@
+set term tikz size 14cm,9cm
+
+set style line 20 linetype 1 linewidth 2 pointtype 5 pointsize 1 linecolor rgb "black"
+set style line 21 linetype 1 linewidth 2 pointtype 5 pointsize 1 linecolor rgb "black"
+
+set out 'DadosMedidos.tex'
+
+set ylabel "$\\xi$"
+set xlabel "$\\rho$"
+
+set ytics 0,4,20
+set xtics 0,1,4
+
+set xrange[-0.2:4]
+set yrange[-1:20]
+
+plot "data.dat" u 1:2 w points ls 20 notitle
+
+###
+
+set out 'DadosTeoria1.tex'
+
+f(x) = x > -0.1 ? x < 3.9? 0.9738841643 * x - 0.6327808522 : 0/0 : 0/0
+
+set ylabel "$\\ln(\\xi)$"
+set xlabel "$\\rho$"
+set ytics -1, 1, 4
+set xtics 0, 1, 4
+set key reverse left Left
+
+set yrange[-1:4]
+
+plot "data.dat" u 3:4 w points ls 20 notitle, \
+	 f(x) ls 21 t "$y = 0.9738 x - 0.6327$, $r^2 = 0.9866941525$"
+
+
+###
+
+set out "DadosTeoria2.tex"
+
+g(x) = x > -0.2 ? x < 13.8? 1.2180343442 * x - 0.2341010741 : 0/0 : 0/0
+set ylabel "$\\xi$"
+set xlabel "$\\rho^2$"
+set ytics 0,4,20
+set xtics 0, 2, 14
+
+set xrange[-0.5:14]
+set yrange[-1:20]
+
+plot "data.dat" u 5:6 w points ls 20 notitle, \
+	 g(x) ls 21 t "$y = 1.2180 x - 0.2341$, $r^2=0.9583298359$"

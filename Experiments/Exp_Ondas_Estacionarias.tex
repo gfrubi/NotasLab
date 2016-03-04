@@ -1,0 +1,445 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Ondas estacionárias}
+\label{Chap:ExpOndasEstacionarias}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{fullwidth}\it
+Submeteremos um fio a uma tensão e a uma vibração, com a consequente formação de ondas estacionárias. O objetivo desse experimento é verificarmos experimentalmente as propriedades de tais ondas e as relações com os diversos parâmetros do sistema. Utilizaremos os seguintes conceitos/técnicas de análise de dados: medidas, algarismos significativos, gráficos, software para elaboração de gráficos, erros de escala e propagados, equação geral para o erro propagado, regressão linear, linearização, e erros dos coeficientes $A$ e $B$.
+\end{fullwidth}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Ondas estacionárias}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{marginfigure}[5cm]
+\centering
+\begin{tikzpicture}[>=Stealth,domain=0:3.1415,samples=50]
+	\draw[->,color=gray] (-0.5,0) -- (4,0) node[below]{$x$};
+	\draw[<-,color=gray] (0,1.5) node[left]{$y$} -- (0,-1.5);
+	\draw[color = black,smooth] plot (\x,{sin(2 * \x r)});
+	
+	\draw[dotted] (3.1415,-1.2) -- (3.1415,0);
+	\draw[<->] (0,-1.2) -- node[below]{$\lambda$} (3.1415,-1.2);
+	\draw[<->] (0.7854,0) -- node[right]{$A$} (0.7854,1);
+\end{tikzpicture}
+\caption{Parâmetros de uma onda transversal.}
+\label{Fig:OndaCongelada}
+\end{marginfigure}
+
+Uma onda mecânica é uma perturbação periódica que se propaga em um meio. No caso de uma onda transversal, tal perturbação é um deslocamento lateral, perpendicular à direção de propagação da onda. Esse tipo de onda pode ser descrita como uma função $y(x,t)$, onde $y$ representa o valor da perturbação na posição $x$ e tempo $t$. A forma mais simples para essa função é
+\begin{equation}\label{Eq:OndaUnidimensional}
+	y(x,t) = A \sen(kx - \omega t),
+\end{equation}
+%
+onde $A$ é a amplitude da onda --~isto é, o valor máximo atingido pela variável $y$~-- e os parâmetros $k$ e $\omega$ são denominados como \emph{número de onda} e \emph{frequência angular}, respectivamente.
+
+Tal expressão pode ser entendida de maneira simples se considerarmos dois casos especiais: $x = 0$ para qualquer $t$ e $t = 0$ para qualquer $x$. Isso resulta nas expressões
+\begin{equation}
+	y(t) = A \sen (\omega t),
+\end{equation}
+%
+e
+\begin{equation}
+	y(x) = A \sen(kx).
+\end{equation}
+%
+O primeiro caso representa simplesmente a oscilação de um ponto do meio (a origem do eixo $x$). Sabemos que o a função $\sen \theta$ se repete a partir de $\theta = 2\pi$, o que se reflete em uma repetição do movimento oscilatório. Consequentemente, temos que ao final de uma oscilação
+\begin{equation}
+	\omega T = 2 \pi,
+\end{equation}
+%
+onde usamos $t = T$ -- isto é, a variável $t$ assume o valor do período $T$ da oscilação (o tempo que o movimento oscilatório demora para completar um ciclo) --. Logo
+\begin{equation}
+	\omega = \frac{2 \pi}{T}.
+\end{equation}
+%
+Para determinarmos o número de oscilações por unidade de tempo --~a frequência da oscilação~--, basta dividirmos uma unidade de tempo pela duração de uma oscilação, ou seja,
+\begin{equation}
+	f = \frac{1}{T},
+\end{equation}
+%
+o que nos permite escrever
+\begin{equation}
+	\omega = 2 \pi f.
+\end{equation}
+
+No segundo caso, temos uma análise de toda a onda em um dado instante de tempo, como se a congelássemos (veja a Figura~\ref{Fig:OndaCongelada}). Se nos deslocamos na direção do eixo $x$, observamos uma variação da posição $y$, sendo que após percorrermos uma distância $\lambda$ o movimento se repete. Novamente, como a função $\sen\theta$ se repete após $\theta = 2\pi$, temos que para a posição $x = \lambda$
+\begin{equation}
+	k \lambda = 2\pi,
+\end{equation}
+%
+ou
+\begin{equation}
+	k = \frac{2\pi}{\lambda}.
+\end{equation}
+
+Podemos calcular a velocidade de propagação da onda simplesmente verificando que uma crista qualquer (o ponto em que $y$ atinge o valor máximo) se desloca uma distância $\lambda$ a cada oscilação. Logo
+\begin{equation}
+	v = \frac{\lambda}{T} = \lambda f = \frac{\omega}{k}.
+\end{equation}
+
+O sinal negativo na Equação~\eqref{Eq:OndaUnidimensional} pode ser entendido da seguinte maneira: imagine a função $\sen(kx - \omega t)$ com $t=0$. Se você tomar um valor de $x$ qualquer com um valor de $\sen(kx-\omega t)$ correspondente, quando $t$ aumenta, o valor do argumento (isto é, $(kx -\omega t)$) diminui. Equivalentemente, poderíamos simplesmente diminuir o argumento escolhendo um valor de $x$ menor, ou seja, um ponto à esquerda. O efeito de aumentar o $t$ é então o de tomar o ``gráfico'' do $\sen(kx)$ e deslocá-lo para a direita, o que implica em uma propagação para a direita. Portanto, se uma outra onda propaga-se no sentido contrário, com a mesma velocidade e a mesma amplitude, podemos descrevê-la como
+\begin{equation}
+	y_2(x,t) = A \sen(kx + \omega t).
+\end{equation}
+
+Se por algum motivo essas duas ondas estiverem se propagando no mesmo eixo, quando se encontrarem a onda resultante será --~ segundo o princípio da superposição~--:
+\begin{align}
+	y_{1+2}(x,t) &= y_1(x,t) + y_2(x,t)\\
+	&= A \sen(kx -\omega t) + A \sen(kx + \omega t).
+\end{align}
+Utilizando a propriedade
+\begin{equation}
+	\sen \alpha + \sen \beta = 2 \sen[(\alpha + \beta)/2]\cos[(\alpha-\beta)/2],
+\end{equation}
+podemos reescrever a superposição das duas ondas como
+\begin{equation}\label{Eq:EqOndaEstacionaria}
+	y_{1+2}(x,t)=[2A\sen kx]\cos\omega t.
+\end{equation}
+
+\begin{figure*}[!htb]
+\centering
+\forcerectofloat
+\begin{tikzpicture}[>=Stealth,domain=0:13,samples=250]
+	\draw[->] (-0.5,0) -- (15,0) node[below]{$x$};
+	\draw[<-] (0,2) node[left]{$y$} -- (0,-2);
+	\draw[color = gray!05,smooth,thick] plot (\x,{1.7 * sin(\x r) * cos(2.3 r)});
+	\draw[color = gray!10,smooth,thick] plot (\x,{1.7 * sin(\x r) * cos(2.1 r)});
+	\draw[color = gray!20,smooth,thick] plot (\x,{1.7 * sin(\x r) * cos(1.9 r)});
+	\draw[color = gray!40,smooth,thick] plot (\x,{1.7 * sin(\x r) * cos(1.7 r)});
+	\draw[color = gray!60,smooth,thick] plot (\x,{1.7 * sin(\x r) * cos(1.5 r)});
+	\draw[color = gray!80,smooth,thick] plot (\x,{1.7 * sin(\x r) * cos(1.3 r)});
+	\draw[color = gray,smooth,thick] plot (\x,{1.7 * sin(\x r) * cos(1.1 r)});		
+	\draw[color = black,smooth,thick] plot (\x,{1.7 * sin(\x r) * cos(0.7 r)});
+	\draw[dashed,color=gray] plot (\x,{1.7 * sin(\x r)});
+	\draw[dashed,color=gray] plot (\x,{-1.7 * sin(\x r)});
+\end{tikzpicture}
+\caption{Evolução temporal de uma onda transversal estacionária.}
+\label{Fig:OndaEstacionaria}
+\end{figure*}
+
+\pagebreak
+
+Na Equação~\eqref{Eq:EqOndaEstacionaria}, o termo entre colchetes denota a amplitude de uma onda cuja posição no eixo $y$ muda com o tempo conforme $\cos\omega t$. Analisando tal amplitude, percebemos que para valores periódicos de $x$, o valor da amplitude é \emph{zero}. Isso implica que, no caso da superposição das duas ondas, temos uma onda resultante na qual alguns pontos (denominados \emph{nós}) permanecem parados, enquanto os demais pontos variam sua posição com o tempo, sendo que a amplitude dessa oscilação depende da posição em $x$. Podemos verificar na Figura~\ref{Fig:OndaEstacionaria} uma onda estacionária descrita por tal equação. A linha em preto mostra o estado atual, enquanto as demais mostram o estado da onda em instantes anteriores (em intervalos regulares de tempo). Note que existem ``ventres'' delimitados por $\sen kx$ (linhas tracejadas), isto é, ventres cujo perfil é dado pela função $\sen kx$: o movimento da onda fica restrito a deslocamentos na direção do eixo $y$, limitado pelas linhas tracejadas.
+
+De acordo com o termo $[2A\sen kx]$, a posição dos nós pode ser obtida fazendo com que
+\begin{equation}
+	kx = n\pi.
+\end{equation}
+%
+onde $n = 0, 1, 2, 3, \dots$, isto é, um número inteiro não negativo. Substituindo a expressão para o número de onda $k = (2\pi)/\lambda$, obtemos
+\begin{equation}
+	x = n \frac{\lambda}{2}.
+\end{equation}
+%
+Temos então que, para uma onda estacionária, os nós aparecem a cada meio comprimento de onda.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Ondas estacionárias em uma corda fixada em dois pontos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Em uma onda estacionária, os pontos de fixação devem ser obrigatoriamente nós (afinal, para que houvesse um ventre nos pontos de fixação, a corda precisaria oscilar, o que a fixação impede). Isso faz com que tenhamos um \emph{número inteiro de meios comprimentos de onda} entre os pontos de fixação. Como a velocidade da onda no meio é uma constante característica do próprio meio, temos que somente algumas frequências específicas são capazes de gerar ondas estacionárias.
+
+Sabemos que a amplitude da onda estacionária será nula sempre que
+\begin{equation}
+	kx = n\pi
+\end{equation}
+Os dois primeiros nós são então em $x=0$ e em $x = \lambda/2$. Isto significa que temos uma onda estacionária de forma que a distância entre os pontos de fixação equivale a \emph{meio comprimento de onda}.
+
+Temos outras possibilidades, no entanto: se assumirmos que no segundo ponto de fixação temos o terceiro nó, temos que a distância entre os pontos de fixação será coberta por dois ventres (um comprimento de onda). De forma geral temos que o comprimento de onda de uma onda estacionária que ocorra entre os pontos de fixação estará relacionado com a distância $L$ entre tais pontos através de
+\begin{equation}
+	\frac{\lambda}{2} = \frac{2L}{n'},
+\end{equation}
+com $n' = 1, 2, 3, \dots$ designando o número\footnote{O número de ventres $n'$ está relacionado ao número de nós $n$ por $n'=n-1$.} de ventres da onda estacionária. Como a frequência está relacionada com a velocidade $v$ e o comprimento de onda através de
+\begin{equation}
+	f = \frac{v}{\lambda},
+\end{equation}
+%
+temos que, para uma onda estacionária,
+\begin{equation}\label{Eq:RelacaoVariaveisOndasEstacionarias}
+	f = \frac{n'}{2L}\sqrt{\frac{T}{\mu}},
+\end{equation}
+onde já substituímos $v = \sqrt{T/\mu}$, que dá a velocidade de propagação da onda em termos da tensão $T$ aplicada à corda e da densidade linear de massa $\mu$ da corda.
+
+É interessante notar, portanto, que para uma corda fixa em ambas as extremidades, existem múltiplos -- porém específicos -- valores de frequência para os quais podemos ter uma onda estacionária. Essas frequências são denominadas \emph{frequências de ressonância}, sendo que a menor delas é denominada \emph{modo fundamental} ou \emph{frequência fundamental} --~ou ainda \emph{primeiro harmônico}~--, enquanto as demais são denominadas \emph{segundo harmônico} ($n'=2$), \emph{terceiro harmônico} ($n'=3$), etc.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Experimento}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Objetivos}
+%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+	\item Verificar a proporcionalidade da frequência de ressonância $f$ com a raiz quadrada da tensão exercida pela corda, sendo que a tensão será variada ao se alterar a massa $m$ suspensa na extremidade livre;
+	\item Linearizar a equação que relaciona a frequência à massa, determinando a função $F_1(m)$ de forma que um gráfico $f \times F_1(m)$ seja linear.
+	\item Verificar a proporcionalidade da frequência de ressonância $f$ com o inverso do comprimento $L$ da corda.
+	\item Linearizar a equação que relaciona a frequência ao comprimento, determinando a função $F_2(L)$ de forma que um gráfico $f \times F_2(L)$ seja linear.
+	\item Determinar o valor da densidade linear de massa através do coeficiente angular dos gráficos $f \times F_2(L)$.
+	\item Determinar o valor da gravidade através do coeficiente angular dos gráficos $f \times F_1(m)$.
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{Ilustrations/Ondas_estacionarias.png}
+	\caption{Aparato para a visualização de ondas estacionárias em uma corda.}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Material Necessário}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+	\item Gerador de ondas;
+	\item Trena;
+	\item Fio fino;
+	\item Balança;
+	\item Anilhas leves e gancho;
+	\item Polia com suporte.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Procedimento Experimental}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Determinação da densidade linear de massa do fio (opcional)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+O valor de densidade de massa do fio utilizado pode ser determinado com a utilização de uma balança de alta precisão. Para isso basta tomarmos um segmento com um comprimento $L$ arbitrário, porém determinado, e verificarmos qual a massa $m$ correspondente. Obtemos a densidade linear de massa $\mu$ através da razão
+\begin{equation}
+	\mu = \frac{m}{L}.
+\end{equation}
+%
+O valor obtido dessa forma será considerado o \emph{valor de referência} na análise que segue.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Dependência da frequência de ressonância com a tensão aplicada}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+\item Ligue o gerador de ondas ao oscilador eletromecânico, dispondo o segundo a uma distância de aproximadamente \np[m]{1,30} da extremidade da mesa;\label{Enum:iteminicio}
+\item Prenda a polia ao suporte e a disponha de forma que fique para fora da mesa.
+\item Tome um segmento de fio com tamanho adequado e o prenda ao pino do oscilador. Anote o valor de referência da densidade linear de massa do fio utilizado na Tabela~\ref{Tab:FrequenciaFuncaoMassa};
+\item Afira a massa do gancho, juntamente com uma anilha e pendure-os na extremidade livre da corda, fazendo-a passar pela polia e deixando o gancho suspenso;\label{Enum:itemfim}
+\item Ligue o gerador de ondas e varie a frequência até que se forme uma onda estacionária com dois ventres ($n =2$). (Esse harmônico foi escolhido por ser o de mais fácil visualização.)
+\item Utilize a trena/régua para medir a distância entre os nós das extremidades\footnote{A distância deve ser medida entre o centro da polia (onde se localiza um dos nós) e o nó que deve se formar um pouco antes do pino do oscilador. Em muitos casos o nó se forma tão próximo do pino que não podemos distinguí-lo. Nesse caso meça a distância entre a polia e o próprio pino do oscilador.}. Anote o valor obtido na Tabela~\ref{Tab:FrequenciaFuncaoMassa}. Esse valor será aproximadamente constante e não precisa ser medido novamente.
+\item Anote o valor da massa suspensa na corda e a frequência em que a onda estacionária se forma na Tabela~\ref{Tab:FrequenciaFuncaoMassa}. \emph{Obs.: Em alguns equipamentos, a frequência pode variar constantemente. Nesse caso, anote os valores com uma casa após a vírgula e adote o valor de erro como sendo \np[Hz]{0,1}.}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Dependência da frequência de ressonância com o comprimento do fio}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+\item Mantenha o aparato disposto conforme a descrição da seção anterior;
+\item Utilize uma ou duas anilhas, verifique o valor da massa suspensa pelo fio (gancho e anilhas) e anote na Tabela~\ref{Tab:FrequenciaFuncaoComprimento1}. Desta vez manteremos a massa constante suspensa constante. Anote também o valor de referência da densidade linear de massa do fio;
+\item Ligue o gerador de ondas e varie a frequência até que se forme uma onda estacionária com um ventre ($n = 1$).
+\item Utilize a trena para medir a distância entre os nós das extremidades: meça a distância entre o nó que se forma na polia e o nó que se forma próximo ao pino do oscilador.
+\item Anote os valores de frequência e a distância entre os nós na Tabela~\ref{Tab:FrequenciaFuncaoComprimento1}.
+\item Mova o oscilador aproximadamente \np[cm]{10,0} em direção à polia.
+\item Varie a frequência até que uma onda estacionária com um ventre se forme novamente, anotando os valores de distância entre os nós e a frequência na Tabela~\ref{Tab:FrequenciaFuncaoComprimento1}. Repita o processo até preencher a tabela ou até que as anilhas estejam prestes a tocar o chão.
+\item Repita os itens acima para ondas estacionárias com \emph{dois ventres}, preenchendo a Tabela~\ref{Tab:FrequenciaFuncaoComprimento2}, e \emph{três ventres}, preenchendo a Tabela~\ref{Tab:FrequenciaFuncaoComprimento3}.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cleardoublepage
+
+\noindent{}{\huge\textit{Ondas Estacionárias}}
+
+\vspace{15mm}
+
+\begin{fullwidth}
+\noindent{}\makebox[0.6\linewidth]{Turma:\enspace\hrulefill}\makebox[0.4\textwidth]{  Data:\enspace\hrulefill}
+\vspace{5mm}
+
+\noindent{}\makebox[0.6\linewidth]{Aluno(a):\enspace\hrulefill}\makebox[0.4\textwidth]{  Matrícula:\enspace\hrulefill}
+
+\noindent{}\makebox[0.6\linewidth]{Aluno(a):\enspace\hrulefill}\makebox[0.4\textwidth]{  Matrícula:\enspace\hrulefill}
+
+\noindent{}\makebox[0.6\linewidth]{Aluno(a):\enspace\hrulefill}\makebox[0.4\textwidth]{  Matrícula:\enspace\hrulefill}
+
+\noindent{}\makebox[0.6\linewidth]{Aluno(a):\enspace\hrulefill}\makebox[0.4\textwidth]{  Matrícula:\enspace\hrulefill}
+
+\noindent{}\makebox[0.6\linewidth]{Aluno(a):\enspace\hrulefill}\makebox[0.4\textwidth]{  Matrícula:\enspace\hrulefill}
+\end{fullwidth}
+
+\vspace{5mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Questionário}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{question}[type={exam}]{1}
+Apresente os resultados de maneira clara e organizada. Mostre os cálculos requisitados de maneira clara e sucinta, evidenciando o raciocínio desenvolvido.
+\end{question}
+
+\begin{question}[type={exam}]{0.75}
+Liste os equipamentos utilizados descrevendo o tipo do equipamento, sua resolução, e qual é o seu erro de escala.
+\end{question}
+
+\begin{question}[type={exam}]{0.75}
+Preencha as tabelas com o número adequado de algarismos significativos, unidades, e erros de escala apropriados. 
+\end{question}
+
+\begin{question}[type={exam}]{1}
+Elabore um gráfico \textbf{linear} de $f$ em função da massa $m$ para os dados da Tabela~\ref{Tab:FrequenciaFuncaoMassa}. \emph{Será necessário efetuar uma mudança de variáveis}. Calcule a reta que melhor representa os dados experimentais utilizando o método dos mínimos quadrados e a adicione ao gráfico. Utilize a Equação~\eqref{Eq:RelacaoVariaveisOndasEstacionarias} para descrever a relação entre $f$ e $m$, identificando as variáveis dependente e independente, bem como os coeficientes angular e linear.
+\end{question}
+
+\begin{question}[type={exam}]{1.5}
+Calcule o erro associado ao coeficiente angular na questão anterior. A partir dos valores do coeficiente e do erro, determine a densidade linear de massa do fio, juntamente com o erro. Calcule o erro percentual em relação ao valor de $\mu$ de referência através da fórmula
+\begin{equation}
+	E_{\%} = \left|\frac{x-x_{\textrm{ref}}}{x_{\textrm{ref}}}\right| \times 100.
+\end{equation}
+\end{question}
+
+\begin{question}[type={exam}]{1.5}
+Elabore um gráfico\footnote{Os três conjuntos de dados devem estar contidos no mesmo gráfico.} \textbf{linear} de $f$ em função de $L$ para os dados das Tabelas~\ref{Tab:FrequenciaFuncaoComprimento1}, \ref{Tab:FrequenciaFuncaoComprimento2} e~\ref{Tab:FrequenciaFuncaoComprimento3}. \emph{Novamente, será necessário efetuar uma mudança de variáveis}. Calcule as retas que melhor representam os dados experimentais utilizando o método dos mínimos quadrados. Utilize a Equação~\eqref{Eq:RelacaoVariaveisOndasEstacionarias} para descrever a relação entre $f$ e $L$, identificando as variáveis dependente e independente, bem como os coeficientes angular e linear.
+\end{question}
+
+\begin{question}[type={exam}]{1}
+Através dos coeficientes angulares da questão anterior, calcule a densidade linear do fio e o erro percentual em relação ao valor de referência utilizando a expressão 
+\begin{equation}
+	E_{\%} = \left|\frac{x-x_{\textrm{ref}}}{x_{\textrm{ref}}}\right| \times 100.
+\end{equation}
+\end{question}
+
+\begin{question}[type={exam}]{1}
+Calcule o erro associado ao coeficiente angular obtido para a regressão linear dos dados da Tabela~\ref{Tab:FrequenciaFuncaoComprimento2}. Com esse resultado e com o valor do próprio coeficiente, determine o valor da gravidade, juntamente com seu erro. Nos cálculos, use o valor de $\mu$ de referência (incluindo o erro erro associado).
+\end{question}
+
+\begin{question}[type={exam}]{1.5}
+Através dos resultados obtidos nas questões anteriores, discuta quais objetivos foram atingidos com sucesso, justificando suas conclusões. Se algum objetivo não foi atingido, discuta quais são os possíveis motivos do fracasso e que providências podem ser tomadas para que eles sejam alcançados.
+\end{question}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Tabelas}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}[!htb]
+\caption{Dados para a frequência de surgimento do \textbf{segundo harmônico}.}
+\label{Tab:FrequenciaFuncaoMassa}
+	\begin{center}
+		\begin{tabular}{cp{45mm}p{45mm}c}
+		\toprule
+\multicolumn{2}{l}{\textbf{Parâmetros constantes}}&&\\
+		\cmidrule{2-3}
+		& \cellcolor[gray]{0.89}$L$ &\cellcolor[gray]{0.92} \\
+		& \cellcolor[gray]{0.95}$\mu$ & \cellcolor[gray]{0.97}\\
+		\cmidrule{2-3}
+		\\
+\multicolumn{3}{l}{\textbf{Dados para a massa e a frequência correspondente}} \\
+		\cmidrule{2-3}		
+		& $m$ & $f$ \\
+		\cmidrule{2-3}
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+		\cmidrule{2-3}		
+		\bottomrule
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\begin{table}[!htb]
+\forcerectofloat
+\caption{Dados para a frequência de surgimento do \textbf{primeiro harmônico}.}
+\label{Tab:FrequenciaFuncaoComprimento1}
+	\begin{center}
+		\begin{tabular}{cp{45mm}p{45mm}c}
+		\toprule
+\multicolumn{2}{l}{\textbf{Parâmetros constantes}}&\\
+		\cmidrule{2-3}
+		& \cellcolor[gray]{0.89}$m$ &\cellcolor[gray]{0.92} \\
+		& \cellcolor[gray]{0.95}$\mu$ & \cellcolor[gray]{0.97}\\
+		\cmidrule{2-3}
+		\\
+\multicolumn{3}{l}{\textbf{Dados para a comprimento e a frequência correspondente}} \\
+		\cmidrule{2-3}		
+		& $L$ & $f$ &\\
+		\cmidrule{2-3}
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+		\cmidrule{2-3}
+		\bottomrule
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\begin{table}[!htb]
+\forcerectofloat
+\caption{Dados para a frequência de surgimento do \textbf{segundo harmônico}.}
+\label{Tab:FrequenciaFuncaoComprimento2}
+	\begin{center}
+		\begin{tabular}{cp{45mm}p{45mm}c}
+		\toprule
+\multicolumn{2}{l}{\textbf{Parâmetros constantes}}&\\
+		\cmidrule{2-3}
+		& \cellcolor[gray]{0.89}$m$ &\cellcolor[gray]{0.92} \\
+		& \cellcolor[gray]{0.95}$\mu$ & \cellcolor[gray]{0.97}\\
+		\cmidrule{2-3}
+		\\
+\multicolumn{3}{l}{\textbf{Dados para a comprimento e a frequência correspondente}} \\
+		\cmidrule{2-3}		
+		& $L$ & $f$ &\\
+		\cmidrule{2-3}
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+		\cmidrule{2-3}
+		\bottomrule
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\begin{table}[!htb]
+\forceversofloat
+\caption{Dados para a frequência de surgimento do \textbf{terceiro harmônico}.}
+\label{Tab:FrequenciaFuncaoComprimento3}
+	\begin{center}
+		\begin{tabular}{cp{45mm}p{45mm}c}
+		\toprule
+\multicolumn{2}{l}{\textbf{Parâmetros constantes}}&\\
+		\cmidrule{2-3}
+		& \cellcolor[gray]{0.89}$m$ &\cellcolor[gray]{0.92} \\
+		& \cellcolor[gray]{0.95}$\mu$ & \cellcolor[gray]{0.97}\\
+		\cmidrule{2-3}
+		\\
+\multicolumn{3}{l}{\textbf{Dados para a comprimento e a frequência correspondente}} \\
+		\cmidrule{2-3}		
+		& $L$ & $f$ &\\
+		\cmidrule{2-3}
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+		\cmidrule{2-3}
+		\bottomrule
+		\end{tabular}
+	\end{center}
+\end{table}
+

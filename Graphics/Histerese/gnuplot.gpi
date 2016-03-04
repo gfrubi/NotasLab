@@ -1,0 +1,21 @@
+set term tikz size 14cm,9cm
+
+set key reverse Left left
+
+set style line 20 linetype 1 linewidth 2 pointtype 9 pointsize 1 linecolor rgb "black"
+
+set style line 21 linetype 1 linewidth 2 pointtype 11 pointsize 1 linecolor rgb "black"
+
+set xrange [-50:1150]
+set xtics 0, 200
+
+set yrange [14:41]
+set ytics 15, 5
+
+set xlabel "$m$~(g)"
+set ylabel "$L$~(cm)"
+
+set out 'graph_hist.tex'
+
+plot "data_carga.dat" ls 20 title "carga", "" u 1:2:(5e-5) ls 20 smooth acsplines notitle,  \
+	 "data_descarga.dat" ls 21 title "descarga", "" u 1:2:(5e-5) ls 21 smooth acsplines notitle

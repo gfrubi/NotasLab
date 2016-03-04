@@ -1,0 +1,18 @@
+set term tikz size 7cm,9cm
+
+set out "Hist.tex"
+
+set ylabel "contagem"
+set xlabel "caixa"
+
+set xrange[12:38]
+set yrange[0:15]
+
+plot "data.dat" u 1:2 w boxes notitle
+
+set out "Hist2.tex"
+stddev=4
+mean=25
+f(x) = 50 * exp(-(x-mean)**2/(2*stddev**2))/(stddev*(2*pi)**(1/2)) 
+
+plot "data.dat" u 1:2 w boxes notitle, f(x) w lines linecolor "black" lw 2 lt 1 notitle

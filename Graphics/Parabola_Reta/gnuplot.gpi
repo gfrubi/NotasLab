@@ -1,0 +1,25 @@
+set term tikz size 14cm,9cm
+
+set key reverse left Left
+
+set sample 2001
+
+f(x) = x > 3.85 ? x < 5.55 ? 14.2411331215 * x - 38.0797283542 : 0/0 : 0/0
+h(x) = x > 3.25 ? x < 6.25 ? 14.2411331215 * x - 38.0797283542 : 0/0 : 0/0
+g(x) = x > 0.0 ? x < 9.05  ? 1.0357589354 * x * x + 0.933499313 * x + 0.6042485216 : 0/0 : 0/0
+
+set xlabel '$x$'
+set ylabel '$y$'
+
+set out "graph.tex"
+
+set xrange[3.75:5.65]
+plot "data.dat" w points pt 7 linecolor rgb "black" t 'Dados experimentais', f(x) linecolor rgb "black" t '$y = \np{14.24113} \, x - \np{38.07973}$, $r^2 = \np{0.90858}$'
+
+set out "graph2.tex"
+set format y "%3.1f"
+
+set xrange[-0.2:9.2]
+set yrange[-5:110]
+plot "data.dat" w points pt 7 linecolor rgb "black" t 'Dados experimentais', g(x) w l lt 1 linecolor rgb "black" t '$y = \np{1.03576} \, x^2 + \np{0.93350} \, x + \np{0.60425}$', h(x) linewidth 3 linetype 3 linecolor rgb "red" t '$y = \np{14.24113} \, x - \np{38.07973}$, $r^2 = \np{0.90858}$'
+

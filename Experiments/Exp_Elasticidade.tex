@@ -1,0 +1,232 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Elasticidade}
+\label{Chap:ExpElasticidade}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{fullwidth}\it
+	Realizaremos um experimento visando mostrar o comportamento não-linear de um corpo que sofre uma deformação. Verificaremos através dos dados que a deformação segue uma forma característica conhecida como \emph{curva de histerese}. Veremos que as deformações com dependência linear na força aplicada se restringem a condições muito específicas. Utilizaremos os seguintes conceitos/técnicas de análise de dados: medidas, algarismos significativos, gráficos, erros de escala e propagados, histogramas e desvio padrão.
+\end{fullwidth}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Elasticidade}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{marginfigure}[7cm]
+	\includegraphics[width=\textwidth]{Ilustrations/Elasticidade.png}
+	\caption{Ao submetermos um elástico a uma força variável, verificando a distensão registrada em função da força, obtemos uma \emph{curva de histerese}.}
+\end{marginfigure}
+
+Verificamos através da Lei de Hooke que a deformação de objetos em resposta a uma força aplicada é proporcional à intensidade da força:
+\begin{equation}
+	\Delta x = \frac{F}{k}.
+\end{equation}
+
+\noindent{}Sabemos, no entanto, que um objeto sujeito a uma força muito grande pode apresentar uma deformação permanente, ou mesmo se quebrar. Além disso, no caso mais geral, a deformação pode ser \emph{não-linear}.
+
+Mesmo para uma mola, caso clássico em que se aplica a Lei de Hooke, a deformação será não-linear se a distensão da mola for muito grande. Por isso se faz a restrição de que \emph{a distensão da mola deve ser pequena}. Podemos entender melhor essa restrição chamando a força exercida pela mola de $f(x)$, onde $x$ representa a distensão da mola, e fazendo uma expansão de $f(x)$ em uma \emph{série de Taylor}. A expansão em série de Taylor nos que diz que uma função $g(x)$ qualquer pode ser aproximada em torno de um ponto $x=a$ qualquer como
+\begin{equation}
+	g(x) = g(a) + g'(a)(x - a) + g''(a)(x-a)^2 + g'''(a)(x-a)^3 + \dots,
+\end{equation}
+onde $g'(a)$, $g''(a)$, $g'''(a)$, etc. são as derivadas da função $g(x)$ calculadas no ponto $a$.
+
+Assim, podemos expandir a função $f(x)$ em torno de zero (considerando que esta é a posição de equilíbrio) como
+\begin{equation}
+	f(x) = f(0) + f'(0) (x-0) + f''(0)(x-0)^2 + \dots.
+\end{equation}
+%
+No entanto, $f(0)$ é a força na posição de equilíbrio, ou seja, zero. Além disso, se $x$ é muito pequeno, temos que $x^2$ é menor ainda e por isso podemos desprezar todos os termos de ordem 2 (termos quadráticos) ou maior. Obtemos então:
+\begin{equation}
+	f(x) = f'(0)x,
+\end{equation}
+%
+e se fizermos $k \equiv f'(0)$,
+\begin{equation}
+	f(x) = kx.
+\end{equation}
+%
+\textbf{Portanto, quando falamos em pequenos deslocamentos, estamos restringindo os valores de termos de ordens quadrática ou superiores a valores muito menores que o termo de ordem linear}. Respeitada essa condição, o que poder ser feito através da escolha de uma distensão máxima adequada -- isto é, que ela seja suficientemente pequena para que os termos de ordem superior a 2 sejam desprezíveis --, podemos tratar as deformações de um objeto como sendo lineares.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Elasticidade e Histerese}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{marginfigure}
+	\centering
+	\begin{tikzpicture}[scale=0.3, >=Stealth]
+		\draw[very thin, ->] (-5,-4) -- +(10,0);
+		\draw[very thin, ->] (-5,-4) -- +(0,8);
+		\clip (-4,-4) rectangle (4,4);
+		\draw[thick] (-5,-3) -- (-4,-3) to [controls={+(3,0) and +(-3,0)}] (2,3) -- (5,3);
+		\draw[thick] (5,3) -- (4,3) to [controls={+(-3,0) and +(3,0)}] (-2,-3) -- (-5,-3);
+	\end{tikzpicture}
+	\caption{Gráfico típico de um fenômeno de histerese.}
+	\label{Fig:Histerese}
+\end{marginfigure}
+
+Uma característica que também pode ser observada no caso de uma deformação não linear é a \emph{histerese}. Temos na Figura~\ref{Fig:Histerese} uma típica figura de histerese: quando efetuamos um aumento gradual da variável independente, ocorre um aumento não linear da variável dependente. Quando passamos a fazer uma diminuição da variável independente, existe uma diminuição da variável dependente, porémos valores assumidos pela variável dependente são diferentes nos dois processos. Vários sistemas físicos têm esse tipo de comportamento: deformações de materiais, magnetização de imãs, campos elétricos em alguns materiais, etc.
+
+\begin{figure*}[!htb]
+	\centering
+	\input{Graphics/Histerese/graph_hist}
+	\caption{Gráfico de histerese para o processo de carregamento e descarregamento de um elástico. Note que o último ponto do processo de carga e o primeiro do processo de descarga coincidem.}
+	\label{Fig:HistereseElast}
+\end{figure*}
+
+Na Figura~\ref{Fig:HistereseElast} temos gráfico da tensão em função deformação para um elástico de borracha. As linhas representam o processo de aumento e diminuição progressiva da tensão exercida sobre o elástico. Vemos que as duas curvas não coincidem. É impotante notar que, para o caso elástico, só há a coincidência entre o ponto inicial e final se o processo for realizado lentamente.
+
+A explicação para este fenômeno pode ser dada ao analisarmos a energia armazenada no elástico. Em uma mola, quando a esticamos, armazenamos energia potencial elástica. Essa é praticamente a única forma de energia armazenada. Já para um elástico de borracha, quando o esticamos, armazenamos energia potencial elástica, no entanto, também é possível notar um \textbf{aquecimento do elástico}. Quando esticamos o elástico, ele sofre uma aumento de temperatura, perdendo calor para o ambiente. Ao ser relaxado, é necessária a absorção de calor do meio. Como esse processo é demorado, se relaxarmos o elástico rapidamente, percebemos que ele não volta ao tamanho original. Após algum tempo, no entanto, o elástico absorve o calor do meio e volta ao tamanho original.
+
+Esse fenômeno pode ser entendido analisando a estrutura da borracha: ela é constituída de moléculas de polímeros de tamanhos diferentes, constituindo um emaranhado de fibras. Devido à agitação térmica das moléculas -- agitação característica dos corpos a nível molecular associada à temperatura -- as moléculas sofrem colisões laterais sucessivas, encurtando-se. Quando esticamos o elástico, as moléculas alinham-se, colidindo lateralmente contra as menores, transferindo energia cinética e aumentando a temperatura. Se o processo de esticamento demora tempo suficente para que o calor seja transferido para o meio -- através de colisões das moléculas mais curtas da superfície com o ar, por exemplo, transferindo energia cinética para fora da borracha --, ao relaxarmos o elástico, não há energia suficiente nas moléculas menores para que elas colidam com as maiores e façam com que elas se contraiam totalmente. Portanto, há uma deformação residual no elástico.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Experimento}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Objetivos}
+%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+	\item Verificar o melhor valor para a medida da massa de um conjunto de anilhas através do valor médio.
+	\item Calcular desvio padrão dos valores da massa e o valor do desvio padrão da média.
+	\item Realizar as medidas de deformação de um elástico verificando a curva de histerese resultante.
+	\item Verificar a dissipação de energia envolvida em processos que não são elásticos. 
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Material Necessário}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+	\item 20 anilhas metálicas e ganchos adequados para suportá-las.
+	\item Suporte vertical com haste horizontal.
+	\item Elástico de borracha.
+	\item Régua.
+	\item Balança.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Procedimento Experimental}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+	\item Verifique a massa de cada uma das anilhas e anote na Tabela~\ref{tab:ComprimentoElastico}.
+	\item Verifique a massa dos ganchos e anote na Tabela~\ref{tab:ComprimentoElastico}
+	\item Pendure um elástico de borracha na haste horizontal do suporte e pendure um gancho com uma anilha.
+	\item Meça o comprimento do elástico e anote na Tabela~\ref{tab:ComprimentoElastico}, juntamente com a massa sustentada pelo elástico nas colunas correspondentes ao processo de ``carga''.
+	\item Adicione mais uma anilha e verifique o novo comprimento, anotando os dados na Tabela~\ref{tab:ComprimentoElastico}.
+	\item Repita o item acima até que todas as anilhas tenham sido penduradas. Utilize ganchos adicionais quando necessário. Não esqueça de somar a massa do gancho.
+	\item Anote os últimos os valores de comprimento e massa também na Tabela~\ref{tab:ComprimentoElastico}.
+	\item Retire as anilhas suspensas pelo elástico uma a uma, realizando o processo inverso ao `'carregamento'', anotando os valores de massa e comprimento correspondentes na Tabela~\ref{tab:ComprimentoElastico}.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cleardoublepage
+
+\noindent{}{\huge\textit{Elasticidade}}
+
+\vspace{15mm}
+
+\begin{fullwidth}
+\noindent{}\makebox[0.6\linewidth]{Turma:\enspace\hrulefill}\makebox[0.4\textwidth]{  Data:\enspace\hrulefill}
+\vspace{5mm}
+
+\noindent{}\makebox[0.6\linewidth]{Aluno(a):\enspace\hrulefill}\makebox[0.4\textwidth]{  Matrícula:\enspace\hrulefill}
+
+\noindent{}\makebox[0.6\linewidth]{Aluno(a):\enspace\hrulefill}\makebox[0.4\textwidth]{  Matrícula:\enspace\hrulefill}
+
+\noindent{}\makebox[0.6\linewidth]{Aluno(a):\enspace\hrulefill}\makebox[0.4\textwidth]{  Matrícula:\enspace\hrulefill}
+
+\noindent{}\makebox[0.6\linewidth]{Aluno(a):\enspace\hrulefill}\makebox[0.4\textwidth]{  Matrícula:\enspace\hrulefill}
+
+\noindent{}\makebox[0.6\linewidth]{Aluno(a):\enspace\hrulefill}\makebox[0.4\textwidth]{  Matrícula:\enspace\hrulefill}
+\end{fullwidth}
+
+\vspace{5mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Questionário}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{question}[type={exam}]{1}
+Apresente os resultados de maneira clara e organizada. Mostre os cálculos requisitados de maneira clara e sucinta, evidenciando o raciocínio desenvolvido.
+\end{question}
+
+\begin{question}[type={exam}]{1}
+Liste os equipamentos utilizados descrevendo o tipo do equipamento, sua resolução, e qual é o seu erro de escala.
+\end{question}
+
+\begin{question}[type={exam}]{1}
+Preencha as tabelas com o número adequado de algarismos significativos, unidades, e erros de escala apropriados. 
+\end{question}
+
+\begin{question}[type={exam}]{1}
+Calcule o desvio padrão dos valores da massa das anilhas.
+\end{question}
+
+\begin{question}[type={exam}]{1}
+Calcule o melhor valor para a massa de uma anilha (média) e valor de erro correspondente para essa medida (desvio padrão da média).
+\end{question}
+
+\begin{question}[type={exam}]{2}
+Elabore em papel milimetrado um gráfico de $\ell \times P$ -- onde $\ell$ é o comprimento do elástico e $P$ é o peso correspondente ao conjunto de anilhas e ganchos que o elástico sustenta --. Ambos os conjuntos de dados (``carregamento'' e ``descarregamento'' na Tabela~\ref{tab:ComprimentoElastico}) devem estar contidos no mesmo gráfico, sendo que os pontos de cada conjunto de dados devem estar claramente diferenciados.
+\end{question}
+
+\begin{question}[type={exam}]{1}
+Calcule a diferença entre os comprimentos do elástico quando ele suporta somente uma anilha no processo de carga e no processo de descarga (a diferença entre a primeira medidada realizada no carregamento e a última no descarregamento). Através de tal valor, calcule a diferença de energia potencial gravitacional entre as duas posições. O que acontece com a energia potencial perdida? (\emph{A energia não fica armazenada como energia potencial elástica!})
+\end{question}
+
+\begin{question}[type={exam}]{2}
+Através dos resultados obtidos nas questões anteriores, discuta quais objetivos foram atingidos com sucesso, justificando suas conclusões. Se algum objetivo não foi atingido, discuta quais são os possíveis motivos do fracasso e que providências podem ser tomadas para que eles sejam alcançados.
+\end{question}
+\vfill
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
+\section{Tabelas}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table*}
+	\begin{center}
+		\begin{tabular}{ccp{25mm}cp{25mm}p{25mm}cp{25mm}p{25mm}l}
+		\toprule
+		& \multicolumn{2}{l}{\textbf{Massas dos ganchos}} & \\
+		\cmidrule{2-3}
+		& 1 & \cellcolor[gray]{0.89} \\
+		& 2 & \cellcolor[gray]{0.95} \\
+		& 3 & \cellcolor[gray]{0.89} \\
+		& 4 & \cellcolor[gray]{0.95} \\
+		\cmidrule{2-3}
+\\
+		& & & & \multicolumn{2}{c}{\textbf{Carregamento}} & & \multicolumn{2}{c}{\textbf{Descarregamento}} \\
+		\cmidrule{5-6} \cmidrule{8-9}
+		& \multicolumn{2}{l}{\textbf{Massas das Anilhas}} & & \multicolumn{1}{c}{Comprimento} & \multicolumn{1}{c}{Massa} & & \multicolumn{1}{c}{Comprimento} & \multicolumn{1}{c}{Massa} \\
+		\cmidrule{2-3} \cmidrule{5-6} \cmidrule{8-9}
+		&  1 & \cellcolor[gray]{0.89} & & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \\
+		&  2 & \cellcolor[gray]{0.95} & & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \\
+		&  3 & \cellcolor[gray]{0.89} & & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \\
+		&  4 & \cellcolor[gray]{0.95} & & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \\
+		&  5 & \cellcolor[gray]{0.89} & & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \\
+		&  6 & \cellcolor[gray]{0.95} & & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \\
+		&  7 & \cellcolor[gray]{0.89} & & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \\
+		&  8 & \cellcolor[gray]{0.95} & & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \\
+		&  9 & \cellcolor[gray]{0.89} & & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \\
+		& 10 & \cellcolor[gray]{0.95} & & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \\
+		& 11 & \cellcolor[gray]{0.89} & & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \\
+		& 12 & \cellcolor[gray]{0.95} & & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \\
+		& 13 & \cellcolor[gray]{0.89} & & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \\
+		& 14 & \cellcolor[gray]{0.95} & & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \\
+		& 15 & \cellcolor[gray]{0.89} & & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \\
+		& 16 & \cellcolor[gray]{0.95} & & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \\
+		& 17 & \cellcolor[gray]{0.89} & & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \\
+		& 18 & \cellcolor[gray]{0.95} & & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \\
+		& 19 & \cellcolor[gray]{0.89} & & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \\
+		& 20 & \cellcolor[gray]{0.95} & & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \\
+\bottomrule
+		\end{tabular}
+	\caption{Dados obtidos para o comprimento do elástico e a massa correspondente.}\label{tab:ComprimentoElastico}
+	\end{center}
+\end{table*}
+

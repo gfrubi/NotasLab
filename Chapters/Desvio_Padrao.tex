@@ -1,0 +1,69 @@
+\chapter{Desvio padrão}
+\label{Chap:DesvioPadrao}
+
+{\it
+Como mencionado no Capítulo~\ref{Chap:Erros}, podemos interpretar o desvio das medidas em relação à média como uma medida relacionada à incerteza --~ou erro~-- das medidas. Verificaremos o por quê dessa afirmação e como chegar ao valor da incerteza --~tanto para cada uma das medidas, quanto para o valor da incerteza associada ao valor médio das medidas~--.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Histogramas}
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+Um método útil para verificar a distribuição das medidas em torno de seu valor mais provável é a elaboração de um \emph{histograma}. Imagine o seguinte experimento: Pegamos uma tábua e afixamos uma série de pregos, de forma que suas pontas fiquem presas à tábua e o resto do comprimento dos pregos fique acima dela. Prendemos a tábua de forma que ela permaneça inclinada, com a superfície com os pregos para cima. Abaixo da região de pregos, colocamos várias pequenas caixas numeradas, com a de número 25 exatamente no centro da tábua. Soltamos então uma pequena bola de gude da posição central acima dos pregos. A bola descerá colidindo com os pregos aleatoriamente e finalmente cairá em uma das caixas. Se repetirmos esse procedimento várias vezes e contarmos quantas vezes a bola cai em cada caixa, podemos fazer um gráfico (um histograma) como o da Figura~\ref{Fig:Histograma}.
+
+Se utilizássemos caixas menores, numerando-as como \np{21,1}, \np{21,2}, etc., e aumentássemos o número de vezes que soltamos a bola de gude, chegamos -- em um limite de caixas muito pequenas e um número de lançamentos muito grande -- a uma curva chamada de \emph{distribuição normal} ou \emph{distribuição gaussiana} (veja a Figura~\ref{Fig:Histograma}).
+
+\begin{figure*}
+\forceversofloat
+\centering
+\caption[][5mm]{\emph{Esquerda:} Histograma do número de vezes que a bola de gude cai em cada caixa. \emph{Direita:} Histograma juntamente com a curva da distribuição normal.}
+\label{Fig:Histograma}
+\begin{minipage}{0.45\textwidth}
+\centering
+\input{Graphics/Histograma/Hist.tex}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\input{Graphics/Histograma/Hist2.tex}
+\end{minipage}
+\end{figure*}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{Desvio padrão}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+No caso de realizarmos uma medida qualquer, temos valores numéricos pertencentes ao conjunto dos números Reais, não aos Inteiros como na numeração das caixas. Nesse caso, contamos o número de ocorrências entre dois valores quaisquer. Se por exemplo, as caixas que colocamos abaixo da tábua no exemplo anterior tinham \np[cm]{1,00} de largura, podemos dizer que as bolas que caem na 23\textordfeminine caixa caem \emph{entre} \np[cm]{23,0} e \np[cm]{24,0} à direita do início da tábua. Vemos então que para qualquer medida, mesmo que sejam números pertencentes aos Reais ao invés de Inteiros, podemos fazer um histograma.
+
+É possível se mostrar\cite{Taylor} que o centro da distribuição normal é igual à média dos valores obtidos para as medidas. Vemos que esse valor é o \emph{mais provável} de obtermos. Logicamente, temos que o valor médio é então o melhor valor para uma série de medidas. Vemos também que a distribuição normal aparentemente nos dá um \emph{limite inferior} e um \emph{limite superior} para o valor de uma medida. O problema principal reside no fato de que a distribuição diminui, porém não chega a zero à medida que nos afastamos do pico central. 
+
+Podemos calcular, a partir das próprias medidas, um parâmetro que leva em conta as variações em torno do valor médio, denominado \emph{variância} e definido como\footnote{Jay L. Devore, Probabilidade e estatística para engenharia e ciências.}
+\begin{equation}
+	\frac{\sum_{i=1}^{N} (x_i - \mean{x})^2}{N}.
+\end{equation}
+%
+Quanto mais as medidas diferem do valor médio -- isto é, quanto mais elas se espalham, tornando a largura do pico maior --, maior será o valor da variância. No entanto, como esse valor não tem as mesmas unidades das medidas que estamos tratando, podemos utilizar o \emph{desvio padrão}, definido como a raiz quadrada da variância e representado por $\sigma$:
+\begin{equation}\label{Eq:DesvioPadraoN}
+	\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^N (x_i - \mean{x})^2}. \mathnote{Desvio padrão populacional.}
+\end{equation}
+%
+Essa grandeza, ao contrário da variância, possui as mesmas unidades que as medidas. Se tomarmos a faixa de valores entre o valor médio \emph{menos} o desvio padrão e o valor médio \emph{mais} o desvio padrão, temos aproximadamente 63\% das medidas realizadas. \textbf{O valor do desvio padrão pode então ser interpretado como a incerteza de uma medida qualquer realizada}, pois podemos afirmar que ``o valor real de uma medida está contido entre $x_i - \sigma$ e $x_i + \sigma$ com 63\% de certeza''. Se precisamos de mais certeza de que a medida se encontra entre dois valores quaisquer, podemos utilizar como incerteza o valor de $2\sigma$.
+
+A definição mostrada acima para o desvio padrão não é a que usamos na prática. Tal definição é dada para uma \emph{população}, isto é, para todos os valores possíveis de uma dada grandeza. Não podemos calcular tal valor quando tratamos de medidas, pois podemos ter um número infinito delas. Podemos, no entanto, utilizar o \emph{desvio padrão amostral}: Como os valores das medidas $x_i$ estão mais próximos do valor médio da amostra $\mean{x}$, do que do valor médio da população, o valor do somatório será menor que se utilizássemos a média da população. Tal problema pode ser contornado utilizando-se como denominador $N - 1$, obtendo
+\begin{equation}\label{Eq:DesvioPadraoN-1}
+	\sigma = \sqrt{\frac{1}{N-1} \sum_{i=1}^N (x_i - \mean{x})^2}. \mathnote{Desvio padrão amostral.}
+\end{equation}
+%
+Dessa forma, o desvio padrão calculado para uma amostra aproxima adequadamento o desvio padrão calculado para a população.
+
+Uma maneira mais simplista de interpretar a questão de utilizar uma fórmula ou outra é o fato de que o desvio padrão amostral resulta em um valor um pouco maior, dando um ``garantia'' maior quando $\sigma$ é usado como erro. Além disso, se temos somente um valor de medida, o valor de $\sigma$ torna-se indefinido, o que reflete o desconhecimento acerca do valor do erro. Resta dizer ainda que o valor do desvio padrão é uma característica do equipamento e método de medida utilizado. A partir de 5 ou 10 medidas, o valor de $\sigma$ varia muito pouco. 
+
+Finalmente, não parece razoável que essa incerteza seja a mesma para o valor médio $\mean{x}$, pois conforme o número de medidas aumenta, esperamos que o valor da incerteza diminua. De fato, podemos considerar que a incerteza no valor médio pode ser calculada através de
+\begin{equation}
+	\sigma_{\mean{}} = \sigma / \sqrt{N}, \mathnote{Desvio padrão da média.}
+\end{equation}
+
+\noindent{}onde $\sigma_{\mean{}}$ é chamado de \emph{desvio padrão da média}. Portanto, temos que a melhor estimativa para uma medida $X$ qualquer é
+\begin{equation}
+	X = (\mean{x} \pm \sigma_{\mean{}}). \mathnote{Melhor estimativa para uma medida.}
+\end{equation}

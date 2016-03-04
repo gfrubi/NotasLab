@@ -1,0 +1,27 @@
+set term tikz size 14cm, 9cm
+
+set style line 20 linetype 1 linewidth 2 pointtype 5 pointsize 1 linecolor rgb "black"
+set style line 21 linetype 1 linewidth 2 pointtype 6 pointsize 1 linecolor rgb "black"
+
+set decimalsign ','
+
+set out 'features.tex'
+
+set title 'Temperatura de um tubo durante o processo de resfriamento'
+
+#set key reverse left Left box
+set key spacing 3
+
+set xrange[-40:640]
+set yrange[20:105]
+
+set format y "%.1f"
+set ylabel '$T~(\tcdegree\textrm{C})$'
+set xlabel '$t$~(s)'
+
+#set ytics 2,0.5
+#set xtics 10, 10
+#set tics scale 0.5
+
+plot 'features.dat' u 1:2 ls 20 t 'Tubo N\textordmasculine~1', \
+	 '' u 3:4 ls 21 t 'Tubo N\textordmasculine~2'
