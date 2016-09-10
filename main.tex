@@ -1,8 +1,13 @@
-\documentclass[justified,a4paper,symmetric,nohyper]{tufte-book}
+\documentclass[justified,a4paper,symmetric,nobib]{tufte-book}
 
+% Packages setup
+\input{Preamble/Bibliography_fix}
 \input{Preamble/Packages}
 \input{Preamble/Formatting}
 \input{Preamble/Commands}
+
+% Bibliographt file
+\addbibresource{Preamble/References.bib}
 
 % Book metadata
 \title{Notas de aula: \\ Laboratórios de Física 1 e 2}
@@ -41,7 +46,6 @@
 \input{Experiments/Exp_Calor_Especifico}
 \input{Experiments/Exp_Zero_Absoluto}
 
-\bibliography{Preamble/References}
-\bibliographystyle{plain}
+\printbibliography
 
 \end{document}

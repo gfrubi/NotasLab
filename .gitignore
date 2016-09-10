@@ -4,3 +4,6 @@
 *.bbl
 *.blg
 *.pdf
+*.bcf
+*.xml
+*.out
