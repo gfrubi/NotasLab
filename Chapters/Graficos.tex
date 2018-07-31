@@ -1,16 +1,17 @@
 \chapter{Gráficos}
 \label{Chap:Graficos}
 
+\begin{fullwidth}
 {\it
 Uma maneira simples de verificar a relação entre duas grandezas é a elaboração de um gráfico de dispersão. Apesar de não podermos verificar valores exatos em um gráfico, uma observação do comportamento geral de um conjunto de pontos pode ser muito esclarecedora, principalmente se levarmos em conta que todas as medidas efetuadas sofrem uma dispersão aleatória em torno de seus valores ideais. Verificaremos como elaborar um gráfico de maneira a evidenciar o comportamento das variáveis consideradas e, no Capítulo~\ref{Chap:RegressoLinear}, verificaremos como descrever de maneira idealizada a dependência entre as variáveis.
 }
+\end{fullwidth}
 
 %%%%%%%%%%%%%%%%%%
 \section{Gráficos}
 %%%%%%%%%%%%%%%%%%
 
-Um gráfico é uma maneira de transformar um conjunto de dados numéricos em uma figura, relacionando valores numéricos a escalas de cor, distâncias ou áreas. No livro \emph{The Visual Display of Quantitative Information}\cite{Tufte2001}, Edward R. Tufte\footnote{
-Edward Tufte é um estatísta e artista, professor emérito de Ciência Política, Estatística e Ciência da Computação da Universidade de Yale. Ele escreveu, desenvolveu e auto-publicou quatro livros clássicos sobre visualização de dados. O jornal The New York Times o descreveu como o ``Leonardo da Vinci dos dados'', e a revista Business Week como o ``Galileu dos graficos''. (Texto retirado de \url{http://www.edwardtufte.com/tufte/}.)}
+Um gráfico é uma maneira de transformar um conjunto de dados numéricos em uma figura, relacionando valores numéricos a escalas de cor, distâncias ou áreas. No livro \emph{The Visual Display of Quantitative Information}\cite{Tufte2001}, Edward R. Tufte
 afirma que
 \begin{quote}
 	Gráficos mostram quantidades visualmente através do uso combinado de pontos, linhas, um sistema de coordenadas, números, símbolos, palavras, sombreamento, e cor.
@@ -18,13 +19,13 @@ afirma que
 %
 e que
 \begin{quote}
-	Gráficos modernos podem fazer muito mais que simplesmente substituir pequenas tabelas de dados. Quando utilizados em seu máximo potencial, gráficos são instrumentos para raciocinar sobre informações quantitativas. Frequentemente a maneira mais efetiva para descrever, explorar, e sumarizar um conjunto de números -- mesmo um conjunto muito grande -- é através de figuras de tais números.
+	Gráficos modernos podem fazer muito mais que simplesmente substituir pequenas tabelas de dados. Quando utilizados em seu máximo potencial, gráficos são instrumentos para raciocinar sobre informações quantitativas. Frequentemente a maneira mais efetiva para descrever, explorar, e sumarizar um conjunto de números ---~mesmo um conjunto muito grande~--- é através de figuras de tais números.
 \end{quote}
 
-Tufte afirma que talvez em virtude da diversidade de técnicas e informações necessárias -- habilidades artísticas e matemáticas, dados experimentais -- a utilização de figuras abstratas para representar números é relativamente recente (1750 em diante). Dentre os autores que desenvolveram o campo da representação gráfica de dados, Tufte destaca o trabalho de William Playfair, que desenvolveu melhorias para vários tipos de gráficos. Tufte também destaca do trabalho de Johann Heinrich Lambert  que percebe que os gráficos não precisam necessariamente relacionar quantidades em analogia ao mundo físico -- como séries temporais, isto é, a evolução de um valor qualquer de acordo com a evolução do tempo --, mas podem ser elaborados para quaisquer duas variáveis cujas relações desejamos verificar:
+Tufte afirma que talvez em virtude da diversidade de técnicas e informações necessárias ---~habilidades artísticas e matemáticas, dados experimentais~--- a utilização de figuras abstratas para representar números é relativamente recente (1750 em diante). Dentre os autores que desenvolveram o campo da representação gráfica de dados, ele destaca o trabalho de William Playfair, que desenvolveu melhorias para vários tipos de gráficos. Tufte também destaca do trabalho de Johann Heinrich Lambert,bib que percebe que os gráficos não precisam necessariamente relacionar quantidades em analogia ao mundo físico ---~como séries temporais, isto é, a evolução de um valor qualquer de acordo com a evolução do tempo~---, mas podem ser elaborados para quaisquer duas variáveis cujas relações desejamos verificar:
 
 \begin{quote}
-	Temos em geral duas quantidades variáveis, $x$, $y$, que serão comparadas uma à outra por observação, de forma que para cada valor de $x$ -- que pode ser considerada como uma abscissa -- determinamos a ordenada correspondente $y$. Se as observações experimentais fossem completamente precisas, essas ordenadas resultariam em um número de pontos através dos quais uma curva ou uma reta deveriam ser traçadas. \cite{Lambert}
+	Temos em geral duas quantidades variáveis, $x$, $y$, que serão comparadas uma à outra por observação, de forma que para cada valor de $x$ ---~que pode ser considerada como uma abscissa~--- determinamos a ordenada correspondente $y$. Se as observações experimentais fossem completamente precisas, essas ordenadas resultariam em um número de pontos através dos quais uma curva ou uma reta deveriam ser traçadas. \cite{Lambert}
 \end{quote}
 
 Existem vários tipos de gráficos, cada um com o objetivo de evidenciar características específicas do conjunto de dados em questão:
@@ -44,7 +45,7 @@ além de outros tipos. Em comum a todos os tipos de gráfico, está a utilizaç�
 
 Temos especial interesse nos gráficos de dispersão. Esse tipo de gráfico serve para verificar relações de causa e efeito entre duas variáveis quaisquer. De acordo com Tufte,
 \begin{quote}
-	[...] Na literatura científica moderna, em torno de 40\% dos gráficos publicados têm uma forma relacional, com duas ou mais variáveis. Isto não é sem propósito, já que os gráficos relacionais -- em sua forma mais simples, o gráfico de dispersão e suas variantes -- é o mais formidável de todos os tipos de gráficos. Eles ligam pelo menos duas variáveis, encorajando e mesmo suplicando que o leitor se pergunte qual é a possível relação causal entre elas. Eles confrontam as teorias causais [...] com evidências empíricas.
+	[...] Na literatura científica moderna, em torno de 40\% dos gráficos publicados têm uma forma relacional, com duas ou mais variáveis. Isto não é sem propósito, já que os gráficos relacionais ---~em sua forma mais simples, o gráfico de dispersão e suas variantes~--- é o mais formidável de todos os tipos de gráficos. Eles ligam pelo menos duas variáveis, encorajando e mesmo suplicando que o leitor se pergunte qual é a possível relação causal entre elas. Eles confrontam as teorias causais [...] com evidências empíricas.
 \end{quote}
 %
 De fato, estamos interessados em verificar experimentalmente a relação entre diversas variáveis através de experimentos. Além disso, desejamos testar teorias científicas, procurando confirmar ou refutar suas validades.
@@ -65,7 +66,7 @@ Finalmente, como recomendações gerais para a elaboração de gráficos, Tufte 
 
 Gráficos de dispersão são ferramentas muito usadas para visualizar relações matemáticas entre uma função e seu argumento. Por exemplo, sabemos que a função $f(x) = A + Bx$ é uma equação da reta, pois seu gráfico é uma reta. Cada função tem um gráfico característico. 
 
-Em experimentos de laboratório é comum procuramos estabelecer a relação entre duas grandezas. Uma delas variamos arbitrariamente e denominamos como \textbf{variável independente}, já a outra medimos e -- como seus valores variam em resposta aos da variável independente -- a denominamos como \emph{variável dependente}. Tais variáveis são representadas nos eixo $x$  (abscissas) e $y$ (ordenadas), respectivamente, sendo o primeiro o eixo horizontal e o segundo o vertical. 
+Em experimentos de laboratório é comum procuramos estabelecer a relação entre duas grandezas. Uma delas variamos arbitrariamente e denominamos como \textbf{variável independente}, já a outra medimos e ---~como seus valores variam em resposta aos da variável independente~--- a denominamos como \emph{variável dependente}. Tais variáveis são representadas nos eixo $x$  (abscissas) e $y$ (ordenadas), respectivamente, sendo o primeiro o eixo horizontal e o segundo o vertical. 
 
 O maior objetivo de uma teoria é justamente encontrar a relação matemática $f$ que relaciona $x$ e $y$, ou seja, que nos dá $y$ \emph{em função de} $x$: $y = f(x)$. Isso não é algo que possa ser retirado dos gráficos de uma maneira simples, por diversas razões. Primeiramente, os dados experimentais se distribuem em torno do comportamento ideal devido a variações aleatórias. Além disso, mesmo que possamos tirar uma conclusão a partir do gráfico, tal conclusão só é válida para o intervalo de valores que compreende as medidas, podendo ser diferente em outras regiões. Finalmente, uma relação extraída dos dados experimentais não consegue explicar em argumentos lógicos o mecanismo que relaciona uma variável à outra, portanto não explicando o comportamento. De qualquer forma, uma gráfico que mostra uma dependência confiável de uma variável em relação a outra já abre um caminho para a investigação. Também podemos utilizar os dados experimentais para \emph{verificar a validade de previsões teóricas}.
 
@@ -75,19 +76,19 @@ O maior objetivo de uma teoria é justamente encontrar a relação matemática $
 
 Os elementos mais notáveis de um gráfico de dispersão são:
 \begin{description}
-	\item[Eixos:] Os valores das variáveis dependente e independente  são expressos pelas distâncias ao longo dos eixos vertical e horizontal em relação à origem (encontro dos dois eixos). Muitas vezes os valores das variáveis são distantes de zero e não podem ser verificados adequadamente se um dos eixos -- ou mesmo ambos -- iniciarem em zero. Por isso, é comum que se realizem ``cortes'' nos eixos de maneira que eles não iniciem em zero. Nesse caso, os valores são expressados por meio da distância relativa que os pontos ocupam entre duas marcas numeradas nos eixos (veja o item seguinte). Os eixos devem ser nomeados com a variável que está sendo representada e suas unidades.
+	\item[Eixos:] Os valores das variáveis dependente e independente  são expressos pelas distâncias ao longo dos eixos vertical e horizontal em relação à origem (encontro dos dois eixos). Muitas vezes os valores das variáveis são distantes de zero e não podem ser verificados adequadamente se um dos eixos ---~ou mesmo ambos~--- iniciarem em zero. Por isso, é comum que se realizem ``cortes'' nos eixos de maneira que eles não iniciem em zero. Nesse caso, os valores são expressados por meio da distância relativa que os pontos ocupam entre duas marcas numeradas nos eixos (veja o item seguinte). Os eixos devem ser nomeados com a variável que está sendo representada e suas unidades.
 	\item[Escalas:] Para que a leitura do gráfico possa ser efetuada de uma maneira quantitativa, ainda que aproximada, é importante que se efetuem marcas nos eixos e que tais marcas sejam numeradas com os valores que elas representam no eixo. Tais marcas não precisam iniciar em zero, porém devem ser efetuadas em intervalos regulares e com números de fácil leitura. Nas escalas não devem ser marcados os valores das abscissas e ordenadas dos pontos\footnote{Exceto no caso em que os próprios valores das variáveis ocorrem em intervalos regulares e tais intervalos correspondem ao mais adequado para a escala do eixo. Isso ocorre mais comumente com os valores do eixo independente (horizontal).}.
 	\item[Pontos experimentais:] Os dados experimentais são representados através de pontos na área retangular delimitada pelos eixos horizontal e vertical. A localização dos pontos é aquela do encontro das retas paralelas aos eixos horizontal e vertical e que passam pelas posições desses eixos que correspondem aos valores que desejamos representar. Para que o ponto seja facilmente visível, indica-se a utilização de quadrados, círculos, triângulos, etc. centrados no ponto de encontro das retas. Caso mais que um conjunto de dados seja representado no mesmo gráfico, devem ser utilizados símbolos diferentes para cada conjunto.
 \end{description}
 
 \noindent{}Como elementos opcionais, temos:
 \begin{description}
-	\item[Legenda:] Se temos somente um conjunto de dados, a legenda pode ser dispensada. No entanto, se temos dois ou mais conjuntos --~ou mesmo curvas~--, representados no mesmo gráfico, é essencial que seja feita uma legenda indicando o que cada símbolo representa.
+	\item[Legenda:] Se temos somente um conjunto de dados, a legenda pode ser dispensada. No entanto, se temos dois ou mais conjuntos ---~ou mesmo curvas~---, representados no mesmo gráfico, é essencial que seja feita uma legenda indicando o que cada símbolo representa.
 	\item[Linha de tendência:] Uma reta ou curva que represente o comportamento ``médio'' dos pontos é denominada como \emph{linha de tendência}. Muitas vezes estaremos interessados nesse tipo de curva, porém verificaremos como calculá-las adequadamente no Capítulo~\ref{Chap:RegressoLinear}. Tal curva deve ficar restrita à área do gráfico que contém os dados experimentais (entre os valores mínimo $x_{min}$ e máximo $x_{max}$ para as abscissas dos dados experimentais).
 	\item[Título:] Um título pode ser adicionado ao gráfico indicando como eles foram obtidos. Um exemplo de título adequado é ``Valores do deslocamento de um corpo em queda livre em função do tempo''; Uma versão inadequada desse título seria ``Gráfico de $\Delta x$ em função de $t$''.
 \end{description}
 %
-Muitas vezes alguns desses elementos são omitidos. O título e a legenda, por exemplo, podem ser descritos na \emph{legenda da figura} -- o pequeno texto que aparece abaixo das figuras, como na Figura~\ref{Fig:GraficoResfriamento}. Já a linha de tendência pode ser omitida por não ser de interesse do autor do gráfico.
+Muitas vezes alguns desses elementos são omitidos. O título e a legenda, por exemplo, podem ser descritos na \emph{legenda da figura} ---~o pequeno texto que aparece abaixo das figuras, como na Figura~\ref{Fig:GraficoResfriamento}~---. Já a linha de tendência pode ser omitida por não ser de interesse do autor do gráfico.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \paragraph{Exemplo de um gráfico de dispersão}
@@ -119,13 +120,14 @@ $t$~(s) & $T~\tcdegree\textrm{C}$ & & $t$~(s) & $T~\tcdegree\textrm{C}$ \\
 \np{504,21}	& \np{25} \\
 \bottomrule
 \end{tabular}
+\vspace{1mm}
 \caption{Dados para a temperatura de tubos metálicos em função do tempo para o processo de resfriamento convectivo.}
 \label{Tab:TabelaDadosResfriamento}
 \end{margintable}
 
 Se tomarmos as medidas da Tabela~\ref{Tab:TabelaDadosResfriamento}, podemos fazer um gráfico como o da Figura~\ref{Fig:GraficoResfriamento}. Nesse gráfico podemos perceber que foram aplicados alguns princípios básicos para a elaboração de um gráfico adequado:
 \begin{itemize}
-	\item O gráfico deve ter os dois eixos com numerações que aparecem em \emph{intervalos regulares} -- a cada 100 no eixo $x$ e a cada 10 no eixo $y$~--.
+	\item O gráfico deve ter os dois eixos com numerações que aparecem em \emph{intervalos regulares} ---~a cada 100 no eixo $x$ e a cada 10 no eixo $y$~---.
 	\item O eixo $y$ foi ``cortado'', iniciando em 20. Isto é adequado pois não existem dados cujos valores da variável dependente sejam menores que 20.
 	\item Os eixos começam e terminam em valores que permitem que toda a área disponível do gráfico é bem utilizada.
 	\item O gráfico possui uma legenda indicando o que os pontos representam.
@@ -145,8 +147,8 @@ Se tomarmos as medidas da Tabela~\ref{Tab:TabelaDadosResfriamento}, podemos faze
 
 A elaboração de um gráfico não é uma tarefa que podemos reduzir a um certo número de passos. Um gráfico deve ser utilizado de maneira a evidenciar dados ou seu comportamento e muitas vezes isso implica em fugirmos das regras mais comuns: por exemplo, se desejamos mostrar com o auxílio de uma linha de tendência qual é o valor estimado da variável dependente em uma região do gráfico distante dos pontos experimentais. De qualquer forma, podemos recomendar que os seguintes itens sejam evitados:
 \begin{description}
-	\item[Não utilizar adequadamente a área do gráfico:] Muitas vezes nossos dados não iniciam em zero. Nesse caso devemos escolher um número próximo, porém inferior, ao primeiro valor que ocorre naquele eixo e iniciar o eixo em tal número. Se, por exemplo, devemos marcar em um eixo os valores \np{107,25}, \np{115,12}, \np{129,90}, \np{138,22}, etc., uma boa escolha é iniciar o eixo em 100 e realizarmos as marcações no eixo a cada 10. Outra escolha adequada seria iniciar o eixo em 105 -- porém, nesse caso, não marcamos o ``canto'' do gráfico como 105. Realizamos a marcação em 110 e daí em diante a cada 10.
-	\item[Não realizar marcações regulares nos eixos:] Marcações irregulares, isto é, com ``espaçamento variável'' não devem ser realizadas. Utilizando os dados do item acima, poderíamos realizar marcações no eixo em \np{105}, \np{115}, \np{130} e \np{140}. Porém a distância entre essas marcações não é regular, o que dificulta a leitura do gráfico.
+	\item[Não utilizar adequadamente a área do gráfico:] Muitas vezes nossos dados não iniciam em zero. Nesse caso devemos escolher um número próximo, porém inferior, ao primeiro valor que ocorre naquele eixo e iniciar o eixo em tal número. Se, por exemplo, devemos marcar em um eixo os valores \np{107,25}, \np{115,12}, \np{129,90}, \np{138,22}, etc., uma boa escolha é iniciar o eixo em 100 e realizarmos as marcações no eixo a cada 10. Outra escolha adequada seria iniciar o eixo em 105 ---~porém, nesse caso, não marcamos o ``canto'' do gráfico como 105~---. Realizamos a marcação em 110 e daí em diante a cada 10.
+	\item[Não utilizar espaçamento regular na numeração dos eixos:] Marcações irregulares, isto é, com ``espaçamento variável'' não devem ser realizadas. Utilizando os dados do item acima, poderíamos realizar marcações no eixo em \np{105}, \np{115}, \np{130} e \np{140}. Porém a distância entre essas marcações não é regular, o que dificulta a leitura do gráfico.
 	\item[Marcar os valores de $x$ e $y$ dos pontos experimentais:] Os valores de abscissas e de ordenadas dos pontos não devem aparecer nos eixos ordenados. Veja que no gráfico da Figura~\ref{Fig:GraficoResfriamento} ocorrem muitos valores que ficam entre duas marcações quaisquer, porém os valores correspondentes aos pontos não devem ser marcados no eixo.
 	\item[Linhas que ligam os pontos aos eixos:] Muitos alunos ligam os pontos aos eixos $x$ e $y$ usando linhas tracejadas. Tais linhas não têm propósito nenhum e dificultam a visualização dos pontos experimentais. Caso queiramos saber exatamente os valores das variáveis independente e dependente, podemos verificá-los na tabela de dados.
 	\item[Linhas que ligam os pontos entre si:] Os pontos marcados a partir de dados experimentais nunca devem ser ligados entre si. Quando marcamos curvas ou retas em um gráfico, isso significa que temos conhecimento sobre todos os pontos que compõe aquela curva. Isso só pode ser razoável para curvas matemáticas, não para dados experimentais. Estes são verificados ``pontualmente'' e não podemos afirmar nada sobre o que obteríamos entre dois pontos quaisquer. Portanto, a reta que liga dois pontos experimentais não carrega informação alguma e não deve ser traçada. Veja a Figura~\ref{GraficoErrado} para um exemplo do que não fazer.
@@ -156,7 +158,7 @@ A elaboração de um gráfico não é uma tarefa que podemos reduzir a um certo 
 \centering
 \forcerectofloat
 \input{Graphics/Certo_Errado/errado}
-\caption{\textbf{Exemplo do que não fazer}: ligar os pontos experimentais.}
+\caption{\textbf{Exemplo do que não fazer}: ligar os pontos experimentais, não nomear os eixos, não colocar unidades.}
 \label{GraficoErrado}
 \end{figure*}
 
@@ -199,7 +201,7 @@ Elaborar um gráfico em papel milimetrado é uma questão de observar as regras 
 	\begin{equation}
 		f_x = \frac{x_f}{m}.
 	\end{equation}
-	Assim, se precisamos representar um valor $x_p$ de um ponto $P = (x_p,y_p)$ qualquer, calculamos a distância $d_x$ em relação à origem --~veja a Figura~\ref{Fig:VarGraphInicioZero}~--através de\footnote{Note que a fração que aparece nessa equação é um valor constante. Calculando tal valor podemos simplesmente multiplicá-lo pelo valor $x_p$ de cada ponto para descobrir quanto cada um dista da origem.}
+	Assim, se precisamos representar um valor $x_p$ de um ponto $P = (x_p,y_p)$ qualquer, calculamos a distância $d_x$ em relação à origem ---~veja a Figura~\ref{Fig:VarGraphInicioZero}~---através de\footnote{Note que a fração que aparece nessa equação é um valor constante. Calculando tal valor podemos simplesmente multiplicá-lo pelo valor $x_p$ de cada ponto para descobrir quanto cada um dista da origem.}
 	\begin{equation}
 		d_x = \frac{x_p}{f_x} = x_p \frac{m_x}{x_f}.
 	\end{equation}
@@ -234,8 +236,9 @@ Elaborar um gráfico em papel milimetrado é uma questão de observar as regras 
 	
 	% Eixos
 	\draw[->, thick] (1.5,1.4) node[anchor=north]{$x_i$} -- (1.5,9.5) node[anchor=east,gray] {$y$ (Un)};
-	\draw[->, thick] (1.4,1.5) node[anchor=east]{$y_i$} -- (15.5,1.5) node[below=3mm,right=-3mm,gray] {$x$ (Un)};
-	
+	\draw[->, thick] (1.4,1.5) node[left]{$y_i$} -- (15.5,1.5);
+	\node[gray] (x) at (15.8,1.2) {$x$ (Un)};
+
 	% tics finais
 	\draw[thick] (15,1.5) -- (15,1.4) node[anchor=north]{$x_f$};
 	\draw[thick] (1.5, 9) -- (1.4, 9) node[anchor=east]{$y_f$};
@@ -267,7 +270,7 @@ Elaborar um gráfico em papel milimetrado é uma questão de observar as regras 
 	\draw (6.9,5.1) -- (7.1,5.1);
 	
 	% Limites da região dos pontos
-	\draw[ultra thin] (1.5,9) -- (15,9) -- (15,1.5);
+	\draw[dashed] (1.5,9) -- (15,9) -- (15,1.5);
 	
 	% Título do gráfico
 	\draw[gray] (8.25,9.5) node{\Large{Título do gráfico}};
@@ -276,9 +279,7 @@ Elaborar um gráfico em papel milimetrado é uma questão de observar as regras 
 \caption{Esquema para a elaboração de um gráfico em papel milimetrado.\label{Fig:EsquemaElabGrafPapelMil}}
 \end{figure*}
 
-Utilizando o procedimento acima, todos os pontos experimentais estarão distribuídos dentro da área demarcada pelo valor máximo $y_f$ no eixo $y$ e pelo valor máximo $x_f$ no eixo $x$ (a região dos pontos demarcada pelo retângulo na Figura~\ref{Fig:EsquemaElabGrafPapelMil})\footnote[][-1cm]{Veja que o aproveitamento da região dos pontos está diretamente ligado aos valores escolhidos para $x_f$ e $y_f$, que devem ser maiores que os valores máximos das abscissas e ordenadas dos pontos, porém não muito maiores --~o que resultaria em uma grande área inutilizada acima dos pontos experimentais ou à direita deles~--.}.
-
-Os valores mínimos também requerem atenção, já que se escolhermos valores para $x_i$ e $y_i$ que não sejam menores que os valores mínimos das abscissas e ordenadas dos pontos, teremos pontos abaixo do eixo $x$, à esquerda do eixo $y$, ou ambos. Outro problema, nesse caso, é que os pontos podem ficar sobre os eixos ou muito próximos deles, dificultando a sua visualização.
+Utilizando o procedimento acima, todos os pontos experimentais estarão distribuídos dentro da área demarcada pelo valor máximo $y_f$ no eixo $y$ e pelo valor máximo $x_f$ no eixo $x$ ---~ na Figura~\ref{Fig:EsquemaElabGrafPapelMil}, a região retangular delimitada pelos eixos $x$ e $y$, e pelas retas tracejadas~---. Veja que o adequado aproveitamento dessa região está diretamente ligado aos valores escolhidos para $x_i$, $y_i$, $x_f$ e $y_f$: se, por exemplo, escolhermos valores para $x_i$ e $y_i$ que não sejam menores que os valores mínimos das abscissas e ordenadas dos pontos, teremos pontos abaixo do eixo $x$, à esquerda do eixo $y$, ou ambos. Outro problema, nesse caso, é que os pontos podem ficar sobre os eixos ou muito próximos deles, dificultando a sua visualização. Por outro lado, se escolhermos valores para $x_i$ e $y_i$ muito menores que os valores mínimos das abscissas e ordenadas dos pontos, teremos grandes regiões vazias à esquerda e/ou abaixo dos pontos do gráfico. Analogamente, devemos escolher valores de $x_f$ e $y_f$ que sejam maiores que os valores máximos das abscissas e ordenadas dos pontos, porém não muito maiores: se escolhermos valores menores que os máximos, teremos pontos fora do gráfico; se escolhermos valores muito maiores que os máximos, teremos regiões vazias à direta e/ou acima dos pontos experimentais. 
 
 Uma dificuldade prática dos cálculos acima é a de que muitas vezes eles incorrem em fatores de escala não muito práticos, pois resultam em números ``quebrados'' que tornam a marcação dos pontos no papel milimetrado suscetível a erros. Uma maneira de contornar esse problema é aproximarmos a escala: tomando o eixo $x$, por exemplo, calculamos através dos valores $x_f$, $x_i$ e $m_x$ um fator de escala $f_x$ onde
 		\begin{equation}

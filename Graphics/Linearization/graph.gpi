@@ -1,4 +1,4 @@
-set term tikz size 14cm,9cm
+set term tikz size 10cm,7cm
 
 set style line 20 linetype 1 linewidth 2 pointtype 5 pointsize 1 linecolor rgb "black"
 set style line 21 linetype 1 linewidth 2 pointtype 5 pointsize 1 linecolor rgb "black"
@@ -31,7 +31,7 @@ set key reverse left Left
 set yrange[-1:4]
 
 plot "data.dat" u 3:4 w points ls 20 notitle, \
-	 f(x) ls 21 t "$y = 0.9738 x - 0.6327$, $r^2 = 0.9866941525$"
+	 f(x) ls 21 t "$y = \\np{0.9738} x - \\np{0.6327}$, $r^2 = \\np{0.986694}$"
 
 
 ###
@@ -48,4 +48,4 @@ set xrange[-0.5:14]
 set yrange[-1:20]
 
 plot "data.dat" u 5:6 w points ls 20 notitle, \
-	 g(x) ls 21 t "$y = 1.2180 x - 0.2341$, $r^2=0.9583298359$"
+	 g(x) ls 21 t "$y = \\np{1.2180} x - \\np{0.2341}$, $r^2=\\np{0.958330}$"

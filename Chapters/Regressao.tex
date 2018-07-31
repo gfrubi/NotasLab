@@ -1,9 +1,12 @@
 \chapter{Regressão Linear}
 \label{Chap:RegressoLinear}
 
+\begin{fullwidth}
 {\it
 Apesar de podermos verificar previsões teóricas pela simples comparação com os dados experimentais obtidos (assumindo que eles sejam confiáveis), devido à dispersão dos dados não temos um bom método para extrair informações a partir das medidas. Veremos que para isso precisamos determinar a linha de tendência dos dados. A partir das informações para essa linha, conseguiremos extrair informações acerca de parâmetros físicos do sistema.
 }
+\end{fullwidth}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Linhas de Tendência}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -15,7 +18,7 @@ Se as observações experimentais fossem completamente precisas, essas ordenadas
 %
 Muitas vezes tal padrão é muito claro, pois os pontos tem uma \emph{dispersão} baixa. Outras vezes a dispersão é razoavelmente alta e fica difícil verificar tal padrão.
 
-Mesmo em casos em que podemos verificar um padrão aparente ao fazer um gráfico, determinar a forma mais adequada para a \emph{linha de tendência} que melhor descreve os pontos experimentais -- ou mesmo afirmar que tais pontos seguem este padrão -- pode ser complicado. Se, por exemplo, fizermos uma série de medidas que seguem um padrão parabólico, mas com medidas que se restringem a um intervalo pequeno da variável independente, o gráfico terá a aparência de uma reta (veja as Figuras~\ref{Fig:ParabolaReta} e~\ref{Fig:ParabolaReta2}).
+Mesmo em casos em que podemos verificar um padrão aparente ao fazer um gráfico, determinar a forma mais adequada para a \emph{linha de tendência} que melhor descreve os pontos experimentais ---~ou mesmo afirmar que tais pontos seguem este padrão~--- pode ser complicado. Se, por exemplo, fizermos uma série de medidas que seguem um padrão parabólico, mas com medidas que se restringem a um intervalo pequeno da variável independente, o gráfico terá a aparência de uma reta (veja as Figuras~\ref{Fig:ParabolaReta} e~\ref{Fig:ParabolaReta2}).
 \begin{figure*}
 \centering
 \forceversofloat
@@ -38,6 +41,7 @@ Existem outros tipos de regressão, como a logarítmica ou exponencial, ou mesmo
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Regressão Linear}
+\label{Sec:RegressaoLinear}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Sempre que tivermos um conjunto de dados, podemos calcular a melhor reta que o representa através de um processo de \emph{regressão linear}. Este processo consiste em aplicar um método matemático que tome os dados experimentais e calcule os coeficientes linear $A$ e angular $B$ para a equação da reta:
@@ -45,9 +49,9 @@ Sempre que tivermos um conjunto de dados, podemos calcular a melhor reta que o r
 	y = A + Bx.
 \end{equation}
 %
-O método mais utilizado para obter tais coeficientes é o de \emph{mínimos quadrados}. Nele, são encontrados os coeficientes de forma a minimizar o quadrado da distância entre os pontos experimentais e a ``melhor reta''. 
-%
-É possível mostrar\cite{Taylor}, utilizando técnicas de cálculo, que para minimizarmos a soma do quadrado das distâncias entre os pontos e a melhor reta, os coeficientes linear e angular são dados por
+A dimensão do coeficiente linear é a mesma que a da variável dependente $y$ ---~ou seja, é a mesma que do eixo $y$ em um gráfico $y \times x$~---, enquanto a dimensão do coeficiente angular é a mesma que a da razão entre a dimensão da variável dependente pela dimensão da variável independente ---~isto é, é a razão entre a dimensão do eixo $y$ e a dimensão do eixo $x$ em um gráfico $y \times x$~---. 
+
+O método utilizado para obter tais coeficientes é o de \emph{mínimos quadrados}. Nele, são encontrados os coeficientes de forma a minimizar o quadrado da distância entre os pontos experimentais e a ``melhor reta''. É possível mostrar\cite{Taylor}, utilizando técnicas de cálculo, que para minimizarmos a soma do quadrado das distâncias entre os pontos e a melhor reta, os coeficientes linear e angular são dados por
 \begin{align}
 	A &= \frac{\sum x_i^2 \sum y_i - \sum x_i \sum x_iy_i}{N \sum x_i^2 - (\sum x_i)^2} \\
 	B &= \frac{N\sum x_iy_i - \sum x_i \sum y_i}{N \sum x_i^2 - (\sum x_i)^2}.
@@ -60,15 +64,10 @@ Ao fazermos o processo de regressão linear, a calculadora também calculará o 
 	r = \frac{\sum (x_i - \mean{x})(y_i-\mean{y})}{\sqrt{\sum(x_i - \mean{x})^2\sum (y_i - \mean{y})^2}}.
 \end{equation}
 %
-Tal coeficiente pode ser interpretado como um ``índice de confiança'' e geralmente é calculado ao quadrado, pois seus valores podem variar entre $-1$ e $1$. Quanto mais próximo $r$ for de $\pm 1$, menor é a dispersão dos pontos em relação ao comportamento retilíneo, ou seja, maiores são as chances de que o fenômeno estudado e que deu origem aos dados siga uma relação linear. Este número geralmente se parece com $r^2=\np{0,99998}$, $r^2=\np{0,997}$, $r^2= \np{0,990}$, etc., quando os dados são altamente lineares e relativamente abundantes. Se a dispersão em relação ao comportamento linear for grande e forem poucos os pontos, $r^2$ pode cair para \np{0,7}, ou valores menores.
+Tal coeficiente pode ser interpretado como um ``índice de confiança'' e geralmente é calculado ao quadrado, pois seus valores podem variar entre $-1$ e $1$. Quanto mais próximo $r$ for de $\pm 1$, menor é a dispersão dos pontos em relação ao comportamento retilíneo, ou seja, maiores são as chances de que o fenômeno estudado e que deu origem aos dados siga uma relação linear. Este número geralmente se parece com algo como $r^2=\np{0,99998}$, $r^2=\np{0,997}$, $r^2= \np{0,990}$, etc., quando os dados são altamente lineares e relativamente abundantes. Se a dispersão em relação ao comportamento linear for grande e forem poucos os pontos, $r^2$ pode cair para \np{0,7}, ou valores menores.
 
-Um aspecto importante a ser considerado é se os dados realmente seguem uma tendência linear: uma distribuição qualquer de pontos, mesmo que visivelmente não linear, pode ser descrita por uma melhor reta. Caso a tendência não seja linear, o coeficiente $r^2$ resultará um valor baixo. Nas Figuras~\ref{RetasConjuntosDados1} a~\ref{RetasConjuntosDados3} mostramos três conjuntos de dados distintos  juntamente com suas respectivas melhores retas e coeficientes de dispersão $r^2$. Os dados foram gerados utilizando as expressões $y_1 = A + B(x+r_1) + r_2$, $y_2 = A(r_1+x)^2 + B + r_2$ e $y_3 = A\sen (x+r_1) + B + r_2$, onde $r_1$ e $r_2$ são números aleatórios entre zero e um, enquanto $A$ e $B$ representam constantes arbitrárias --~veja a Tabela~\ref{tab:TabelaDadosLin}~--. Verificamos que nos três casos podemos calcular uma melhor reta, ainda que o comportamento não seja linear.
-
-Dentre as três figuras, a Figura~\ref{RetasConjuntosDados2} se destaca. Nesse caso, temos um comportamento não linear, porém verificamos que o valor do coeficiente $r^2$ é relativamente alto. Ocorre que o comportamento dos dados sofre uma distorção relativamente pequena --~apesar de visivelmente não linear~-- em relação a um comportamento linear e por isso obtemos um valor grande para o coeficiente de dispersão. Muitas vezes um comportamento verdadeiramente linear pode apresentar uma distorção pequena como esta, porém devido a flutuações aleatórias, e não devido à não-lineariedade. A distinção entre essas duas possibilidades pode ser feita realizando mais medidas: Se o comportamento for verdadeiramente linear, o valor de $r^2$ tenderá a crescer, enquanto no caso de termos um comportamento não-linear, o valor desse coeficiente deve permanecer constante, ou diminuir.
-
-\begin{margintable}[-8cm]
+\begin{margintable}
 \centering
-\caption{Dados de três variáveis ($y_1$, $y_2$ e $y_3$) em função de uma quarta ($x$).}
 \label{tab:TabelaDadosLin}
 \begin{tabular}{cccc}
 \toprule     
@@ -104,33 +103,111 @@ $x$ & $y_1$ & $y_2$ & $y_3$ \\
 \np{27.360} & \np{93.291}  &   \np{773.226} &  \np{ 1.452} \\
 \bottomrule
 \end{tabular}
+\vspace{1mm}
+\caption{Dados de três variáveis ($y_1$, $y_2$ e $y_3$) em função de uma quarta ($x$).}
 \end{margintable}
 
-\begin{figure*}
+Um aspecto importante a ser considerado é se os dados realmente seguem uma tendência linear: uma distribuição qualquer de pontos, mesmo que visivelmente não linear, pode ser descrita por uma melhor reta. Caso a tendência não seja linear, o coeficiente $r^2$ resultará um valor baixo. Nas Figuras~\ref{RetasConjuntosDados1} a~\ref{RetasConjuntosDados3} mostramos três conjuntos de dados distintos  juntamente com suas respectivas melhores retas e coeficientes de dispersão $r^2$. Os dados foram gerados utilizando as expressões $y_1 = A + B(x+r_1) + r_2$, $y_2 = A(r_1+x)^2 + B + r_2$ e $y_3 = A\sen (x+r_1) + B + r_2$, onde $r_1$ e $r_2$ são números aleatórios entre zero e um, enquanto $A$ e $B$ representam constantes arbitrárias ---~veja a Tabela~\ref{tab:TabelaDadosLin}~---. Verificamos que nos três casos podemos calcular uma melhor reta, ainda que para $y_2$ e $y_3$ o comportamento não seja linear.
+
+Dentre as três figuras, a Figura~\ref{RetasConjuntosDados2} se destaca. Nesse caso, temos um comportamento não linear, porém verificamos que o valor do coeficiente $r^2$ é relativamente alto. Ocorre que o comportamento dos dados sofre uma distorção relativamente pequena ---~apesar de visivelmente não linear~--- em relação a um comportamento linear e por isso obtemos um valor grande para o coeficiente de dispersão. Muitas vezes um comportamento verdadeiramente linear pode apresentar uma distorção pequena como esta, porém devido a flutuações aleatórias, e não devido à não-lineariedade. A distinção entre essas duas possibilidades pode ser feita realizando mais medidas: Se o comportamento for verdadeiramente linear, o valor de $r^2$ tenderá a crescer, enquanto no caso de termos um comportamento não-linear, o valor desse coeficiente deve permanecer constante, ou diminuir.
+
+\begin{figure}[!h]
 \centering
-\forcerectofloat
 \input{Graphics/Linear_Regression/linear}
-\caption{Conjunto de dados 1.}
+\caption{Conjunto de dados 1. A reta da regressão linear é dada por $y(x)=\np{2.984480401}x + \np{12.14046264}$, $r^2 = \np{0.998901256}$.}
 \label{RetasConjuntosDados1}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}
+\begin{figure}[!h]\forcerectofloat
 \centering
-\forcerectofloat
 \input{Graphics/Linear_Regression/quadratic}
-\caption{Conjunto de dados 2.}
+\caption{Conjunto de dados 2. A reta da regressão linear é dada por $y(x)=\np{29.97823068} x - \np{152.924429}$, $r^2=\np{0.956577278}$.}
 \label{RetasConjuntosDados2}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}
-
-\input{Graphics/Linear_Regression/sine}
+\begin{figure}[!h]\forcerectofloat
 \centering
-\caption{Conjunto de dados 3.}
+\input{Graphics/Linear_Regression/sine}
+\caption{Conjunto de dados 3. A reta da regressão linear é dada por $y(x)=\np{0.019262681} x + \np{0.316038383}$, $r^2=\np{0,035985674}$.}
 \label{RetasConjuntosDados3}
-\end{figure*}
+\end{figure}
 
-\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Exemplo: Cálculo dos coeficientes da regressão linear}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Para determinarmos os valores das constantes $A$, $B$, e do coeficiente $r^2$ é necessário calcularmos uma série de valores intermediários. Na Tabela~\ref{Tab:TabelaExemploCalculoRegressaoLinear} (página~\pageref{Tab:TabelaExemploCalculoRegressaoLinear}) apresentamos tais valores intermediários para o caso do cálculo dos coeficientes da regressão linear para a variável $y_1$ discutida acima. Através desses valores, obtemos para o coeficiente linear
+\begin{align}
+    A &= \frac{\sum x_i^2 \sum y_i - \sum x_i \sum x_iy_i}{N \sum x_i^2 - (\sum x_i)^2} \\
+    &= \frac{\np{7295.757} \cdot \np{1512.768} - \np{392.984} \cdot \np{26545.051}}{\np{28}\cdot\np{7295.757} - \np{392.984}^2} \\
+    &= \np{12.14046264}.
+\end{align}
+%
+Para o coeficiente angular, obtemos
+\begin{align}
+    B &= \frac{N\sum x_iy_i - \sum x_i \sum y_i}{N \sum x_i^2 - (\sum x_i)^2} \\
+    &= \frac{\np{28} \cdot \np{26545.051} - \np{392.984}\cdot\np{1512.786}}{\np{28}\cdot\np{7295.757} - \np{392.984}^2} \\
+    &= \np{2.984480401}.
+\end{align}
+%
+Finalmente, para o coeficiente $r$ obtemos
+\begin{align}
+    r &= \frac{\sum (x_i - \mean{x})(y_i-\mean{y})}{\sqrt{\sum(x_i - \mean{x})^2\sum (y_i - \mean{y})^2}} \\
+    &= \frac{\np{5312.883}}{\sqrt{\np{1780.170}\cdot\sum{15873.637}}} \\
+    &= \np{0.999450477},
+\end{align}
+%
+o que resulta em um $r^2$ dado por
+\begin{equation}
+    r^2 = \np{0.998901256}.
+\end{equation}
+
+Note que o cálculo é bastante trabalhoso se for realizado manualmente. Felizmente, esse tipo de análise ---~a regressão linear~--- é algo que é implementado na maioria dos programas de computador que permitem a análise de dados. Mesmo em planilhas de cálculo existem funções que permitem calcular as constantes $A$ e $B$, e o coeficiente $r^2$ facilmente. Funções para a determinação de tais valores também estão disponíveis em calculadoras científicas. Na seção seguinte verificaremos como proceder para inserir os dados experimentais e obter os coeficientes da regressão linear para alguns modelos comuns de calculadoras. 
+
+\begin{table*}[tp]
+\caption[][1cm]{Tabela de cálculos para a determinação das constantes $A$ e $B$, e do coeficiente $r^2$. As linhas marcadas com $\sum$ e $\mean{~}$ denotam as somas e as médias dos valores apresentados para cada variável, respectivamente. Os valores apresentados na tabela foram limitados a três casas após a vírgula, porém os cálculos foram feitos com toda a precisão disponível. \label{Tab:TabelaExemploCalculoRegressaoLinear}}
+\small
+\begin{tabular}{ccccccccccc}
+\toprule
+$i$ & $x_i$ & $y_{1,i}$ & $x_i^2$ & $x_i y_i$ & $x_i - \mean{x}$ & $y_i - \mean{y}$ & $(x_i - \mean{x})^2$ & $(y_i - \mean{y})^2$ & $(x_i - \mean{x})(y_i - \mean{y})$ \\
+\midrule
+1	& \np{0.714} 	& \np{14.577}	& \np{0.510}	& \np{10.408}	& \np{-13.321}	& \np{-39.451}	& \np{177.453}	& \np{1556.387}	& \np{525.533} \\
+2	& \np{2.693}	& \np{20.696}	& \np{7.252}	& \np{55.734}	& \np{-11.342}	& \np{-33.332}	& \np{128.644}	& \np{1111.027}	& \np{378.057} \\
+3	& \np{4.389}	& \np{25.226}	& \np{19.263}	& \np{110.717}	& \np{-9.646}	& \np{-28.802}	& \np{93.048}	& \np{829.559}	& \np{277.828} \\
+4	& \np{4.960}	& \np{27.449}	& \np{24.602}	& \np{136.147}	& \np{-9.075}	& \np{-26.579}	& \np{82.358}	& \np{706.447}	& \np{241.208} \\
+5	& \np{6.245}	& \np{30.242}	& \np{39.000}	& \np{188.861}	& \np{-7.790}	& \np{-23.786}	& \np{60.686}	& \np{565.777}	& \np{185.296} \\
+6	& \np{7.277}	& \np{33.378}	& \np{52.955}	& \np{242.892}	& \np{-6.758}	& \np{-20.650}	& \np{45.672}	& \np{426.425}	& \np{139.556} \\
+7	& \np{7.579}	& \np{34.195}	& \np{57.441}	& \np{259.164}	& \np{-6.456}	& \np{-19.833}	& \np{41.682}	& \np{393.351}	& \np{128.045} \\
+8	& \np{7.719}	& \np{35.715}	& \np{59.583}	& \np{275.684}	& \np{-6.316}	& \np{-18.313}	& \np{39.894}	& \np{335.369}	& \np{115.667} \\
+9	& \np{7.912}	& \np{35.011}	& \np{62.600}	& \np{277.007}	& \np{-6.123}	& \np{-19.017}	& \np{37.493}	& \np{361.649}	& \np{116.444} \\
+10	& \np{8.280}	& \np{37.529}	& \np{68.558}	& \np{310.740}	& \np{-5.755}	& \np{-16.499}	& \np{33.122}	& \np{272.219}	& \np{94.955} \\
+11	& \np{9.034}	& \np{40.590}	& \np{81.613}	& \np{366.690}	& \np{-5.001}	& \np{-13.438}	& \np{25.0114}	& \np{180.582}	& \np{67.206} \\
+12	& \np{9.442}	& \np{39.156}	& \np{89.151}	& \np{369.711}	& \np{-4.593}	& \np{-14.872}	& \np{21.097}	& \np{221.179}	& \np{68.310} \\
+13	& \np{10.306}	& \np{43.238}	& \np{106.214}	& \np{445.611}	& \np{-3.729}	& \np{-10.790}	& \np{13.907}	& \np{116.426}	& \np{40.238} \\
+14	& \np{10.572}	& \np{42.406}	& \np{111.767}	& \np{448.316}	& \np{-3.463}	& \np{-11.622}	& \np{11.993}	& \np{135.073}	& \np{40.249} \\
+15	& \np{11.177}	& \np{44.796}	& \np{124.925}	& \np{500.685}	& \np{-2.858}	& \np{-9.232}	& \np{8.169}	& \np{85.231}	& \np{26.387} \\
+16	& \np{15.335}	& \np{57.611}	& \np{235.162}	& \np{883.465}	& \np{1.300}	& \np{3.583}	& \np{1.690}	& \np{12.837}	& \np{4.657} \\
+17	& \np{17.023}	& \np{63.832}	& \np{289.783}	& \np{1086.612}	& \np{2.988}	& \np{9.804}	& \np{8.927}	& \np{96.117}	& \np{29.293} \\
+18	& \np{18.926}	& \np{68.063}	& \np{358.193}	& \np{1288.160}	& \np{4.891}	& \np{14.035}	& \np{23.920}	& \np{196.979}	& \np{68.643} \\
+19	& \np{20.608}	& \np{74.408}	& \np{424.690}	& \np{1533.400}	& \np{6.573}	& \np{20.380}	& \np{43.202}	& \np{415.341}	& \np{133.954} \\
+20	& \np{20.876}	& \np{75.083}	& \np{435.807}	& \np{1567.433}	& \np{6.841}	& \np{21.055}	& \np{46.797}	& \np{443.310}	& \np{144.033} \\
+21	& \np{21.095}	& \np{75.248}	& \np{444.999}	& \np{1587.357}	& \np{7.060}	& \np{21.220}	& \np{49.842}	& \np{450.285}	& \np{149.809} \\
+22	& \np{22.225}	& \np{77.243}	& \np{493.951}	& \np{1716.726}	& \np{8.190}	& \np{23.215}	& \np{67.074}	& \np{538.933}	& \np{190.126} \\
+23	& \np{22.407}	& \np{81.058}	& \np{502.074}	& \np{1816.267}	& \np{8.372}	& \np{27.030}	& \np{70.088}	& \np{730.617}	& \np{226.290} \\
+24	& \np{22.469}	& \np{78.821}	& \np{504.856}	& \np{1771.029}	& \np{8.434}	& \np{24.793}	& \np{71.130}	& \np{614.689}	& \np{209.100} \\
+25	& \np{23.077}	& \np{80.714}	& \np{532.548}	& \np{1862.637}	& \np{9.042}	& \np{26.686}	& \np{81.755}	& \np{712.139}	& \np{241.290} \\
+26	& \np{26.421}	& \np{91.433}	& \np{698.069}	& \np{2415.751}	& \np{12.386}	& \np{37.405}	& \np{153.409}  & \np{1399.129}	& \np{463.292} \\
+27	& \np{26.863}	& \np{91.777}	& \np{721.621}	& \np{2465.406}	& \np{12.828}	& \np{37.749}	& \np{164.554}  & \np{1424.982}	& \np{484.237} \\
+28	& \np{27.360}	& \np{93.291}	& \np{748.570}	& \np{2552.442}	& \np{13.325}	& \np{39.263}	& \np{177.552}  & \np{1541.578}	& \np{523.172} \\
+\midrule
+$\sum$	& \np{392.984}	& \np{1512.786}	& \np{7295.757}	& \np{26545.051}	& 0	& 0	& \np{1780.170}	& \np{15873.637}	& \np{5312.883} \\
+$\mean{~}$ & \np{14.035}	& \np{54.028} \\				
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\FloatBarrier
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Regressão linear utilizando uma calculadora}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -213,7 +290,7 @@ A & B & r \\
 \end{tabular}
 \end{center}
 %
-Basta agora escolher qual variável desejamos, pressionar o botão correspondente --~\keystroke{~1~}, \keystroke{~2~} ou \keystroke{~3~}~-- e pressionar \keystroke{~=~}. Para recuperar outro valor, não é necessário inserir os pontos novamente, basta pressionar mais uma vez \keystroke{~SHIFT~} seguido de \keystroke{~2~} (função \texttt{S-var}) e escolher outra variável.
+Basta agora escolher qual variável desejamos, pressionar o botão correspondente ---~\keystroke{~1~}, \keystroke{~2~} ou \keystroke{~3~}~--- e pressionar \keystroke{~=~}. Para recuperar outro valor, não é necessário inserir os pontos novamente, basta pressionar mais uma vez \keystroke{~SHIFT~} seguido de \keystroke{~2~} (função \texttt{S-var}) e escolher outra variável.
 
 \item Para realizar uma nova regressão, devemos antes apagar os dados da regressão anterior. Fazemos isso pressionando \keystroke{~SHIFT~} e então \keystroke{~MODE~} (função \texttt{CLR}). Na tela aparecerá
 \begin{center}
@@ -268,7 +345,8 @@ $(t \pm \np{0,01})~\textrm{s}$ & $(v \pm \np{0,01})~\textrm{m}/\textrm{s}$ \\
 \np{1,50} & \np{37,91} \\
 \bottomrule
 \end{tabular}
-\caption{Dados medidos para a velocidade em função do tempo.}
+\vspace{1mm}
+\caption{Dados medidos para a velocidade em função do tempo para um experimento hipotético.}
 \label{DadosVelocidade}
 \end{margintable}
 
@@ -285,21 +363,20 @@ Comparando esta equação com a equação da reta $y = A + Bx$, verificamos as r
 	x &= t.
 \end{align}
 %
-Para determinar a relação entre as variáveis das duas equações, devemos verificar qual variável dos dados foi varrida arbitrariamente --~e que então deve corresponder à variável independente $x$~-- e qual foi lida em resposta à primeira --~correspondendo à variável dependente $y$~--. Vemos na Tabela~\ref{DadosVelocidade} que os valores de tempo são mais condizentes com uma variação arbitrária (valores ``redondos'' ou semi-inteiros, isto é, variados com um passo regular) do que no caso dos valores da velocidade. No caso de realizarmos um experimento, não teremos problemas em determinar quem foi a variável independente, pois realizaremos essa escolha ao idealizá-lo.
+Para determinar a relação entre as variáveis das duas equações, devemos verificar qual variável dos dados foi varrida arbitrariamente ---~e que então deve corresponder à variável independente $x$~--- e qual foi lida em resposta à primeira ---~correspondendo à variável dependente $y$~---. Vemos na Tabela~\ref{DadosVelocidade} que os valores de tempo são mais condizentes com uma variação arbitrária (valores ``redondos'' ou semi-inteiros, isto é, variados com um passo regular) do que no caso dos valores da velocidade. No caso de realizarmos um experimento, não teremos problemas em determinar quem foi a variável independente, pois realizaremos essa escolha ao idealizá-lo.
 
-\begin{figure*}
-\centering
-\forceversofloat
-\caption{Gráfico dos dados da Tabela~\ref{DadosVelocidade}.} 
-\label{fig:VelocidadeTempo}
-\input{Graphics/Velocidade/vel}
-\end{figure*}
-
-Dessa forma, se tomarmos os dados e realizarmos uma regressão linear, vamos obter os valores de $v_0$ e de $a$ -- que são desconhecidos -- através das constantes $A$ e $B$. Para os valores da tabela obtemos $v_0 = \np{22,734 285 714 3}$ e $a = \np{9,907 142 857 1}$. Verificaremos adiante que nem todos os digitos obtidos para as constantes $A$ e $B$ são relevantes e por isso deveremos descartar alguns deles. Por ora podemos expressá-las com o mesmo número de casas após a vírgula que a variável ($x$ ou $y$) que tem menos casas após a vírgula:
+Dessa forma, se tomarmos os dados e realizarmos uma regressão linear, vamos obter os valores de $v_0$ e de $a$ ---~que são desconhecidos~--- através das constantes $A$ e $B$. Para os valores da tabela obtemos $v_0 = \np{22,734 285 714 3}$ e $a = \np{9,907 142 857 1}$. Verificaremos adiante que nem todos os digitos obtidos para as constantes $A$ e $B$ são relevantes e por isso deveremos descartar alguns deles. Por ora podemos expressá-las com o mesmo número de casas após a vírgula que a variável ($x$ ou $y$) que tem menos casas após a vírgula:
 \begin{align}
 	A = v_0 &= \np[m/s]{22,73} \\
 	B = a &= \np[m/s^2]{9,91}.
 \end{align}
+
+\begin{figure*}[t]
+\centering
+\caption{Gráfico dos dados da Tabela~\ref{DadosVelocidade}.} 
+\label{fig:VelocidadeTempo}
+\input{Graphics/Velocidade/vel}
+\end{figure*}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -308,24 +385,24 @@ Dessa forma, se tomarmos os dados e realizarmos uma regressão linear, vamos obt
 
 É comum realizarmos um experimento e obtermos um conjunto de dados que não segue uma tendência linear. Em um experimento de queda livre, por exemplo, a distância percorrida pelo objeto que cai está ligada ao tempo através de
 \begin{equation}
-	\Delta x = v_0 t + \frac{at^2}{2}.
+	\Delta y = v_0^y t + \frac{a_yt^2}{2}.
 \end{equation}
 %
 Como em geral estamos interessados em extrair dos dados experimentais informações acerca de constantes físicas, podemos recorrer a um processo de regressão. No entanto, não podemos utilizar uma regressão linear neste caso, pois os dados claramente não seguirão uma tendência linear. Podemos recorrer a uma regressão quadrática ou realizar uma \emph{linearização}.
 
 Realizar uma linearização nada mais é do que fazer uma mudança de variáveis. No entanto, nem todos os casos são passíveis de serem linearizados. No caso da queda livre, por exemplo, precisamos garantir que $v_0$ seja muito próxiimo de zero. Nesse caso, podemos escrever
 \begin{equation}
-	\Delta x = \frac{at^2}{2}.
+	\Delta y = \frac{a_yt^2}{2}.
 \end{equation}
 %
 Fazendo agora a mudança de variáveis $\tau = t^2$, obtemos
 \begin{equation}
-	\Delta x = \frac{a}{2}\tau.
+	\Delta y = \frac{a_y}{2}\tau.
 \end{equation}
 
-Comparando a equação acima com a equação da reta $y = A + Bx$, vefificamos as seguintes relações, se considerarmos que o tempo é a variável independente:
+Comparando a equação acima com a equação da reta $y = A + Bx$, vefificamos as seguintes relações, se considerarmos que o tempo é a variável independente:\footnote{Veja que aqui estamos usando $y$ para duas coisas distintas: um eixo vertical através do qual calculamos o deslocamento $\Delta y$ de um corpo sujeito à gravidade, e o eixo da variável dependente de um gráfico (que é representado no sentido ``da parte inferior da página, para a parte superior'').}
 \begin{align}
-	y &= \Delta x \\
+	y &= \Delta y \\
 	A &= 0 \\
 	B &= a/2 \\
 	x &= \tau.
@@ -339,25 +416,55 @@ Podemos, portanto, utilizar o processo de linearização associado ao processo d
 
 Nos casos em que um fenômeno não segue uma tendência linear, se tivermos um modelo do fenômeno físico considerado, podemos empregar o processo da linearização com o intuito de transformar o conjunto de dados de forma que ele passe a representar uma reta. O sucesso desse procedimento, no entanto, depende de a teoria usada como referência estar correta. Muitas vezes ocorre que não temos conhecimento acerca da teoria que descreve um fenômeno ou temos mais de uma teoria, sem ter certeza de qual é a mais adequada. Podemos então utilizar uma regressão linear como um método de teste, validando uma ou outra teoria com base nos valores obtidos para o coeficiente de dispersão linear $r^2$.
 
-Digamos que ao fazer uma série de medidas de uma grandeza $\xi$ em função de outra grandeza $\rho$, tenhamos um conjunto que segue uma forma que não é uma reta (Figura~\ref{GraficoMedidas}). Além disso, temos duas teorias, cada uma com as seguintes previsões:
+\begin{margintable}
+\centering
+\begin{tabular}{cc}
+\toprule
+$\rho$ & $\xi$     \\
+\midrule
+0.00    & 0.5909   \\ 
+0.20    & 0.8310   \\
+0.40    & 0.5301   \\
+0.60    & 1.0066   \\
+0.80    & 1.0345   \\
+1.00    & 1.6364   \\
+1.20    & 1.5547   \\
+1.40    & 2.0911   \\
+1.60    & 2.7331   \\
+1.80    & 2.9338   \\
+2.00    & 3.4851   \\
+2.20    & 4.5948   \\
+2.40    & 5.3332   \\
+2.60    & 6.6722   \\
+2.80    & 8.2156   \\
+3.00    & 9.8453   \\
+3.20    & 12.1483  \\
+3.40    & 14.8377  \\
+3.60    & 18.2303  \\
+\bottomrule
+\end{tabular}
+\vspace{1mm}
+\caption{Dados medidos para $\xi$ em função e $\rho$. \label{TabelaMedidasIniciais}}
+\end{margintable}
+
+Digamos que ao fazer uma série de medidas de uma grandeza $\xi$ em função de outra grandeza $\rho$ (Tabela~\ref{TabelaMedidasIniciais}), tenhamos um conjunto que segue uma forma que não é uma reta (Figura~\ref{GraficoMedidas}). Além disso, temos duas teorias, cada uma com as seguintes previsões:
 \begin{equation}
 	\xi =\begin{cases} \alpha e^{\beta\rho}, \qquad\textrm{Teoria 1} \\
 	\alpha\rho^2 + \beta, \qquad\textrm{Teoria 2.} \end{cases}
 \end{equation}
-
-\begin{figure*}
-\centering
-\forceversofloat
-\caption{Dados medidos de $\xi$ em função de $\rho$. Visivelmente o comportamento é não linear.}
-\label{GraficoMedidas}
-\input{Graphics/Linearization/DadosMedidos}
-\end{figure*}
 
 \noindent{}Podemos realizar a regressão linear em ambos os casos e comparar os coeficientes $r$ para verificar qual das duas teorias descreve melhor os dados obtidos. Tomando o logaritmo no primeiro caso, temos
 \begin{align}
 	\ln(\xi) &= \ln(\alpha e^{\beta\rho}) \\
 	\ln(\xi) &= \ln(\alpha) + \beta\rho
 \end{align}
+
+\begin{figure}
+\centering
+\caption{Dados medidos de $\xi$ em função de $\rho$. Visivelmente o comportamento é não linear.}
+\label{GraficoMedidas}
+\input{Graphics/Linearization/DadosMedidos}
+\end{figure}
 
 \noindent{}Logo,
 \begin{align}
@@ -379,58 +486,52 @@ Podemos então usar os resultados dessas linearizações para transformar a tabe
 
 Baseando-se nas medidas e nos valores transformados dados na Tabela~\ref{TabelaMedidas}, podemos realizar as regressões lineares. Os resultados podem ser vistos nas Figuras~\ref{GraficoTeoria1} e~\ref{GraficoTeoria2}. Concluímos, portanto, que a Teoria 1 descreve melhor os resultados medidos.
 
-%%% Tabela com as medidas e os resultados das transformações
-
 \begin{table}
 \centering
-\forcerectofloat
-\caption{Dados medidos para $\xi$ em função e $\rho$ e os resultados das transformações baseadas nas Teorias 1 e 2.}
-\label{TabelaMedidas}
-\begin{tabular}{cccccccc}
+\begin{tabular}{ccccc}
 \toprule
-\multicolumn{2}{c}{Medidas} && \multicolumn{2}{c}{Teoria 1} && \multicolumn{2}{c}{Teoria 2} \\
-\cmidrule(lr){1-2} \cmidrule(lr){4-5} \cmidrule(lr){7-8}
-$\rho$ & $\xi$     && $\rho$  & $\ln(\xi)$    && $\rho^2$   & $\xi$ \\
+\multicolumn{2}{c}{Teoria 1} && \multicolumn{2}{c}{Teoria 2} \\
+\cmidrule(lr){1-2} \cmidrule(lr){4-5}
+$\rho$  & $\ln(\xi)$    && $\rho^2$   & $\xi$ \\
 \midrule
-0.00    & 0.5909    &&  0.00    & -0.5260      &&   0.00     & 0.5909  \\ 
-0.20    & 0.8310    &&  0.20    & -0.1850      &&   0.04     & 0.8310  \\
-0.40    & 0.5301    &&  0.40    & -0.6346      &&   0.16     & 0.5301  \\
-0.60    & 1.0066    &&  0.60    & 0.0065783    &&   0.36     & 1.0066  \\
-0.80    & 1.0345    &&  0.80    & 0.033918     &&   0.64     & 1.0345  \\
-1.00    & 1.6364    &&  1.00    & 0.49249      &&   1.00     & 1.6364  \\
-1.20    & 1.5547    &&  1.20    & 0.44133      &&   1.44     & 1.5547  \\
-1.40    & 2.0911    &&  1.40    & 0.73770      &&   1.96     & 2.0911  \\
-1.60    & 2.7331    &&  1.60    & 1.0055       &&   2.56     & 2.7331  \\
-1.80    & 2.9338    &&  1.80    & 1.0763       &&   3.24     & 2.9338  \\
-2.00    & 3.4851    &&  2.00    & 1.2485       &&   4.00     & 3.4851  \\
-2.20    & 4.5948    &&  2.20    & 1.5249       &&   4.84     & 4.5948  \\
-2.40    & 5.3332    &&  2.40    & 1.6740       &&   5.76     & 5.3332  \\
-2.60    & 6.6722    &&  2.60    & 1.8980       &&   6.76     & 6.6722  \\
-2.80    & 8.2156    &&  2.80    & 2.1060       &&   7.84     & 8.2156  \\
-3.00    & 9.8453    &&  3.00    & 2.2870       &&   9.00     & 9.8453  \\
-3.20    & 12.1483   &&  3.20    & 2.49719      &&   10.24    & 12.1483 \\
-3.40    & 14.8377   &&  3.40    & 2.69717      &&   11.56    & 14.8377 \\
-3.60    & 18.2303   &&  3.60    & 2.90308      &&   12.96    & 18.2303 \\
+0.00    & -0.5260      &&   0.00     & 0.5909  \\ 
+0.20    & -0.1850      &&   0.04     & 0.8310  \\
+0.40    & -0.6346      &&   0.16     & 0.5301  \\
+0.60    & 0.0065783    &&   0.36     & 1.0066  \\
+0.80    & 0.033918     &&   0.64     & 1.0345  \\
+1.00    & 0.49249      &&   1.00     & 1.6364  \\
+1.20    & 0.44133      &&   1.44     & 1.5547  \\
+1.40    & 0.73770      &&   1.96     & 2.0911  \\
+1.60    & 1.0055       &&   2.56     & 2.7331  \\
+1.80    & 1.0763       &&   3.24     & 2.9338  \\
+2.00    & 1.2485       &&   4.00     & 3.4851  \\
+2.20    & 1.5249       &&   4.84     & 4.5948  \\
+2.40    & 1.6740       &&   5.76     & 5.3332  \\
+2.60    & 1.8980       &&   6.76     & 6.6722  \\
+2.80    & 2.1060       &&   7.84     & 8.2156  \\
+3.00    & 2.2870       &&   9.00     & 9.8453  \\
+3.20    & 2.49719      &&   10.24    & 12.1483 \\
+3.40    & 2.69717      &&   11.56    & 14.8377 \\
+3.60    & 2.90308      &&   12.96    & 18.2303 \\
 \bottomrule
 \end{tabular}
+\vspace{1mm}
+\caption{Dados medidos para $\xi$ em função e $\rho$ e os resultados das transformações baseadas nas Teorias 1 e 2. \label{TabelaMedidas}}
 \end{table}
 
 %%% Gráficos
 
-\begin{figure*}
+\begin{figure}
 \centering
-\forcerectofloat
-\caption{Dados ajustados segundo as previsões da Teoria 1.}
-\label{GraficoTeoria1}
 \input{Graphics/Linearization/DadosTeoria1}
-\end{figure*}
+\caption{Dados ajustados segundo as previsões da Teoria 1.\label{GraficoTeoria1}}
+\end{figure}
 
-\begin{figure*}
+\begin{figure}\forcerectofloat
 \centering
-\caption{Dados ajustados segundo a Teoria 2.}
-\label{GraficoTeoria2}
 \input{Graphics/Linearization/DadosTeoria2}
-\end{figure*}
+\caption{Dados ajustados segundo a Teoria 2.\label{GraficoTeoria2}}
+\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -442,20 +543,88 @@ Diferentemente da parte teórica, onde assumimos o conhecimento de constantes co
 
 Utilizando algumas considerações\cite{Taylor} acerca da distribuição das medidas $y_i$ em torno de seus valores ideais correspondentes, temos que o erro associado aos parâmetros $A$ e $B$ são dados por
 \begin{align}
-	\delta A &= \xi_y\sqrt{\frac{\sum x_i^2}{\Delta}} \\
+	\delta A &= \xi_y\sqrt{\frac{\sum x_i^2}{\Delta}} \label{Eq:ErrosCoeficientesRegLinear1}\\
 	\delta B &= \xi_y\sqrt{\frac{N}{\Delta}}
 \end{align}
 %
 onde $N$ é o número de pontos experimentais e a soma se dá sobre todos os pontos experimentais. Além disso,
 \begin{align}
 	\xi_y &= \sqrt{\frac{1}{N-2}\sum(y_i-A-B\,x_i)^2} \\
-	\Delta &= N\sum x_i^2 - \left(\sum x_i\right)^2.
+	\Delta &= N\sum x_i^2 - \left(\sum x_i\right)^2. \label{Eq:ErrosCoeficientesRegLinear4}
 \end{align}
 
 Podemos então calcular não só o melhor valor associado a uma constante física através dos coeficientes $A$ e $B$ da melhor reta, mas também determinar qual o erro associado a cada uma dessas constantes. Nem sempre temos uma correspondência simples entre uma constante física e um dos parâmetros da equação da reta, nesses casos, ao calcular o valor da constante física, precisamos calcular o erro propagado através da fórmula geral discutida no Capítulo~\ref{Chap:Erros}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\paragraph{Exemplo de cálculo dos erros dos coeficientes $A$ e $B$}
+\paragraph{Exemplo: Cálculo dos erros dos coeficientes $A$ e $B$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Fazer exemplo
+
+\begin{margintable}
+\begin{tabular}{cccc}
+\toprule
+$i$	& $x_i$	& $y_{1,i}$	& $(y_{1,i} - A - Bx_i)^2$ \\
+\midrule
+1	&	\np{0.714}	&	\np{14.577}	&	\np{0.0934} \\ 
+2	&	\np{2.693}	&	\np{20.696}	&	\np{0.2687} \\ 
+3	&	\np{4.389}	&	\np{25.226}	&	\np{0.0002} \\ 
+4	&	\np{4.960}	&	\np{27.449}	&	\np{0.2555} \\ 
+5	&	\np{6.245}	&	\np{30.242}	&	\np{0.2879} \\ 
+6	&	\np{7.277}	&	\np{33.378}	&	\np{0.2309} \\ 
+7	&	\np{7.579}	&	\np{34.195}	&	\np{0.3190} \\ 
+8	&	\np{7.719}	&	\np{35.715}	&	\np{0.2887} \\ 
+9	&	\np{7.912}	&	\np{35.011}	&	\np{0.5516} \\ 
+10	&	\np{8.280}	&	\np{37.529}	&	\np{0.4584} \\ 
+11	&	\np{9.034}	&	\np{40.590}	&	\np{2.2134} \\ 
+12	&	\np{9.442}	&	\np{39.156}	&	\np{1.3547} \\ 
+13	&	\np{10.306}	&	\np{43.238}	&	\np{0.1152} \\ 
+14	&	\np{10.572}	&	\np{42.406}	&	\np{1.6548} \\ 
+15	&	\np{11.177}	&	\np{44.796}	&	\np{0.4928} \\ 
+16	&	\np{15.335}	&	\np{57.611}	&	\np{0.0879} \\ 
+17	&	\np{17.023}	&	\np{63.832}	&	\np{0.7863} \\ 
+18	&	\np{18.926}	&	\np{68.063}	&	\np{0.3156} \\ 
+19	&	\np{20.608}	&	\np{74.408}	&	\np{0.5827} \\ 
+20	&	\np{20.876}	&	\np{75.083}	&	\np{0.4077} \\ 
+21	&	\np{21.095}	&	\np{75.248}	&	\np{0.0225} \\ 
+22	&	\np{22.225}	&	\np{77.243}	&	\np{1.5069} \\ 
+23	&	\np{22.407}	&	\np{81.058}	&	\np{4.1791} \\ 
+24	&	\np{22.469}	&	\np{78.821}	&	\np{0.1427} \\ 
+25	&	\np{23.077}	&	\np{80.714}	&	\np{0.0896} \\ 
+26	&	\np{26.421}	&	\np{91.433}	&	\np{0.1932} \\ 
+27	&	\np{26.863}	&	\np{91.777}	&	\np{0.2868} \\ 
+28	&	\np{27.360}	&	\np{93.291}	&	\np{0.2549} \\
+\midrule
+$\sum$ & & & \np{17.4411} \\ 
+\bottomrule
+\end{tabular}
+\vspace{1mm}
+\caption{Tabela com os valores de $(y_{1,i} - A - B x_i)^2$ e da soma $\sum (y_{1,i} - A - B x_i)^2$. \label{Tab:DadosDeterminacaoErrosCoeficientesAeB}}
+\end{margintable}
+
+Vamos determinar os erros associados aos coeficientes da regressão linear apresentada no exemplo da Seção~\ref{Sec:RegressaoLinear}. Note que os termos $\sum x_i$ e $\sum x_i^2$ que aparecem nas Equações~\eqref{Eq:ErrosCoeficientesRegLinear1} e~\eqref{Eq:ErrosCoeficientesRegLinear4} estão disponíveis na Tabela~\eqref{Tab:TabelaExemploCalculoRegressaoLinear}, porém na prática utilizamos uma calculadora ou um programa de computador para realizar o cálculo dos coeficientes da regressão linear, e por isso não temos de antemão tais valores\footnote{Algumas calculadoras disponibilizam os valores de $\sum x_i$ e $\sum x_i^2$ juntamente com os valores de $A$, $B$, e $r$.}. Nesse caso, será necessário determinar os valores de $\sum x_i$ e de $\sum x_i^2$, além do valor de $\sum (y_{1,i} - A - Bx_i)^2$ ---~novamente, a elaboração de uma tabela ajuda na determinação de tal valor, como mostrado na Tabela~\ref{Tab:DadosDeterminacaoErrosCoeficientesAeB}. Uma vez determinados tais valores, determinar os erros $\delta A$ e $\delta B$ é relativamente simples:
+\begin{align}
+	\xi_y &= \sqrt{\frac{1}{N-2}\sum(y_i-A-B\,x_i)^2} \\
+	&= \sqrt{\frac{\np{17.4411}}{28-2}} \\
+	&= \np{0.05814}, \\
+	\Delta &= N\sum x_i^2 - \left(\sum x_i\right)^2 \\
+	&= 28\cdot\np{7295,757} - (\np{392,984})^2 \\
+	&= \np{49844.766}, \\
+	\delta A &= \xi_y\sqrt{\frac{\sum x_i^2}{\Delta}} \\
+	&= \np{0.05814} \cdot \sqrt{\frac{\np{7295,757}}{\np{49844.766}}} \\
+	&= \np{0.022244}, \\
+	\delta B &= \xi_y\sqrt{\frac{N}{\Delta}} \\
+	&= \np{0.05814} \cdot \sqrt{\frac{28}{\np{49844.766}}} \\
+	&= \np{0.001378}.
+\end{align}
+
+Assim, podemos denotar os coeficientes linear e angular com seus devidos erros:
+\begin{align}
+	A &= (\np{12.140462642} \pm \np{0.022244})~{\rm{Un}}_y\\
+	B &= (\np{2.984480401} \pm \np{0.001378})~{\rm{Un}}_{\nicefrac{x}{y}}.
+\end{align}
+%
+Note que, como discutido anteriormente, a unidade do coeficiente angular é a mesma que a da variável dependente, enquanto a unidade do coeficiente angular é dada pela razão entre as unidades da variável dependente e da variável independente. Acima denotamos conceitualmente tais unidades como ${\rm{Un}}_{y}$ e ${\rm{Un}}_{\nicefrac{x}{y}}$, respectivamente. Resta ainda notar que não devemos carregar dígitos cuja ordem de grandeza é menor que a do erro, assim obtemos finalmente
+\begin{align}
+	A &= (\np{12.14} \pm \np{0.02})~{\rm{Un}}_y\\
+	B &= (\np{2.984} \pm \np{0.0014})~{\rm{Un}}_{\nicefrac{x}{y}}.
+\end{align}
 

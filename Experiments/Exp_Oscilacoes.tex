@@ -4,7 +4,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{fullwidth}\it
-	Verificaremos o comportamento oscilatório de dois sistemas -- um sistema massa-mola e um pêndulo simples --. Veremos que através das Leis de Newton, chegamos a uma equação cuja solução é uma função periódica que descreve o movimento oscilatório observado. Utilizaremos os seguintes conceitos/técnicas de análise de dados: medidas, algarismos significativos, gráficos, erros de escala e propagados, equação geral para o erro propagado, regressão linear, linearização, e erros dos coeficientes $A$ e $B$.
+	Verificaremos o comportamento oscilatório de dois sistemas --- um sistema massa-mola e um pêndulo simples ---. Veremos que através das Leis de Newton, chegamos a uma equação cuja solução é uma função periódica que descreve o movimento oscilatório observado. Utilizaremos os seguintes conceitos/técnicas de análise de dados: medidas, algarismos significativos, gráficos, erros de escala e propagados, equação geral para o erro propagado, regressão linear, linearização, e erros dos coeficientes $A$ e $B$.
 \end{fullwidth}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -17,18 +17,40 @@ Sabemos que a força exercida por uma mola é proporcional à sua distensão:
 	&= -kx,
 \end{align}
 %
-onde assumimos que $x_0 = 0$, $k$ é uma constante de proporcionalidade e o sinal negativo significa que a força é no sentido contrário à distensão da mola.
+onde assumimos que $x_i = 0$ e $x_f = x$, $k$ é uma constante de proporcionalidade e o sinal negativo significa que a força é no sentido contrário à distensão da mola.
 
 \begin{marginfigure}
 	\includegraphics[width=\textwidth]{Ilustrations/Massa-Mola.png}
 	\caption{Sistema massa-mola.}
 \end{marginfigure}
 
-Se pendurarmos uma mola em um suporte -- de forma que ela se disponha verticalmente -- e prendermos um corpo de massa apreciável à extremidade inferior. Deixamos o corpo descer até que a força exercida pela mola equilibre o peso. A partir dessa posição de equilíbrio, qualquer deslocamento exercido fará com que atue sobre o corpo uma força proporcional ao deslocamento, porém com sentido contrário a ele. Utilizando a segunda lei de Newton, podemos descrever a dinâmica do corpo através de
+Vamos considerar um sistema onde penduramos uma mola em um suporte --- de forma que ela se disponha verticalmente --- e prendemos um corpo de massa apreciável à extremidade inferior. Deixamos o corpo descer até que a força exercida pela mola equilibre o peso. A partir dessa posição de equilíbrio, qualquer deslocamento exercido fará com que atue sobre o corpo uma força proporcional ao deslocamento, porém com sentido contrário a ele. Utilizando a segunda lei de Newton, podemos descrever a dinâmica do corpo através de
+\begin{align}
+    F_R^x &= ma_x \\
+	P - kx &= ma \\
+	-k \left(x - \frac{P}{k}\right) &= ma \\
+	-kx' &= ma,
+\end{align}
+%
+onde o eixo $x$ aponta verticalmente para baixo e $x' \equiv x - P/k$. A constante $P/k$ representa na expressão acima a distensão da mola em relação à posição de equilíbrio. Note também que
+\begin{align}
+    a &= \frac{d}{dt}x \\
+    a' &= \frac{d}{dt}x',
+\end{align}
+%
+porém
+\begin{align}
+    a' &= \frac{d}{dt} \left(x - \frac{P}{k}\right) \\
+    &= \frac{d}{dt}x,
+\end{align}
+%
+pois $P$ e $k$ são constantes. Logo, podemos escrever
 \begin{equation}
-	-kx = ma.
+    -kx' = m\frac{d^2}{dt^2} x',
 \end{equation}
 %
+o que representa uma expressão para a aceleração em função da distensão da mola em relação à posição de equilíbrio do corpo.
+
 Analisando essa equação, temos que sempre que o corpo se desloca em relação à posição de equilíbrio, ele está sujeito a uma força contraria a esse deslocamento, acelerando-o em direção à posição de deslocamento zero (ou seja, a posição de equilíbrio). Quando o objeto passa pela posição de equilíbrio, sua aceleração é zero, porém sua velocidade não, o que o faz passar de tal posição e continuar o movimento oscilatório. Para tentar descrever esse movimento, podemos substituir a aceleração na equação acima por sua definição em termos da derivada segunda da posição em relação ao tempo:
 \begin{equation}
 	-kx = m\frac{d^2x}{dt^2},
@@ -54,17 +76,44 @@ o que pode ser simplificado a
 	\omega^2 = \frac{k}{m}.
 \end{equation}
 
-%\begin{marginfigure}
-%\centering
-%\includegraphics[width=5cm]{Fig/MassaMolaCaneta.png}
-%\caption{Sistema massa-mola em que uma caneta foi afixada à massa, riscando sobre uma folha de papel que se move para a esquerda com velocidade constante. Podemos ver que a curva que se forma é uma senoide.}
-%\end{marginfigure}
+\begin{marginfigure}
+\centering
+\begin{tikzpicture}[>=Stealth]
+
+    \draw[->] (0,-1.5) -- (0,1.5);
+    \draw[->] (0,0) -- (4.8,0) node[below left]{$t$};
+    
+    \draw[smooth, samples=1000, domain=0:3.6] plot (\x, {sin(3*\x r)})  node[right]{$x(t)$};
+    \draw[dashed, smooth, samples=1000, domain=0:3.6] plot (\x, {cos(3*\x r)}) node[right]{$v(t)$};
+    \draw[dotted, smooth, samples=1000, domain=0:3.6] plot (\x, {-sin(3*\x r)}) node[right]{$a(t)$};
+            
+\end{tikzpicture}
+\caption{Gráfico da posição (linha contínua), velocidade (linha tracejada), e aceleração (linha pontilhada) como funções do tempo para um sistema massa-mola. (As escalas dos eixos verticais das três funções são diferentes para que os três gráficos possam ser comparados qualitativamente.)}
+\end{marginfigure}
 
 Verificamos então que a forma suposta para $x(t)$ é solução da Equação~\eqref{Eq:EquacaoDiferencialOHS} se $\omega = \sqrt{k/m}$. Portanto, concluímos que a posição do objeto descreve uma curva senoidal em um gráfico da posição em função do tempo. A partir da expressão para a posição, podemos calcular a velocidade e a aceleração em função do tempo
 \begin{align}
 	v(t) &= A\omega\cos\omega t \\
 	a(t) &= -A\omega^2\sen\omega t.
 \end{align}
+
+\begin{marginfigure}
+\centering
+\begin{tikzpicture}[>=Stealth]
+
+    \draw[->] (0,-1.5) -- (0,1.5) node[below left]{$x(t)$};
+    \draw[->] (0,0) -- (4,0) node[below left]{$t$};
+    
+    \draw[smooth, samples=1000, domain=0:3.5] plot (\x, {sin(3*\x r)});
+    
+    \draw[<->|] (0,-1.25) -- node[below]{$2\pi$} +(2.094,0) coordinate (pt);
+    \draw[dotted] (pt) -- +(0,1.25) coordinate (T);
+    
+    \draw[fill] (T) circle (1pt) node[below right]{$t = T$};
+    
+\end{tikzpicture}
+\caption{O tempo necessário para completarmos uma oscilação é o que denominamos como período $T$. Como a periodicidade da função seno é igual a $2\pi$, quando $\omega t = 2\pi$, o movimento se repete e o valor de $t$ é o do próprio período $T$.}
+\end{marginfigure}
 
 Se analisarmos a função seno, vemos que ela tem um período igual a $2\pi$, isto é, seu gráfico se repete a cada $2\pi$ radianos. Isso se reflete em um ciclo de oscilação do sistema massa mola, pois após o argumento do seno atingir $2\pi$, o movimento se repete. Se considerarmos que o tempo para completar uma oscilação é o período $T$, temos, no instante que o objeto termina uma oscilação
 \begin{equation}
@@ -89,31 +138,33 @@ Expressões como a Equação~\eqref{Eq:EquacaoDiferencialOHS} são comuns em fí
 \section{Pêndulo Simples}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Podemos tratar um objeto que oscila preso a uma corda de massa desprezível como uma oscilação harmônica desde que o ângulo máximo de oscilação -- isto é, a amplitude -- seja pequena. Se essa condição for garantida, o pêndulo é denominado \emph{pêndulo simples}.
+Podemos tratar um objeto que oscila preso a uma corda de massa desprezível como uma oscilação harmônica desde que o ângulo máximo de oscilação --- isto é, a amplitude --- seja pequena. Se essa condição for garantida, o pêndulo é denominado \emph{pêndulo simples}.
 
-Se deslocarmos um pêndulo para a direita, como na Figura~\ref{Fig:Pendulo}, teremos uma componente da força peso que tende a restaurar o pêndulo à posição de equilíbrio. Podemos ver que tal componente tem valor $P_t=P\sen\theta$, onde $P=mg$ representa o peso. De acordo com a segunda lei de Newton, temos então
-\begin{equation}
-	-mg\sen\theta = ma,
-\end{equation}
-\begin{marginfigure}
+\begin{marginfigure}[-3cm]
 	\centering
 %	\forcerectofloat
 	\includegraphics[width=\textwidth]{Ilustrations/Pendulo_simples.png}
 	\caption{Pêndulo simples.}
 \end{marginfigure}
-%
-onde o sinal está relacionado ao fato de que a força tem sempre direção contrária ao deslocamento. A aceleração $a$ se refere à derivada segunda da posição ao longo do arco $s$ descrito pelo objeto, portanto podemos escrever
+
+
+Se deslocarmos um pêndulo para a direita, como na Figura~\ref{Fig:Pendulo}, teremos uma componente da força peso que sempre tende a restaurar o pêndulo à posição de equilíbrio, o que dá origem a um movimento oscilatório. De acordo com a segunda lei de Newton para a rotação,
 \begin{equation}
-	\frac{d^2s}{dt^2} + g\sin\theta = 0.
+    \tau = I\alpha.
 \end{equation}
-%
-\begin{marginfigure}[1cm]
+
+\begin{marginfigure}
 \centering
-\begin{tikzpicture}[>=Stealth]
-	\shade[top color=white,bottom color=gray] (-1,0) rectangle +(2,0.3);
+\begin{tikzpicture}[>=Stealth,
+        interface/.style={
+        % superfície
+        postaction={draw,decorate,decoration={border,angle=-45,
+                    amplitude=0.2cm,segment length=2mm}}},
+    ]
+	\draw[interface] (1,0) -- (-1,0);
 	\draw (-1,0) -- (1,0);
 	\draw[dotted] (0,0) -- (0,-1.5);
-	\draw (0,-3) arc[start angle = 270, end angle = 300, radius = 3] node[above, midway]{$s$} -- node[right] {$L$} (0,0);
+	\draw (0,-3) arc[start angle = 270, end angle = 300, radius = 3] -- node[right] {$L$} (0,0);
 	\draw[dotted] (canvas polar cs:radius=3cm,angle=300) arc[start angle = 300, end angle = 330, radius = 3];
 	\draw (0,-0.7) arc[start angle = 270, end angle = 300, radius = 0.7] node[below = 0.05,midway] {$\theta$};
 	\draw[fill] (canvas polar cs:radius=3cm,angle=300) circle[radius = 0.1] node[right=2pt] {$m$};
@@ -125,8 +176,20 @@ onde o sinal está relacionado ao fato de que a força tem sempre direção cont
 \caption{Diagrama de corpo livre do pêndulo simples.}
 \label{Fig:Pendulo}
 \end{marginfigure}
+
+O momento de inércia do pêndulo pode ser determinado através da expressão para o momento de inércia de um conjunto de partículas:
+\begin{equation}
+    I = \sum_i m_i (r_\perp^i)^2,
+\end{equation}
 %
-\begin{marginfigure}[1cm]
+onde $r_\perp^i$ representa a distância da $i$-ésima partícula ao eixo de rotação: tal eixo é perpendicular ao círculo descrito pelo movimento do corpo preso à extremidade da corda e passa pelo ponto onde ela é fixada ao suporte. Como estamos tratando o caso em que a corda tem massa desprezível, podemos em boa aproximação considerar que toda a massa do pêndulo está localizada no centro de massa do corpo preso à corda. Assim,
+\begin{equation}
+    I = m L^2,
+\end{equation}
+%
+sendo que consideramos que $r_\perp \approx L$.
+
+\begin{marginfigure}[2cm]
 \centering
 \begin{tikzpicture}[>=Stealth,scale=1.5]
 	\usetikzlibrary{calc}
@@ -144,20 +207,37 @@ onde o sinal está relacionado ao fato de que a força tem sempre direção cont
 	\draw[dotted,rotate=30] (-0.5,-0.866025404) -- +(0.5,0);
 	\centerarc[dotted](canvas polar cs:radius = 3 cm, angle = 120)(280:320:3);
 \end{tikzpicture}
-\caption{Decomposição da força peso em uma componente tangencial à trajetória circular e em uma componente ao longo da reta radial que liga o centro da trajetória à posição do corpo.}
+\caption{Decomposição da força peso em uma componente tangencial à trajetória circular e em uma componente ao longo da reta radial que liga o centro da trajetória à posição do corpo. O torque está relacionado à componente tangencial, dada por $P_t = mg\sen\theta$.}
 \end{marginfigure}
-%
-Lembrando ainda que $s = L\theta$, podemos reescrever a equação acima como
+
+Para determinar o torque $\tau$, devemos calcular o produto vetorial $\vec{r}\times\vec{P}$, pois a força responsável pela aceleração angular é a própria força peso que atua no corpo preso à extremidade da corda. Além disso, não estamos interessados na direção do torque, uma vez que o movimento se restringe à rotação em torno do eixo de rotação; a direção de tal eixo não muda\footnote[][3cm]{É interessante notar que se o pêndulo for longo e a massa do corpo suspenso for grande, o pêndulo pode oscilar por muito tempo. Nesse caso verificaremos que o eixo de rotação muda de direção em relação ao solo. Esse efeito, porém, se deve à \emph{rotação da Terra} e não da mudança do eixo de rotação do pêndulo.}. Nesse caso podemos tomar o módulo de $\tau$, obtendo
+\begin{align}
+    |\vec{\tau}| &= |\vec{r}\times\vec{F}| \\
+    &= |\vec{r}\times\vec{P}| \\
+    &= mgL\sen\theta.
+\end{align}
+
+Substituindo os resultados para o momento de inércia e para o torque na segunda lei de Newton, obtemos
 \begin{equation}
-	\frac{d^2\theta}{dt^2} + \frac{g}{L}\sin\theta = 0.
+    -mgL\sen\theta = mL^2\alpha,
+\end{equation}
+%
+O sinal está relacionado ao fato de que a força tem sempre direção contrária ao deslocamento. A aceleração $\alpha$ se refere à derivada segunda da posição angular do pêndulo, portanto podemos reescrever a expressão acima como
+\begin{equation}
+    \frac{d^2\theta}{dt^2} + \frac{g}{L} \sen\theta = 0.
 \end{equation}
 
-Até este momento, a equação acima descreve o movimento de um pêndulo para qualquer valor de amplitude e, devido à função seno, não temos uma oscilação harmônica. Uma propriedade do seno, no entanto, é que para valores pequenos de $\theta$, $\sen\theta \approx \theta$. Isso pode ser visto através de uma expansão em série:
+Até este momento obtivemos uma equação que descreve o movimento de um pêndulo para qualquer valor de amplitude e, devido à função seno, não temos uma oscilação harmônica. Uma propriedade do seno, no entanto, é que para valores pequenos do argumento $\theta$ ---~em radianos~---, obtemos valores de $\sen\theta$ muito próximos dos próprios valores de $\theta$. Isso pode ser visto através de uma expansão em série:
 \begin{equation}
 	\sen\theta = \theta -\frac{\theta^3}{3!}+\frac{\theta^5}{5!}-\frac{\theta^7}{7!}+\dots,
 \end{equation}
 %
-onde $\theta$ é dado em radianos. Se $\theta$ é pequeno (muito menor que 1), $\theta^3$ é menor ainda, portanto os termos de ordem maior que $\theta$ são desprezíveis para pequenas oscilações. Logo
+onde $\theta$ é dado em radianos. Se $\theta$ é pequeno (muito menor que 1 rad), $\theta^3$ é menor ainda, portanto os termos de ordem maior que $\theta$ são desprezíveis para pequenas oscilações. Logo,
+\begin{equation}
+    \sen\theta \approx \theta,
+\end{equation}
+%
+o que nos leva a
 \begin{equation}
 	\frac{d^2\theta}{dt^2} + \frac{g}{L}\theta = 0.
 \end{equation}
@@ -174,6 +254,7 @@ Como a equação acima tem a mesma forma que a Equação~\ref{Eq:EquacaoDiferenc
 
 %%%%%%%%%%%%%%%%%%%%%%
 \subsection{Objetivos}
+\label{Sec:ObjetivosOscilacoes}
 %%%%%%%%%%%%%%%%%%%%%%
 
 \begin{itemize}
@@ -186,7 +267,6 @@ Como a equação acima tem a mesma forma que a Equação~\ref{Eq:EquacaoDiferenc
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Material Necessário}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \begin{itemize}
 	\item Suporte vertical com haste horizontal;
 	\item Mola;
@@ -194,7 +274,7 @@ Como a equação acima tem a mesma forma que a Equação~\ref{Eq:EquacaoDiferenc
 	\item Balança;
 	\item Cronômetro;
 	\item Fio flexível;
-	\item Corpo pequeno a que se possa prender um fio;
+	\item Corpo pequeno ao qual se possa prender um fio;
 	\item Régua milimetrada de \np[cm]{100,00}.
 	\item Transferidor.
 \end{itemize}
@@ -210,7 +290,7 @@ Como a equação acima tem a mesma forma que a Equação~\ref{Eq:EquacaoDiferenc
 \begin{enumerate}
 \item Prenda uma extremidade da mola à haste horizontal do suporte e a disponha verticalmente.
 \item Afira a massa de um gancho com uma anilha, anotando o valor na Tabela~\ref{Tab:DadosMassaMola}. Prenda-os à extremidade inferior da mola.
-\item Desloque o gancho e a anilha alguns centímetros para baixo e solte. Deixe o sistema completar 10 oscilações, cronometrando o tempo necessário para efetuá-las. Cuidado para não exceder a amplitude máxima para a compressão da mola. Utilize como erro para o cronômetro\footnote{Em um cronômetro manual, o erro é dominado pelo tempo de reação do operador. Por isso, o valor típico do desvio padrão de uma medida efetuada com um cronômetro deste tipo não coincide com o valor da menor divisão da escala --~se o equipamento for não-analógico~--, ou com a metade dela --~se o equipamento for analógico~--.} o valor de \np[s]{0,2}.
+\item Desloque o gancho e a anilha alguns centímetros para cima e solte. Deixe o sistema completar 10 oscilações, cronometrando o tempo necessário para efetuá-las. Utilize como erro para o cronômetro o valor de \np[s]{0,2}.\footnote{Em um cronômetro manual o erro aleatório associado ao tempo de reação do operador é bastante significativo, sendo muito maior que o erro de escala. Por isso, podemos descartar o valor desse último e utilizar somente o próprio erro aleatório, que pode ser determinado a partir do desvio padrão. O valor de \np[s]{0,2} é um valor típico para o erro aleatório em um cronômetro manual.}
 \item Anote os resultados para o tempo necessário para completar as 10 oscilações na Tabela~\ref{Tab:DadosMassaMola}. Utilize unidades do SI.
 \item Adicione anilhas ao gancho, uma a uma, e repita o processo acima para cada adição. Anote os valores de massa do gancho com as anilhas e o tempo correspondente de oscilação. Adicione tantas anilhas quanto possível, tomando o cuidado de não danificar a mola.
 \end{enumerate}
@@ -264,38 +344,45 @@ Apresente os resultados de maneira clara e organizada. Mostre os cálculos requi
 \end{question}
 
 \begin{question}[type={exam}]{0.75}
-Liste os equipamentos utilizados descrevendo o tipo do equipamento, sua resolução, e qual é o seu erro de escala.
+Liste os equipamentos utilizados. Para os instrumentos de medida, descreva o tipo do equipamento, sua resolução, e seu erro de escala.
 \end{question}
 
 \begin{question}[type={exam}]{0.75}
 Preencha as tabelas com o número adequado de algarismos significativos, unidades, e erros de escala apropriados. 
 \end{question}
 
-\begin{question}[type={exam}]{1.5}
-Elabore um gráfico de $T^2 \times m$ para os dados da Tabela~\ref{Tab:DadosMassaMola}. Calcule a reta que melhor representa os dados experimentais utilizando o método dos mínimos quadrados. Mostre a relação entre o coeficiente angular $B$ e a constante da mola $k$, e calcule o valor desta última. \emph{Utilize as unidades do SI para efetuar a regressão linear para obter resultados de mais fácil interpretação.}
+\begin{question}[type={exam}]{1}
+Elabore um gráfico de $T^2 \times m$ para os dados da Tabela~\ref{Tab:DadosMassaMola}.
+\end{question}
+
+\begin{question}[type={exam}]{1}
+Para a questão anterior, calcule a reta que melhor representa os dados experimentais utilizando o método dos mínimos quadrados e a adicione ao gráfico.  \emph{Utilize as unidades do SI para efetuar a regressão linear para obter resultados de mais fácil interpretação.}
 \end{question}
  
-\begin{question}[type={exam}]{1.5}
-Elabore um gráfico de $T^2 \times L$ para os dados da Tabela~\ref{Tab:DadosPendulo}. Calcule a reta que melhor representa os dados experimentais utilizando o método dos mínimos quadrados. Mostre a relação entre o coeficiente angular $B$ e a aceleração da gravidade $g$, e calcule o valor desta última. \emph{Utilize as unidades do SI para efetuar a regressão linear para obter resultados de mais fácil interpretação.}
+\begin{question}[type={exam}]{1}
+Elabore um gráfico de $T^2 \times L$ para os dados da Tabela~\ref{Tab:DadosPendulo}.
+\end{question}
+
+\begin{question}[type={exam}]{1}
+Para a questão anterior, calcule a reta que melhor representa os dados experimentais utilizando o método dos mínimos quadrados e a adicione ao gráfico. \emph{Utilize as unidades do SI para efetuar a regressão linear para obter resultados de mais fácil interpretação.}
+\end{question}
+
+\begin{question}[type={exam}]{1}
+Demonstre a relação entre o coeficiente angular $B$ e a constante da mola $k$, e calcule o valor desta última.
+\end{question}
+
+\begin{question}[type={exam}]{1}
+Demonstre a relação entre o coeficiente angular $B$ e a aceleração da gravidade $g$, e calcule o valor desta última.
 \end{question}
 
 \begin{question}[type={exam}]{1.5}
-Calcule o erro associado ao coeficiente angular para a regressão linear dos dados de $T^2 \times m$. Com esse valor e o do próprio coeficiente, calcule o erro associado à constante da mola $k$.
-\end{question}
-
-\begin{question}[type={exam}]{1.5}
-Calcule o erro associado ao coeficiente angular para a regressão linear dos dados de $T^2 \times L$. Com esse valor e o do próprio coeficiente, calcule o erro associado à constante da mola $g$.
-\end{question}
-
-\begin{question}[type={exam}]{1.5}
-Através dos resultados obtidos nas questões anteriores, discuta quais objetivos foram atingidos com sucesso, justificando suas conclusões. Se algum objetivo não foi atingido, discuta quais são os possíveis motivos do fracasso e que providências podem ser tomadas para que eles sejam alcançados.
+Considerando os objetivos do experimento, listados na Seção~\ref{Sec:ObjetivosOscilacoes}, e os resultados obtidos nas questões anteriores, discuta quais objetivos foram atingidos com sucesso, justificando suas conclusões. Se algum objetivo não foi atingido, discuta quais são os possíveis motivos do fracasso e que providências podem ser tomadas para que eles sejam alcançados.
 \end{question}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Tabelas}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table*}[!htb]
-\caption{Dados para a oscilação de um sistema massa-mola e de um pêndulo simples.}
 \label{Tab:DadosMassaMola}
 	\begin{center}
 		\begin{tabular}{p{25mm}p{25mm}p{25mm}p{25mm}}
@@ -311,11 +398,12 @@ Através dos resultados obtidos nas questões anteriores, discuta quais objetivo
 		\bottomrule
 		\end{tabular}
 	\end{center}
+	\caption{Dados para a oscilação de um sistema massa-mola.}
 \end{table*}
 %
 %
 \begin{table*}[!htb]
-	\caption{Dados para a oscilação de um pêndulo.}
+	\caption{Dados para a oscilação de um pêndulo simples.}
 	\label{Tab:DadosPendulo}
 	\begin{center}
 		\begin{tabular}{p{25mm}p{25mm}p{25mm}p{25mm}}

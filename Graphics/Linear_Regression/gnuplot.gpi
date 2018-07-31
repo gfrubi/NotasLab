@@ -1,4 +1,4 @@
-set term tikz size 14cm,9cm
+set term tikz size 10cm,7cm
 
 set out "linear.tex"
 
@@ -12,33 +12,33 @@ set style line 21 linetype 1 linewidth 2 pointtype 7 pointsize 1 linecolor rgb "
 set xrange[-1:30]
 ##################
 
-f(x) = x < 28 ? x > 0.5 ? 2.9844463644*x + 12.141173236 : 0/0 : 0/0
+f(x) = x < 28 ? x > 0.5 ? 2.984480401*x + 12.14046264 : 0/0 : 0/0
 
 set xlabel '$x$'
 set ylabel '$y_1$'
 
 set yrange[5:110]
-plot "data.dat" u 1:4 ls 21 t 'Dados experimentais', f(x) ls 20 t '$y(x)=\np{2.9844463644}x + \np{12.141173236}$, $r^2 = \np{0.9989011203}$'
+plot "data.dat" u 1:4 ls 21 t 'Dados experimentais', f(x) ls 20 t 'Regressão linear'
 
 ##################
 
 set out "quadratic.tex"
 
-g(x) = x>0.5 ? x<28 ? 29.9779011494 * x - 152.917852680 : 0/0 : 0/0
+g(x) = x>0.5 ? x<28 ? 29.97823068 * x - 152.924429 : 0/0 : 0/0
 
 set yrange[-150:950]
 
 set xlabel '$x$'
 set ylabel '$y_2$'
-plot "data.dat" u 1:2 ls 21 t 'Dados experimentais', g(x) ls 20 t '$y(x)=\np{29.9779011494} x - \np{152.917852680}$, $r^2=\np{0.9565748438}$'
+plot "data.dat" u 1:2 ls 21 t 'Dados experimentais', g(x) ls 20 t 'Regressão linear'
 
 ##################
 
 set out "sine.tex"
-h(x) = x>0.5 ? x<28 ? 0.0192473251 * x + 0.3162986129 : 0/0 : 0/0
+h(x) = x>0.5 ? x<28 ? 0.019262681 * x + 0.316038383 : 0/0 : 0/0
 
 set yrange[-2:3.5]
 set xlabel '$x$'
 set ylabel '$y_3$'
 set format y "%3.1f"
-plot "data.dat" u 1:3 ls 21 t 'Dados experimentais', h(x) ls 20 t '$y(x)=\np{0.0192473251} x + \np{0.3162986129}$, $r^2=\np{0,0359267778}$'
+plot "data.dat" u 1:3 ls 21 t 'Dados experimentais', h(x) ls 20 t 'Regressão linear'

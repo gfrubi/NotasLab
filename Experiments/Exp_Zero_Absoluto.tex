@@ -4,7 +4,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{fullwidth}\it
-	Realizaremos um experimento em que verificaremos a pressão exercida por uma quantidade de gás com volume constante em função de sua temperatura. Através desses dados, determinaremos a temperatura para a qual teríamos uma pressão nula -- tal temperatura é o que denominamos como Zero Absoluto --. Utilizaremos os seguintes conceitos/técnicas de análise de dados: medidas, algarismos significativos, gráficos, software para elaboração de gráficos, erros de escala e propagados, equação geral para o erro propagado, regressão linear, linearização, erros dos coeficientes $A$ e $B$, e planílhas para cálculo dos coeficientes $A$ e $B$ com erros.
+	Realizaremos um experimento em que verificaremos a pressão exercida por uma quantidade de gás com volume constante em função de sua temperatura. Através desses dados, determinaremos a temperatura para a qual teríamos uma pressão nula --- tal temperatura é o que denominamos como Zero Absoluto ---. Utilizaremos os seguintes conceitos/técnicas de análise de dados: medidas, algarismos significativos, gráficos, software para elaboração de gráficos, erros de escala e propagados, equação geral para o erro propagado, regressão linear, linearização, erros dos coeficientes $A$ e $B$, e planílhas para cálculo dos coeficientes $A$ e $B$ com erros.
 \end{fullwidth}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -13,53 +13,215 @@
 
 Um método simples para verificar a temperatura é utilizar alguma propriedade de um material que varie com a temperatura como indicador de leitura. Alguns termômetros usam mercúrio, outros usam álcool. Em ambos os casos, a propriedade que varia com a temperatura é o volume: o líquido de um reservatório se dilata e invade um tubo fino, onde a altura da coluna pode ser lida através de uma escala.
 
-Outras propriedades podem ser utilizadas para verificar a temperatura, dentre elas a tensão entre uma junção bi-metálica, a resistência elétrica de um material, o comprimento de uma fita metálica longa, a pressão de um volume confinado de um gás, etc. 
+Outras propriedades podem ser utilizadas para verificar a temperatura, dentre elas a diferença de potencial elétrico entre uma junção bi-metálica, a resistência elétrica de um material, o comprimento de uma fita metálica longa, a pressão de um volume confinado de um gás, etc. 
 
-Em todos esses casos, é necessário se utilizar dois pontos para calibrar o termômetro com valores arbitrários de temperatura. A escala Celsius, por exemplo, utiliza a temperatura de fusão do gelo para zero graus e a temperatura de ebulição da água para 100 graus. No caso de um termômetro de mercúrio, por exemplo, podemos verificar a altura da coluna para a temperatura de fusão do gelo, realizando uma marca (na escala Celsius, zero). Marcamos também a altura da coluna para a temperatura de ebulição da água (na escala Celsius, \np[\tcdegree]{100}). Dividimos então o intervalo entre essas duas marcas em um número de divisões menores (na escala Celsius, são 100 divisões). Podemos então verificar qualquer temperatura intermediária utilizando uma leitura da coluna de mercúrio. Podemos inclusive extrapolar as leituras para valores de temperatura maiores e menores que os extremos definidos pela temperatura de fusão do gelo e de ebulição da água, bastando para isso manter o tamanho da divisão igual às divisões intermediárias.
+Em todos esses casos, é necessário se utilizar dois pontos para calibrar o termômetro com valores arbitrários de temperatura. A escala Celsius, por exemplo, utiliza a temperatura de fusão do gelo para zero graus e a temperatura de ebulição da água para 100 graus. No caso de um termômetro de mercúrio, podemos verificar a altura da coluna para a temperatura de fusão do gelo, realizando uma marca (na escala Celsius, \np[\tcdegree]{0}). Marcamos também a altura da coluna para a temperatura de ebulição da água (\np[\tcdegree]{100}). Dividimos então o intervalo entre essas duas marcas em um número de divisões menores. Podemos então verificar qualquer temperatura intermediária utilizando uma leitura da coluna de mercúrio. Podemos inclusive extrapolar as leituras para valores de temperatura maiores e menores que os extremos definidos pela temperatura de fusão do gelo e de ebulição da água, bastando para isso manter o tamanho da divisão igual às divisões intermediárias.
 
-A confiabilidade das medidas de temperatura obtidas através de um termômetro está diretamente ligada à linearidade da propriedade observada com a variação da temperatura. Para faixas de temperatura relativamente pequenas, isso pode não ser um problema, mas se desejarmos realizar medições para ampla faixa de valores comportamentos não-lineares podem ter efeito significativo. Além disso, se -- por exemplo -- desejarmos utilizar uma medida de temperatura extremamente elevada, não podemos utilizar um termômetro devido ao risco de danificá-lo. Portanto, é importante escolher um material e uma propriedade adequados à medida em questão.
+A confiabilidade das medidas de temperatura obtidas através de um termômetro está diretamente ligada à linearidade da propriedade observada com a variação da temperatura. Para faixas de temperatura relativamente pequenas, isso pode não ser um problema, mas se desejarmos realizar medições para uma ampla faixa de valores, comportamentos não-lineares podem ter efeito significativo. Além disso, se --- por exemplo --- desejarmos utilizar uma medida de temperatura extremamente elevada, não podemos utilizar um termômetro devido ao risco de danificá-lo. Portanto, é importante escolher um material e uma propriedade adequados à medida em questão.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Termômetros de gás a volume constante}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Uma propriedade que pode ser utilizada para realizar uma medida confiável da temperatura é a pressão de um gás mantido em um volume constante. Segundo a equação dos gases ideais, a pressão varia com a temperatura de acordo com
+Uma propriedade que pode ser utilizada para realizar uma medida confiável da temperatura é a pressão de um gás mantido em um volume constante. Segundo a equação dos gases ideais, a pressão varia com a temperatura de acordo com\footnote[][-1cm]{As temperaturas devem estar na escala Kelvin, discutida adiante.}
 \begin{equation}
 	PV = nRT,
 \end{equation}
 %
-onde $R$ é a constante dos gases, $n$ é o número de moles de partículas do gás, $V$ é o volume ocupado pelo gás e $T$ é a temperatura na escala Kelvin (discutida adiante). Dessa equação, podemos escrever
+onde $R$ é a constante dos gases, $n$ é o número de moles de partículas do gás, $V$ é o volume ocupado pelo gás e $T$ é a temperatura. Dessa equação, podemos escrever
 \begin{equation}\label{Eq:PvsT}
 	P = \frac{nR}{V} T.
 \end{equation}
 
 \begin{marginfigure}
 \centering
-\includegraphics[width=\textwidth]{Ilustrations/Term_gas.png}
-\caption{Termômetro de gás a volume constante.}
-\label{Fig:TermometroGas}
+\begin{tikzpicture}[>=Stealth]
+    \draw[->] (0,0) -- (4,0) node[below left]{$T~(\tcdegree\rm{C})$};
+    \draw[->] (0,0) -- (0,3) node[below left]{$P~(\rm{Pa})$};
+    
+    \draw[smooth,samples=10,domain=0:3.5]
+    plot(\x,{tan(7)*\x + 3*tan(7)});
+     \draw[dashed, smooth,samples=10,domain=0:3.5]
+    plot(\x,{tan(14)*\x + 3*tan(14)});
+     \draw[dashdotted, smooth,samples=10,domain=0:3.5]
+    plot(\x,{tan(20)*\x + 3*tan(20)});
+   
+\end{tikzpicture}
+\caption{Para um gás real, a relação entre $P$ e $T$ depende do gás, porém é sempre linear.}
 \end{marginfigure}
-Para um gás mantido a um volume $V$ constante em um reservatório, podemos afirmar que o número de moles $n$ se mantém constante. Temos então uma relação de proporcionalidade entre a pressão do gás e a temperatura a que ele se encontra. Um dispositivo que utiliza essa propriedade para realizar medidas é denominado \textbf{termômetro de gás a volume constante}. A Figura~\ref{Fig:TermometroGas} mostra um desenho esquemático desse tipo de dispositivo.
 
-Neste termômetro, pressão do gás será determinada pela pressão exercida pela coluna de líquido (pois ela equilibra a pressão do recipiente com o gás), sendo que seu valor será dado por
+Para um gás real, a relação entre a pressão e a temperatura depende do tipo de gás utilizado. Porém, se o gás estiver a baixa pressão, ou seja, estiver \emph{rarefeito}, e a temperatura a ser medida for maior que aquela em que o gás se torna um líquido, podemos utilizar qualquer gás para realizar medidas de temperatura. A diferença entre diversos gases será a inclinação da reta, porém as relações serão sempre lineares.
+
+Para um gás mantido a um volume $V$ constante em um reservatório hermético, podemos afirmar que o número de moles $n$ se mantém constante. Temos então uma relação de proporcionalidade entre a pressão do gás e a temperatura a que ele se encontra. Um dispositivo que utiliza essa propriedade para realizar medidas é denominado \emph{termômetro de gás a volume constante}.
+
+\begin{marginfigure}
+\centering
+\includegraphics[width=\textwidth]{Ilustrations/Term_gas.png}
+\caption{Termômetro de gás a volume constante.\label{Fig:TermometroGas}}
+\end{marginfigure}
+
+A Figura~\ref{Fig:TermometroGas} mostra um desenho esquemático de um dispositivo desse tipo: nela temos um balão de destilação fechado com uma rolha e em cuja saída lateral está conectada um tubo flexível, sendo que sua outra extremidade é aberta. Dentro do tubo temos um fluido de densidade conhecida. O balão fica submerso em um banho térmico cuja temperatura estamos interessados em medir.
+
+Como a extremidade livre do tubo é aberta, ela está sujeita à pressão atmosférica, logo, a pressão do gás dentro do balão será determinada pela soma da pressão atmosférica com a pressão exercida pela coluna de líquido:
 \begin{equation}
 	P = P_0 + \rho g h,
 \end{equation}
 %
-onde $P_0$ é a pressão atmosférica, $\rho$ é a densidade da água, $g$ é a aceleração da gravidade e $h$ é a altura da coluna de líquido. A altura $h$ deve ser medida na extremidade aberta do tubo, a partir do nível da coluna de água na extremidade que está ligada ao recipiente com o gás.
+onde $P_0$ é a pressão atmosférica, $\rho$ é a densidade do fluido dentro do tubo, $g$ é a aceleração da gravidade e $h$ é a altura\footnote{Note que $h$ é a \emph{altura} da coluna, não seu comprimento. Tal distância deve ser medida \emph{verticalmente}.} (veja a Figura~\ref{Fig:FigEsquematicaTermGas}).
 
-Para um gás real, a relação entre a pressão e a temperatura depende do tipo de gás utilizado. Porém, se o gás estiver a baixa pressão, ou seja, estiver \emph{rarefeito}, e a temperatura a ser medida for maior que aquela em que o gás se torna um líquido, podemos utilizar qualquer gás para realizar medidas de temperatura. A diferença entre diversos gases será a inclinação da reta, porém as relações serão sempre lineares.
+Para determinarmos o valor da altura da coluna de fluido adequadamente, devemos nos certificar que o volume de gás dentro do balão seja mantido constante. Para isso, devemos verificar a posição da coluna de fluido na extremidade do tubo que está ligada ao balão e marcarmos sua posição para referência futura (tal marca é representada pela seta na Figura~\ref{Fig:FigEsquematicaTermGas}). Ao aquecermos o gás, o fluido no tubo se deslocará devido à pressão exercida sobre ele, fazendo com que as posições dos topos das colunas em ambas as extremidades do tubo  mudem de posição. Para que o gás volte ao volume inicial, o topo da coluna da extremidade do tubo ligada ao balão deve voltar ao nível original, o que pode ser feito deslocando a extremidade livre para cima. Só então devemos aferir a distância vertical $h$ entre as colunas.
 
+\begin{marginfigure}[-4cm]
+\centering
+\begin{tikzpicture}[>=Stealth,
+interface/.style={
+        % superfície
+        postaction={draw,decorate,decoration={border,angle=-45,
+                    amplitude=0.2cm,segment length=2mm}}}
+    ]
+    
+    \draw[pattern = north west lines] (-1,1.5) -- (-1, 0) -- (1,0) -- (1,1.5) -- (0.9,1.5) -- (0.9,0.1) -- (-0.9,0.1) -- (-0.9, 1.5) -- cycle;
+    
+    % balão
+    \draw (0,0.75)+(95:0.5) arc[radius = 0.5, start angle = -265, end angle = 85];
+    \draw (0,0.75)++(95:0.5) -- +(0,1) coordinate (be);
+    \draw (0,0.75)++(85:0.5) -- +(0,0.5) coordinate (li);
+    \draw (li) ++(0,0.05) coordinate (ls) -- +(0,0.45) coordinate (bd);
+    \draw (li) -- +(-5:0.3) coordinate (si);
+    \draw (ls) -- +(-5:0.3);
+    \draw[fill] (0,2.25)+(-0.05,0) rectangle +(0.05,0.1);
+    \node (P) at (0,0.75) {$P$};
+    
+    % mangueira
+    \draw[double = white, double distance = 0.05cm] (si)+(0,0.025) .. controls (1,1.65) and (1.5,2) .. (1.5,1);
+    
+    % tubo em U
+    \draw (1.475, 1) -- (1.475, 0.25) arc[start angle = -180, end angle = 0, radius = 0.2] -- +(0,2);
+    \draw (1.525, 1) -- (1.525, 0.25) arc[start angle = -180, end angle = 0, radius = 0.15] -- +(0,2);
+    \draw[fill] (1.475, 0.75) -- (1.475, 0.25) arc[start angle = -180, end angle = 0, radius = 0.2] -- ++(0,1) -- ++(-0.05,0) -- ++(0,-1) arc[start angle = 0, end angle = -180, radius = 0.15] -- ++(0,0.5) -- cycle;  
+    
+    % marca de referência
+    \draw[->] (1.2, 0.75) -- (1.455,0.75);
+    
+    % altura da coluna
+    \draw[|-|] (2.1,0.75) -- node[right]{$h$} (2.1,1.25);
+    
+    % líquido
+    \draw[pattern = dots] (0,0.75)+(95:0.5) arc[radius = 0.5, start angle = -265, end angle = 85] -- ++(0,0.15) -- (0.9, 1.4) -- (0.9,0.1) -- (-0.9,0.1) -- (-0.9,1.4) -- (-0.044,1.4) -- cycle;
+    
+    % mesa
+    \draw[interface] (-2,0) -- (2.5,0);
+    
+\end{tikzpicture}
+\caption{A pressão do gás pode ser determinada pela soma da pressão atmosférica com a pressão exercida pela coluna d'água cuja altura é $h$. O gás deve ser mantido a volume constante, o que implica que a coluna d'água na extremidade do tubo ligado ao balão deve ser mantida na marca de referência indicada pela flecha.\label{Fig:FigEsquematicaTermGas}}
+\end{marginfigure}
+
+\begin{marginfigure}[2cm]
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \draw[->] (0,0) -- (4,0) node[below left]{$h$};
+    \draw[->] (0,0) -- (0,3.5) node[below left]{$T$};
+    
+    \draw (0,1) -- (3.5,3);
+    \draw[dotted] (0.75,0) node[below]{$h_f$} -- (0.75, 1.43) -- (0, 1.43) node[left]{$T_f$};
+    \draw[dotted] (3,0) node[below]{$h_e$} -- (3, 2.71) -- (0, 2.71) node[left]{$T_e$};
+   
+\end{tikzpicture}
+\caption{A relação entre a temperatura $T$ e a altura $h$ é linear, o que nos permite utilizá-la como a escala de um termômetro.}
+\end{marginfigure}
+
+Como sabemos que existe uma relação linear da temperatura com a pressão, e uma relação linear da pressão com a altura $h$ da coluna, podemos determinar uma relação linear entre a temperatura $T$ e a altura $h$. Para que possamos definir valores numéricos específicos de temperatura, precisamos de duas temperaturas de referência, como as de fusão e ebulição da água, por exemplo. Uma vez determinados os valores arbitrários de temperatura $T_f$ e $T_e$ e as alturas $h_f$ e $h_e$ correspondentes a tais temperaturas, podemos determinar a relação entre $T$ e $h$ considerando que a tal relação é linear, o que implica em uma forma dada por
+\begin{equation}
+    T = Bh + A,
+\end{equation}
+%
+onde
+\begin{equation}
+\begin{system} B h_e + A &= T_e \\ B h_f + A &= T_f. \end{system}
+\end{equation}
+%
+Resolvendo esse sistema, obtemos
+\begin{align}
+    B &= \frac{T_e - T_f}{h_e - h_f} \\
+    A &= T_f - \frac{T_e - T_f}{h_e - h_f} h_f,
+\end{align}
+%
+de onde obtemos
+\begin{equation}
+    T = (h - h_f)\frac{T_e - T_f}{h_e - h_f} + T_f.
+\end{equation}
+ 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Zero absoluto}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Para qualquer gás utilizado no termômetro, a medida que a temperatura diminui, a pressão do gás também diminui. Essa relação deve ter um valor para o qual q pressão exercida pelo gás é nula, correspondendo a uma temperatura mínima ou um \textbf{zero absoluto} para a escala de temperatura. Apesar de a inclinação das retas de $P \times T$ serem diferentes para gases diferentes, o valor para o qual a pressão é zero é o mesmo para qualquer gás, sendo que tal valor corresponde a $-\np[\tcdegree C]{273,15}$. Podemos então utilizar o valor do zero absoluto para definir uma escala de temperaturas -- a escala Kelvin -- em que a menor temperatura possível seja zero, correspondendo ao zero absoluto, e na qual a temperatura de fusão do gelo seja \np[K]{273,15}, sendo que a relação entre tal escala e a escala Celsius será dada por
+Para qualquer gás utilizado no termômetro, a medida que a temperatura diminui, a pressão do gás também diminui. Essa relação deve ter um valor para o qual a pressão exercida pelo gás é nula, correspondendo a uma temperatura mínima ou um \emph{zero absoluto} para a escala de temperatura. Apesar de a inclinação das retas de $P \times T$ serem diferentes para gases diferentes, o valor para o qual a pressão é zero é o mesmo para qualquer gás, sendo que tal valor é determinado experimentalmente, correspondendo na escala Celsius a $T_0^C = -\np[\tcdegree C]{273,15}$.
+
+\begin{figure}\forceversofloat
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \draw[->] (-3.5,0) -- (4,0) node[below left]{$T~(\tcdegree\rm{C})$};
+    \draw[->] (0,0) -- (0,3) node[below left]{$P~(\rm{Pa})$};
+    
+    \draw[smooth,samples=100,domain=0:3.5]
+    plot(\x,{tan(7)*\x + 3*tan(7)});
+     \draw[dashed, smooth,samples=100,domain=0:3.5]
+    plot(\x,{tan(14)*\x + 3*tan(14)});
+     \draw[dashdotted, smooth,samples=100,domain=0:3.5]
+    plot(\x,{tan(20)*\x + 3*tan(20)});
+   
+   \draw[dotted, smooth,samples=100,domain=-3:0]
+    plot(\x,{tan(7)*\x + 3*tan(7)});
+     \draw[dotted, smooth,samples=100,domain=-3:0]
+    plot(\x,{tan(14)*\x + 3*tan(14)});
+     \draw[dotted, smooth,samples=100,domain=-3:0]
+    plot(\x,{tan(20)*\x + 3*tan(20)});
+   
+   \draw[fill] (-3,0) circle (1pt) node[below] {$T_0^C$};
+\end{tikzpicture}
+\caption{Extrapolando a relação entre $P$ e $T$ para qualquer gás, obtemos sempre o mesmo valor de temperatura para o qual a pressão será nula. No caso da escala Celsius, tal valor corresponde a $T_0^C = \np[\tcdegree C]{-273.15}$.}
+\end{figure}
+
+Podemos então utilizar o valor do zero absoluto para definir uma escala de temperaturas --- a escala Kelvin --- em que a menor temperatura possível seja zero, correspondendo ao zero absoluto, e na qual a temperatura de fusão do gelo seja \np[K]{273,15}, sendo que a relação entre tal escala e a escala Celsius será dada por
 \begin{equation}\label{Eq:RelKC}
-	T_C = T - \np{273.15}.
+	T_K = T_C + \np{273.15}.
 \end{equation}
 
-De acordo com a interpretação cinética para os gases, a pressão exercida pelo gás está relacionada à energia cinética das partículas que o compõe: a pressão é exercida nas paredes de um recipiente pelas colisões sucessivas das partículas que compõe o gás. Ao se atingir o zero absoluto, a pressão e a energia cinética das partículas serão nulas\footnote{Se não há pressão, isso só pode ser explicado pela ausência de colisões entre as partículas do gás e as paredes do recipiente, o que implica que as partículas estão em repouso em relação ao recipiente e que --~consequentemente~-- suas energias cinéticas são nulas.}, o que correspoderia classicamente a todas as partículas do gás repousarem no fundo do recipiente que as contém.
+De acordo com a interpretação cinética para os gases, a pressão exercida pelo gás está relacionada à energia cinética das partículas que o compõe: a pressão é exercida nas paredes de um recipiente pelas colisões sucessivas das partículas. Ao se atingir o zero absoluto, a pressão e a energia cinética serão nulas\footnote{Se não há pressão, isso só pode ser explicado pela ausência de colisões entre as partículas do gás e as paredes do recipiente, o que implica que as partículas estão em repouso em relação ao recipiente e que ---~consequentemente~--- suas energias cinéticas são nulas.}, o que correspoderia classicamente a todas as partículas do gás repousarem no fundo do recipiente que as contém.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Determinação do zero absoluto}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Se tomarmos um termômetro de gás a volume constante como o da Figura~\ref{Fig:TermometroGas}, podemos determinar o valor do zero absoluto com o auxílio de um segundo termômetro. Para isso, basta tomarmos dados da pressão do gás no balão, em função da temperatura do banho térmico no qual o balão está submerso.
+
+Para isso, observamos que ---~através da expressão para a pressão de um gás ideal e da relação~\eqref{Eq:RelKC} entre as temperaturas na escala Kelvin e na escala Celsius~--- obtemos uma relação entre a pressão e a temperatura dada por
+\begin{align}
+    PV &= nRT_K \\
+    &= nR(T_C + T_0) \\
+    &= nRT_C + nRT_0,
+\end{align}
+%
+onde $T_0$ corresponde à diferença entre as escalar Kelvin e Celsius, o que corresponde a \np{273.15}. Podemos então escrever a relação
+\begin{equation}
+    P = \frac{nR}{V}T_C + \frac{nR}{V}T_0.
+\end{equation}
+%
+Se o volume $V$ do gás é mantido constante, a expressão acima segue um comportamento linear. Comparando-a à equação da reta $y = Bx + A$, verificamos que
+\begin{align}
+    B &= \frac{nR}{V} \\
+    A &= \frac{nR}{V}T_0,
+\end{align}
+%
+de onde obtemos
+\begin{equation}\label{Eq:EqRazaoABZeroAbs1}
+    T_0 = \frac{A}{B}.
+\end{equation}
+%
+Ao verificarmos os valores de pressão $P$ em função da temperatura $T$ utilizando o aparato da Figura~\ref{Eq:RelKC}, podemos determinar os valores de $A$ e $B$, de onde podemos calcular o valor do zero absoluto na escala Celsius experimentalmente, um vez que 
+\begin{equation}\label{Eq:EqRazaoABZeroAbs2}
+    T_0^C = - T_0.
+\end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experimento}
@@ -67,6 +229,7 @@ De acordo com a interpretação cinética para os gases, a pressão exercida pel
 
 %%%%%%%%%%%%%%%%%%%%%%
 \subsection{Objetivos}
+\label{Sec:ObjetivosZeroAbsoluto}
 %%%%%%%%%%%%%%%%%%%%%%
 
 \begin{itemize}
@@ -111,15 +274,18 @@ De acordo com a interpretação cinética para os gases, a pressão exercida pel
 \item Adicione água ao tubo de forma que ele fique sem bolhas e com água até aproximadamente \np[cm]{20} de cada extremidade;
 \item Prenda o tubo ao suporte com o auxílio de garras de forma que uma das extremidades possa ser presa ao balão e que a outra fique à mesma altura que a primeira (a parte restante do tubo deve ficar abaixo da mesa, no chão);
 \item Prenda uma das extremidades do tubo à saída lateral do balão volumétrico;
-\item Feche a saída do balão com a rolha;
+\item Se o balão estiver com a extremidade superior aberta, feche-a com a rolha;
 \item Verifique a pressão atmosférica $P_0$ e a anote na Tabela~\ref{Tab:Dados};
-\item Se houver variação na altura da coluna d'água ao fechar a rolha, meça a distância \textbf{vertical} entre os dois meniscos, calcule a pressão associada a tal coluna e a adicione à pressão $P_0$ na Tabela~\ref{Tab:Dados}.
 \item Adicione água ao becker até cobrir a parte arredondada do balão e parte do gargalo;
-\item Verifique a temperatura da água com o termômetro e anote na Tabela~\ref{Tab:Dados}. Também verifique a altura da coluna d'água na extremidade ligada ao balão e a marque no tubo.
+\item Verifique a temperatura da água com o termômetro e a anote na Tabela~\ref{Tab:Dados}.
+\item Verifique a \emph{distância vertical} $h$ entre os topos das colunas d'água nas duas extremidades da mangueira (Veja a Figura~\ref{Fig:FigEsquematicaTermGas}) e a anote na Tabela~
+\ref{Tab:Dados}.\footnote{Se a altura da coluna na extremidade do tubo ligada ao balão for maior que a da coluna na extremidade livre, o valor de $h$ deve ser marcado com um sinal negativo, pois a pressão no balão é menor que a atmosférica.}
+\item Na extremidade do tubo ligada ao balão, marque com caneta a posição do topo da coluna d'água. Essa marca é importante pois ao tomarmos medidas da distância vertical $h$ precisamos garantir que o gás é mantido a volume constante.
 \item Disponha a lamparina abaixo da tela de amianto e a acenda.
-\item Agite a água constantemente para que ela tenha uma temperatura homogênea; 
-\item Assim que a temperatura\footnote{Meça na altura da metade do balão, nem muito acima, nem muito abaixo. Para evitar inomogeneidades na temperatura, o ideal é apagar a lamparina e agitar a água por alguns segundos, anotando a temperatura atingida no equilíbrio térmico.} aumentar \np[\tcdegree]{5} , levante a extremidade livre do tudo de forma que o nível na extremidade ligada ao balão volte ao nível original. Verifique o valor da temperatura e a altura da coluna d'água (diferença de distância vertical entre o nível da extremidade aberta e o nível da extremidade ligada ao balão) e anote na Tabela~\ref{Tab:Dados}.
-\item Aguarde até que o nivel volte a diminuir \np[cm]{2,00} ou \np[cm]{3,00}, reajuste o nível e anote os novos valores de altura da coluna e de temperatura correspondente na Tabela~\ref{Tab:Dados}. Repita esse processo de forma a obter o maior número de dados experimentais possível.
+\item Agite a água constantemente com o bastão de vidro para que ela tenha uma temperatura homogênea; 
+\item Assim que a temperatura aumentar \np[\tcdegree C]{2}, levante a extremidade livre do tubo de forma que o nível na extremidade ligada ao balão volte à posição original, marcada no passo anterior. Verifique o valor da temperatura\footnote{Meça a temperatura próximo da metade da parte arredondada do balão, visando evitar possíveis regiões de temperatura não uniforme (o ideal é apagar a lamparina e agitar a água por alguns segundos, anotando a temperatura atingida no equilíbrio térmico).} e a diferença vertical $h$ entre as colunas d'água e anote na Tabela~\ref{Tab:Dados}.
+\item Aguarde até que a temperatura volte a subir \np[\tcdegree C]{2,0}, reajuste o nível da coluna d'água na extremidade do tubo ligada ao balão até que ele volte a coincidir com a marca inicial, e determine o novo valor de $h$. Anote os novos valores na Tabela~\ref{Tab:Dados}.
+\item Repita o processo do item anterior de forma a obter o maior número de dados experimentais possível, ou completar a Tabela~\ref{Tab:Dados}.
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -158,35 +324,34 @@ Apresente os resultados de maneira clara e organizada. Mostre os cálculos requi
 \end{question}
 
 \begin{question}[type={exam}]{1}
-Liste os equipamentos utilizados descrevendo o tipo do equipamento, sua resolução, e qual é o seu erro de escala.
+Liste os equipamentos utilizados. Para os instrumentos de medida, descreva o tipo do equipamento, sua resolução, e seu erro de escala.
 \end{question}
 
-\begin{question}[type={exam}]{2}
+\begin{question}[type={exam}]{1}
 Preencha as tabelas com o número adequado de algarismos significativos, unidades, e erros de escala apropriados. 
 \end{question}
 
-\begin{question}[type={exam}]{2}
-Elabore um gráfico de $P \times T$ para os dados da Tabela~\ref{Tab:Dados}. Calcule a reta que melhor representa os dados experimentais utilizando o método dos mínimos quadrados e a adicione ao gráfico.
+\begin{question}[type={exam}]{1.5}
+Elabore um gráfico de $P \times T$ para os dados da Tabela~\ref{Tab:Dados}.
 \end{question}
 
-\begin{question}[type={exam}]{2}
-Mostre que, a partir da equação para a pressão em função a temperatura, podemos escrever a relação
-\begin{equation}\label{Eq:EqRazaoABZeroAbs}
-	T_0 = -\frac{A}{B}.
-\end{equation}
-%
-Utilizando essa equação e os coeficientes para a regressão linear obtidos na questão anterior, calcule o valor de temperatura para o qual a pressão será zero. Verifique o erro percentual entre tal valor de temperatura e o valor de referência $T_0^{\textrm{ref}} = -\np[\tcdegree C]{273,15}$ através da expressão
+\begin{question}[type={exam}]{1}
+Calcule a reta que melhor representa os dados experimentais utilizando o método dos mínimos quadrados e a adicione ao gráfico.
+\end{question}
+
+\begin{question}[type={exam}]{1}
+Utilizando a equação obtida na questão anterior e os coeficientes para a regressão linear obtidos através do método de mínimos quadrados, calcule o valor de temperatura para o qual a pressão será zero, utilizando as Equações~\ref{Eq:EqRazaoABZeroAbs1} e~\ref{Eq:EqRazaoABZeroAbs2}. Verifique o erro percentual entre tal valor de temperatura e o valor de referência $T_0^{\textrm{ref}} = -\np[\tcdegree C]{273,15}$ através da expressão
 \begin{equation}
 	E_{\%} = \left|\frac{x-x_{\textrm{ref}}}{x_{\textrm{ref}}}\right| \times 100.
 \end{equation}
 \end{question}
 
-\begin{question}[type={exam}]{3}
-Calcule os erros associados aos coeficientes $A$ e $B$ da regressão linear e --~a partir dos coeficientes, dos erros a eles associados, e da Equação~\ref{Eq:EqRazaoABZeroAbs}~--  calcule o erro associado a $T_0$.
+\begin{question}[type={exam}]{2}
+Calcule os erros associados aos coeficientes $A$ e $B$ da regressão linear e ---~a partir dos coeficientes, dos erros a eles associados, e das Equações~\ref{Eq:EqRazaoABZeroAbs1} e~\ref{Eq:EqRazaoABZeroAbs2}~---  calcule o erro associado a $T_C^0$.
 \end{question}
 
-\begin{question}[type={exam}]{2}
-Através dos resultados obtidos nas questões anteriores, discuta quais objetivos foram atingidos com sucesso, justificando suas conclusões. Se algum objetivo não foi atingido, discuta quais são os possíveis motivos do fracasso e que medidas podem ser tomadas para que eles sejam alcançados.
+\begin{question}[type={exam}]{1.5}
+Considerando os objetivos do experimento, listados na Seção~\ref{Sec:ObjetivosZeroAbsoluto}, e os resultados obtidos nas questões anteriores, discuta quais objetivos foram atingidos com sucesso, justificando suas conclusões. Se algum objetivo não foi atingido, discuta quais são os possíveis motivos do fracasso e que providências podem ser tomadas para que eles sejam alcançados.
 \end{question}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

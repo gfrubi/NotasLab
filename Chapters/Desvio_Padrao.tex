@@ -2,7 +2,7 @@
 \label{Chap:DesvioPadrao}
 
 {\it
-Como mencionado no Capítulo~\ref{Chap:Erros}, podemos interpretar o desvio das medidas em relação à média como uma medida relacionada à incerteza --~ou erro~-- das medidas. Verificaremos o por quê dessa afirmação e como chegar ao valor da incerteza --~tanto para cada uma das medidas, quanto para o valor da incerteza associada ao valor médio das medidas~--.
+Como mencionado no Capítulo~\ref{Chap:Erros}, podemos interpretar o desvio das medidas em relação à média como uma medida relacionada à incerteza ---~ou erro~--- das medidas. Verificaremos o por quê dessa afirmação e como chegar ao valor da incerteza ---~tanto para cada uma das medidas, quanto para o valor da incerteza associada ao valor médio das medidas~---.
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -11,7 +11,7 @@ Como mencionado no Capítulo~\ref{Chap:Erros}, podemos interpretar o desvio das 
 
 Um método útil para verificar a distribuição das medidas em torno de seu valor mais provável é a elaboração de um \emph{histograma}. Imagine o seguinte experimento: Pegamos uma tábua e afixamos uma série de pregos, de forma que suas pontas fiquem presas à tábua e o resto do comprimento dos pregos fique acima dela. Prendemos a tábua de forma que ela permaneça inclinada, com a superfície com os pregos para cima. Abaixo da região de pregos, colocamos várias pequenas caixas numeradas, com a de número 25 exatamente no centro da tábua. Soltamos então uma pequena bola de gude da posição central acima dos pregos. A bola descerá colidindo com os pregos aleatoriamente e finalmente cairá em uma das caixas. Se repetirmos esse procedimento várias vezes e contarmos quantas vezes a bola cai em cada caixa, podemos fazer um gráfico (um histograma) como o da Figura~\ref{Fig:Histograma}.
 
-Se utilizássemos caixas menores, numerando-as como \np{21,1}, \np{21,2}, etc., e aumentássemos o número de vezes que soltamos a bola de gude, chegamos -- em um limite de caixas muito pequenas e um número de lançamentos muito grande -- a uma curva chamada de \emph{distribuição normal} ou \emph{distribuição gaussiana} (veja a Figura~\ref{Fig:Histograma}).
+Se utilizássemos caixas menores, numerando-as como \np{21,1}, \np{21,2}, etc., e aumentássemos o número de vezes que soltamos a bola de gude, chegamos ---~em um limite de caixas muito pequenas e um número de lançamentos muito grande~--- a uma curva chamada de \emph{distribuição normal} ou \emph{distribuição gaussiana} (veja a Figura~\ref{Fig:Histograma}).
 
 \begin{figure*}
 \forceversofloat
@@ -42,7 +42,7 @@ Podemos calcular, a partir das próprias medidas, um parâmetro que leva em cont
 	\frac{\sum_{i=1}^{N} (x_i - \mean{x})^2}{N}.
 \end{equation}
 %
-Quanto mais as medidas diferem do valor médio -- isto é, quanto mais elas se espalham, tornando a largura do pico maior --, maior será o valor da variância. No entanto, como esse valor não tem as mesmas unidades das medidas que estamos tratando, podemos utilizar o \emph{desvio padrão}, definido como a raiz quadrada da variância e representado por $\sigma$:
+Quanto mais as medidas diferem do valor médio ---~isto é, quanto mais elas se espalham, tornando a largura do pico maior~---, maior será o valor da variância. No entanto, como esse valor não tem as mesmas unidades das medidas que estamos tratando, podemos utilizar o \emph{desvio padrão}, definido como a raiz quadrada da variância e representado por $\sigma$:
 \begin{equation}\label{Eq:DesvioPadraoN}
 	\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^N (x_i - \mean{x})^2}. \mathnote{Desvio padrão populacional.}
 \end{equation}
