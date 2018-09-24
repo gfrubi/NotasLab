@@ -17,41 +17,70 @@ Sabemos que a força exercida por uma mola é proporcional à sua distensão:
 	&= -kx,
 \end{align}
 %
-onde assumimos que $x_i = 0$ e $x_f = x$, $k$ é uma constante de proporcionalidade e o sinal negativo significa que a força é no sentido contrário à distensão da mola.
+onde assumimos que $x_i = 0$ e $x_f = x$, que $k$ é uma constante de proporcionalidade, e onde o sinal negativo significa que a força é no sentido contrário à distensão da mola.
 
 \begin{marginfigure}
 	\includegraphics[width=\textwidth]{Ilustrations/Massa-Mola.png}
 	\caption{Sistema massa-mola.}
 \end{marginfigure}
 
-Vamos considerar um sistema onde penduramos uma mola em um suporte --- de forma que ela se disponha verticalmente --- e prendemos um corpo de massa apreciável à extremidade inferior. Deixamos o corpo descer até que a força exercida pela mola equilibre o peso. A partir dessa posição de equilíbrio, qualquer deslocamento exercido fará com que atue sobre o corpo uma força proporcional ao deslocamento, porém com sentido contrário a ele. Utilizando a segunda lei de Newton, podemos descrever a dinâmica do corpo através de
+\begin{marginfigure}
+\centering
+\begin{tikzpicture}[>=Stealth,
+     interface/.style={
+        % superfície
+        postaction={draw,decorate,decoration={border,angle=-45,
+                    amplitude=0.2cm,segment length=2mm}}},
+    ]
+    
+    \draw[interface] (1,0) -- (-1,0);
+    
+    \draw (0,0) -- (0,-0.2);
+    \draw[gray,decoration={aspect=0.3, segment length=1.5mm, amplitude=2mm,coil},decorate] (0,-0.2) -- +(0,-2);
+    \draw (0,-2.2) -- (0,-2.4);
+    
+    \draw[pattern = north west lines] (-0.5, -2.4) rectangle (0.5,-3.4);
+    
+    \draw[fill] (0,-2.9) circle (1pt);
+    \draw[->, thick] (0, -2.9) -- +(0,-1) node[right]{$\vec{P}$};
+    \draw[->, thick] (0, -2.4) -- +(0,1) node[right]{$\vec{F}_e$};
+    
+    \draw[<-] (1,-1.9)node[below right]{$x$} -- (1,-3.9);
+\end{tikzpicture}
+\caption{Direção e sentido das forças em um sistema massa-mola.\label{Fig:BlocoEquilDevidoForcaElastica}}
+\end{marginfigure}
+
+Vamos considerar um sistema onde penduramos uma mola em um suporte, de forma que ela se disponha verticalmente, e prendemos um corpo de massa $m$ à extremidade inferior. Deixamos o corpo descer até que a força exercida pela mola equilibre o peso. A partir dessa posição de equilíbrio, qualquer deslocamento exercido fará com que atue sobre o corpo uma força proporcional ao deslocamento, porém com sentido contrário a ele, tendendo a restaurá-lo à posição de equilíbrio. Utilizando a segunda lei de Newton, podemos descrever a dinâmica do corpo através de
 \begin{align}
-    F_R^x &= ma_x \\
-	P - kx &= ma \\
-	-k \left(x - \frac{P}{k}\right) &= ma \\
-	-kx' &= ma,
+    F_R^x &= m a_x \\
+	P^x + F_e^x &= ma_x \\
+	-P + (-kx) &= m a_x \\
+	-k \left(x + \frac{mg}{k}\right) &= ma_x \\
+	-kx' &= ma_x,
 \end{align}
 %
-onde o eixo $x$ aponta verticalmente para baixo e $x' \equiv x - P/k$. A constante $P/k$ representa na expressão acima a distensão da mola em relação à posição de equilíbrio. Note também que
+onde o eixo $x$ aponta verticalmente para cima e $x' \equiv x + mg/k$. A constante $mg/k$ na expressão acima representa a distensão da mola em relação à posição de equilíbrio. Note também que
 \begin{align}
-    a &= \frac{d}{dt}x \\
-    a' &= \frac{d}{dt}x',
+    a_x &= \frac{d^2}{dt^2}x \\
+    a'_x &= \frac{d^2}{dt^2}x',
 \end{align}
 %
 porém
 \begin{align}
-    a' &= \frac{d}{dt} \left(x - \frac{P}{k}\right) \\
-    &= \frac{d}{dt}x,
+    a'_x &= \frac{d}{dt} x' \\
+    &= \frac{d}{dt} \left(x - \frac{mg}{k}\right) \\
+    &= \frac{d}{dt}x \\
+    &= a_x,
 \end{align}
 %
-pois $P$ e $k$ são constantes. Logo, podemos escrever
+pois $m$, $g$, e $k$ são constantes. Logo, podemos escrever
 \begin{equation}
-    -kx' = m\frac{d^2}{dt^2} x',
+    -kx' = m a'_x,
 \end{equation}
 %
 o que representa uma expressão para a aceleração em função da distensão da mola em relação à posição de equilíbrio do corpo.
 
-Analisando essa equação, temos que sempre que o corpo se desloca em relação à posição de equilíbrio, ele está sujeito a uma força contraria a esse deslocamento, acelerando-o em direção à posição de deslocamento zero (ou seja, a posição de equilíbrio). Quando o objeto passa pela posição de equilíbrio, sua aceleração é zero, porém sua velocidade não, o que o faz passar de tal posição e continuar o movimento oscilatório. Para tentar descrever esse movimento, podemos substituir a aceleração na equação acima por sua definição em termos da derivada segunda da posição em relação ao tempo:
+Analisando essa equação, temos que sempre que o corpo se desloca em relação à posição de equilíbrio, ele está sujeito a uma força na mesma direção, porém com o sentido oposto ao desse deslocamento, acelerando-o em direção à posição de em que a distensão da mola é nula (ou seja, a posição de equilíbrio). Quando o objeto passa pela posição de equilíbrio, sua aceleração é zero, porém sua velocidade não, o que o faz com que ele continue o movimento, dando origem a um \emph{movimento oscilatório}. Para tentar descrever esse movimento, podemos substituir a aceleração na equação acima por sua definição em termos da derivada segunda da posição em relação ao tempo:
 \begin{equation}
 	-kx = m\frac{d^2x}{dt^2},
 \end{equation}
@@ -60,6 +89,180 @@ ou, rearranjando os termos,
 \begin{equation}\label{Eq:EquacaoDiferencialOHS}
 	\frac{d^2x}{dt^2} + \frac{k}{m} x = 0.
 \end{equation}
+
+\begin{figure*}[b]
+\centering
+\begin{tikzpicture}[>=Stealth, scale = 0.75,
+     interface/.style={
+        % superfície
+        postaction={draw,decorate,decoration={border,angle=-45,
+                    amplitude=0.2cm,segment length=2mm}}},
+    ]
+    
+    \draw[interface] (1,0) -- (-1,0);
+    
+    \draw (0,0) -- (0,-0.2);
+    \draw[gray,decoration={aspect=0.3, segment length=1.55mm, amplitude=1.5mm,coil},decorate] (0,-0.2) -- +(0,-2);
+    \draw (0,-2.2) -- (0,-2.4);
+    
+    \draw[pattern = north west lines] (-0.5, -2.4) rectangle (0.5,-3.4);
+    
+    \draw[fill] (0.7,-2.9) circle (1pt);
+    \draw[->] (0.7,-2.9) -- node[right]{$\vec{v}$} +(0, -1);
+    
+    \draw[fill] (0,-2.9) circle (1pt);
+    \draw[->, thick] (0, -2.9) -- +(0,-1) node[right]{$\vec{P}$};
+    \draw[->, thick] (0, -2.4) -- +(0,1) node[right]{$\vec{F}_e$};
+    
+    \draw[dotted] (-1,-2.9) -- (20.2,-2.9);
+    \draw[->] (-1,-5.9) -- (20.2,-5.9) node[below left]{$t$};
+    
+    \draw[->] (-1,-1.4) -- (-1,-4.4) node[above left]{$x$};
+    \draw[|-] (-1,-2.9) node[left]{0} -- (-1,-4.4);
+    
+    \begin{scope}[shift={(2.4,0)}]
+        \draw[interface] (1,0) -- (-1,0);
+    
+        \draw (0,0) -- (0,-0.2);
+        \draw[gray,decoration={aspect=0.3, segment length=2.2mm, amplitude=1.5mm,coil},decorate] (0,-0.2) -- +(0,-3);
+        \draw (0,-3.2) -- (0,-3.4);
+        
+        \draw[pattern = north west lines] (-0.5, -3.4) rectangle (0.5,-4.4);
+
+        \draw[fill] (0.7,-3.9) circle (1pt);
+        \draw[->] (0.7,-3.9) -- node[right]{$\vec{v}$} +(0, -0.75);
+        \draw[->] (0.7, -3.9) -- node[right]{$\vec{a}$} +(0, 0.5);
+        
+        \draw[fill] (0,-3.9) circle (1pt);
+        \draw[->, thick] (0, -3.9) -- +(0,-1) node[right]{$\vec{P}$};
+        \draw[->, thick] (0, -3.4) -- +(0,1.3) node[right]{$\vec{F}_e$};
+    \end{scope}
+    
+    \begin{scope}[shift={(4.8,0)}]
+        \draw[interface] (1,0) -- (-1,0);
+    
+        \draw (0,0) -- (0,-0.2);
+        \draw[gray,decoration={aspect=0.3, segment length=2.55mm, amplitude=1.5mm,coil},decorate] (0,-0.2) -- +(0,-3.5);
+        \draw (0,-3.7) -- (0,-3.9);
+        
+        \draw[pattern = north west lines] (-0.5, -3.9) rectangle (0.5,-4.9);
+        
+        \draw[fill] (0.7,-4.4) circle (1pt);
+        \draw[->] (0.7, -4.4) -- node[right]{$\vec{a}$} +(0, 0.75);
+        
+        \draw[fill] (0,-4.4) circle (1pt);
+        \draw[->, thick] (0, -4.4) -- +(0,-1) node[right]{$\vec{P}$};
+        \draw[->, thick] (0, -3.9) -- +(0,1.6) node[right]{$\vec{F}_e$};
+    \end{scope}
+    
+    \begin{scope}[shift={(7.2,0)}]
+        \draw[interface] (1,0) -- (-1,0);
+    
+        \draw (0,0) -- (0,-0.2);
+        \draw[gray,decoration={aspect=0.3, segment length=2.2mm, amplitude=1.5mm,coil},decorate] (0,-0.2) -- +(0,-3);
+        \draw (0,-3.2) -- (0,-3.4);
+        
+        \draw[pattern = north west lines] (-0.5, -3.4) rectangle (0.5,-4.4);
+        
+        \draw[fill] (0.7,-3.9) circle (1pt);
+        \draw[->] (0.7,-3.9) -- node[above right]{$\vec{v}$} +(0, 0.75);
+        \draw[->] (0.7, -3.9) -- node[right]{$\vec{a}$} +(0, 0.5);
+        
+        \draw[fill] (0,-3.9) circle (1pt);
+        \draw[->, thick] (0, -3.9) -- +(0,-1) node[right]{$\vec{P}$};
+        \draw[->, thick] (0, -3.4) -- +(0,1.3) node[right]{$\vec{F}_e$};
+    \end{scope}
+    
+    %%% Meio
+    \begin{scope}[shift={(9.6,0)}]
+        \draw[interface] (1,0) -- (-1,0);
+    
+        \draw (0,0) -- (0,-0.2);
+        \draw[gray,decoration={aspect=0.3, segment length=1.55mm, amplitude=1.5mm,coil},decorate] (0,-0.2) -- +(0,-2);
+        \draw (0,-2.2) -- (0,-2.4);
+        
+        \draw[pattern = north west lines] (-0.5, -2.4) rectangle (0.5,-3.4);
+        
+        \draw[fill] (0.7,-2.9) circle (1pt);
+        \draw[->] (0.7,-2.9) -- node[right]{$\vec{v}$} +(0, 1);
+        
+        \draw[fill] (0,-2.9) circle (1pt);
+        \draw[->, thick] (0, -2.9) -- +(0,-1) node[right]{$\vec{P}$};
+        \draw[->, thick] (0, -2.4) -- +(0,1) node[right]{$\vec{F}_e$};
+    \end{scope}
+    
+    \begin{scope}[shift={(12.0,0)}]
+        \draw[interface] (1,0) -- (-1,0);
+    
+        \draw (0,0) -- (0,-0.2);
+        \draw[gray,decoration={aspect=0.3, segment length=0.8mm, amplitude=1.5mm,coil},decorate] (0,-0.2) -- +(0,-1);
+        \draw (0,-1.2) -- (0,-1.4);
+        
+        \draw[pattern = north west lines] (-0.5, -1.4) rectangle (0.5,-2.4);
+        
+        \draw[fill] (0.7,-1.9) circle (1pt);
+        \draw[->] (0.7,-1.9) -- node[right]{$\vec{v}$} +(0, 0.7);
+        \draw[->] (0.7, -1.9) -- node[right]{$\vec{a}$} +(0, -0.5);
+        
+        \draw[fill] (0,-1.9) circle (1pt);
+        \draw[->, thick] (0, -1.9) -- +(0,-1) node[right]{$\vec{P}$};
+        \draw[->, thick] (0, -1.4) -- +(0,0.7) node[right]{$\vec{F}_e$};
+    \end{scope}    
+    
+    \begin{scope}[shift={(14.4,0)}]
+        \draw[interface] (1,0) -- (-1,0);
+    
+        \draw (0,0) -- (0,-0.2);
+        \draw[gray,decoration={aspect=0.3, segment length=0.55mm, amplitude=1.5mm,coil},decorate] (0,-0.2) -- +(0,-0.5);
+        \draw (0,-0.7) -- (0,-0.9);
+        
+        \draw[pattern = north west lines] (-0.5, -0.9) rectangle (0.5,-1.9);
+        
+        \draw[fill] (0.7,-1.4) circle (1pt);
+        \draw[->] (0.7, -1.4) -- node[right]{$\vec{a}$} +(0, -0.75);
+        
+        \draw[fill] (0,-1.4) circle (1pt);
+        \draw[->, thick] (0, -1.4) -- +(0,-1) node[right]{$\vec{P}$};
+        \draw[->, thick] (0, -0.9) -- +(0,0.4) node[right]{$\vec{F}_e$};
+    \end{scope}    
+    
+    \begin{scope}[shift={(16.8,0)}]
+        \draw[interface] (1,0) -- (-1,0);
+    
+        \draw (0,0) -- (0,-0.2);
+        \draw[gray,decoration={aspect=0.3, segment length=0.8mm, amplitude=1.5mm,coil},decorate] (0,-0.2) -- +(0,-1);
+        \draw (0,-1.2) -- (0,-1.4);
+        
+        \draw[pattern = north west lines] (-0.5, -1.4) rectangle (0.5,-2.4);
+        
+        \draw[fill] (0.7,-1.9) circle (1pt);
+        \draw[->] (0.7,-1.9) -- node[below right]{$\vec{v}$} +(0, -0.7);
+        \draw[->] (0.7, -1.9) -- node[right]{$\vec{a}$} +(0, -0.5);
+        
+        \draw[fill] (0,-1.9) circle (1pt);
+        \draw[->, thick] (0, -1.9) -- +(0,-1) node[right]{$\vec{P}$};
+        \draw[->, thick] (0, -1.4) -- +(0,0.7) node[right]{$\vec{F}_e$};
+    \end{scope}
+    
+    \begin{scope}[shift={(19.2,0)}]
+        \draw[interface] (1,0) -- (-1,0);
+    
+        \draw (0,0) -- (0,-0.2);
+        \draw[gray,decoration={aspect=0.3, segment length=1.55mm, amplitude=1.5mm,coil},decorate] (0,-0.2) -- +(0,-2);
+        \draw (0,-2.2) -- (0,-2.4);
+        
+        \draw[pattern = north west lines] (-0.5, -2.4) rectangle (0.5,-3.4);
+        
+        \draw[fill] (0.7,-2.9) circle (1pt);
+        \draw[->] (0.7,-2.9) -- node[right]{$\vec{v}$} +(0, -1);
+        
+        \draw[fill] (0,-2.9) circle (1pt);
+        \draw[->, thick] (0, -2.9) -- +(0,-1) node[right]{$\vec{P}$};
+        \draw[->, thick] (0, -2.4) -- +(0,1) node[right]{$\vec{F}_e$};
+    \end{scope}
+\end{tikzpicture}
+\caption{Evolução da posição do bloco em função do tempo.\label{Fig:BlocoOscilando}}
+\end{figure*}
 
 Através da equação acima, percebemos que a posição $x$ como função do tempo satisfaz uma condição curiosa: a posição vezes uma constante mais sua derivada segunda é zero, ou seja, a função $x(t)$ é tal que sua derivada é igual a ela mesma, vezes uma contante. Existem duas funções que satisfazem essa condição: as funções trigonométricas $\sen$ e $\cos$. Se supusermos que $x(t)$ é então da forma
 \begin{equation}
@@ -242,7 +445,17 @@ o que nos leva a
 	\frac{d^2\theta}{dt^2} + \frac{g}{L}\theta = 0.
 \end{equation}
 %
-Como a equação acima tem a mesma forma que a Equação~\ref{Eq:EquacaoDiferencialOHS}, concluímos que o movimento para o pêndulo simples também é harmônico, sendo que seu período é dado por
+Como a equação acima tem a mesma forma que a Equação~\ref{Eq:EquacaoDiferencialOHS}, concluímos que o movimento para o pêndulo simples também é harmônico, sendo que $\theta(t)$ é dada por
+\begin{equation}
+    \theta(t) = \theta_m \sen(\omega t + \phi),
+\end{equation}
+%
+onde $\theta_m$ representa a amplitude máxima de oscilação e $\omega$ é dado por
+\begin{equation}
+    \omega = \sqrt{\frac{g}{L}}.
+\end{equation}
+%
+O período $T$, consequentemente, é dado por
 \begin{equation}
 	T = 2\pi \sqrt{\frac{L}{g}}.
 \end{equation}
@@ -290,7 +503,7 @@ Como a equação acima tem a mesma forma que a Equação~\ref{Eq:EquacaoDiferenc
 \begin{enumerate}
 \item Prenda uma extremidade da mola à haste horizontal do suporte e a disponha verticalmente.
 \item Afira a massa de um gancho com uma anilha, anotando o valor na Tabela~\ref{Tab:DadosMassaMola}. Prenda-os à extremidade inferior da mola.
-\item Desloque o gancho e a anilha alguns centímetros para cima e solte. Deixe o sistema completar 10 oscilações, cronometrando o tempo necessário para efetuá-las. Utilize como erro para o cronômetro o valor de \np[s]{0,2}.\footnote{Em um cronômetro manual o erro aleatório associado ao tempo de reação do operador é bastante significativo, sendo muito maior que o erro de escala. Por isso, podemos descartar o valor desse último e utilizar somente o próprio erro aleatório, que pode ser determinado a partir do desvio padrão. O valor de \np[s]{0,2} é um valor típico para o erro aleatório em um cronômetro manual.}
+\item Desloque o gancho e a anilha alguns centímetros para cima e solte. Deixe o sistema completar 10 oscilações, cronometrando o tempo necessário para efetuá-las. Utilize como erro para o cronômetro\footnote{Em um cronômetro manual o erro aleatório associado ao tempo de reação do operador é bastante significativo, sendo muito maior que o erro de escala. Por isso, podemos descartar o valor desse último e utilizar somente o próprio erro aleatório, que pode ser determinado a partir do desvio padrão. O valor de \np[s]{0,2} é um valor típico para o erro aleatório em um cronômetro manual.} o valor de \np[s]{0,2}.
 \item Anote os resultados para o tempo necessário para completar as 10 oscilações na Tabela~\ref{Tab:DadosMassaMola}. Utilize unidades do SI.
 \item Adicione anilhas ao gancho, uma a uma, e repita o processo acima para cada adição. Anote os valores de massa do gancho com as anilhas e o tempo correspondente de oscilação. Adicione tantas anilhas quanto possível, tomando o cuidado de não danificar a mola.
 \end{enumerate}

@@ -11,7 +11,7 @@
 \section{Empuxo}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Se tomarmos um bloco de madeira e o colocarmos em uma bacia com água, verificaremos que ele flutua. Sabemos que existe uma força gravitacional que tende a fazer com que o bloco, se pudesse se mover livremente, acelere em direção ao centro da Terra. Concluímos então que a água deve exercer alguma força sobre ele, equilibrando o peso e mantendo o sistema com aceleração nula.
+Se tomarmos um bloco de madeira e o colocarmos em uma bacia com água, verificaremos que ele flutua. Sabemos que existe uma força gravitacional que tende a fazer com que o bloco, se ele pudesse se mover livremente, acelere em direção ao centro da Terra. Concluímos então que a água deve exercer alguma força sobre ele, equilibrando o peso e mantendo o sistema com aceleração nula.
 
 \begin{marginfigure}
 \centering
@@ -28,7 +28,7 @@ Podemos verificar a origem dessa força se tomarmos um bloco metálico, que afun
 \caption{Detalhe da Figura~\ref{Fig:BeckerBloco}.}
 \label{Fig:BeckerBlocoDetalhe}
 \end{marginfigure}
-A origem dessa diferença pode ser entendida ao analisarmos as forças exercidas pela pressão do fluido nas superfícies superior e inferior do bloco (as laterais se cancelam). A pressão exercida por um fluido não é constante, aumentando conforme a profundidade aumenta. A pressão é definida como
+A origem dessa diferença pode ser entendida ao analisarmos as forças exercidas pela pressão do fluido nas superfícies superior e inferior do bloco (as laterais se cancelam, veja a Figura~\ref{Fig:EmpuxoDiagramaForcas}). A pressão exercida por um fluido não é constante, aumentando conforme a profundidade aumenta, e é definida como
 \begin{equation}
 	P = \frac{F}{A},
 \end{equation}
@@ -56,11 +56,10 @@ Logo, a força na parte inferior do bloco é maior que na parte superior, já qu
 		\draw[->] (1.625,0.3333) -- (1,0.3333);
 		\draw[->] (1.75,0) -- (1,0);
 	\end{tikzpicture}
-	\caption{Forças atuando nas faces de um bloco submerso.}
-	\label{Fig:EmpuxoDiagramaForcas}
+	\caption{Forças atuando nas faces de um bloco submerso. \label{Fig:EmpuxoDiagramaForcas}}
 \end{marginfigure}
 
-Essa diferença entre as forças é o que denominamos como \emph{força empuxo}, representada aqui como $\vec{F}_e$ (Figura~\ref{Fig:BlocoBeckerDiagrama}). Sua direção e sentido são verticalmente para cima, pois equilibra --- ao menos parcialmente --- o peso. Podemos verificar a intensidade do empuxo  imaginando a seguinte situação: substituímos o volume ocupado pelo bloco por água (veja a Figura~\ref{Fig:BlAguaBeckerDiagrama}). Nesse caso, sabemos que o ``bloco de água'' deve permanecer em equilíbrio, como qualquer outra região do líquido. Se o ``bloco'' está em equilíbrio, seu peso está sendo equilibrado pelo empuxo. Logo, \emph{o empuxo tem o mesmo módulo que o peso do líquido deslocado}\footnote{Este resultado é conhecido como \emph{princípio de Arquimedes}.}. No caso do bloco metálico acima, o empuxo é equivalente ao peso de um ``bloco de água'' com o mesmo volume que o bloco metálico.
+Essa diferença entre as forças é o que denominamos como \emph{força de empuxo}, representada aqui como $\vec{F}_E$ (Figura~\ref{Fig:BlocoBeckerDiagrama}). Sua direção e sentido são verticalmente para cima, pois equilibra --- ao menos parcialmente --- o peso. Podemos verificar a intensidade do empuxo  imaginando a seguinte situação: substituímos o volume ocupado pelo bloco por água (veja a Figura~\ref{Fig:BlAguaBeckerDiagrama}). Nesse caso, sabemos que o ``bloco de água'' deve permanecer em equilíbrio, como qualquer outra região do líquido. Se o ``bloco'' está em equilíbrio, seu peso está sendo equilibrado pelo empuxo. Logo, \emph{o empuxo tem o mesmo módulo que o peso do líquido deslocado}\footnote{Este resultado é conhecido como \emph{princípio de Arquimedes}.}. No caso do bloco metálico acima, o empuxo é equivalente ao peso de um ``bloco de água'' com o mesmo volume que o bloco metálico.
 
 \begin{marginfigure}
 \centering
@@ -131,7 +130,7 @@ Temos então que
 	F_E &= \rho_{\textrm{água}} V g
 \end{align}
 %
-onde $E$ é igual ao peso do volume de água deslocado, $\rho$ é a densidade do material e $\rho_{\textrm{água}}$ é a densidade da água. Calculando a razão entre as equações acima, temos
+onde $F_E$ é igual ao peso do volume de água deslocado, $\rho$ é a densidade do material e $\rho_{\textrm{água}}$ é a densidade da água. Calculando a razão entre as equações acima, temos
 \begin{equation}
 	\frac{P}{F_E} = \frac{\rho Vg}{\rho_{\textrm{água}}Vg} = \frac{\rho}{\rho_{\textrm{água}}},
 \end{equation}
@@ -150,7 +149,7 @@ a seguinte relação para a razão $\rho/\rho_{\textrm{água}}$:
 \subsection{Densidade de um fluido}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Podemos utilizar uma proveta, um fluido, uma balança, e um conjunto de corpos de prova para verificar a densidade e um corpo de prova para verificar a densidade do fluido.
+Podemos utilizar uma proveta, um fluido, uma balança, e um conjunto de corpos de prova para verificar a densidade do fluido.
 
 
 \begin{marginfigure}
@@ -313,7 +312,7 @@ Calcule a reta que melhor representa os dados experimentais na questão acima ut
 \end{question}
 
 \begin{question}[type={exam}]{1.5}
-Calcule os valores para a densidade relativa $(\rho/\rho_{\textrm{água}})$ dos sólidos, juntamente com o erro propagado, através da Equação~\ref{Eq:DensRelativa}. Preencha a coluna correspondente da Tabela~\ref{Tab:DadosEmpuxo}. 
+Calcule os valores para a densidade relativa $(\rho/\rho_{\textrm{água}})$ dos sólidos, juntamente com o erro propagado, através da Equação~\ref{Eq:DensRelativa}. Apresente os cálculos e preencha com os resultados obtidos a coluna correspondente da Tabela~\ref{Tab:DadosEmpuxo}. 
 \end{question}
 
 \begin{question}[type={exam}]{1.5}

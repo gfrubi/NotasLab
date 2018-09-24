@@ -4,7 +4,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{fullwidth}\it
-	Realizaremos um experimento visando mostrar o comportamento não-linear de um corpo que sofre uma deformação. Verificaremos através dos dados que a deformação segue uma forma característica conhecida como \emph{curva de histerese}. Veremos que as deformações com dependência linear na força aplicada se restringem a condições muito específicas. Utilizaremos os seguintes conceitos/técnicas de análise de dados: medidas, algarismos significativos, gráficos, erros de escala e propagados, histogramas e desvio padrão.
+	Realizaremos um experimento visando mostrar o comportamento não-linear de um corpo que sofre uma deformação. Verificaremos através dos dados que a deformação segue uma forma característica conhecida como \emph{curva de histerese}. Veremos que as deformações com dependência linear na força aplicada se restringem a condições muito específicas. Utilizaremos os seguintes conceitos/técnicas de análise de dados: medidas, algarismos significativos, gráficos, e erros de escala e propagados.
 \end{fullwidth}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -23,7 +23,7 @@ Verificamos através da Lei de Hooke que a deformação de objetos em resposta a
 
 \noindent{}Sabemos, no entanto, que um objeto sujeito a uma força muito grande pode apresentar uma deformação permanente, ou mesmo se quebrar. Além disso, no caso mais geral, a deformação pode ser \emph{não-linear}.
 
-Mesmo para uma mola, caso clássico em que se aplica a Lei de Hooke, a deformação será não-linear se a distensão da mola for muito grande. Por isso se faz a restrição de que \emph{a distensão da mola deve ser pequena}. Podemos entender melhor essa restrição chamando a força exercida pela mola de $f(x)$, onde $x$ representa a distensão da mola, e fazendo uma expansão de $f(x)$ em uma \emph{série de Taylor}. Esse tipo de expansão nos que diz que uma função $g(x)$ qualquer pode ser aproximada em torno de um ponto $x=a$ qualquer como
+Mesmo para uma mola, caso clássico em que se aplica a Lei de Hooke, a deformação será não-linear se a distensão da mola for muito grande. Por isso se faz a restrição de que \emph{a distensão da mola deve ser pequena}. Podemos entender melhor essa restrição chamando a força exercida pela mola de $f(x)$, onde $x$ representa a distensão da mola, e fazendo uma expansão de $f(x)$ em uma \emph{série de Taylor}. Esse tipo de expansão nos que diz que uma função $g(x)$ pode ser aproximada em torno de um ponto $x=a$ qualquer como
 \begin{align}
 	g(x) &= \sum_{n=1}^\infty \left[\frac{d^n}{dx^n}\frac{g(x)}{n!}\right]_{\mathrlap{x=a}}\cdot (x-a)^n \\
 	&= \frac{g(a)}{0!} + \frac{g'(a)}{1!}(x - a) + \frac{g''(a)}{2!}(x-a)^2 + \frac{g'''(a)}{3!}(x-a)^3 + \dots \\
@@ -47,7 +47,7 @@ e se fizermos $k \equiv f'(0)$,
 	f(x) = kx.
 \end{equation}
 %
-Portanto, quando falamos em pequenos deslocamentos, \emph{estamos restringindo os valores de termos de ordens quadrática ou superiores a valores muito menores que o termo de ordem linear}. Respeitada essa condição, o que poder ser feito através da escolha de uma distensão máxima adequada --- isto é, que ela seja suficientemente pequena para que os termos de ordem superior a 2 sejam desprezíveis ---, podemos tratar as deformações de um objeto como sendo lineares.
+Portanto, quando falamos em pequenas distensões, \emph{estamos restringindo os valores de termos de ordens quadrática ou superiores a valores muito menores que o termo de ordem linear}. Respeitada essa condição, o que poder ser feito através da escolha de uma distensão máxima adequada --- isto é, que ela seja suficientemente pequena para que os termos de ordem superior a 2 sejam desprezíveis ---, podemos tratar as deformações de um objeto como sendo lineares.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Elasticidade e Histerese}
@@ -66,11 +66,11 @@ Portanto, quando falamos em pequenos deslocamentos, \emph{estamos restringindo o
 	\label{Fig:Histerese}
 \end{marginfigure}
 
-Uma característica que também pode ser observada no caso de uma deformação não linear é a \emph{histerese}. Temos na Figura~\ref{Fig:Histerese} uma típica figura de histerese: quando efetuamos um aumento gradual da variável independente, ocorre um aumento não linear da variável dependente. Quando passamos a fazer uma diminuição da variável independente, existe uma diminuição da variável dependente, porémos valores assumidos pela variável dependente são diferentes nos dois processos. Vários sistemas físicos têm esse tipo de comportamento: deformações de materiais, magnetização de imãs, campos elétricos em alguns materiais, etc.
+Uma característica que também pode ser observada no caso de uma deformação não-linear é a \emph{histerese}. Temos na Figura~\ref{Fig:Histerese} uma típica figura de histerese: quando efetuamos um aumento gradual da variável independente, ocorre um aumento não-linear da variável dependente. Quando passamos a fazer uma diminuição da variável independente, existe uma diminuição correspondente da variável dependente, porém os valores não coincidem com aqueles do processo de aumento. Vários sistemas físicos têm esse tipo de comportamento: deformações de materiais, magnetização de imãs, campos elétricos em alguns materiais, etc.
 
-Na Figura~\ref{Fig:HistereseElast} temos um gráfico da tensão em função deformação para um elástico de borracha. As linhas representam o processo de aumento e diminuição progressiva da tensão exercida sobre o elástico. Vemos que as duas curvas não coincidem. É impotante notar que, para o caso elástico, só há a coincidência entre o ponto inicial e final se o processo for realizado lentamente.
+Na Figura~\ref{Fig:HistereseElast} temos um gráfico da tensão em função deformação para um elástico de borracha. As linhas representam o processo de aumento e diminuição progressiva da tensão exercida sobre o elástico. Vemos que as duas curvas não coincidem. É impotante notar que, para o caso do elástico, só há a coincidência entre o ponto inicial e final\footnote{O quadrado e o círculo mais à esquerda na figura.} se o processo for realizado lentamente.
 
-A explicação para este fenômeno pode ser dada ao analisarmos o processo de um ponto de vista de energia: em uma mola, quando a esticamos, armazenamos energia potencial elástica. Já para um elástico de borracha, quando o esticamos, além de armazenarmos energia potencial elástica, também é possível notar um \emph{aumento da temperatura do elástico}, o que ocasiona uma perda de calor para o ambiente. Ao relaxarmos a distensão, é necessária a absorção de calor do meio. Como esse processo é demorado, se relaxarmos o elástico rapidamente, percebemos que ele não volta ao tamanho original. Após algum tempo, no entanto, a absorção de calor ocorre e o restaura ao tamanho inicial.
+A explicação para este comportamento pode ser dada ao analisarmos o processo de um ponto de vista de energia: em uma mola, quando a esticamos, armazenamos energia potencial elástica. Já para um elástico de borracha, quando o esticamos, além de armazenarmos energia potencial elástica, também é possível notar um \emph{aumento da temperatura do elástico}, o que ocasiona uma perda de calor para o ambiente. Ao relaxarmos a distensão, é necessária a absorção de calor do meio. Como esse processo é demorado, se relaxarmos o elástico rapidamente, percebemos que ele não volta ao tamanho original. Após algum tempo, no entanto, a absorção de calor ocorre e o restaura ao tamanho inicial.
 
 \begin{figure*}[!h]\forcerectofloat
 	\centering
@@ -79,7 +79,7 @@ A explicação para este fenômeno pode ser dada ao analisarmos o processo de um
 	\label{Fig:HistereseElast}
 \end{figure*}
 
-Esse fenômeno pode ser entendido analisando a estrutura da borracha: ela é constituída de moléculas de polímeros de tamanhos diferentes, constituindo um emaranhado de fibras. Devido à agitação térmica das moléculas --- agitação característica dos corpos a nível molecular associada à temperatura --- as moléculas sofrem colisões laterais sucessivas, encurtando-se. Quando esticamos o elástico, as moléculas alinham-se, colidindo lateralmente contra as menores, transferindo energia cinética e aumentando a temperatura. Se o processo de esticamento demora tempo suficente para que o calor seja transferido para o meio --- através de colisões das moléculas mais curtas da superfície com o ar, por exemplo, transferindo energia cinética para fora da borracha ---, ao relaxarmos o elástico, não há energia suficiente nas moléculas menores para que elas colidam com as maiores e façam com que elas se contraiam totalmente. Portanto, há uma deformação residual no elástico.
+Esse fenômeno pode ser entendido analisando a estrutura da borracha: ela é constituída de moléculas de polímeros de tamanhos diferentes, constituindo um emaranhado de fibras. Devido à agitação térmica das moléculas ---~agitação característica dos corpos a nível molecular associada à temperatura~--- as moléculas sofrem colisões laterais sucessivas, encurtando-se. Quando esticamos o elástico, as moléculas alinham-se, colidindo lateralmente contra as menores, transferindo energia cinética e aumentando a temperatura. Se o processo de esticamento demora tempo suficente para que o calor seja transferido para o meio ---~através de colisões das moléculas mais próximas da superfície com as moléculas do ar, por exemplo, transferindo energia cinética para fora da borracha~---, ao relaxarmos o elástico, não há energia suficiente nas moléculas menores para que elas colidam com as maiores e façam com que elas se contraiam totalmente. Portanto, há uma deformação residual no elástico.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experimento}
@@ -91,8 +91,8 @@ Esse fenômeno pode ser entendido analisando a estrutura da borracha: ela é con
 %%%%%%%%%%%%%%%%%%%%%%
 
 \begin{itemize}
-	\item Verificar o melhor valor para a medida da massa de um conjunto de anilhas através do valor médio;
-	\item Calcular o desvio padrão dos valores da massa e o valor do desvio padrão da média;
+%	\item Verificar o melhor valor para a medida da massa de um conjunto de anilhas através do valor médio;
+%	\item Calcular o desvio padrão dos valores da massa e o valor do desvio padrão da média;
 	\item Realizar as medidas de deformação de um elástico verificando a curva de histerese resultante;
 	\item Verificar a dissipação de energia envolvida em processos que não são elásticos. 
 \end{itemize}
@@ -118,8 +118,8 @@ Esse fenômeno pode ser entendido analisando a estrutura da borracha: ela é con
 	\item Verifique a massa $m_a$ de cada uma das anilhas e anote na Tabela~\ref{tab:ComprimentoElastico};
 	\item Verifique a massa $m_g$ dos ganchos e anote na Tabela~\ref{tab:ComprimentoElastico};
 	\item Na haste horizontal do suporte pendure um elástico de borracha e na sua extremidade livre pendure um gancho com uma anilha;
-	\item Meça o comprimento $\ell$ do elástico e anote, juntamente com a massa total $m_t$ sustentada pelo elástico, nas colunas correspondentes ao processo de ``carga'' da Tabela~\ref{tab:ComprimentoElastico};
-	\item Adicione mais uma anilha e verifique o novo comprimento, anotando os dados na Tabela~\ref{tab:ComprimentoElastico};
+	\item Meça o comprimento $\ell$ do elástico e o anote, juntamente com a massa total $m_t$ sustentada pelo elástico, nas colunas correspondentes ao processo de ``carga'' da Tabela~\ref{tab:ComprimentoElastico};
+	\item Adicione mais uma anilha e verifique o novo comprimento, anotando os dados para $\ell$ e $m_t$ na Tabela~\ref{tab:ComprimentoElastico};
 	\item Repita o item acima até que todas as anilhas tenham sido penduradas. Utilize ganchos adicionais quando necessário. Não esqueça de somar a massa do gancho;
 	\item Anote os últimos os valores\footnote{Atenção: se houver demora para iniciar o processo de descarga, pode ser necessário realizar uma nova medida de comprimento, pois é comum que o elástico continue cedendo lentamente ao peso suspenso.} de comprimento e massa do processo de ``carregamento'' também nas colunas relativas ao processo de ``descarregamento'' Tabela~\ref{tab:ComprimentoElastico};
 	\item Retire as anilhas suspensas pelo elástico uma a uma, realizando o processo inverso ao ``carregamento'', anotando os valores de massa e comprimento correspondentes.
@@ -159,23 +159,23 @@ Esse fenômeno pode ser entendido analisando a estrutura da borracha: ela é con
 Apresente os resultados de maneira clara e organizada. Mostre os cálculos requisitados de maneira clara e sucinta, evidenciando o raciocínio desenvolvido.
 \end{question}
 
-\begin{question}[type={exam}]{1}
+\begin{question}[type={exam}]{1.5}
 Liste os equipamentos utilizados. Para os instrumentos de medida, descreva o tipo do equipamento, sua resolução, e seu erro de escala.
 \end{question}
 
-\begin{question}[type={exam}]{1}
+\begin{question}[type={exam}]{1.5}
 Preencha as tabelas com o número adequado de algarismos significativos, unidades, e erros de escala apropriados. 
 \end{question}
 
-\begin{question}[type={exam}]{2}
-Calcule o melhor valor para a massa de uma anilha (média) e também o desvio padrão dos valores da massa das anilhas.
-\end{question}
+%\begin{question}[type={exam}]{2}
+%Calcule o melhor valor para a massa de uma anilha (média) e também o desvio padrão dos valores da massa das anilhas.
+%\end{question}
 
-\begin{question}[type={exam}]{2}
+\begin{question}[type={exam}]{2.5}
 Elabore em papel milimetrado um gráfico de $\ell \times m$ ---~onde $\ell$ é o comprimento do elástico e $m$ é a massa total correspondente ao conjunto de anilhas e ganchos que o elástico sustenta~---. Ambos os conjuntos de dados (``carregamento'' e ``descarregamento'' na Tabela~\ref{tab:ComprimentoElastico}) devem estar contidos no mesmo gráfico, sendo que os pontos de cada conjunto de dados devem estar claramente diferenciados.
 \end{question}
 
-\begin{question}[type={exam}]{1.5}
+\begin{question}[type={exam}]{2}
 Calcule a diferença entre os comprimentos do elástico quando ele suporta somente uma anilha no processo de carga e no processo de descarga (a diferença entre a primeira medida realizada no carregamento e a última no descarregamento). Através de tal valor, calcule a diferença de energia potencial gravitacional entre as duas posições. O que acontece com a energia potencial perdida? (\emph{A energia não fica armazenada como energia potencial elástica!})
 \end{question}
 
