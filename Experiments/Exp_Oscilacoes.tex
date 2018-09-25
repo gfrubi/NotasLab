@@ -80,14 +80,16 @@ pois $m$, $g$, e $k$ são constantes. Logo, podemos escrever
 %
 o que representa uma expressão para a aceleração em função da distensão da mola em relação à posição de equilíbrio do corpo.
 
-Analisando essa equação, temos que sempre que o corpo se desloca em relação à posição de equilíbrio, ele está sujeito a uma força na mesma direção, porém com o sentido oposto ao desse deslocamento, acelerando-o em direção à posição de em que a distensão da mola é nula (ou seja, a posição de equilíbrio). Quando o objeto passa pela posição de equilíbrio, sua aceleração é zero, porém sua velocidade não, o que o faz com que ele continue o movimento, dando origem a um \emph{movimento oscilatório}. Para tentar descrever esse movimento, podemos substituir a aceleração na equação acima por sua definição em termos da derivada segunda da posição em relação ao tempo:
+Analisando essa equação, temos que sempre que o corpo se distancia da posição de equilíbrio, ele está sujeito a uma força na mesma direção, porém com o sentido oposto ao desse deslocamento, acelerando-o em direção à posição de em que a distensão da mola é nula (ou seja, em direção à posição de equilíbrio); isso é o que ocorre em todas as posições representadas na Figura~\ref{Fig:BlocoOscilando}, exceto $t_0$, $t_4$, e $t_7$. Quando o objeto passa pela posição de equilíbrio ---~posições $t_0$, $t_4$, e $t_7$~---, sua aceleração é zero, porém sua velocidade não, o que o faz com que ele continue o movimento, dando origem a um \emph{movimento oscilatório}.
+
+Para descrever esse movimento, podemos substituir a aceleração na equação acima por sua definição em termos da derivada segunda da posição em relação ao tempo:
 \begin{equation}
-	-kx = m\frac{d^2x}{dt^2},
+	-kx' = m\frac{d^2x'}{dt^2},
 \end{equation}
 %
 ou, rearranjando os termos,
 \begin{equation}\label{Eq:EquacaoDiferencialOHS}
-	\frac{d^2x}{dt^2} + \frac{k}{m} x = 0.
+	\frac{d^2x'}{dt^2} + \frac{k}{m} x' = 0.
 \end{equation}
 
 \begin{figure*}[b]
@@ -119,6 +121,11 @@ ou, rearranjando os termos,
     
     \draw[->] (-1,-1.4) -- (-1,-4.4) node[above left]{$x$};
     \draw[|-] (-1,-2.9) node[left]{0} -- (-1,-4.4);
+    \draw[|-|] (0,-5.9) node[below]{$t_0$} -- (2.4,-5.9) node[below]{$t_1$};
+    \draw[|-|] (4.8,-5.9) node[below]{$t_2$} -- (7.2,-5.9) node[below]{$t_3$};
+    \draw[|-|] (9.6,-5.9) node[below]{$t_4$} -- (12,-5.9) node[below]{$t_5$};
+    \draw[|-|] (14.4,-5.9) node[below]{$t_6$} -- (16.8,-5.9) node[below]{$t_7$};
+    \draw[-|] (16.8,-5.9) -- (19.2, -5.9) node[below]{$t_7$};
     
     \begin{scope}[shift={(2.4,0)}]
         \draw[interface] (1,0) -- (-1,0);
@@ -264,14 +271,14 @@ ou, rearranjando os termos,
 \caption{Evolução da posição do bloco em função do tempo.\label{Fig:BlocoOscilando}}
 \end{figure*}
 
-Através da equação acima, percebemos que a posição $x$ como função do tempo satisfaz uma condição curiosa: a posição vezes uma constante mais sua derivada segunda é zero, ou seja, a função $x(t)$ é tal que sua derivada é igual a ela mesma, vezes uma contante. Existem duas funções que satisfazem essa condição: as funções trigonométricas $\sen$ e $\cos$. Se supusermos que $x(t)$ é então da forma
+Através da equação acima, percebemos que a posição $x$' como função do tempo satisfaz uma condição curiosa: a posição vezes uma constante positiva somada à  sua derivada segunda resulta em zero, ou seja, a função $x'(t)$ é tal que sua derivada é igual a ela mesma, vezes uma constante negativa. Existem duas funções que satisfazem essa condição: as funções trigonométricas seno e cosseno. Se supusermos que $x'(t)$ possui a forma
 \begin{equation}
-	x(t) = A\sen(\omega t)
+	x'(t) = A\sen(\omega t + \phi)
 \end{equation}
 %
 e a substituirmos na Equação~\eqref{Eq:EquacaoDiferencialOHS}, temos
 \begin{equation}
-	-A\omega^2\sen(\omega t) + \frac{k}{m}A\sen(\omega t)=0
+	-A\omega^2\sen(\omega t + \phi) + \frac{k}{m}A\sen(\omega t + \phi)=0
 \end{equation}
 %
 o que pode ser simplificado a
@@ -294,10 +301,10 @@ o que pode ser simplificado a
 \caption{Gráfico da posição (linha contínua), velocidade (linha tracejada), e aceleração (linha pontilhada) como funções do tempo para um sistema massa-mola. (As escalas dos eixos verticais das três funções são diferentes para que os três gráficos possam ser comparados qualitativamente.)}
 \end{marginfigure}
 
-Verificamos então que a forma suposta para $x(t)$ é solução da Equação~\eqref{Eq:EquacaoDiferencialOHS} se $\omega = \sqrt{k/m}$. Portanto, concluímos que a posição do objeto descreve uma curva senoidal em um gráfico da posição em função do tempo. A partir da expressão para a posição, podemos calcular a velocidade e a aceleração em função do tempo
+Verificamos então que a forma suposta para $x'(t)$ é solução da Equação~\eqref{Eq:EquacaoDiferencialOHS} se $\omega = \sqrt{k/m}$, sendo que as constantes $A$ e $\phi$ podem assumir quaisquer valores. Claramente $A$ representa os valores máximos de deslocamento do corpo em relação à posição de equilíbrio, e é denominada \emph{amplitude} do movimento. Já a constante $\phi$ nos permite mudar o valor de $x(t=0)$, e em geral escolhemos $\phi = 0$, o que implica em $x(0) = 0$. Portanto, concluímos que a posição do objeto descreve uma curva senoidal em um gráfico da posição em função do tempo. A partir da expressão para a posição, podemos calcular a velocidade e a aceleração em função do tempo
 \begin{align}
-	v(t) &= A\omega\cos\omega t \\
-	a(t) &= -A\omega^2\sen\omega t.
+	v'(t) &= A\omega\cos\omega t \\
+	a'(t) &= -A\omega^2\sen\omega t.
 \end{align}
 
 \begin{marginfigure}
@@ -309,7 +316,7 @@ Verificamos então que a forma suposta para $x(t)$ é solução da Equação~\eq
     
     \draw[smooth, samples=1000, domain=0:3.5] plot (\x, {sin(3*\x r)});
     
-    \draw[<->|] (0,-1.25) -- node[below]{$2\pi$} +(2.094,0) coordinate (pt);
+    \draw[<->|] (0,-1.25) -- node[below]{$\omega t = 2\pi$} +(2.094,0) coordinate (pt);
     \draw[dotted] (pt) -- +(0,1.25) coordinate (T);
     
     \draw[fill] (T) circle (1pt) node[below right]{$t = T$};
@@ -343,7 +350,7 @@ Expressões como a Equação~\eqref{Eq:EquacaoDiferencialOHS} são comuns em fí
 
 Podemos tratar um objeto que oscila preso a uma corda de massa desprezível como uma oscilação harmônica desde que o ângulo máximo de oscilação --- isto é, a amplitude --- seja pequena. Se essa condição for garantida, o pêndulo é denominado \emph{pêndulo simples}.
 
-\begin{marginfigure}[-3cm]
+\begin{marginfigure}
 	\centering
 %	\forcerectofloat
 	\includegraphics[width=\textwidth]{Ilustrations/Pendulo_simples.png}
@@ -365,6 +372,7 @@ Se deslocarmos um pêndulo para a direita, como na Figura~\ref{Fig:Pendulo}, ter
                     amplitude=0.2cm,segment length=2mm}}},
     ]
 	\draw[interface] (1,0) -- (-1,0);
+	\draw[fill] (0,0) circle (1pt) node[below left]{$O$};
 	\draw (-1,0) -- (1,0);
 	\draw[dotted] (0,0) -- (0,-1.5);
 	\draw (0,-3) arc[start angle = 270, end angle = 300, radius = 3] -- node[right] {$L$} (0,0);
@@ -413,16 +421,22 @@ sendo que consideramos que $r_\perp \approx L$.
 \caption{Decomposição da força peso em uma componente tangencial à trajetória circular e em uma componente ao longo da reta radial que liga o centro da trajetória à posição do corpo. O torque está relacionado à componente tangencial, dada por $P_t = mg\sen\theta$.}
 \end{marginfigure}
 
-Para determinar o torque $\tau$, devemos calcular o produto vetorial $\vec{r}\times\vec{P}$, pois a força responsável pela aceleração angular é a própria força peso que atua no corpo preso à extremidade da corda. Além disso, não estamos interessados na direção do torque, uma vez que o movimento se restringe à rotação em torno do eixo de rotação; a direção de tal eixo não muda\footnote[][3cm]{É interessante notar que se o pêndulo for longo e a massa do corpo suspenso for grande, o pêndulo pode oscilar por muito tempo. Nesse caso verificaremos que o eixo de rotação muda de direção em relação ao solo. Esse efeito, porém, se deve à \emph{rotação da Terra} e não da mudança do eixo de rotação do pêndulo.}. Nesse caso podemos tomar o módulo de $\tau$, obtendo
+Para determinar o torque $\tau$, devemos calcular o produto vetorial $\vec{r}\times\vec{P}$, pois a força responsável pela aceleração angular é a própria força peso que atua no corpo preso à extremidade da corda. Além disso, não estamos interessados na direção do torque, uma vez que o movimento se restringe à rotação em torno do eixo de rotação; a direção de tal eixo não muda\footnote{É interessante notar que se o pêndulo for longo e a massa do corpo suspenso for grande, o pêndulo pode oscilar por muito tempo. Nesse caso verificaremos que o eixo de rotação muda de direção em relação ao solo. Esse efeito, porém, se deve à \emph{rotação da Terra} e não da mudança do eixo de rotação do pêndulo.}. Nesse caso podemos tomar o módulo de $\tau$, obtendo
 \begin{align}
-    |\vec{\tau}| &= |\vec{r}\times\vec{F}| \\
-    &= |\vec{r}\times\vec{P}| \\
+    |\vec{\tau}| &= |\vec{r}\times\vec{F_R}| \\
+    &= |\vec{r}\times(\vec{T} + \vec{P})| \\
+    &= |\vec{r}\times\vec{T} + \vec{r}\times\vec{P}|.
+\end{align}
+%
+Como o vetor $\vec{r}$ parte da origem $O$ e vai até a posição do corpo, ele aponta na mesma direção do fio e é colinear ao vetor tensão $\vec{T}$. Logo, o produto vetorial $\vec{r}\times\vec{T}$ é zero, e o torque é dado por
+\begin{align}
+    |\vec{\tau}| &= |\vec{r}\times\vec{P}| \\
     &= mgL\sen\theta.
 \end{align}
 
-Substituindo os resultados para o momento de inércia e para o torque na segunda lei de Newton, obtemos
+Substituindo os resultados para o momento de inércia e para o torque na segunda lei de Newton para a rotação, obtemos
 \begin{equation}
-    -mgL\sen\theta = mL^2\alpha,
+    -mgL\sen\theta = mL^2\alpha.
 \end{equation}
 %
 O sinal está relacionado ao fato de que a força tem sempre direção contrária ao deslocamento. A aceleração $\alpha$ se refere à derivada segunda da posição angular do pêndulo, portanto podemos reescrever a expressão acima como
@@ -572,6 +586,10 @@ Elabore um gráfico de $T^2 \times m$ para os dados da Tabela~\ref{Tab:DadosMass
 Para a questão anterior, calcule a reta que melhor representa os dados experimentais utilizando o método dos mínimos quadrados e a adicione ao gráfico.  \emph{Utilize as unidades do SI para efetuar a regressão linear para obter resultados de mais fácil interpretação.}
 \end{question}
  
+ \begin{question}[type={exam}]{1}
+Ainda considerando o gráfico $T^2\times m$, demonstre a relação entre o coeficiente angular $B$ e a constante da mola $k$, e calcule o valor desta última.
+\end{question}
+
 \begin{question}[type={exam}]{1}
 Elabore um gráfico de $T^2 \times L$ para os dados da Tabela~\ref{Tab:DadosPendulo}.
 \end{question}
@@ -581,11 +599,7 @@ Para a questão anterior, calcule a reta que melhor representa os dados experime
 \end{question}
 
 \begin{question}[type={exam}]{1}
-Demonstre a relação entre o coeficiente angular $B$ e a constante da mola $k$, e calcule o valor desta última.
-\end{question}
-
-\begin{question}[type={exam}]{1}
-Demonstre a relação entre o coeficiente angular $B$ e a aceleração da gravidade $g$, e calcule o valor desta última.
+Ainda considerando o gráfico $T^2 \times L$, demonstre a relação entre o coeficiente angular $B$ e a aceleração da gravidade $g$, e calcule o valor desta última.
 \end{question}
 
 \begin{question}[type={exam}]{1.5}
