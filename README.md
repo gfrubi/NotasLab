@@ -7,5 +7,89 @@ Na segunda, os experimentos são analisados de um ponto de vista teórico, segui
 
 Fiz um esforço grande visando obter um texto de fácil compreensão e bem ilustrado, mas sempre restam pontos que podem ficar confusos --~ou posso ter cometido um erro!~--. Se isso acontecer, entre em contato comigo. Sugestões são sempre bem vindas.
 
-Clebson Abati Graeff,
-Pato Branco, 2016
+Os arquivos nesse repositório são os códigos-fonte necessários para produzir
+minhas notas de aula de laboratório utilizando LaTeX. Se você deseja obter uma
+cópia do PDF diretamente, no repositório existe uma cópia que é atualizada
+regularmente, mas não em todas as revisões intermediárias.
+
+Clebson Abati Graeff
+
+## Licença
+Os arquivos deste repositório são distribuidos de acordo com a licença Creative
+Commons Atribuição-NãoComercial-CompartilhaIgual 4.0 Internacional
+(http://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt_BR).
+
+## Obtenção de uma cópia, produção do PDF
+Para obter uma cópia, você pode baixá-la em
+`http://github.com/cgraeff/NotasLab` (tanto em versão PDF, quanto os arquivos
+para gerar o PDF).
+
+Para gerar o PDF, é necessária uma distribuição TeX. Versões existem para todos
+os sistemas operacionais, porém nas instruções abaixo vou detalhar os passos
+assumindo o sitema operacional GNU/Linux Fedora, pois ele é gratuito (e é o que
+eu uso). Deve ser possível gerar o PDF em outros sistemas operacionais, mas não
+tenho ideia de como fazer isso, ou de quanto trabalho isso vai dar.
+
+### Como obter uma cópia dos arquivos
+Para obter uma cópia mais facilmente, basta executar em um terminal o comando
+```
+git clone http://github.com/cgraeff/NotasLab
+```
+
+### Pacotes necessários para gerar o arquivo PDF
+Uma série de pacotes que não fazem parte da instalação usual do TeXLive são
+necessários para poder gerar o arquivo PDF. Em particular no Fedora tenho os
+seguintes pacotes (nem todos são necessários para essas notas de aula):
+```
+texlive
+texlive-beamertheme-metropolis
+texlive-biblatex
+texlive-braket
+texlive-calrsfs
+texlive-ccicons
+texlive-collection-langgreek
+texlive-collection-langportuguese
+texlive-epstopdf
+texlive-exam
+texlive-exsheets
+texlive-hardwrap
+texlive-hyphenat
+texlive-lgreek
+texlive-lipsum
+texlive-mathcomp
+texlive-mdframed
+texlive-numprint
+texlive-revtex
+texlive-revtex4
+texlive-standalone
+texlive-textgreek
+texlive-tikz-3dplot
+texlive-tikz-qtree
+texlive-titlesec
+texlive-tkz-euclide
+texlive-tufte-latex
+texlive-units
+gnuplot-latex
+biber
+```
+
+### Como gerar o arquivo PDF
+Para gerar o arquivo PDF, é necessário executar o comando `pdflatex`:
+```
+pdflatex main.tex
+```
+Após executar o `pdflatex` uma vez, devemos gerar a bibliografia através do
+comando `biber`:
+```
+biber main
+```
+seguido do comando `pdflatex main.tex` mais algumas vezes (até que
+o próprio comando pare de pedir para ser executado novamente; em geral são duas vezes).
+
+### Exluir arquivos desnecessários
+Uma maneira simples de excluir os arquivos de log, figuras temporárias, etc, é
+excluir todos os arquivos que não foram adicionados ao git através de
+```
+git clean -x
+```
+
