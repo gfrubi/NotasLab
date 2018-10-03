@@ -58,7 +58,7 @@ e
 	y(x) = A \sen(kx).
 \end{equation}
 %
-O primeiro caso representa simplesmente a oscilação de um ponto do meio no qual a onde se propaga (especificamente, nesse caso, a origem do eixo $x$). No segundo caso, temos uma análise de toda a onda em um dado instante de tempo, como se a congelássemos (veja a Figura~\ref{Fig:OndaCongelada}).
+O primeiro caso representa simplesmente a oscilação de um ponto do meio no qual a onde se propaga (especificamente, nesse caso, aquele localizado na origem do eixo $x$). No segundo caso, temos uma análise de toda a onda em um dado instante de tempo, como se a congelássemos (veja a Figura~\ref{Fig:OndaCongelada}).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \paragraph{Interpretação da frequência angular para uma onda}
@@ -88,7 +88,7 @@ o que nos permite escrever
 \paragraph{Interpretação do número de onda}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Se nos deslocamos na direção do eixo $x$, observamos uma variação da posição $y$, sendo que após percorrermos uma distância $\lambda$ o movimento se repete. Novamente, como a função $\sen\theta$ se repete após $\theta = 2\pi$, temos que para a posição $x = \lambda$
+Se nos deslocamos na direção do eixo $x$, observamos uma variação da posição $y$, sendo que após percorrermos uma distância $\lambda$ ---~denominada \emph{comprimento de onda}~--- o movimento se repete. Novamente, como a função $\sen\theta$ se repete após $\theta = 2\pi$, temos que para a posição $x = \lambda$
 \begin{equation}
 	k \lambda = 2\pi,
 \end{equation}
@@ -98,12 +98,12 @@ ou
 	k = \frac{2\pi}{\lambda}.
 \end{equation}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{Velocidade e sentido de propagação de uma onda}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Velocidade de propagação de uma onda}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Podemos calcular a velocidade de propagação da onda simplesmente verificando que uma crista qualquer (o ponto em que $y$ atinge o valor máximo) se desloca uma distância $\lambda$ a cada oscilação. Logo
-\begin{equation}
+\begin{equation}\label{Eq:RelVelFreqAngNumOnda}
 	v = \frac{\lambda}{T} = \lambda f = \frac{\omega}{k}.
 \end{equation}
 %
@@ -114,7 +114,90 @@ A velocidade de propagação de uma onda é uma constante que depende de caracte
 %
 onde $T$ representa a tensão a qual a corda está submetida, e $\mu$ representa a densidade linear de massa da corda. Portanto, os valores da frequência angular $\omega$ e do número de onda $k$ não são independentes, pois estão ligados através da velocidade.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Sentido de propagação de uma onda}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+O sentido de propagação da onda está ligado ao sinal do termo $\omega t$ na Equação~\eqref{Eq:OndaUnidimensional}. Podemos entender tal relação, consideramos um sistema de referência ortogonal $xy$ e uma onda que se propaga no sentido positivo do eixo $x$, como mostrado na Figura~\ref{Fig:SinalPropOndaSentidoPositivo}. No referencial $xy$, a onda é descrita através de uma função $y(x,t)$ e se propaga com velocidade $v$.
+
 \begin{marginfigure}
+\centering
+\begin{tikzpicture}[>=Stealth]
+
+    \draw[densely dotted, ->] (-0.5,0) -- (3.5,0) node[below left]{$x$};
+    \draw[densely dotted, ->] (0,-1.5) -- (0,1.5) node[below left]{$y$};
+    
+	\draw[smooth, domain=-0.5:3.2,samples=50] plot (\x,{sin(2 * \x r)});
+    
+    \draw [->] (1.25,0) -- (2.75,0) node[above left]{$x'$};
+    \draw [->] (1.25,0) -- (1.25,1.25) node[left]{$y'$};
+
+    \draw [dotted] (1.25,0) -- (1.25, -0.5);    
+    \draw [|<->|] (0, -0.5) -- node[below]{$v\cdot t$} (1.25, -0.5);
+    
+    \draw[->] (1.25, 1) -- (2,1) node[above]{$\vec{v}$};
+
+\end{tikzpicture}
+\caption{Para uma onda que se propagan no sentido positivo de $x$, a relação entre as coordenadas $x$ e $x'$ é $x' = x - vt$.\label{Fig:SinalPropOndaSentidoPositivo}}
+\end{marginfigure}
+
+Em um segundo referencial ortogonal, denotado $x'y'$, que se move na direção e sentido do eixo $x$, com velocidade $v$ em relação ao primeiro sistema de referência, temos que a velocidade da onda é nula. A função $y'$ que descreve a onda deve então depender somente da posição $x'$ nesse referencial, ou seja, temos somente $y'(x')$. Podemos assumir que no referencial $x'y'$ a expressão para a onda é dada por
+\begin{equation}
+    y'(x') = A\sen(kx').
+\end{equation}
+%
+A relação entre $x'$ e $x$ é dada por
+\begin{equation}
+    x' = x - vt,
+\end{equation}
+%
+portanto, podemos escrever $y'(x,t)$ como
+\begin{align}
+    y'(x,t) &= A\sen(k[x - vt]) \\
+    &= A\sen(kx - kvt).
+\end{align}    
+
+Considerando que a origem dos eixos $y$ e $y'$ coincide, podemos escrever $y'(x,t) = y(x,t)$, o que nos permite escrever
+\begin{equation}
+    y(x,t) = A\sen(kx - \omega t), \mathnote{Onda transversal que se propaga no sentido positivo}
+\end{equation}
+%
+onde utilizamos a Equação~\ref{Eq:RelVelFreqAngNumOnda} para eliminar a velocidade. Note, portanto, que no caso em que a onda se desloca no sentido \emph{positivo}, o sinal deve ser \emph{negativo}.
+
+\begin{marginfigure}[3cm]
+\centering
+\begin{tikzpicture}[>=Stealth]
+
+    \draw[densely dotted, ->] (-0.5,0) -- (3.5,0) node[below left]{$x$};
+    \draw[densely dotted, ->] (2.5,-1.5) -- (2.5,1.5) node[below left]{$y$};
+    
+	\draw[smooth, domain=-0.5:3.2,samples=50] plot (\x,{sin(2 * \x r)});
+    
+    \draw [->] (0.4,0) -- (1.5,0) node[below left]{$x'$};
+    \draw [->] (0.4,0) -- (0.4,1.25) node[left]{$y'$};
+
+    \draw [dotted] (0.4,0) -- (0.4, -0.5);    
+    \draw [|<->|] (0.4, -0.5) -- node[below]{$v\cdot t$} (2.5, -0.5);
+    
+    \draw[->] (0.4, 1) -- (-0.1,1) node[below]{$\vec{v}$};
+
+\end{tikzpicture}
+\caption{No caso de uma onda que se propagan no sentido negativo de $x$, a relação entre as coordenadas $x$ e $x'$ é $x' = x + vt$.\label{Fig:SinalPropOndaSentidoNegativo}.}
+\end{marginfigure}
+
+Caso a onda se desloque no sentido negativo do eixo $x$, novamente com um sistema de referência ortogonal $x'y'$ que se move na mesma direção e sentido para a qual a onda se propaga ~---como mostrado na Figura~\ref{Fig:SinalPropOndaSentidoNegativo}~---, temos como única diferença o fato de que a relação entre $x'$ e $x$ é dada por
+\begin{equation}
+    x' = x + vt,
+\end{equation}
+%
+de onde obtemos
+\begin{equation}
+    y(x,t) = A\sen(kx + \omega t). \mathnote{Onda transversal que se propaga no sentido negativo}
+\end{equation}
+%
+Portanto, se a onda se desloca no sentido \emph{negativo} do eixo $x$, temos um sinal \emph{positivo}.
+
+\begin{marginfigure}[2cm]
 \centering
 \begin{tikzpicture}[>=Stealth]
 
@@ -135,19 +218,14 @@ onde $T$ representa a tensão a qual a corda está submetida, e $\mu$ representa
 \caption{Ao aumentarmos o valor de $t$, temos uma diminuição do valor do argumento da função seno. Poderíamos ter uma diminuição equivalente reduzindo o valor de $x$, o que equivale a alterar a posição do ponto preenchido para o ponto vazado. Tal alteração equivale, por sua vez, a deslocar todo o gráfico para a direita.}
 \end{marginfigure}
 
-O sentido de propagação da onda está ligado ao sinal do termo $\omega t$ na Equação~\eqref{Eq:OndaUnidimensional}. Podemos entender tal relação da seguinte maneira: se tomarmos um valor de $x$ qualquer com um valor de $\sen(kx-\omega t)$ correspondente, quando $t$ aumenta, o valor do argumento ---~isto é, $kx -\omega t$~--- diminui. Equivalentemente, poderíamos simplesmente diminuir o argumento escolhendo um valor de $x$ menor, ou seja, escolheríamos um ponto à esquerda. O efeito de aumentar o $t$ é então o de tomar o ``gráfico'' do $\sen(kx)$ e deslocá-lo para a direita, o que implica em uma propagação da onda para a direita. Logo, para uma onda que se propaga no sentido positivo
+Uma maneira alternativa de compreender a relação entre o sinal e o sentido de propagação é a de que se tomarmos um valor de $x$ qualquer com um valor de $\sen(kx-\omega t)$ correspondente, quando $t$ aumenta, o valor do argumento ---~isto é, $kx -\omega t$~--- diminui. Equivalentemente, poderíamos simplesmente diminuir o argumento escolhendo um valor de $x$ menor, ou seja, escolheríamos um ponto à esquerda. O efeito de aumentar o $t$ é então o de tomar o ``gráfico'' do $\sen(kx)$ e deslocá-lo para a direita, o que implica em uma propagação da onda para a direita. Logo, para uma onda que se propaga no sentido positivo
 \begin{equation}
-    y(x,t) = A\sen(kx -\omega t).\mathnote{Onda transversal que se propaga no sentido positivo}
-\end{equation}
-
-Se desejarmos descrever uma onda que se propague no sentido negativo do eixo, basta escolhermos o sinal oposto para o termo $\omega t$:
-\begin{equation}
-    y(x,t) = A\sen(kx +\omega t). \mathnote{Onda transversal que se propaga no sentido negativo}
+    y(x,t) = A\sen(kx -\omega t).
 \end{equation}
 
 \begin{figure*}[t]
 \centering
-\forcerectofloat
+\forceversofloat
 \begin{tikzpicture}[>=Stealth,domain=0:13,samples=250]
 	\draw[<-] (0,2) node[left]{$y$} -- (0,-2);
 	\draw[color = gray!05,smooth,thick] plot (\x,{1.7 * sin(\x r)});
@@ -168,13 +246,13 @@ Se desejarmos descrever uma onda que se propague no sentido negativo do eixo, ba
 \subsection{Ondas estacionárias}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Vamos supor que duas ondas com os mesmos valores de amplitude $A$, frequência angular $\omega$, e número de onda $k$, se propagam em sentidos opostos em um mesmo meio\footnote{Uma maneira simples de se obter tal fenômeno é utilizar uma corda presa a uma parede e em cuja extremidade livre ligamos um oscilador (cuja função é gerar a perturbação, ou seja, a onda). Ao se propagar, a onda atinge a extremidade fixa e é refletida, passando a trafegar no sentido oposto, o que faz com que ela interfira com pulsos de onda gerados posteriormente, e que ainda estão se propagando no sentido original.}. Podemos descrever tais ondas através das expressões
+Vamos supor que duas ondas com os mesmos valores de amplitude $A$, frequência angular $\omega$, e número de onda $k$, se propagam em sentidos opostos em um mesmo meio\footnote[][-1cm]{Uma maneira simples de se obter tal fenômeno é utilizar uma corda presa a uma parede e em cuja extremidade livre ligamos um oscilador (cuja função é gerar a perturbação, ou seja, a onda). Ao se propagar, a onda atinge a extremidade fixa e é refletida, passando a trafegar no sentido oposto, o que faz com que ela interfira com pulsos de onda gerados posteriormente, e que ainda estão se propagando no sentido original.}. Podemos descrever tais ondas através das expressões
 \begin{align}
 	y_1(x,t) &= A \sen(kx - \omega t) \\
 	y_2(x,t) &= A \sen(kx + \omega t).
 \end{align}
 %
-Quando se encontrarem a onda resultante será:\footnote{O fato de que as perturbações devido a ondas diferentes se somam é conhecido como \emph{princípio da superposição} e sua origem reside no fato de que o meio apresenta uma resposta linear a perturbações.}
+Quando se encontrarem a onda resultante será:\footnote[][2cm]{O fato de que as perturbações devido a ondas diferentes se somam é conhecido como \emph{princípio da superposição} e sua origem reside no fato de que o meio apresenta uma resposta linear a perturbações.}
 \begin{align}
 	y_{1+2}(x,t) &= y_1(x,t) + y_2(x,t)\\
 	&= A \sen(kx -\omega t) + A \sen(kx + \omega t).
@@ -189,7 +267,7 @@ podemos reescrever a superposição das duas ondas como
 	y_{1+2}(x,t)=[2A\sen kx]\cos\omega t.
 \end{equation}
 
-\begin{figure*}[!htb]\forceversofloat
+\begin{figure*}[b]\forceversofloat
 \centering
 \begin{tikzpicture}[>=Stealth,domain=0:13,samples=250]
 	\draw[->] (-0.5,0) -- (15,0) node[below]{$x$};
@@ -270,7 +348,7 @@ onde já substituímos $v = \sqrt{T/\mu}$, que dá a velocidade de propagação 
 	\item Determinar o valor da gravidade através do coeficiente angular dos gráficos $f \times F_1(m)$.
 \end{itemize}
 
-\begin{figure}\forceversofloat
+\begin{figure}\forcerectofloat
 	\centering
 	\includegraphics[width=\textwidth]{Ilustrations/Ondas_estacionarias.png}
 	\caption{Aparato para a visualização de ondas estacionárias em uma corda.}
@@ -312,10 +390,12 @@ O valor obtido dessa forma será considerado o \emph{valor de referência} na an
 \item Ligue o gerador de ondas ao oscilador eletromecânico, dispondo o segundo a uma distância de aproximadamente \np[m]{1,30} da extremidade da mesa;\label{Enum:iteminicio}
 \item Prenda a polia ao suporte e a disponha de forma que fique para fora da mesa.
 \item Tome um segmento de fio com tamanho adequado e o prenda ao pino do oscilador. Anote o valor de referência da densidade linear de massa do fio utilizado na Tabela~\ref{Tab:FrequenciaFuncaoMassa};
-\item Afira a massa do gancho, juntamente com uma anilha e pendure-os na extremidade livre da corda, fazendo-a passar pela polia e deixando o gancho suspenso;\label{Enum:itemfim}
+\item Afira a massa do gancho, juntamente com uma anilha e os pendure na extremidade livre da corda, fazendo-a passar pela polia e deixando o gancho suspenso;\label{Enum:itemfim}
+\item Anote o valor da massa $m$ suspensa na corda na Tabela~\ref{Tab:FrequenciaFuncaoMassa}.
 \item Ligue o gerador de ondas e varie a frequência até que se forme uma onda estacionária com dois\footnote{Esse harmônico foi escolhido por ser o de mais fácil visualização.} ventres ($n' =2$).
+\item Anote o valor da frequência $f$ em que a onda estacionária se forma na Tabela~\ref{Tab:FrequenciaFuncaoMassa}. \emph{Obs.: Em alguns equipamentos, a frequência pode variar constantemente. Nesse caso, anote os valores com uma casa após a vírgula e adote o valor de erro como sendo \np[Hz]{0,1}.}
 \item Utilize a trena/régua para medir a distância $L$ entre \emph{os nós das extremidades}\footnote{A distância deve ser medida entre o ponto em que a corda toca a polia (onde se localiza um dos nós) e o nó que deve se formar um pouco antes do pino do oscilador. Em muitos casos o nó se forma tão próximo do pino que não podemos distinguí-lo. Nesse caso meça a distância entre a polia e o próprio pino do oscilador. Este valor é, efetivamente, o comprimento da corda.}. Anote o valor obtido na Tabela~\ref{Tab:FrequenciaFuncaoMassa}. Esse valor será aproximadamente constante e não precisa ser medido novamente.
-\item Anote o valor da massa $m$ suspensa na corda e a frequência $f$ em que a onda estacionária se forma na Tabela~\ref{Tab:FrequenciaFuncaoMassa}. \emph{Obs.: Em alguns equipamentos, a frequência pode variar constantemente. Nesse caso, anote os valores com uma casa após a vírgula e adote o valor de erro como sendo \np[Hz]{0,1}.}
+\item Adicione mais uma anilha ao gancho e repita o processo a partir do item \ref{Enum:itemfim} até que a tabela seja completamente preenchida.
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -329,7 +409,7 @@ O valor obtido dessa forma será considerado o \emph{valor de referência} na an
 \item Utilize a trena para medir a distância $L$ entre \emph{os nós das extremidades}.\footnote{Novamente, devemos medir a distância entre o nó determinado pelo ponto em que a corda toca a polia e o nó que se forma próximo ao pino do oscilador.}
 \item Anote os valores de frequência $f$ e de distância $L$ na Tabela~\ref{Tab:FrequenciaFuncaoComprimento2}.
 \item Mova o oscilador aproximadamente \np[cm]{10,0} em direção à polia.
-\item Varie a frequência até que uma onda estacionária com um ventre se forme novamente, anotando os valores de distância $L$ na Tabela~\ref{Tab:FrequenciaFuncaoComprimento2}. Repita o processo até preencher a tabela ou até que as anilhas estejam prestes a tocar o chão.
+\item Varie a frequência até que uma onda estacionária com dois ventres se forme novamente, anotando os valores de distância $L$ na Tabela~\ref{Tab:FrequenciaFuncaoComprimento2}. Repita o processo até preencher a tabela ou até que as anilhas estejam prestes a tocar o chão.
 \item Repita os itens acima para ondas estacionárias com \emph{três ventres} ($n' = 3$), preenchendo a Tabela~\ref{Tab:FrequenciaFuncaoComprimento3}.
 \end{enumerate}
 
