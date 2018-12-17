@@ -108,7 +108,7 @@ Podemos calcular a velocidade de propagação da onda simplesmente verificando q
 \end{equation}
 %
 A velocidade de propagação de uma onda é uma constante que depende de características do meio no qual a onda se propaga. Em uma onda transversal em uma corda, por exemplo, ela é dada por
-\begin{equation}
+\begin{equation}\label{Eq:VelocidadeOndaEmUmaCorda}
     v = \sqrt{\frac{T}{\mu}},
 \end{equation}
 %
@@ -252,7 +252,7 @@ Vamos supor que duas ondas com os mesmos valores de amplitude $A$, frequência a
 	y_2(x,t) &= A \sen(kx + \omega t).
 \end{align}
 %
-Quando se encontrarem a onda resultante será:\footnote[][2cm]{O fato de que as perturbações devido a ondas diferentes se somam é conhecido como \emph{princípio da superposição} e sua origem reside no fato de que o meio apresenta uma resposta linear a perturbações.}
+Quando ambas estiverem se propagando em uma mesma região do meio de propagação, a onda resultante será dada por:\footnote[][2cm]{O fato de que as perturbações devido a ondas diferentes se somam é conhecido como \emph{princípio da superposição} e sua origem reside no fato de que o meio apresenta uma resposta linear a perturbações.}
 \begin{align}
 	y_{1+2}(x,t) &= y_1(x,t) + y_2(x,t)\\
 	&= A \sen(kx -\omega t) + A \sen(kx + \omega t).
@@ -287,7 +287,7 @@ podemos reescrever a superposição das duas ondas como
 \label{Fig:OndaEstacionaria}
 \end{figure*}
 
-Na Equação~\eqref{Eq:EqOndaEstacionaria}, o termo entre colchetes denota a amplitude de uma onda cuja posição no eixo $y$ muda com o tempo conforme $\cos\omega t$. Analisando tal amplitude, percebemos que para valores periódicos de $x$, o valor da amplitude é \emph{zero}. Isso implica que, no caso da superposição das duas ondas, temos uma onda resultante na qual alguns pontos (denominados \emph{nós}) permanecem parados, enquanto os demais pontos variam sua posição com o tempo, sendo que a amplitude dessa oscilação depende da posição em $x$. Podemos verificar na Figura~\ref{Fig:OndaEstacionaria} uma onda estacionária descrita por tal equação. A linha em preto mostra o estado atual, enquanto as demais mostram o estado da onda em instantes anteriores (em intervalos regulares de tempo). Note que existem ``ventres'' delimitados por $2A\sen kx$ (linhas tracejadas), isto é, ventres cujo perfil é dado pela função $2A\sen kx$ tanto acima, quanto abaixo da direção de propagação $x$. Portanto, o movimento da onda fica restrito a deslocamentos na direção do eixo $y$, limitado pelas linhas tracejadas.
+Na Equação~\eqref{Eq:EqOndaEstacionaria}, o termo entre colchetes denota a amplitude de uma onda cuja posição no eixo $y$ muda com o tempo conforme $\cos\omega t$. Analisando tal expressão, percebemos que para valores periódicos de $x$, o valor da amplitude é \emph{zero}. Isso implica que, no caso da superposição das duas ondas, temos uma onda resultante na qual alguns pontos (denominados \emph{nós}) permanecem parados, enquanto os demais pontos variam sua posição com o tempo, sendo que a amplitude dessa oscilação depende da posição em $x$. Podemos verificar na Figura~\ref{Fig:OndaEstacionaria} uma onda estacionária descrita por tal equação. A linha em preto mostra o estado atual, enquanto as demais mostram o estado da onda em instantes anteriores (em intervalos regulares de tempo). Note que existem ``ventres'' delimitados por $\pm 2A\sen kx$ (linhas tracejadas), isto é, ventres cujo perfil é dado pela função $2A\sen kx$ tanto acima, quanto abaixo da direção de propagação $x$. Portanto, o movimento da onda fica restrito a deslocamentos na direção do eixo $y$, limitado pelas linhas tracejadas.
 
 De acordo com o termo $[2A\sen kx]$, a posição dos nós pode ser obtida fazendo com que
 \begin{equation}
@@ -305,19 +305,21 @@ Temos então que, para uma onda estacionária, os nós aparecem a cada meio comp
 \section{Ondas estacionárias em uma corda fixada em dois pontos}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Em uma onda estacionária, os pontos de fixação devem ser obrigatoriamente nós (afinal, para que houvesse um ventre nos pontos de fixação, a corda precisaria oscilar, o que a fixação impede). Isso faz com que tenhamos um \emph{número inteiro de meios comprimentos de onda} entre os pontos de fixação. Como a velocidade da onda no meio é uma constante característica do próprio meio, temos que somente algumas frequências específicas são capazes de gerar ondas estacionárias.
+Em uma onda estacionária, os pontos de fixação devem ser obrigatoriamente nós (afinal, para que houvesse um ventre nos pontos de fixação, a corda precisaria oscilar, o que a fixação impede). Isso faz com que tenhamos um \emph{número inteiro de meios comprimentos de onda} entre os pontos de fixação. Como a velocidade da onda no meio é uma constante característica do próprio meio, concluímos que somente algumas frequências específicas são capazes de gerar ondas estacionárias.
 
 Sabemos que a amplitude da onda estacionária será nula sempre que
 \begin{equation}
-	kx = n\pi
+	kx = n\pi,
 \end{equation}
-Os dois primeiros nós são então em $x=0$ e em $x = \lambda/2$. Isto significa que temos uma onda estacionária de forma que a distância entre os pontos de fixação equivale a \emph{meio comprimento de onda}.
+%
+logo, os dois primeiros nós são então em $x=0$ e em $x = \lambda/2$. Isto significa que temos uma onda estacionária de forma que a distância entre os pontos de fixação equivale a \emph{meio comprimento de onda}.
 
-Temos outras possibilidades, no entanto: se assumirmos que no segundo ponto de fixação temos o terceiro nó, temos que a distância entre os pontos de fixação será coberta por dois ventres (um comprimento de onda). De forma geral temos que o comprimento de onda de uma onda estacionária que ocorra entre os pontos de fixação estará relacionado com a distância $L$ entre tais pontos através de
-\begin{equation}
-	\frac{\lambda}{2} = \frac{L}{n'},
+Temos outras possibilidades, no entanto: se assumirmos que no segundo ponto de fixação temos o terceiro nó, temos que a distância entre os pontos de fixação será coberta por dois ventres (um comprimento de onda). De forma geral temos que a distância $L$ entre os pontos de fixação é igual a um número inteiro de meios comprimentos de onda:
+\begin{equation}\label{Eq:RelComprimentoCordaEComprimentosDeOndaNaRessonancia}
+    L = n'\frac{\lambda}{2}.
 \end{equation}
-com $n' = 1, 2, 3, \dots$ designando o número\footnote{O número de ventres $n'$ está relacionado ao número de nós $n$ por $n'=n-1$.} de ventres da onda estacionária. Como a frequência está relacionada com a velocidade $v$ e o comprimento de onda através de
+%
+O valor de $n' = 1, 2, 3, \dots$ designa o número\footnote{O número de ventres $n'$ está relacionado ao número de nós $n$ por $n'=n-1$.} de ventres da onda estacionária. Como a frequência está relacionada com a velocidade $v$ e o comprimento de onda através de
 \begin{equation}
 	f = \frac{v}{\lambda},
 \end{equation}
@@ -326,9 +328,10 @@ para uma onda estacionária temos que,
 \begin{equation}\label{Eq:RelacaoVariaveisOndasEstacionarias}
 	f = \frac{n'}{2L}\sqrt{\frac{T}{\mu}},
 \end{equation}
-onde já substituímos $v = \sqrt{T/\mu}$, que dá a velocidade de propagação da onda em termos da tensão $T$ aplicada à corda e da densidade linear de massa $\mu$ da corda.
+%
+onde utilizamos as Equações~\eqref{Eq:VelocidadeOndaEmUmaCorda} e~\eqref{Eq:RelComprimentoCordaEComprimentosDeOndaNaRessonancia}.\footnote{No aparato experimental adotado, a corda passa por uma polia e sustenta um conjunto de anilhas. A tensão na corda será então igual ao peso do conjunto, isto é, $T = mg$.}
 
-É interessante notar, portanto, que para uma corda fixa em ambas as extremidades, existem múltiplos ---~porém específicos~--- valores de frequência para os quais podemos ter uma onda estacionária. Essas frequências são denominadas \emph{frequências de ressonância}, sendo que a menor delas é denominada \emph{modo fundamental} ou \emph{frequência fundamental} ---~ou ainda \emph{primeiro harmônico}~---, enquanto as demais são denominadas \emph{segundo harmônico} ($n'=2$), \emph{terceiro harmônico} ($n'=3$), etc.
+Portanto, é interessante notar que para uma corda cujas extremidades são fixas existem múltiplos ---~porém específicos~--- valores de frequência para os quais podemos ter uma onda estacionária. Essas frequências são denominadas \emph{frequências de ressonância}, sendo que a menor delas é denominada \emph{modo fundamental} ou \emph{frequência fundamental} ---~ou ainda, \emph{primeiro harmônico}~---, enquanto as demais são denominadas \emph{segundo harmônico} ($n'=2$), \emph{terceiro harmônico} ($n'=3$), etc.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experimento}
@@ -389,10 +392,9 @@ O valor obtido dessa forma será considerado o \emph{valor de referência} na an
 \begin{enumerate}
 \item Ligue o gerador de ondas ao oscilador eletromecânico, dispondo o segundo a uma distância de aproximadamente \np[m]{1,30} da extremidade da mesa;\label{Enum:iteminicio}
 \item Prenda a polia ao suporte e a disponha de forma que fique para fora da mesa.
-\item Tome um segmento de fio com tamanho adequado e o prenda ao pino do oscilador. Anote o valor de referência da densidade linear de massa do fio utilizado na Tabela~\ref{Tab:FrequenciaFuncaoMassa};
-\item Afira a massa do gancho, juntamente com uma anilha e os pendure na extremidade livre da corda, fazendo-a passar pela polia e deixando o gancho suspenso;\label{Enum:itemfim}
-\item Anote o valor da massa $m$ suspensa na corda na Tabela~\ref{Tab:FrequenciaFuncaoMassa}.
-\item Ligue o gerador de ondas e varie a frequência até que se forme uma onda estacionária com dois\footnote{Esse harmônico foi escolhido por ser o de mais fácil visualização.} ventres ($n' =2$).
+\item Tome um segmento de fio com tamanho adequado e o prenda ao pino do oscilador. Anote na Tabela~\ref{Tab:FrequenciaFuncaoMassa} o valor de referência para densidade linear de massa $\mu$ do fio utilizado;
+\item Afira a massa do gancho, juntamente com uma anilha e os pendure na extremidade livre da corda, fazendo-a passar pela polia e deixando o gancho suspenso. Anote na Tabela~\ref{Tab:FrequenciaFuncaoMassa} o valor da massa $m$ suspensa na corda;\label{Enum:itemfim}
+\item Ligue o gerador de ondas e varie a frequência até que se forme uma onda estacionária com dois\footnote{Esse harmônico foi escolhido por ser o de mais fácil visualização.} ventres ($n' =2$);
 \item Anote o valor da frequência $f$ em que a onda estacionária se forma na Tabela~\ref{Tab:FrequenciaFuncaoMassa}. \emph{Obs.: Em alguns equipamentos, a frequência pode variar constantemente. Nesse caso, anote os valores com uma casa após a vírgula e adote o valor de erro como sendo \np[Hz]{0,1}.}
 \item Utilize a trena/régua para medir a distância $L$ entre \emph{os nós das extremidades}\footnote{A distância deve ser medida entre o ponto em que a corda toca a polia (onde se localiza um dos nós) e o nó que deve se formar um pouco antes do pino do oscilador. Em muitos casos o nó se forma tão próximo do pino que não podemos distinguí-lo. Nesse caso meça a distância entre a polia e o próprio pino do oscilador. Este valor é, efetivamente, o comprimento da corda.}. Anote o valor obtido na Tabela~\ref{Tab:FrequenciaFuncaoMassa}. Esse valor será aproximadamente constante e não precisa ser medido novamente.
 \item Adicione mais uma anilha ao gancho e repita o processo a partir do item \ref{Enum:itemfim} até que a tabela seja completamente preenchida.
@@ -404,12 +406,10 @@ O valor obtido dessa forma será considerado o \emph{valor de referência} na an
 
 \begin{enumerate}
 \item Mantenha o aparato disposto conforme a descrição da seção anterior;
-\item Utilize uma ou duas anilhas, verifique o valor da massa suspensa pelo fio (gancho e anilhas) e anote na Tabela~\ref{Tab:FrequenciaFuncaoComprimento2}. Desta vez manteremos a massa suspensa constante. Anote também o valor de referência da densidade linear de massa do fio;
-\item Ligue o gerador de ondas e varie a frequência até que se forme uma onda estacionária com dois ventres ($n' = 2$).
-\item Utilize a trena para medir a distância $L$ entre \emph{os nós das extremidades}.\footnote{Novamente, devemos medir a distância entre o nó determinado pelo ponto em que a corda toca a polia e o nó que se forma próximo ao pino do oscilador.}
-\item Anote os valores de frequência $f$ e de distância $L$ na Tabela~\ref{Tab:FrequenciaFuncaoComprimento2}.
-\item Mova o oscilador aproximadamente \np[cm]{10,0} em direção à polia.
-\item Varie a frequência até que uma onda estacionária com dois ventres se forme novamente, anotando os valores de distância $L$ na Tabela~\ref{Tab:FrequenciaFuncaoComprimento2}. Repita o processo até preencher a tabela ou até que as anilhas estejam prestes a tocar o chão.
+\item Utilizando uma ou duas anilhas, verifique o valor da massa $m$ suspensa pelo fio (gancho e anilhas) e anote na Tabela~\ref{Tab:FrequenciaFuncaoComprimento2}. Desta vez manteremos a massa constante. Anote também o valor de referência da densidade linear de massa $\mu$ do fio;
+\item Ligue o gerador de ondas e varie a frequência até que se forme uma onda estacionária com dois ventres ($n' = 2$). Anote o valor de frequência $f$ na Tabela~\ref{Tab:FrequenciaFuncaoComprimento2};\label{Item:OndasEstSegParteLoop}
+\item Utilize a trena para medir a distância $L$ entre \emph{os nós das extremidades}.\footnote{Novamente, devemos medir a distância entre o nó determinado pelo ponto em que a corda toca a polia e o nó que se forma próximo ao pino do oscilador.} Anote o valore de $L$ na Tabela~\ref{Tab:FrequenciaFuncaoComprimento2};
+\item Mova o oscilador aproximadamente \np[cm]{10,0} em direção à polia e repita o processo a partir do item \ref{Item:OndasEstSegParteLoop} até preencher a tabela ou até que as anilhas estejam prestes a tocar o chão.
 \item Repita os itens acima para ondas estacionárias com \emph{três ventres} ($n' = 3$), preenchendo a Tabela~\ref{Tab:FrequenciaFuncaoComprimento3}.
 \end{enumerate}
 
@@ -456,23 +456,23 @@ Liste os equipamentos utilizados. Para os instrumentos de medida, descreva o tip
 Preencha as tabelas com o número adequado de algarismos significativos, unidades, e erros de escala apropriados. 
 \end{question}
 
-\begin{question}[type={exam}]{1}
+\begin{question}[type={exam}]{1}\label{Q:Ondas:GraficoFM}
 Elabore um gráfico \textbf{linear} de $f$ em função da massa $m$ para os dados da Tabela~\ref{Tab:FrequenciaFuncaoMassa}. \emph{Será necessário efetuar uma mudança de variáveis}.
 \end{question}
 
-\begin{question}[type={exam}]{1}
+\begin{question}[type={exam}]{1}\label{Q:Ondas:CoeficientesRetaFM}
 Para a questão anterior, calcule a reta que melhor representa os dados experimentais utilizando o método dos mínimos quadrados e a adicione ao gráfico.
 \end{question}
 
 \begin{question}[type={exam}]{1}
-Utilize a Equação~\eqref{Eq:RelacaoVariaveisOndasEstacionarias} para descrever a relação entre $f$ e $m$, identificando as variáveis dependente e independente, bem como os coeficientes angular e linear. A partir dos valores do coeficiente angular, determine a densidade linear de massa do fio. Determine o erro percentual em relação ao valor de referência utilizando a expressão 
+Considerando a linearização adotada na Questão~\ref{Q:Ondas:GraficoFM} e a a Equação~\eqref{Eq:RelacaoVariaveisOndasEstacionarias}, identifique os coeficientes angular $B$ e linear $A$. Utilizando a relação obtida para o coeficiente angular, determine a densidade linear de massa do fio a partir do valor obtido para $B$ na questão anterior. Determine o erro percentual em relação ao valor de referência utilizando a expressão 
 \begin{equation}
 	E_{\%} = \left|\frac{x-x_{\textrm{ref}}}{x_{\textrm{ref}}}\right| \times 100.
 \end{equation}
 \end{question}
 
 \begin{question}[type={exam}]{1.5}
-Calcule o erro associado ao coeficiente angular obtido na questão anterior. A partir dos valores do coeficiente e do erro, determine o erro associado à densidade linear de massa do fio.
+Calcule o erro associado ao coeficiente angular obtido na Questão~\ref{Q:Ondas:CoeficientesRetaFM}. A partir dos valores do coeficiente e do erro, determine o erro associado à densidade linear de massa do fio.
 \end{question}
 
 \begin{question}[type={exam}]{1}
