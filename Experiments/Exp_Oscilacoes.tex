@@ -4,7 +4,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{fullwidth}\it
-	Verificaremos o comportamento oscilatório de dois sistemas --- um sistema massa-mola e um pêndulo simples ---. Veremos que através das Leis de Newton, chegamos a uma equação cuja solução é uma função periódica que descreve o movimento oscilatório observado. Utilizaremos os seguintes conceitos/técnicas de análise de dados: medidas, algarismos significativos, gráficos, erros de escala e propagados, equação geral para o erro propagado, regressão linear, linearização, e erros dos coeficientes $A$ e $B$.
+	Verificaremos o comportamento oscilatório de dois sistemas, um sistema massa-mola e um pêndulo simples. Veremos que através das Leis de Newton, chegamos a uma equação cuja solução é uma função periódica que descreve o movimento oscilatório observado. Utilizaremos os seguintes conceitos/técnicas de análise de dados: medidas, algarismos significativos, gráficos, erros de escala e propagados, equação geral para o erro propagado, regressão linear, e linearização,.
 \end{fullwidth}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -273,10 +273,18 @@ ou, rearranjando os termos,
 
 Através da equação acima, percebemos que a posição $x$' como função do tempo satisfaz uma condição curiosa: a posição vezes uma constante positiva somada à  sua derivada segunda resulta em zero, ou seja, a função $x'(t)$ é tal que sua derivada é igual a ela mesma, vezes uma constante negativa. Existem duas funções que satisfazem essa condição: as funções trigonométricas seno e cosseno. Se supusermos que $x'(t)$ possui a forma
 \begin{equation}
-	x'(t) = A\sen(\omega t + \phi)
+	x'(t) = A\sen(\omega t + \phi),
 \end{equation}
 %
-e a substituirmos na Equação~\eqref{Eq:EquacaoDiferencialOHS}, temos
+verificamos que
+\begin{align}
+	\frac{d}{dt}x'(t) &= v'(t) = A\omega\cos\omega t \\
+	\frac{d^2}{dt^2} x'(t) &= a'(t) = -A\omega^2\sen\omega t.
+\end{align}
+
+
+%
+Substituindo as expressões para a posição e para a aceleração na Equação~\eqref{Eq:EquacaoDiferencialOHS}, obtemos
 \begin{equation}
 	-A\omega^2\sen(\omega t + \phi) + \frac{k}{m}A\sen(\omega t + \phi)=0
 \end{equation}
@@ -301,12 +309,7 @@ o que pode ser simplificado a
 \caption{Gráfico da posição (linha contínua), velocidade (linha tracejada), e aceleração (linha pontilhada) como funções do tempo para um sistema massa-mola. (As escalas dos eixos verticais das três funções são diferentes para que os três gráficos possam ser comparados qualitativamente.)}
 \end{marginfigure}
 
-Verificamos então que a forma suposta para $x'(t)$ é solução da Equação~\eqref{Eq:EquacaoDiferencialOHS} se $\omega = \sqrt{k/m}$, sendo que as constantes $A$ e $\phi$ podem assumir quaisquer valores. Claramente $A$ representa os valores máximos de deslocamento do corpo em relação à posição de equilíbrio, e é denominada \emph{amplitude} do movimento. Já a constante $\phi$ nos permite mudar o valor de $x(t=0)$, e em geral escolhemos $\phi = 0$, o que implica em $x(0) = 0$. Portanto, concluímos que a posição do objeto descreve uma curva senoidal em um gráfico da posição em função do tempo. A partir da expressão para a posição, podemos calcular a velocidade e a aceleração em função do tempo
-\begin{align}
-	v'(t) &= A\omega\cos\omega t \\
-	a'(t) &= -A\omega^2\sen\omega t.
-\end{align}
-
+Verificamos então que a forma suposta para $x'(t)$ é solução da Equação~\eqref{Eq:EquacaoDiferencialOHS} se $\omega = \sqrt{k/m}$, sendo que as constantes $A$ e $\phi$ podem assumir quaisquer valores. Claramente $A$ representa os valores máximos de deslocamento do corpo em relação à posição de equilíbrio, e é denominada \emph{amplitude} do movimento. Já a constante $\phi$ nos permite mudar o valor de $x(t=0)$, e em geral escolhemos $\phi = 0$, o que implica em $x(0) = 0$. Portanto, concluímos que a posição do objeto descreve uma curva senoidal em um gráfico da posição em função do tempo. Além disso, a velocidade e a aceleração também dependem do tempo através de funções trigonométricas seno e cosseno.
 \begin{marginfigure}
 \centering
 \begin{tikzpicture}[>=Stealth]

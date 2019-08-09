@@ -58,7 +58,7 @@ e
 	y(x) = A \sen(kx).
 \end{equation}
 %
-O primeiro caso representa simplesmente a oscilação de um ponto do meio no qual a onde se propaga (especificamente, nesse caso, aquele localizado na origem do eixo $x$). No segundo caso, temos uma análise de toda a onda em um dado instante de tempo, como se a congelássemos (veja a Figura~\ref{Fig:OndaCongelada}).
+O primeiro caso representa simplesmente a oscilação de um ponto do meio no qual a onde se propaga (especificamente, nesse caso, aquele localizado na origem do eixo $x$). No segundo caso, temos uma análise de toda a onda em um dado instante de tempo, como se a fotografássemos (veja a Figura~\ref{Fig:OndaCongelada}).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \paragraph{Interpretação da frequência angular para uma onda}
@@ -107,7 +107,7 @@ Podemos calcular a velocidade de propagação da onda simplesmente verificando q
 	v = \frac{\lambda}{T} = \lambda f = \frac{\omega}{k}.
 \end{equation}
 %
-A velocidade de propagação de uma onda é uma constante que depende de características do meio no qual a onda se propaga. Em uma onda transversal em uma corda, por exemplo, ela é dada por
+A velocidade de propagação de uma onda é uma constante que depende de características do meio no qual ela se propaga. Em uma onda transversal em uma corda, por exemplo, ela é dada por
 \begin{equation}\label{Eq:VelocidadeOndaEmUmaCorda}
     v = \sqrt{\frac{T}{\mu}},
 \end{equation}
@@ -118,7 +118,7 @@ onde $T$ representa a tensão a qual a corda está submetida, e $\mu$ representa
 \paragraph{Sentido de propagação de uma onda}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-O sentido de propagação da onda está ligado ao sinal do termo $\omega t$ na Equação~\eqref{Eq:OndaUnidimensional}. Podemos entender tal relação, consideramos um sistema de referência ortogonal $xy$ e uma onda que se propaga no sentido positivo do eixo $x$, como mostrado na Figura~\ref{Fig:SinalPropOndaSentidoPositivo}. No referencial $xy$, a onda é descrita através de uma função $y(x,t)$ e se propaga com velocidade $v$.
+O sentido de propagação da onda está ligado ao sinal do termo $\omega t$ na Equação~\eqref{Eq:OndaUnidimensional}. Podemos entender tal relação se consideramos um sistema de referência ortogonal $xy$ e uma onda que se propaga no sentido positivo do eixo $x$, como mostrado na Figura~\ref{Fig:SinalPropOndaSentidoPositivo}. No referencial $xy$, a onda é descrita através de uma função $y(x,t)$ e se propaga com velocidade $v$.
 
 \begin{marginfigure}
 \centering
@@ -185,7 +185,7 @@ onde utilizamos a Equação~\ref{Eq:RelVelFreqAngNumOnda} para eliminar a veloci
 \caption{No caso de uma onda que se propagan no sentido negativo de $x$, a relação entre as coordenadas $x$ e $x'$ é $x' = x + vt$.\label{Fig:SinalPropOndaSentidoNegativo}.}
 \end{marginfigure}
 
-Caso a onda se desloque no sentido negativo do eixo $x$, novamente com um sistema de referência ortogonal $x'y'$ que se move na mesma direção e sentido para a qual a onda se propaga ~---como mostrado na Figura~\ref{Fig:SinalPropOndaSentidoNegativo}~---, temos como única diferença o fato de que a relação entre $x'$ e $x$ é dada por
+Caso a onda se desloque no sentido negativo do eixo $x$, novamente com um sistema de referência ortogonal $x'y'$ que se move na mesma direção e sentido para a qual a onda se propaga ---~como mostrado na Figura~\ref{Fig:SinalPropOndaSentidoNegativo}~---, temos como única diferença o fato de que a relação entre $x'$ e $x$ é dada por
 \begin{equation}
     x' = x + vt,
 \end{equation}
@@ -226,8 +226,11 @@ Uma maneira alternativa de compreender a relação entre o sinal e o sentido de 
 \begin{figure*}[t]
 \centering
 \forceversofloat
+
+\tikzfading[name=fade right, left color=transparent!100, right color=transparent!0]
+
 \begin{tikzpicture}[>=Stealth,domain=0:13,samples=250]
-	\draw[<-] (0,2) node[left]{$y$} -- (0,-2);
+
 	\draw[color = gray!05,smooth,thick] plot (\x,{1.7 * sin(\x r)});
 	\draw[color = gray!10,smooth,thick] plot (\x,{1.7 * sin((\x - 0.1) r)});
 	\draw[color = gray!20,smooth,thick] plot (\x,{1.7 * sin((\x - 0.2) r)});
@@ -236,7 +239,11 @@ Uma maneira alternativa de compreender a relação entre o sinal e o sentido de 
 	\draw[color = gray!80,smooth,thick] plot (\x,{1.7 * sin((\x - 0.5) r)});
 	\draw[color = gray,smooth,thick] plot (\x,{1.7 * sin((\x - 0.6) r)});		
 	\draw[color = black,smooth,thick] plot (\x,{1.7 * sin((\x - 0.7) r)});
-	\draw[->] (-0.5,0) -- (15,0) node[below]{$x$};
+	
+	\fill [white,path fading=fade right] (12,-2) rectangle (13.01,2);
+	
+	\draw[<-] (0,2) node[left]{$y$} -- (0,-2);
+	\draw[->] (-0.5,0) -- (13.5,0) node[below]{$x$};
 \end{tikzpicture}
 \caption{Evolução temporal de uma onda transversal descrita por $y(x,t) = A \sen(kx - \omega t)$.}
 \label{Fig:Onda}
@@ -269,9 +276,9 @@ podemos reescrever a superposição das duas ondas como
 
 \begin{figure*}[b]\forceversofloat
 \centering
+\tikzfading[name=fade right, left color=transparent!100, right color=transparent!0]
 \begin{tikzpicture}[>=Stealth,domain=0:13,samples=250]
-	\draw[->] (-0.5,0) -- (15,0) node[below]{$x$};
-	\draw[<-] (0,2) node[left]{$y$} -- (0,-2);
+
 	\draw[color = gray!05,smooth,thick] plot (\x,{1.7 * sin(\x r) * cos(2.3 r)});
 	\draw[color = gray!10,smooth,thick] plot (\x,{1.7 * sin(\x r) * cos(2.1 r)});
 	\draw[color = gray!20,smooth,thick] plot (\x,{1.7 * sin(\x r) * cos(1.9 r)});
@@ -280,8 +287,15 @@ podemos reescrever a superposição das duas ondas como
 	\draw[color = gray!80,smooth,thick] plot (\x,{1.7 * sin(\x r) * cos(1.3 r)});
 	\draw[color = gray,smooth,thick] plot (\x,{1.7 * sin(\x r) * cos(1.1 r)});		
 	\draw[color = black,smooth,thick] plot (\x,{1.7 * sin(\x r) * cos(0.7 r)});
+	
 	\draw[dashed,color=gray] plot (\x,{1.7 * sin(\x r)});
 	\draw[dashed,color=gray] plot (\x,{-1.7 * sin(\x r)});
+	
+	\fill [white,path fading=fade right] (12,-2) rectangle (13.01,2);
+		
+	\draw[->] (-0.5,0) -- (13.5,0) node[below]{$x$};
+	\draw[<-] (0,2) node[left]{$y$} -- (0,-2);
+	
 \end{tikzpicture}
 \caption{Evolução temporal de uma onda transversal estacionária.}
 \label{Fig:OndaEstacionaria}
@@ -312,7 +326,7 @@ Sabemos que a amplitude da onda estacionária será nula sempre que
 	kx = n\pi,
 \end{equation}
 %
-logo, os dois primeiros nós são então em $x=0$ e em $x = \lambda/2$. Isto significa que temos uma onda estacionária de forma que a distância entre os pontos de fixação equivale a \emph{meio comprimento de onda}.
+logo, os dois primeiros nós são então em $x=0$ (para $n = 0$) e em $x = \lambda/2$ (para $n = 1$). Isto significa que temos uma onda estacionária de forma que a distância entre os pontos de fixação equivale a \emph{meio comprimento de onda}.
 
 Temos outras possibilidades, no entanto: se assumirmos que no segundo ponto de fixação temos o terceiro nó, temos que a distância entre os pontos de fixação será coberta por dois ventres (um comprimento de onda). De forma geral temos que a distância $L$ entre os pontos de fixação é igual a um número inteiro de meios comprimentos de onda:
 \begin{equation}\label{Eq:RelComprimentoCordaEComprimentosDeOndaNaRessonancia}
@@ -331,7 +345,7 @@ para uma onda estacionária temos que,
 %
 onde utilizamos as Equações~\eqref{Eq:VelocidadeOndaEmUmaCorda} e~\eqref{Eq:RelComprimentoCordaEComprimentosDeOndaNaRessonancia}.\footnote{No aparato experimental adotado, a corda passa por uma polia e sustenta um conjunto de anilhas. A tensão na corda será então igual ao peso do conjunto, isto é, $T = mg$.}
 
-Portanto, é interessante notar que para uma corda cujas extremidades são fixas existem múltiplos ---~porém específicos~--- valores de frequência para os quais podemos ter uma onda estacionária. Essas frequências são denominadas \emph{frequências de ressonância}, sendo que a menor delas é denominada \emph{modo fundamental} ou \emph{frequência fundamental} ---~ou ainda, \emph{primeiro harmônico}~---, enquanto as demais são denominadas \emph{segundo harmônico} ($n'=2$), \emph{terceiro harmônico} ($n'=3$), etc.
+Portanto, para uma corda cujas extremidades são fixas, existem múltiplos valores de frequência para os quais podemos ter uma onda estacionária. Essas frequências são denominadas \emph{frequências de ressonância}, sendo que a menor delas é denominada \emph{modo fundamental}, \emph{frequência fundamental}, ou \emph{primeiro harmônico}, e corresponde a um só ventre ($n'=1$). As demais são denominadas \emph{segundo harmônico} ($n'=2$), \emph{terceiro harmônico} ($n'=3$), etc.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experimento}
@@ -348,7 +362,6 @@ Portanto, é interessante notar que para uma corda cujas extremidades são fixas
 	\item Verificar a proporcionalidade da frequência de ressonância $f$ com o inverso do comprimento $L$ da corda.
 	\item Linearizar a equação que relaciona a frequência ao comprimento, determinando a função $F_2(L)$ de forma que um gráfico $f \times F_2(L)$ seja linear.
 	\item Determinar o valor da densidade linear de massa através do coeficiente angular dos gráficos $f \times F_2(L)$.
-	\item Determinar o valor da gravidade através do coeficiente angular dos gráficos $f \times F_1(m)$.
 \end{enumerate}
 
 \begin{figure}\forcerectofloat
