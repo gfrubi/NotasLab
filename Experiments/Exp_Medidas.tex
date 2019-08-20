@@ -4,41 +4,198 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{fullwidth}\it
-	Realizaremos um experimento visando determinar a densidade de alguns sólidos. Para isso, revisaremos o conceito de densidade e o cálculo do volume de sólidos geométricos. Aplicaremos os conceitos sobre medidas diretas e indiretas realizadas com equipamentos analógicos e não-analógicos (equipamentos digitais e equipamentos dotados de escala auxiliar), observando ao obter os dados o número adequado de algarismos significativos. (Referências aos capítulos dos assuntos mencionados.) \comment{medidas, alg. sig.}
+	Realizaremos um experimento visando determinar a densidade de alguns sólidos. Para isso, revisaremos o conceito de densidade e o cálculo do volume de sólidos geométricos. Aplicaremos os conceitos sobre medidas diretas e indiretas realizadas com equipamentos analógicos e não-analógicos (equipamentos digitais e equipamentos dotados de escala auxiliar), observando ao obter os dados o número adequado de algarismos significativos.
 \end{fullwidth}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Densidade}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Unidades, notação científica e prefixos do SI}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+A maior parte dos parâmetros físicos que podem ser medidos têm algum tipo de unidade associada a eles. Ao determinarmos o valor numérico associado a um comprimento, por exemplo, devemos indicar qual foi a unidade utilizada para determinar tal valor. Assim, sempre devemos indicar a unidade juntamente com a medida:
+\begin{align}
+    \ell &= \np[cm]{22,3} \\
+    v &= \np[m/s]{14,82} \\
+    A &= \np[m^2]{8,0},
+\end{align}
+%
+etc.
+
+Além disso, é comum associarmos alguns prefixos multiplicativos às unidades. No primeiro exemplo acima, cm não se refere a uma unidade, mas sim a \emph{centésimos de metro}, onde o c indica \emph{centésimos} da unidade m (o metro). Isso é um recurso amplamente adotado pois muitas vezes apresentar os valores usando sempre a unidade base pode ser inconveniente. Abaixo listamos os prefixos mais comuns:
+\begin{align}
+    \textrm{n} &= \np{0.000000001} \\
+    \textrm{\textmu} &= \np{0.000001} \\
+    \textrm{m} &= \np{0.001} \\
+    \textrm{c} &= \np{0.01} \\
+    \textrm{d} &= \np{0.1} \\
+    \textrm{da} &= \np{10} \\
+    \textrm{h} &= \np{100} \\
+    \textrm{k} &= \np{1000} \\
+    \textrm{M} &= \np{1000000} \\
+    \textrm{G} &= \np{1000000000}.
+\end{align}
+%
+Muitas vezes também pode ser conveniente substituir os prefixos por potências de 10, sendo que o resultado é equivalente. Os prefixos acima, por exemplo, correspondem às seguintes potências:
+\begin{align}
+    \textrm{n} &= \np{1E-9} \\
+    \textrm{\textmu} &= \np{1E-6} \\
+    \textrm{m} &= \np{1E-3} \\
+    \textrm{c} &= \np{1E-2} \\
+    \textrm{d} &= \np{1E-1} \\
+    \textrm{da} &= \np{1E1} \\
+    \textrm{h} &= \np{1E2} \\
+    \textrm{k} &= \np{1E3} \\
+    \textrm{M} &= \np{1E6} \\
+    \textrm{G} &= \np{1E9}.
+\end{align}  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Tipos de Medidas: Medidas Diretas e Indiretas}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+As medidas\footnote{O conteúdo descrito nas seções seguintes é um resumo do Capítulo~\ref{Chap:Medidas}.} podem ser classificadas em dois tipos: diretas e indiretas. Realizar uma medida de uma grandeza, significa fazer uma \emph{comparação direta} ou \emph{indireta} entre o que desejamos medir e um padrão de medida. No caso de, por exemplo, estarmos interessados em verificar o tamanho de um lápis, basta alinhar sua base ao zero de uma régua e verificarmos quantas marcas estão compreendidas no comprimento de tal lápis. Temos, portanto, uma medida direta de uma grandeza.
+
+Algumas medidas, no entanto, não podem ser feitas de maneira direta -- ou podem ser determinadas de maneira mais conveniente de forma indireta. Se necessitamos saber a área de uma folha retangular, basta verificarmos as medidas laterais e então multiplicá-las. Desta forma, estamos determinando a área de uma maneira \emph{indireta}.
+
+O volume de um paralelepípedo pode ser determinado de maneira indireta através do produto de suas três dimensões. Para um sólido irregular, no entanto, é mais conveniente mergulhá-lo em um líquido e verificar através de uma escala graduada impressa no recipiente que comporta tal líquido qual é o volume deslocado. Portanto, uma grandeza qualquer pode ser determinada de maneira direta ou indireta, sendo que a escolha de um ou outro tipo de método é uma questão de conveniência.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Tipos de equipamentos: analógicos e não-analógicos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Os equipamentos de medida podem ser divididos em dois tipos: analógicos e não analógicos. Os equipamentos analógicos são aqueles que permitem que realizemos uma estimativa de valores entre duas marcas quaisquer de sua escala. São exemplos deste tipo de equipamento réguas, velocímetros de ponteiro, relógios de ponteiros, etc.
+
+Outra classe de equipamento são não analógicos: nela se incluem os equipamentos digitais e aqueles dotados de escalas auxiliares. Nos equipamentos digitais, os dados da medida são mostrados através de um visor digital que permite a leitura direta dos valores numéricos. Já os equipamentos dotados de escala auxiliar ---~também conhecida como nônio ou vernier~--- possibilitam a leitura em uma escala analógica principal, porém com a leitura da subdivisão da escala principal na escala auxiliar. Como a escala auxiliar tem divisões muito ``finas'', no entanto, não é possível estimar digitos menores do que a menor divisão da escala auxiliar.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Medidas e Algarismos Significativos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Suponhamos que precisamos usar uma trena para realizar uma medida de um muro. Tal equipamento foi elaborado de tal forma que um metro está subdividido em 10 partes. Alinhamos uma extremidade da trena ---~aquela que contém o zero~--- com uma extremidade do muro e verificamos a outra extremidade. Vemos que o muro passa da marca dos 15 metros por três subdivisões, mas não passa da quarta subdivisão. Cada uma dessas subdivisões corresponte a um décimo de um metro, o que resulta no seguinte valor para a medida:
+\begin{equation}
+     \ell = \numprint[m]{15,3}.
+\end{equation}
+
+\noindent{}No entanto, sabemos que o muro termina em algum lugar entre a terceira e a quarta marca, sendo então maior que 15,3~m. Nesse caso, podemos estimar mais um algarismo. Se, por exemplo, a extremidade do muro está próxima da metade da distância entre as duas marcas da trena, porém antes dela, poderíamos estimar um valor 4 (isto é, quatro décimos da distância entre as duas subdivisões). Finalmente,
+\begin{equation}
+     \ell = \numprint[m]{15,34}.
+\end{equation}
+
+Poderíamos realizar uma estimativa com mais casas após o 4, mas a validade dela seria duvidosa: se já não temos certeza sobre a medida ser 4 (poderia ser 3 ou 5, em escalas menores é muito difícil efetuar uma estimativa razoável), não temos ganho algum em denotar mais algarismos após o 4. Ao conjunto de algarismos que temos certeza (pois foram verificados no instrumento) e ao algarismo estimado, damos o nome de \emph{algarismos significativos}. O último algarismo também é conhecido como \emph{algarismo duvidoso}.
+
+Em casos onde realizamos uma medida que coincide exatamente com uma marca, devemos considerar que o equipamento permitiria expressar divisões menores, quando for o caso. Se, por exemplo, ao medirmos o muro com a trena mencionada a extremidade coincidir com a marca de \np[m]{15}, devemos expressar a medida como
+\begin{equation}
+	\ell = \np[m]{15,00},
+\end{equation}
+%
+pois sabemos que não foi ultrapassada nenhuma submarca de décimos de metro, e determinamos que o algarismo estimado também é zero (pois se aparentemente coincide com a marca, não a ultrapassa em quantidade apreciável).
+
+Em equipamentos não-analógicos, como um equipamento com um mostrador digital ou um equipamento dotado de nônio, não podemos efetuar a leitura de um algarismo estimado. Nesse caso, temos somente os algarismos dados pela leitura. Finalmente, temos que os zeros à esquerda têm a função de posicionar a vírgula e, portanto, não são algarismos significativos. Por exemplo, a medida 0,00567~s só tem três algarismos significativos.
+
+\subsection{Operações envolvendo medidas}
+
+Quando efetuamos contas utilizando duas medidas, é comum obtermos resultados com várias casas após a vírgula. No caso da multiplicação, devemos limitar o número de algarismos significativos àquele da medida que tiver o menor número. Por exemplo
+\begin{subequations}\label{Eq:AlgarismosSignificativos}
+\begin{align}
+     \numprint{12,03} \div \numprint{3,6} &= 3{,}\overline{3}4 = \numprint{3,3} \\
+     \numprint{198,633} \times \numprint{3,211} &= 637{,}\overline{8}1056 = \numprint{637,8},
+\end{align}
+\end{subequations}
+%
+onde a barra representa o último algarismo significativo.
+
+Para o caso da soma ou subtração, mantemos o número de casas decimais da medida que tem o menor número de casas após a vírgula:
+\begin{align}
+	 \numprint{12,03} + \numprint{3,6} &= 15,\overline{6}3\\
+		 &= \numprint{15,6}.
+\end{align}
+
+Quando efetuamos uma operação envolvendo uma constante matemática e uma medida, conservamos no resultado o mesmos número de algarismos significativos da medida. Isso também ocorre quando uma medida é o argumento de uma função. Por exemplo,
+\begin{align}
+	A &= \pi \times (\np[m]{3,66})^2 \\
+	  &= \pi \times (13,\overline{3}956~\textrm{m}^2)\\
+	  &= 42{,}\overline{0}8351855~\textrm{m}^2 \\
+	  &= \numprint{42,1}~\textrm{m}^2 \\
+	  \nonumber \\
+	x &= \ln \numprint{3,555} \\
+	&= 1{,}26\overline{8}355063 \\
+	&= \np{1,268}
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Arredondamento}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Nos exemplos acima, usamos uma barra para denotar o último algarismo significativo. Fazemos isso pois o procedimento de descarte dos algarismos exedentes deve ser realizado somente no final da conta, sempre observando os critérios de \emph{arredondamento}.
+
+Quando em situações como as das Equações~\eqref{Eq:AlgarismosSignificativos} obtemos resultados do tipo
+\begin{equation}
+     \ell = 134{,}\overline{3}9487,
+\end{equation}
+%
+precisamos fazer um arredondamento. No exemplo acima, vemos que 134,4 é um número mais próximo do resultado do que 134,3. Portanto, adotamos as seguintes regras ao realizarmos o arredondamento:
+\begin{enumerate}
+     \item Se o algarismo seguinte ao duvidoso for menor que 5, simplesmente descartamos os algarismos excedentes.
+     \item Se o algarismo seguinte ao duvidoso for maior ou igual a 5, aumentamos o duvidoso de uma unidade e descartamos os demais.
+\end{enumerate}.
+
+Consideremos ainda o seguinte caso
+\begin{equation}
+     m = 956 \times \np{102,25} = 97\overline{7}51.
+\end{equation}
+%
+Se adotarmos o procedimento acima, teremos o número 978 e teremos um número aproximadamente 100 vezes menor que o resultado. Nesse caso, utilizamos a notação científica:
+\begin{equation}
+     m = \numprint{9,78}\times 10^{4}.
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Experimento: Determinação da densidade volumétrica de massa de sólidos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Para explorar os conceitos mencionados acima, vamos calcular a densidade de alguns sólidos. Verificaremos as dimensões dos corpos utilizando réguas e paquímetros e utilizaremos esses resultados para calcular o volume, nos preocupando com o número de algarismos significativos adequado. Após isso, vamos calcular a densidade dos corpos utilizando o valor obtido para a massa com o auxílio de uma balança.
-
-Intro antiga, fazer uma discussão de densidade, volume de sólidos, etc. Alterar o resto da prática para incluir cálculo do volume de esferas, cálculo do volume através de métodos indiretos (proveta). Discutir escalas auxiliares de maneira genérica na teoria, mas dando exemplo do paquímetro. Aqui falar no paquímetro detalhadamente, com um exemplo de medida e tudo mais.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Volume de sólidos geométricos}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Para que possamos determinar a densidade de um corpo qualquer, é importante que saibamos determinar seu volume. Se seu formato é o de um sólido geométrico, o volume pode ser determinado através de suas medidas. Abaixo listamos algumas formas comuns, juntamente com as expressões utilizadas para determinar seus volumes.
+\begin{align}
+    V_{\text{paralelepípedo}} &= a \cdot b \cdot c \\
+    V_{\text{cilindro}} &= \pi \cdot r^2 \cdot h \\
+    V_{\text{esfera}} &= \frac{4}{3} \cdot \pi r^3.
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Volume de sólios irregulares}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+No caso de termos um sólido com forma irregular, uma maneira simples de determinar seu volume é o submergindo em um fluido e verificando a alteração do volume ocupado por ele. Para isso podemos utilizar uma \emph{proveta}. A proveta é um cilindro com diâmetro uniforme com uma escala volumétrica graduada impressa em sua lateral. Tal volume corresponde ao produto da área da seção circular da proveta pela altura em relação ao fundo dela. Assim, se temos um certo volume de fluido, ao subergirmos um corpo notaremos um aumento do volume lido na proveta. Esse aumento corresponde ao volume do corpo submerso.
+
+É claro que a utilização desse método está sujeita a algumas restrições. Primeiramente, o corpo não pode absorver o fluido. Além disso, a \emph{densidade volumétrica de massa} do corpo precisa ser maior que a do fluido.
+
 %%%%%%%%%%%%%%%%%%%%%%
 \subsection{Densidade}
 %%%%%%%%%%%%%%%%%%%%%%
 
+A densidade\footnote{Existem outros tipo de densidade como por exemplo as densidades linear e superficial de massa, densidades de carga elétrica, etc.} volumétrica de massa de um corpo é uma medida da razão entre sua massa e seu volume:
+\begin{equation}
+    \rho \equiv \frac{M}{V}.
+\end{equation}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Experimento}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Essa razão é útil para corpos em geral: sabemos que se um corpo é capaz de boiar na água, sua densidade é necessariamente menor que a densidade da água. Um navio, por exemplo, tem uma densidade menor que a da água em virtude dos espaços vazios em seu casco, que são ocupados por ar. Além disso, a densidade também é uma informação útil ao tratarmos de materiais homogêneos, como uma barra metálica, pois é um valor característico de cada substância. Se precisamos determinar o tipo de metal de uma barra, basta determinarmos sua densidade e compararmos com uma tabela de referência.
 
 %%%%%%%%%%%%%%%%%%%%%%
 \subsection{Objetivos}
 %%%%%%%%%%%%%%%%%%%%%%
 
-\begin{itemize}
+\begin{enumerate}
      \item Determinar as dimensões de vários sólidos utilizando réguas e paquímetros;
      \item Determinar o número de algarismos significativos às medidas;
      \item Calcular o volume dos sólidos;
+     \item Determinar o volume de um corpo irregular usando uma proveta;
      \item Verificar com auxílio de uma balança a massa dos corpos;
      \item Utilizar os dados obtidos para calcular as densidades dos sólidos.
-\end{itemize}
+\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Material Necessário}
@@ -47,8 +204,10 @@ Intro antiga, fazer uma discussão de densidade, volume de sólidos, etc. Altera
 \begin{itemize}
 	\item Três paralelepípedos de tamanhos diferentes;
 	\item Dois cilindros de tamanhos diferentes;
+	\item Dois corpos irregulares de tamanhos diferentes;
 	\item Régua;
 	\item Paquímetro;
+	\item Proveta com água;
 	\item Balança.
 \end{itemize}
 
@@ -77,7 +236,19 @@ Tome três paralelepípedos e dois cilindros e os utilize no decorrer do experim
 
 \begin{enumerate}
 \item Utilizando o paquímetro, determine as medidas dos sólidos (altura, largura e comprimento ou diâmetro e comprimento). 
-\item Determine o volume de cada sólido observando o número de algarismos significativos. \emph{Explicite seus cálculos no verso}.
+\item Determine o volume de cada sólido observando o número de algarismos significativos.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Determinação do volume de um corpo irregular usando uma proveta}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Atenção: a proveta permite que façamos estimativas entre duas marcações quaisquer por se tratar de um instrumento de medida analógico.}
+
+\begin{enumerate}
+    \item Preencha a proveta com um volume de água suficiente para cobrir o corpo.
+    \item Anote o valor inicial de volume na tabela correspondente.
+    \item Submerja os corpos irregulares e anote as novas leituras de volume na tabela correspondente.
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -86,7 +257,7 @@ Tome três paralelepípedos e dois cilindros e os utilize no decorrer do experim
 
 \begin{enumerate}
      \item Utilize a balança para determinar a massa de cada sólido com o número de algarismos significativos adequado;
-     \item Determine a densidade de cada sólido observando o número de algarismos significativos. Utilize as medidas de volume obtidas através das medidas realizadas com o paquímetro.\emph{Explicite seus cálculos no verso}.
+     \item Determine a densidade de cada sólido observando o número de algarismos significativos. Para os sólidos regulares, utilize as medidas de volume obtidas através das medidas realizadas com o paquímetro.
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -123,13 +294,11 @@ Tome três paralelepípedos e dois cilindros e os utilize no decorrer do experim
 \vspace{5mm}
 
 \begin{question}[type={exam}]{2}
-Lorem ipsum dolor sit amet, consectetuer adi-
-piscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae,
-felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy
-eget, consectetuer id, vulputate a, magna. Donec vehicula augue
-eu neque. Pellentesque habitant morbi tristique senectus et netus
-et malesuada fames ac turpis egestas. Mauris ut leo. Cras viverra
-metus rhoncus sem. Nulla et lectus vestibulum urna fringilla ultrices.
+Apresente os resultados de maneira clara e organizada. Mostre os cálculos requisitados de maneira clara e sucinta, evidenciando o raciocínio desenvolvido.
+\end{question}
+
+\begin{question}[type={exam}]{8}
+Preencha as tabelas com as medidas e os cálculos de volume e densidade, sempre observando o número adequado de algarismos significativos e unidades adequados. (1 ponto por tabela.)
 \end{question}
 
 
@@ -141,82 +310,125 @@ metus rhoncus sem. Nulla et lectus vestibulum urna fringilla ultrices.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{table*}[!htpb]
-	\caption{Resultados obtidos para os paralelepípedos utilizando uma régua.}
 	\label{TabelaDadosRegua}
-	\begin{tabular}{ccccc}
+	\begin{center}
+	\begin{tabular}{cp{25mm}p{25mm}p{25mm}p{25mm}}
 		\toprule
-		{\centering Paralelepípedo} & Altura & Largura & Comprimento & Volume  \\
-		\midrule
-		\rowcolor[gray]{0.9} 1 & \phantom{xxxxxxxxxxxxxxx} & \phantom{xxxxxxxxxxxxxxx} & \phantom{xxxxxxxxxxxxxxx} & \phantom{xxxxxxxxxxxxxxx} \\
-		2 &  &  & & \\
-		\rowcolor[gray]{0.9} 3 &  &  & & \\
+		Paralelepípedo & Altura & Largura & Comprimento & Volume  \\
+		\midrule	
+		\cellcolor[gray]{0.89}1 & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89}\\
+		\cellcolor[gray]{0.95}2 & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95}\\
+		\cellcolor[gray]{0.89}3 & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89}\\
 		\bottomrule
 	\end{tabular}
+	\end{center}
+	\caption{Resultados obtidos para os paralelepípedos utilizando uma régua.}
 \end{table*}
 
 \begin{table*}[!htpb]
-	\caption{Resultados obtidos para os cilindros utilizando uma régua.}
+    \begin{center}
 	\label{TabelaDadosReguaCil}
-	\begin{tabular}{cccc}
+	\begin{tabular}{cp{25mm}p{25mm}p{25mm}}
 		\toprule
-		{\centering Cilindro} & diâmetro & Comprimento & Volume  \\
+		Cilíndro & Diâmetro & Comprimento & Volume  \\
 		\midrule
-		\rowcolor[gray]{0.9} 1 & \phantom{xxxxxxxxxxxxxxx} & \phantom{xxxxxxxxxxxxxxx} & \phantom{xxxxxxxxxxxxxxx} \\
-		2 &  &  & \\
+		\cellcolor[gray]{0.89} 1 & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		\cellcolor[gray]{0.95} 2 & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
 		\bottomrule
 	\end{tabular}
+	\end{center}
+	\caption{Resultados obtidos para os cilindros utilizando uma régua.}
 \end{table*}
 
 \begin{table*}[!htpb]
-	\caption{Resultados obtidos para os paralelepípedos utilizando um paquímetro.}
+    \begin{center}
 	\label{TabelaDadosPaquimetro}
-	\begin{tabular}{ccccc}
+	\begin{tabular}{cp{25mm}p{25mm}p{25mm}p{25mm}}
 		\toprule
 		{\centering Paralelepípedos} 				& Altura & Largura & Comprimento & Volume  \\
 		\midrule
-		\rowcolor[gray]{0.9} 1 & \phantom{xxxxxxxxxxxxxxx} & \phantom{xxxxxxxxxxxxxxx} & \phantom{xxxxxxxxxxxxxxx} & \phantom{xxxxxxxxxxxxxxx} \\
-		2 &  &  & & \\
-		\rowcolor[gray]{0.9} 3 &  &  & & \\
+		\cellcolor[gray]{0.89}1 & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89}\\
+		\cellcolor[gray]{0.95}2 & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95}\\
+		\cellcolor[gray]{0.89}3 & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89}\\
 		\bottomrule
 	\end{tabular}
+	\end{center}
+	\caption{Resultados obtidos para os paralelepípedos utilizando um paquímetro.}
 \end{table*}
 
 \begin{table*}[!htpb]
-	\caption{Resultados obtidos para os cilindros utilizando um paquímetro.}
 	\label{TabelaDadosPaquimetroCil}
-	\begin{tabular}{cccc}
+	\begin{center}
+	\begin{tabular}{cp{25mm}p{25mm}p{25mm}}
 		\toprule
-		{\centering Cilindro} 				& diâmetro & Comprimento & Volume  \\
+		{\centering Cilindro} 				& Diâmetro & Comprimento & Volume  \\
 		\midrule
-		\rowcolor[gray]{0.9} 1 & \phantom{xxxxxxxxxxxxxxx} & \phantom{xxxxxxxxxxxxxxx} & \phantom{xxxxxxxxxxxxxxx} \\
-		2 &  &  & \\
+		\cellcolor[gray]{0.89}1 & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		\cellcolor[gray]{0.95}2 & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
 		\bottomrule
 	\end{tabular}
+	\end{center}
+	\caption{Resultados obtidos para os cilindros utilizando um paquímetro.}
 \end{table*}
 
 \begin{table*}[!htpb]
-	\caption{Resultados obtidos para a massa e para a densidade dos paralelepípedos.}
+	\label{TabelaDadosPaquimetroCil}
+	\begin{center}
+	\begin{tabular}{cp{25mm}p{25mm}p{25mm}}
+		\toprule
+		{\centering Corpo} 				& Volume inicial & Volume final & Volume \\
+		\midrule
+		\cellcolor[gray]{0.89}1 & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		\cellcolor[gray]{0.95}2 & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+		\bottomrule
+	\end{tabular}
+	\end{center}
+	\caption{Resultados obtidos para os corpos irregulares.}
+\end{table*}
+
+\begin{table*}[!htpb]
 	\label{TabelaDadosMassa}
-	\begin{tabular}{cccc}
+	\begin{center}
+	\begin{tabular}{cp{25mm}p{25mm}p{25mm}}
 		\toprule
 		{\centering Paralelepípedos} 				& Massa & Volume & Densidade \\
 		\midrule
-		\rowcolor[gray]{0.9} 1 & \phantom{xxxxxxxxxxxxxxx} & \phantom{xxxxxxxxxxxxxxx} & \phantom{xxxxxxxxxxxxxxx} \\
-		2 &  &  &  \\
-		\rowcolor[gray]{0.9} 3 &  &  &  \\
+		\cellcolor[gray]{0.89}1 & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		\cellcolor[gray]{0.95}2 & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+		\cellcolor[gray]{0.89}3 & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
 		\bottomrule
 	\end{tabular}
+	\end{center}
+	\caption{Resultados obtidos para a massa e para a densidade dos paralelepípedos.}
 \end{table*}
 
-\begin{table*}[!htpb]
-	\caption{Resultados obtidos para a massa e para a densidade dos cilindros.}
+\begin{table*}[!ht]
 	\label{TabelaDadosMassaCil}
-	\begin{tabular}{cccc}
+	\begin{center}
+	\begin{tabular}{cp{25mm}p{25mm}p{25mm}}
 		\toprule
 		{\centering Cilindros} 				& Massa & Volume & Densidade \\
 		\midrule
-		\rowcolor[gray]{0.9} 1 & \phantom{xxxxxxxxxxxxxxx} & \phantom{xxxxxxxxxxxxxxx} & \phantom{xxxxxxxxxxxxxxx} \\
-		2 &  &  &  \\
+		\cellcolor[gray]{0.89}1 & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		\cellcolor[gray]{0.95}2 & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
 		\bottomrule
 	\end{tabular}
+	\end{center}
+	\caption{Resultados obtidos para a massa e para a densidade dos cilindros.}
 \end{table*}
+
+\begin{table*}[!ht]
+	\label{TabelaDadosMassaCil}
+	\begin{center}
+	\begin{tabular}{cp{25mm}p{25mm}p{25mm}}
+		\toprule
+		{\centering Corpo} 				& Massa & Volume & Densidade \\
+		\midrule
+		\cellcolor[gray]{0.89}1 & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+		\cellcolor[gray]{0.95}2 & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+		\bottomrule
+	\end{tabular}
+	\end{center}
+	\caption{Resultados obtidos para a massa e para a densidade dos corpos irregulares.}
+\end{table*}
+
