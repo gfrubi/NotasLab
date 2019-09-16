@@ -16,7 +16,7 @@ Quando realizamos um experimento, procuramos relacionar uma variável dependente
 Se as observações experimentais fossem completamente precisas, essas ordenadas resultariam em um número de pontos através dos quais uma curva ou uma reta deveriam ser traçadas. No entanto, esse não é o caso, a curva/reta desvia pouco ou muito dos pontos observados. Portanto, ela deve ser traçada de maneira que passe tão próxima quanto possível das posições verdadeiras e vá, como se fosse, pelo meio dos pontos em questão.
 \end{quote}
 %
-Muitas vezes tal padrão é muito claro, pois os pontos tem uma \emph{dispersão} baixa. Outras vezes a dispersão é razoavelmente alta e fica difícil verificar tal padrão.
+Muitas vezes tal padrão é muito claro, pois os pontos tem uma \emph{dispersão} baixa. Outras vezes a dispersão é razoavelmente alta e fica difícil verificar o padrão seguido pelos pontos.
 
 Mesmo em casos em que podemos verificar um padrão aparente ao fazer um gráfico, determinar a forma mais adequada para a \emph{linha de tendência} que melhor descreve os pontos experimentais ---~ou mesmo afirmar que tais pontos seguem este padrão~--- pode ser complicado. Se, por exemplo, fizermos uma série de medidas que seguem um padrão parabólico, mas com medidas que se restringem a um intervalo pequeno da variável independente, o gráfico terá a aparência de uma reta (veja as Figuras~\ref{Fig:ParabolaReta} e~\ref{Fig:ParabolaReta2}).
 \begin{figure*}
@@ -66,6 +66,10 @@ Ao fazermos o processo de regressão linear, a calculadora também calculará o 
 %
 Tal coeficiente pode ser interpretado como um ``índice de confiança'' e geralmente é calculado ao quadrado, pois seus valores podem variar entre $-1$ e $1$. Quanto mais próximo $r$ for de $\pm 1$, menor é a dispersão dos pontos em relação ao comportamento retilíneo, ou seja, maiores são as chances de que o fenômeno estudado e que deu origem aos dados siga uma relação linear. Este número geralmente se parece com algo como $r^2=\np{0,99998}$, $r^2=\np{0,997}$, $r^2= \np{0,990}$, etc., quando os dados são altamente lineares e relativamente abundantes. Se a dispersão em relação ao comportamento linear for grande e forem poucos os pontos, $r^2$ pode cair para \np{0,7}, ou valores menores.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Regressão linear e linearidade}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{margintable}
 \centering
 \label{tab:TabelaDadosLin}
@@ -111,7 +115,7 @@ Um aspecto importante a ser considerado é se os dados realmente seguem uma tend
 
 Dentre as três figuras, a Figura~\ref{RetasConjuntosDados2} se destaca. Nesse caso, temos um comportamento não linear, porém verificamos que o valor do coeficiente $r^2$ é relativamente alto. Ocorre que o comportamento dos dados sofre uma distorção relativamente pequena ---~apesar de visivelmente não linear~--- em relação a um comportamento linear e por isso obtemos um valor grande para o coeficiente de dispersão. Muitas vezes um comportamento verdadeiramente linear pode apresentar uma distorção pequena como esta, porém devido a flutuações aleatórias, e não devido à não-lineariedade. A distinção entre essas duas possibilidades pode ser feita realizando mais medidas: Se o comportamento for verdadeiramente linear, o valor de $r^2$ tenderá a crescer, enquanto no caso de termos um comportamento não-linear, o valor desse coeficiente deve permanecer constante, ou diminuir.
 
-\begin{figure}[!h]
+\begin{figure}[!h]\forcerectofloat
 \centering
 \input{Graphics/Linear_Regression/linear}
 \caption{Conjunto de dados 1. A reta da regressão linear é dada por $y(x)=\np{2.984480401}x + \np{12.14046264}$, $r^2 = \np{0.998901256}$.}
@@ -132,6 +136,8 @@ Dentre as três figuras, a Figura~\ref{RetasConjuntosDados2} se destaca. Nesse c
 \label{RetasConjuntosDados3}
 \end{figure}
 
+\vfill
+\pagebreak
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \paragraph{Exemplo: Cálculo dos coeficientes da regressão linear}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -371,7 +377,7 @@ Dessa forma, se tomarmos os dados e realizarmos uma regressão linear, vamos obt
 	B = a &= \np[m/s^2]{9,91}.
 \end{align}
 
-\begin{figure*}[t]
+\begin{figure*}[!htbt]
 \centering
 \caption{Gráfico dos dados da Tabela~\ref{DadosVelocidade}.} 
 \label{fig:VelocidadeTempo}
@@ -560,9 +566,10 @@ Podemos então calcular não só o melhor valor associado a uma constante físic
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{margintable}
+\centering
 \begin{tabular}{cccc}
 \toprule
-$i$	& $x_i$	& $y_{1,i}$	& $(y_{1,i} - A - Bx_i)^2$ \\
+$i$	& $x_i$	& $y_{1,i}$	& $(\Xi_i)^2$ \\
 \midrule
 1	&	\np{0.714}	&	\np{14.577}	&	\np{0.0934} \\ 
 2	&	\np{2.693}	&	\np{20.696}	&	\np{0.2687} \\ 
@@ -593,11 +600,11 @@ $i$	& $x_i$	& $y_{1,i}$	& $(y_{1,i} - A - Bx_i)^2$ \\
 27	&	\np{26.863}	&	\np{91.777}	&	\np{0.2868} \\ 
 28	&	\np{27.360}	&	\np{93.291}	&	\np{0.2549} \\
 \midrule
-$\sum$ & & & \np{17.4411} \\ 
+\multicolumn{3}{r}{$\sum_i (y_{1,i} - A - B x_i)^2$:} & \np{17.4411} \\ 
 \bottomrule
 \end{tabular}
 \vspace{1mm}
-\caption{Tabela com os valores de $(y_{1,i} - A - B x_i)^2$ e da soma $\sum (y_{1,i} - A - B x_i)^2$. \label{Tab:DadosDeterminacaoErrosCoeficientesAeB}}
+\caption{Tabela com os valores de $(\Xi_i)^2 = (y_{1,i} - A - B x_i)^2$ e da soma $\sum_i (y_{1,i} - A - B x_i)^2$. \label{Tab:DadosDeterminacaoErrosCoeficientesAeB}}
 \end{margintable}
 
 Vamos determinar os erros associados aos coeficientes da regressão linear apresentada no exemplo da Seção~\ref{Sec:RegressaoLinear}. Note que os termos $\sum x_i$ e $\sum x_i^2$ que aparecem nas Equações~\eqref{Eq:ErrosCoeficientesRegLinear1} e~\eqref{Eq:ErrosCoeficientesRegLinear4} estão disponíveis na Tabela~\eqref{Tab:TabelaExemploCalculoRegressaoLinear}, porém na prática utilizamos uma calculadora ou um programa de computador para realizar o cálculo dos coeficientes da regressão linear, e por isso não temos de antemão tais valores\footnote{Algumas calculadoras disponibilizam os valores de $\sum x_i$ e $\sum x_i^2$ juntamente com os valores de $A$, $B$, e $r$.}. Nesse caso, será necessário determinar os valores de $\sum x_i$ e de $\sum x_i^2$, além do valor de $\sum (y_{1,i} - A - Bx_i)^2$ ---~novamente, a elaboração de uma tabela ajuda na determinação de tal valor, como mostrado na Tabela~\ref{Tab:DadosDeterminacaoErrosCoeficientesAeB}. Uma vez determinados tais valores, determinar os erros $\delta A$ e $\delta B$ é relativamente simples:
