@@ -57,9 +57,10 @@ Do ponto de vista do estudo do movimento de um corpo submetido a uma ou mais for
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Máquina de Atwood}
+\label{Sec:MaquinaDeAtwood}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Através dos conceitos expostos acima, podemos fazer uma análise do movimento horizontal de um objeto que é puxado por outro que cai, conforme mostrado na Figura~\ref{FigTrilhoDeAr}. Tal aparato é conhecido como \emph{Máquina de Atwood}. Vamos analisar esse sistema de duas formas distintas, para que possamos comparar os resultados obtidos com cada uma delas.
+Através dos conceitos expostos acima, podemos fazer uma análise do movimento horizontal de ``carrinho'' em um trilho de ar, sendo que ele é puxado através de um fio por um corpo suspenso. A Figura~\ref{FigTrilhoDeAr} mostra o aparato experimental desse experimento. Nessa configuração, o trilho de ar equivale a uma \emph{Máquina de Atwood}. Vamos analisar esse sistema de duas formas distintas, para que possamos comparar os resultados obtidos com cada uma delas.
 
 \begin{figure}
 \centering
@@ -74,114 +75,115 @@ Através dos conceitos expostos acima, podemos fazer uma análise do movimento h
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{marginfigure}
-\begin{tikzpicture}[>=Stealth]
-	% Coordenadas
-	\draw[->, dashed, very thin, gray] (0,0.25) -- (5,0.25) node[below]{$x$};
-	\draw[->, dashed, very thin, gray] (3.5,-3) -- (3.5,2) node[left]{$y$};
+\begin{tikzpicture}[>=Stealth,
+     interface/.style={
+        % superfície
+        postaction={draw,decorate,decoration={border,angle=-45,
+                    amplitude=0.2cm,segment length=2mm}}},
+    ]
 
 	% mesa
-	\draw[gray] (0,0) -- (3,0);
-	\draw[gray] (3,0) -- (3,-1);
+	\draw[interface] (0,0) -- (3,0);
+	\draw[interface] (3,0) -- (3,-1);
 	
 	% roldana	
-	\draw[gray] (3.3,0.05) circle[radius = 0.2];
-	\draw[gray,fill] (3.3,0.05) circle[radius = 0.05];
-	\draw[gray,fill] (2.6,0.1) rectangle (3.3,0);
-	\draw[gray,fill] (2.7,0.1) circle[radius = 0.05];
-	\draw[gray,fill] (2.9,0.1) circle[radius = 0.05];
+	\draw (3.3,0.05) circle[radius = 0.2];
+	\draw[fill] (3.3,0.05) circle[radius = 0.05];
+	\draw[fill] (2.6,0.1) rectangle (3.3,0);
+	\draw[fill] (2.7,0.1) circle[radius = 0.05];
+	\draw[fill] (2.9,0.1) circle[radius = 0.05];
 	\draw[fill, white] (3.3,0.05) circle[radius = 0.02];
 	
 	% bloco superior
-	\draw (0.5,0) rectangle +(1,0.5);
-	\draw[gray] (1.5,0.25) -- (3.3,0.25);
-	\draw[->] (1,0) -- +(0,-1) node[left]{$\vec{P}_1$};
-	\draw[->] (1.5,0.25) -- +(0.5,0) node[above]{$\vec{T}$};
-	\draw[->] (1,0.5) -- +(0,1) node[left]{$\vec{N}$};
+	\node[draw, densely dotted, circle, scale = 0.8] (b1) at (0.3,0.7) {1};
+	\draw[pattern = north west lines, pattern color = gray, draw = gray] (0.5,0) rectangle +(1,0.5);
+	\draw (1.5,0.25) -- (3.3,0.25);
+	\draw[->, thick] (1,0) -- +(0,-1) node[left]{$\vec{P}_1$};
+	\draw[->, thick] (1.5,0.25) -- +(0.5,0) node[above]{$\vec{T}$};
+	\draw[->, thick] (1,0.5) -- +(0,1) node[left]{$\vec{N}$};
 	
 	% bloco inferior
-	\draw[gray] (3.5,0.05) -- +(0,-1);
-	\draw (3.3,-0.95) rectangle +(0.4,-0.8);
-	\draw[->] (3.5,-0.95) -- +(0,0.5) node[right]{$\vec{T}$};
-	\draw[->] (3.5,-1.75) -- +(0,-0.75) node[right]{$\vec{P}_2$};
+	\node[draw, densely dotted, circle, scale = 0.8] (b2) at (3.1,-1.9) {2};
+	\draw (3.5,0.05) -- +(0,-1);
+	\draw[pattern = north west lines] (3.3,-0.95) rectangle +(0.4,-0.8);
+	\draw[->, thick] (3.5,-0.95) -- +(0,0.5) node[right]{$\vec{T}$};
+	\draw[->, thick] (3.5,-1.75) -- +(0,-0.75) node[right]{$\vec{P}_2$};
+	
+	% Coordenadas
+	\draw[->, dashed] (0,0.25) -- (2.5,0.25) node[above]{$x_1$};
+	\draw[->, dashed] (1,-1.5) -- (1,2) node[below right]{$y_1$};
+	
+	\draw[<-, dashed] (3.5, -1.35) +(0,2.25) node[below right]{$y_2$} -- +(0,-1.5);
+	\draw[->, dashed] (3.5,-1.35)+(-1,0) -- +(1,0) node[below left]{$x_2$};
 \end{tikzpicture}
-\caption{Desenho esquemático representando os corpos móveis e as forças que neles atuam.}
+\caption{Neste sistema, os blocos têm acelerações em eixos diferentes, porém ---~devido ao fato de que eles estão ligados por um fio inextensível~---, temos que $a_{1,x} = -a_{2,y}$.\label{Fig:MaquinaAtwoodHoriz}}
 \end{marginfigure}
 
 Analisando cada um dos objetos separadamente através da segunda lei de Newton:
-\begin{itemize}
-\item\textbf{Objeto de massa $m_1$:}
 \begin{description}
-	\item[Eixo $x$:] Como o atrito no trilho de ar é desprezível, temos
-		\begin{align}
-			F_R &= m_1 a_x \\
-			T_1 &= m_1 a_x
-		\end{align}
-	\item[Eixo $y$:] Sabemos que a aceleração neste eixo é zero, logo
-		\begin{align}
-			F_R &= 0 \\
-			N - P_1 &= 0.
-		\end{align}
-\noindent{}De onde podemos escrever
-		\begin{align}
-			N &= P_1 \\
-			  &= m_1 g.
-		\end{align}
+    \item[Bloco 1:] Aplicando a Segunda Lei de Newton para cada eixo:
+        \begin{description}
+            \item[Eixo $x_1$:]
+                \begin{align}
+                    F_{R, x_1} &= m_1 a_{1,x_1} \\
+                    T & = m_1 a_{1,x_1}. \label{Eq:AtwoodHorizX1}
+                \end{align}
+            \item[Eixo $y_1$:]
+                \begin{align}
+                    F_{R, y_1} &= m_1 a_{1,y_1} \\
+                    N_1 - P_1 &= m_1 a_{1,y_1} \\
+                    N_1 - P_1 &= 0 \\
+                    N_1 = P_1.
+                \end{align}
+        \end{description}
+    \item[Bloco 2:] Novamente, aplicando a Segunda Lei de Newton para cada eixo:
+        \begin{description}
+            \item[Eixo $x_2$:] Não há nenhuma força/componente nesse eixo.
+            \item[Eixo $y_2$:]
+                \begin{align}
+                    F_{R, y_2} &= m_2 a_{2,y_2} \\
+                    T - P_2 &= m_2 a_{2,y_2}. \label{Eq:AtwoodHorizY2}
+                \end{align}
+        \end{description}
 \end{description}
 
-\begin{marginfigure}
-\begin{tikzpicture}[>=Stealth]
-	% Coordenadas objeto esquerdo
-	\draw[->, very thin, dashed, gray] (-1,0) -- (1,0) node[below]{$x$};
-	\draw[->, very thin, dashed, gray] (0,-1.5) -- (0,1.5) node[left]{$y$};
-	
-	% Objeto esquerdo
-	\draw[fill] (0,0) circle[radius = 0.1];
-	
-	% Vetores
-	\draw[->] (0,0) -- +(0.5,0) node[below]{$\vec{T}$};
-	\draw[->] (0,0) -- +(0,1) node[left]{$\vec{N}$};
-	\draw[->] (0,0) -- +(0,-1) node[left]{$\vec{P}_1$};
-	
-	% Coordenadas objeto direito
-	\draw[->, very thin, dashed, gray] (1.75,0) -- +(1.5,0) node[below]{$x$};
-	\draw[<-, very thin, dashed, gray] (2.5,0) +(0,1.5) node[left]{$y$} -- +(0,-1.5);
-	
-	% Objeto direito
-	\draw[fill] (2.5,0) circle[radius=0.1];
-	
-	% Vetores
-	\draw[->] (2.5,0) -- +(0,-0.75) node[right]{$\vec{P}_2$};
-	\draw[->] (2.5,0) -- +(0,0.5) node[right]{$\vec{T}$};
-\end{tikzpicture}
-\caption{Diagramas de corpo livre para ambos os corpos.}
-\end{marginfigure}
-
-\item\textbf{Objeto de massa $m_2$:}
-\begin{description}
-	\item[Eixo $x$:] Nenhuma força atua no eixo $x$.
-	\item[Eixo $y$:] Como atuam somente o peso e a tensão neste eixo, temos
-		\begin{align}
-			F_R &= m_2 a_y \\
-			T_2 - P_2 &= m_2 a_y.
-		\end{align}
-\end{description}
-\end{itemize}
-
-Como ambos os objetos estão ligados por uma corda --- que consideraremos inextensível e de massa desprezível ---, sabemos que as acelerações dos blocos devem ter o mesmo módulo. Consequentemente,
-	\begin{equation}
-		a_x = -a_y.
-	\end{equation}
+Para determinar a aceleração e a tensão, precisamos resolver o sistema de equações formado pelas expressões \eqref{Eq:AtwoodHorizX1} e \eqref{Eq:AtwoodHorizY2}. No entanto, temos três incógnitas: $a_{1,x}$, $a_{2,y}$ e $T$. Para que possamos resolver este sistema, precisamos de mais uma equação: a relação entre as acelerações. A aceleração do bloco 1 será no sentido positivo do eixo $x_1$, enquanto a aceleração do bloco 2 será no sentido negativo do eixo $y_2$. Se o fio é inextensível, podemos afirmar que o módulo dessas duas acelerações é o mesmo, o que nos leva à equação
+\begin{equation}\label{Eq:AtwoodHorizRelAcel}
+    a_{1,x} = - a_{2,y}.
+\end{equation}
 %
-Vamos também considerar que a roldana tem massa desprezível. Dessa forma, é possível mostrar usando uma versão da segunda lei de Newton para as rotações que o módulo das tensões $T_1$ e $T_2$ deve ser o mesmo. Podemos então resumir a análise desse sistema através do seguinte conjunto de equações:
+Assim
+\begin{equation}
+\begin{system}
+T & = m_1 a_{1,x_1} \\
+T - P_2 &= m_2 a_{2,y_2} \\
+a_{1,x} &= - a_{2,y}. \\
+\end{system}
+\end{equation}
+%
+Se fizermos $a_{1,x_1} \equiv a$, pois estamos determinando o módulo da aceleração de cada bloco, podemos reescrever o sistema acima como
+\begin{equation}
+\begin{system}
+T & = m_1 a \\
+T - P_2 &= -m_2 a,
+\end{system}
+\end{equation}
+%
+o que resulta, a partir da soma da primeira equação com o negativo da segunda equação, em
 \begin{align}
-	T &= m_1 a\\
-	T-m_2g &= -m_2 a
+    T - T + P_2 &= m_1 a + m_2 a \\
+    m_2 g &= (m_1 + m_2) a.
 \end{align}
+%
+Finalmente, temos para a aceleração\footnote{Note que a fração é adimensional e que $g$ tem dimensão de aceleração. Consequentemente, o resultado tem as dimensões corretas.}
+\begin{equation}\label{Eq:MaquinaAtwoodHorizResultAcel}
+    a = \frac{m_2}{m_1+m_2} g.
+\end{equation}
 
-Resolvendo este sistema, concluímos que
+Para obtermos a tensão, basta retornar às equações do sistema e substituir o resultado para a aceleração. Fazendo isso com a primeira equação do sistema, temos
 \begin{align}
-	a &= \frac{m_2}{m_1 + m_2} g \label{EqAceleracao}\\
-	T &= \frac{m_1m_2}{m_1+m_2}g.
+    T &= m_1 a\\
+    &= \frac{m_1m_2}{m_1+m_2} g. \label{Eq:MaquinaAtwoodHorizResultTensao}
 \end{align}
 
 Portanto, conhecendo o valor das massas dos dois objetos, temos condições de calcular a aceleração do sistema.
@@ -200,12 +202,12 @@ Como podemos iniciar a cronometragem assim que o objeto começa a se mover, pode
 	\Delta x = \frac{1}{2} at^2.
 \end{equation}
 
-Podemos calcular a aceleração a partir de um valor qualquer de deslocamento e do tempo correspondente. No entanto, o mais adequado é realizar uma série de medidas e utilizar o método dos mínimos quadrados para o conjunto de dados linearizado. Fazendo uma linearização, tratando $\Delta x$ como variável independente, obtemos a seguinte relação entre a equação da reta e a equação acima:
+Podemos calcular a aceleração a partir de um valor qualquer de deslocamento e do tempo correspondente. No entanto, o mais adequado é realizar uma série de medidas e utilizar o método dos mínimos quadrados para o conjunto de dados linearizado. Fazendo uma linearização, obtemos a seguinte relação entre a equação da reta e a equação acima:
 \begin{align}
-	y &= t^2 \\
+	y &= \Delta x \\
 	A &= 0 \\
-	B &= 2/a \\
-	x &= \Delta x.
+	B &= a/2 \\
+	x &= t^2.
 \end{align}
 %
 Podemos então calcular o coeficiente angular através de uma regressão linear dos dados obtidos para o deslocamento e para o tempo ao quadrado e obter um valor de aceleração independente daquele calculado através das leis de Newton. Isso possibilitará que comparemos os valores obtidos, testando assim a validade de tais leis.
@@ -214,7 +216,7 @@ Podemos então calcular o coeficiente angular através de uma regressão linear 
 \section{Experimento}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\textbf{Breve descrição do experimento aqui. Não está claro em nenhum lugar o que os alunos vão efetivamente fazer.}
+Vamos usar o aparato descrito na Seção~\ref{Sec:MaquinaDeAtwood} para determinar a aceleração através dos valores para a massa suspensa e para a massa do ``carrinho'' que deslisa sobre o trilho de ar. Além disso, vamos verificar o tempo necessário para que o carrinho percorra diversos valores de distância, sempre partindo do repouso, o que nos permitirá determinar a aceleração também através da cinemática. Poderemos então comparar os valores obtidos através dos dois métodos, verificando a validade das Leis de Newton.
 
 %%%%%%%%%%%%%%%%%%%%%%
 \subsection{Objetivos}
@@ -283,36 +285,46 @@ Podemos então calcular o coeficiente angular através de uma regressão linear 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Questionário}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\emph{Nas questões seguintes, apresente os cálculos requisitados de maneira clara e sucinta, para que o professor possa acompanhar o raciocínio desenvolvido.}
-\vspace{5mm}
 
-\begin{question}[type={exam}]{2}
-Preencha as tabelas com unidades e número de algarismos significativos adequados. Calcule também o erro propagado para os valores de $t^2$.
+\begin{question}[type={exam}]{1}
+Apresente os resultados de maneira clara e organizada. Mostre os cálculos requisitados de maneira clara e sucinta, evidenciando o raciocínio desenvolvido.
+\end{question}
+
+\begin{question}[type={exam}]{1}
+Preencha as colunas de dados experimentais das tabelas com o número adequado de algarismos significativos e unidades.
 \end{question}
 
 \begin{question}[type={exam}]{2.5}
-Elabore um gráfico $ t \times \Delta x$ dos pontos experimentais e um gráfico de $t^2 \times \Delta x$.
+Elabore\footnote{Na verdade, em ambos os casos o deslocamento $\Delta x$ é a variável independente. Por questões didáticas, no entanto, estamos optando por tratar o tempo como variável independente.} um gráfico $\Delta x \times t$ dos pontos experimentais e um gráfico $\Delta x \times \tau$, onde $\tau = t^2$.
 \end{question}
 
 \begin{question}[type={exam}]{2}
-Através dos gráficos elaborados no item anterior, podemos verificar qual dos dois conjuntos de dados segue uma tendência linear. Para o conjunto de dados linear, obtenha os valores de $A$, $B$ e $r^2$ da melhor reta correspondente (a reta da regressão linear). Adicione essa reta ao gráfico e coloque a equação da reta, juntamente com o coeficiente $r^2$ na legenda.
+Através dos gráficos elaborados no item anterior, podemos verificar qual dos dois conjuntos de dados segue uma tendência linear. Para o conjunto de dados linear, obtenha os valores de $A$, $B$ e $r^2$ da melhor reta correspondente, isto é, faça a regressão linear dos dados experimentais. Adicione essa reta ao gráfico correspondente e coloque a equação da reta, juntamente com o coeficiente $r^2$ na legenda.
 \end{question}
 
 \begin{question}[type={exam}]{1.5}
-Relacione as variáveis cinemáticas às constantes da equação da reta. Calcule através do coeficiente angular ($B$) qual é a aceleração do sistema.
+Relacione as variáveis cinemáticas às constantes da equação da reta. Calcule através do coeficiente angular $B$ qual é a aceleração do sistema.
 \end{question}
 
 \begin{question}[type={exam}]{1}
-Compare o valor o valor obtido para a aceleração com o valor dado pelas leis de Newton. Utilize a fórmula
+Compare o valor o valor obtido para a aceleração com o valor dado pelas leis de Newton através do \emph{erro percentual} dado pela expressão\footnote[][-5mm]{A expressão para o erro percentual é geral e costuma ser escrita como %
+\begin{minipage}{\linewidth} %
+\begin{align*} %
+    E_\% = \left|\frac{x - x_{\textrm{Ref}}}{x_{\textrm{Ref}}}\right| \times 100, %
+\end{align*} %
+\vspace{0.1mm}
+\end{minipage} %
+%
+onde $x$ é uma medida qualquer que queremos comparar com um valor de referência $x_{\text{Ref}}$.}
 \begin{equation}
-	E_\% = \left|\frac{x - x_{\textrm{Ref}}}{x_{\textrm{Ref}}}\right| \times 100
+	E_\% = \left|\frac{a - a_{\textrm{Ref}}}{a_{\textrm{Ref}}}\right| \times 100,
 \end{equation}
 %
---- onde $x_{\textrm{Ref}}$ é um valor de referência e $x$ é um valor que queremos comparar com o valor de referência --- e calcule o erro percentual entre o valor obtido pela regressão linear dos dados cinemáticos e o valor obtido através das Leis de Newton. \emph{(No nosso caso caso, $x_{\textrm{Ref}}$ é o valor obtido para a aceleração através das Leis de Newton e $x$ é o valor obtido através do coeficiente $B$ da regressão linear.)}
+onde $a_{\textrm{Ref}}$ é o valor obtido para a aceleração através das Leis de Newton e $a$ é o valor obtido através do coeficiente $B$ da regressão linear.
 \end{question}
 
 \begin{question}[type={exam}]{1}
-Inverta a Equação~\eqref{EqAceleracao} e isole a gravidade. Use o valor da aceleração obtido através dos dados cinemáticos e calcule o valor de $g$. Utilize a fórmula para o erro percentual e calcule $E_\%$ com relação ao valor $g=\np[m/s^2]{9,8}$.
+Inverta a Equação~\eqref{Eq:MaquinaAtwoodHorizResultAcel} e isole a gravidade. Use o valor da aceleração obtido através dos dados cinemáticos e calcule o valor de $g$. Utilize a fórmula para o erro percentual e calcule $E_\%$ com relação ao valor $g=\np[m/s^2]{9,8}$.
 \end{question}
 
 \vfill

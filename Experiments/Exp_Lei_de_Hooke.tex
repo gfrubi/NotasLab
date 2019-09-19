@@ -45,7 +45,6 @@ Tal coeficiente pode ser interpretado como um ``índice de confiança'' e geralm
 \centering
 \input{Graphics/Linear_Regression/linear}
 \caption{Exemplo de regressão linear. A reta é dada por $y(x)=\np{2.984480401}x + \np{12.14046264}$, $r^2 = \np{0.998901256}$.}
-\label{RetasConjuntosDados1}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -61,7 +60,7 @@ Para dados da posição em função do tempo no caso de um corpo que se move com
 %
 Se fizermos uma regressão linear dos dados experimentais obtidos para a posição em função do tempo, verificamos ao comparar a equação acima com a equação da reta que
 \begin{align}
-    y &= x,
+    y &= x, \\
     x &= t \\
     A &= x_0 \\
     B &= v.
@@ -131,7 +130,7 @@ Note que o sinal negativo implica em uma força que tem sempre o sentido oposto 
     F_e &= -k \Delta x, \label{Eq:LeiDeHookeComoTodosConhecemos}
 \end{align}
 %
-onde usamos o fato de que o vetor $\vec{F}_{e}$ aponta diretamente na direção de $x$, o que implica em $F_{e,x} \equiv F_e$ e $\Delta x$ representa a projeção do vetor $\Delta \vec{r}$ na direção do eixo $x$.\footnote{Note que se $\Delta r$ aponta na direção do eixo $x$, então $\Delta r = |\Delta \vec{r}| \equiv \Delta x$, mas a notação que todo mundo utiliza é a da Equação~\eqref{Eq:LeiDeHookeComoTodosConhecemos}. Só estou mostrando de onde essa forma vem.}
+onde usamos o fato de que o vetor $\vec{F}_{e}$ aponta diretamente na direção de $x$, o que implica em $F_{e,x} \equiv F_e$ e $\Delta x$ representa a projeção do vetor $\Delta \vec{r}$ na direção do eixo $x$.\footnote{Note que se $\Delta \vec{r}$ aponta na direção do eixo $x$, então $\Delta r = |\Delta \vec{r}| \equiv \Delta x$, mas a notação que todo mundo utiliza é a da Equação~\eqref{Eq:LeiDeHookeComoTodosConhecemos}. Só estou mostrando de onde essa forma vem.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\subsection{Se necessário, usar subsections}
@@ -229,7 +228,7 @@ Determine a constante da mola através da regressão linear.
 \end{question}
 
 \begin{question}[type={exam}]{2} 
-Elabore um gráfico dos pontos experimentais ($\Delta x \times P$) e adicione a ele a reta calculada através da regressão linear.
+Elabore um gráfico de\footnote{Apesar de o mais adequado ser um gráfico de $\Delta x \times m$, pois controlamos a massa suspensa ($m$ é, portanto, a variável independente) e medimos a distensão correspondente da mola ($\Delta x$ é então a variável dependente), para fins didáticos é melhor elaborarmos um gráfico de  $F_e \times \Delta x$.} $F_e \times \Delta x$ para os dados experimentais obtidos e adicione a ele a reta calculada através da regressão linear.
 \end{question}
 
 \begin{question}[type={exam}]{1} 
