@@ -102,19 +102,67 @@ Para uma mola, se realizarmos o mesmo procedimento, verificamos que ele sofre um
 	F_e &= P.
 \end{align}
 
-Verificando ainda a distensão $D$ da mola, podemos relacionar uma maior distensão a uma carga maior na caixa, isto é, quanto maior a força peso dos objetos pendurados na mola, maior a distensão. Experimentalmente, verifica-se que a relação entre o peso aplicado à mola e sua distensão são \emph{diretamente proporcionais}:
+\pagebreak
+
+\begin{marginfigure}
+\centering
+\begin{tikzpicture}[>=Stealth,
+     interface/.style={
+        % superfície
+        postaction={draw,decorate,decoration={border,angle=-45,
+                    amplitude=0.2cm,segment length=2mm}}},
+    ]
+    
+    \draw[interface] (1,0) -- (-1,0);
+    \draw[gray] (0,0) -- (0,-0.2);
+    \draw[fill] (0,0) circle (1pt);
+            
+    \draw[decoration={aspect=0.3, segment length=0.8mm, amplitude=2mm,coil},decorate] (0,-0.2) -- +(0,-1);
+    \draw[gray] (0,-1.2) -- (0,-1.4);
+    \draw[fill] (0,-1.2) circle (1pt);
+    
+    \draw[<->|] (-0.5,0) -- node[left]{$L_0$} (-0.5,-1.2);
+    \draw[densely dotted] (-0.5,-1.2) -- (0,-1.2);
+        
+    \begin{scope}[shift={(2.5,0)}]
+        \draw[interface] (1,0) -- (-1,0);
+        
+        \draw[gray] (0,0) -- (0,-0.2);
+        \draw[fill] (0,0) circle (1pt);
+        
+        \draw[decoration={aspect=0.3, segment length=1.5mm, amplitude=2mm,coil},decorate] (0,-0.2) -- +(0,-2);
+        \draw[gray] (0,-2.2) -- (0,-2.4);
+        \draw[fill] (0,-2.2) circle (1pt);
+        
+        \draw[densely dotted, pattern = north west lines] (-0.5, -2.4) rectangle (0.5,-3.4);
+        \draw[<->|] (-0.5,0) -- node[left]{$L_0 + \Delta L$} (-0.5,-2.2);
+        \draw[densely dotted](-0.5,-2.2) -- (0,-2.2);
+        
+%        \draw[fill] (0,-2.9) circle (1pt);
+%        \draw[->, thick] (0, -2.9) -- +(0,-1) node[right]{$\vec{P}$};
+%        \draw[->, thick] (0, -2.4) -- +(0,1) node[right, xshift=2mm]{$\vec{F}_e$};
+        
+%        \draw[dashed,->] (-0.75,-4.9) -- (-0.75,-0.9) node[below left]{$y$};
+        
+    \end{scope}
+    
+\end{tikzpicture}
+\caption{A distensão $\Delta L$ da mola é proporcional à força elástica exercida por ela.}
+\end{marginfigure}
+
+Verificando ainda a distensão $\Delta L$ da mola, podemos relacionar uma maior distensão a uma carga maior na caixa, isto é, quanto maior a força peso dos objetos pendurados na mola, maior a distensão. Experimentalmente, verifica-se que a relação entre o peso aplicado à mola e sua distensão são \emph{diretamente proporcionais}:
 \begin{equation}
-	D \propto P.
+	\Delta L \propto P.
 \end{equation}
 
 Podemos então escrever para o módulo da \textbf{força elástica} $F_e$
 \begin{equation}
-	F_e \propto D.
+	F_e \propto \Delta L.
 \end{equation}
 %
 Podemos escrever a relação acima como uma igualdade introduzindo uma constante de proporcionalidade $k$:
 \begin{equation}\label{Eq:LeiDeHookeEmModulo}
-	F_e = k D.
+	F_e = k \Delta L.
 \end{equation}
 
 O resultado acima é conhecido como \emph{Lei de Hooke}, em homenagem ao físico inglês Robert Hooke, que o verificou em 1660. Tal relação, no entanto, só é válida para um intervalo de distensões da mola. As distensões dentro deste limite são denominadas \emph{elásticas} e não deformam a mola permanentemente, caso contrário ao das distensões \emph{plásticas}. Apesar de a validade da Lei de Hooke ser limitada, ela é o modelo mais comum ao se analisar a resposta de um meio a uma deformação e pode ser utilizada como uma primeira aproximação mesmo para casos mais complexos.
@@ -130,7 +178,7 @@ Note que o sinal negativo implica em uma força que tem sempre o sentido oposto 
     F_e &= -k \Delta x, \label{Eq:LeiDeHookeComoTodosConhecemos}
 \end{align}
 %
-onde usamos o fato de que o vetor $\vec{F}_{e}$ aponta diretamente na direção de $x$, o que implica em $F_{e,x} \equiv F_e$ e $\Delta x$ representa a projeção do vetor $\Delta \vec{r}$ na direção do eixo $x$.\footnote{Note que se $\Delta \vec{r}$ aponta na direção do eixo $x$, então $\Delta r = |\Delta \vec{r}| \equiv \Delta x$, mas a notação que todo mundo utiliza é a da Equação~\eqref{Eq:LeiDeHookeComoTodosConhecemos}. Só estou mostrando de onde essa forma vem.}
+onde usamos o fato de que o vetor $\vec{F}_{e}$ aponta diretamente na direção de $x$, o que implica em $F_{e,x} \equiv F_e$ e $\Delta x$ representa a projeção do vetor $\Delta \vec{r}$ na direção do eixo $x$.\footnote[][-1cm]{Note que se $\Delta \vec{r}$ aponta na direção do eixo $x$, então $\Delta r = |\Delta \vec{r}| \equiv \Delta x$, mas a notação que todo mundo utiliza é a da Equação~\eqref{Eq:LeiDeHookeComoTodosConhecemos}. Só estou mostrando de onde essa forma vem.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\subsection{Se necessário, usar subsections}
@@ -150,7 +198,7 @@ Visando verificar a Lei de Hooke, vamos determinar a distensão de uma mola heli
      \item Verificar a lineariedade da distensão de uma mola em resposta à força peso dos objetos pendurados nela.
 	 \item Relacionar as variáveis da Lei de Hooke às da equação da reta $y = A + Bx$.
      \item Calcular a constante $k$ da mola;
-     \item Elaborar um gráfico $\Delta x \times P$ dos pontos experimentais e adicionar a ele a reta calculada através da regressão linear;
+     \item Elaborar um gráfico $F_e \times \Delta x$ dos pontos experimentais e adicionar a ele a reta calculada através da regressão linear;
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -169,11 +217,62 @@ Visando verificar a Lei de Hooke, vamos determinar a distensão de uma mola heli
 \section{Procedimento Experimental}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{marginfigure}
+\centering
+\begin{tikzpicture}[>=Stealth,
+     interface/.style={
+        % superfície
+        postaction={draw,decorate,decoration={border,angle=-45,
+                    amplitude=0.2cm,segment length=2mm}}},
+    ]
+    
+    \draw[interface] (1,0) -- (-1,0);
+    \draw[gray] (0,0) -- (0,-0.2);
+    \draw[fill] (0,0) circle (1pt);
+            
+    \draw[decoration={aspect=0.3, segment length=0.8mm, amplitude=2mm,coil},decorate] (0,-0.2) -- +(0,-1);
+    \draw[gray] (0,-1.2) -- (0,-1.4);
+    \draw[fill] (0,-1.2) circle (1pt);
+    
+    \draw[<->|] (-0.5,0) -- node[left]{$L_0$} (-0.5,-1.2);
+    \draw[densely dotted] (-0.5,-1.2) -- (0,-1.2);
+        
+    \begin{scope}[shift={(2.5,0)}]
+        \draw[interface] (1,0) -- (-1,0);
+        
+        \draw[gray] (0,0) -- (0,-0.2);
+        \draw[fill] (0,0) circle (1pt);
+        
+        \draw[decoration={aspect=0.3, segment length=1.5mm, amplitude=2mm,coil},decorate] (0,-0.2) -- +(0,-2);
+        \draw[gray] (0,-2.2) -- (0,-2.4);
+        \draw[fill] (0,-2.2) circle (1pt);
+
+        \draw[<->|] (-0.5,0) -- node[left]{$L$} (-0.5,-2.2);
+        \draw[densely dotted](-0.5,-2.2) -- (0,-2.2);
+
+        \draw[very thick, gray] ([shift=(-45:2mm)]0,-2.6) arc (-45:225:2mm) -- (-0.5,-3.5) -- (-0.5,-5.5) -- (0.5,-5.5) -- (0.5,-4);
+        
+        \fill[white] (-0.2,-5.48) rectangle (1.2, -5.1);
+        \draw[gray, pattern = north west lines, pattern color = gray] (-0.2,-5.48) rectangle (1.2, -5.1);
+        
+               
+%        \draw[fill] (0,-2.9) circle (1pt);
+%        \draw[->, thick] (0, -2.9) -- +(0,-1) node[right]{$\vec{P}$};
+%        \draw[->, thick] (0, -2.4) -- +(0,1) node[right, xshift=2mm]{$\vec{F}_e$};
+        
+%        \draw[dashed,->] (-0.75,-4.9) -- (-0.75,-0.9) node[below left]{$y$};
+        
+    \end{scope}
+    
+\end{tikzpicture}
+\caption{Para que possamos determinar o valor de $\Delta L$, devemos escolher dois pontos \emph{fixos} de referência. Note que $\Delta L = L - L_0$.\label{Fig:LeiDeHookeMolaPontosDeRef}}
+\end{marginfigure}
 \begin{enumerate}
 	\item Utilize o suporte para fixar a mola por uma extremidade e prenda o gancho à outra extremidade.
-	\item Marque um ponto de referência e meça sua distância a partir da mesa utilizando a régua. Anote o valor na tabela.
-	\item Adicione uma anilha e verifique a nova distância do ponto de referência até a mesa. Anote o valor na tabela.
-	\item Repita este procedimento adicionando anilhas uma a uma. Procure conseguir o máximo número de pontos experimentais possível, porém sem submeter a mola a deformações irreversíveis.
+	\item Marque dois pontos de referência,\footnote[][1cm]{Como estamos interessados em determinar a distensão $\Delta L$ da mola, quaisquer dois pontos que permitam determinar tal valor são adequados. Podemos, por exemplo, colocar o ponto mais baixo na parte inferior do gancho, uma vez que a altura do gancho é constante e não influi no valor de $\Delta L$.}  um na parte superior e outro na parte inferior da mola (veja a Figura~\ref{Fig:LeiDeHookeMolaPontosDeRef}). Meça a distância $L_0$ entre eles e anote na Tabela~\ref{Dados}.
+	\item Verifique a massa de uma anilha, juntamente com o gancho, e os suspenda na mola. Verifique a nova distância $L$ entre os pontos de referência. Anote  na Tabela~\ref{Dados} os valores da massa suspensa $m_s$ e a distância $L$ obtidas.
+	\item Afira a massa de outra anilha e a coloque no gancho. Verifique a nova distância $L$ entre os pontos de referência. Anote na Tabela~\ref{Dados} o novo valor da massa suspensa $m_s$ e o novo valor da distância $L$.
+	\item Repita o passo acima adicionando anilhas ao gancho uma a uma. Procure conseguir o máximo número de pontos experimentais possível, porém sem submeter a mola a deformações irreversíveis.
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -216,7 +315,7 @@ Preencha as colunas de dados experimentais das tabelas com o número adequado de
 \end{question}
 
 \begin{question}[type={exam}]{1} 
-Calcule a constante $k$ da mola, para cada conjunto de valores de peso e distensão.
+Calcule a constante $k$ da mola, para cada conjunto de valores de peso\footnote{O peso deve ser calculado através do produto dos valores de massa suspensa $m_s$ pela aceleração da gravidade $g$.} e distensão.
 \end{question}
 
 \begin{question}[type={exam}]{1} 
@@ -246,26 +345,30 @@ Determine o valor de $r^2$. O valor encontrado demonstra compatibilidade entre o
 \begin{tabular}{lp{25mm}p{25mm}p{25mm}l}
 \toprule
 	& \multicolumn{3}{l}{\textbf{Dados Experimentais}} \\
-	\cmidrule{2-4}
-	& $x_0$ & $x_f$ & $m$ & \\
-	\cmidrule{2-4}
-	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
-	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
-	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
-	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
-	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
-	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
-	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
-	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
-	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
-	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
-	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
-	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
+	\cmidrule{2-3}
+	& \cellcolor[gray]{0.89} $L_0$ & \cellcolor[gray]{0.92} \\
+	\cmidrule{2-3}
+	\\
+	\cmidrule{2-3}
+	& $L$ & $m_s$ & \\
+	\cmidrule{2-3}
+	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
 	\cmidrule{2-4}
 \\
 	& \multicolumn{3}{l}{\textbf{Valores calculados}} \\
 	\cmidrule{2-4}
-	& $|\Delta x|$ & $P$ & $P/\Delta x$ \\
+	& $|\Delta x|$ & $P$ & $k = P/\Delta x$ \\
 	\cmidrule{2-4}
 	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
 	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
