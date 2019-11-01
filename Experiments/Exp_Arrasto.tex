@@ -21,7 +21,7 @@ Em ambos os casos é possível perceber que há uma relação entre a velocidade
 onde
 \begin{itemize}
 	\item $C$ é um parâmetro adimensional conhecido como \emph{coeficiente de arrasto} e cujo valor é determinado experimentalmente. Seu valor depende de propriedades como a forma eas características da superfície do objeto. Além disso, seu valor pode variar com a velocidade. Seus valores típicos estão compreendidos na faixa entre \np{0,4} e \np{1,0}.
-	\item $A$ é a área de seção reta do objeto. Tal área pode ser interpretada como a sombra do objeto ao ser iluminado por uma fonte de luz distante e cuja direção dos raios luminosos seja contrária à direção do movimento.
+	\item $A$ é a área de seção reta do objeto. Tal área pode ser interpretada como a sombra do objeto ao ser iluminado por uma fonte de luz distante e cuja direção dos raios luminosos seja a mesma do movimento.
 	\item $\rho$ é a densidade do meio onde o objeto se desloca.
 	\item Finalmente, $v^2$ representa o quadrado da velocidade do objeto em relação ao meio.
 \end{itemize}
@@ -54,34 +54,38 @@ Vamos analisar o movimento de uma esfera que se desloca dentro de um tubo preenc
 
 \begin{marginfigure}
 \centering
-\begin{tikzpicture}[>=Stealth]
+\begin{tikzpicture}[>=Stealth, scale = 1.25]
 	\begin{scope}[rotate=30]
-%	\usetikzlibrary{calc}
-%	\def\centerarc[#1](#2)(#3:#4:#5)% [draw options] (center) (initial angle:final angle:radius)
-%	{ \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5) node[below]{$\theta$}; }
+%   	\usetikzlibrary{calc}
+%   	\def\centerarc[#1](#2)(#3:#4:#5)% [draw options] (center) (initial angle:final angle:radius)
+%   	{ \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5) node[below]{$\theta$}; }
 	
-	\draw[dashed,very thin] (-2,0) node[below] {$x$} -- (2,0);
-	\draw[dashed,very thin] (0,-1.5) -- (0,2) node[left]{$y$};
-	
-	\draw[->] (0,0) -- node[above right]{$\vec{N}$} (0,0.866025404);
-	\draw[->,gray] (0,0) -- (-0.5,0) node[above=3pt]{$P_x$};
-	\draw[->,gray] (0,0) -- (0, -0.866025404) node[right]{$P_y$};
-	\draw[->] (0,0) -- node[below right]{$\vec{F}_a$} (0.5,0);
-	\draw[dotted] (-0.5,0) -- (-0.5,-0.866025404);
-	\draw[dotted] (-0.5,-0.866025404) -- (0, -0.866025404);
-	\draw (-0.230940108,-0.4) arc (240:270:0.4619) node[below]{$\theta$};
+	    \draw[dotted,very thin, <-] (-2,0) node[below] {$x$} -- (2,0);
+	    \draw[dotted,very thin, ->] (0,-1.5) coordinate (B) -- (0,2) node[left]{$y$};
+	    
+	    \draw[->] (0,0) coordinate (O) -- node[above right]{$\vec{N}$} (0,0.866025404);
+	    \draw[->, dashed] (0,0) -- (-0.5,0) node[above=3pt]{$P_x$};
+	    \draw[->, dashed] (0,0) -- (0, -0.866025404) node[right]{$P_y$};
+	    \draw[->] (0,0) -- node[below right]{$\vec{F}_a$} (0.5,0);
+	    \draw[densely dotted] (-0.5,0) -- (-0.5,-0.866025404);
+	    \draw[densely dotted] (-0.5,-0.866025404) -- (0, -0.866025404);
+%	    \draw (-0.230940108,-0.4) arc (240:270:0.4619) node[below]{$\theta$};
 	\end{scope}
 	\draw[fill] (0,0) circle[radius=0.1];
-	\draw[->] (0,0) -- node[left]{$\vec{P}$} (0,-1);
+	\draw[->] (0,0) -- (0,-1) node[below left]{$\vec{P}$} coordinate (A);
+	
+	\pic[draw, "$\theta$", angle radius = 6mm, angle eccentricity = 1.3]{angle=A--O--B};
+	
 \end{tikzpicture}
 \caption{Diagrama de corpo livre da esfera que se desloca dentro do tubo.}
 \label{DiagramaEsfera}
 \end{marginfigure}
 
-Verificamos para o \textbf{eixo $y$} que a força normal deve ser equilibrada pela componente $y$ da força peso, pois o objeto não se desloca no eixo $y$ e, portanto, sua aceleração deve ser zero. Já para o \textbf{eixo $x$}, verificamos que
-\begin{equation}
-	P_x - F_a = ma_x.
-\end{equation}
+Verificamos para o eixo $y$ que a força normal deve ser equilibrada pela componente $y$ da força peso, pois o objeto não se desloca no eixo $y$ e, portanto, sua aceleração deve ser zero. Já para o eixo $x$, verificamos que
+\begin{align}
+    F_{R,x} &= m a_x \\
+	P_x - F_{a,x} &= ma_x.
+\end{align}
 %
 Substituindo $F_a = bv^{n}$, onde $n=1$~ou~$2$ ---~de acordo com as hipóteses discutidas na seção anterior~---, temos
 \begin{equation}
@@ -117,7 +121,7 @@ Como a velocidade terminal é constante, podemos estabelecer uma posição inici
 
 Para decidirmos qual das hipóteses acima melhor descreve a força de arrasto no experimento, vamos utilizar o coeficiente $r^2$. Para tanto, vamos comparar as duas hipóteses com a equação da reta:
 \begin{description}
-	\item[Hipótese 1] Temos nesse caso a seguinte relação entre a equação que rege o fenômeno e a equação da reta:
+	\item[Hipótese 1:] Temos nesse caso a seguinte relação entre a equação que rege o fenômeno e a equação da reta:
 		\begin{align}
 			y &= v_t \\
 			A &= 0 \\
@@ -125,7 +129,7 @@ Para decidirmos qual das hipóteses acima melhor descreve a força de arrasto no
 			x &= \sen\theta
 		\end{align}
 
-	\item[Hipótese 2] Nesse caso, temos
+	\item[Hipótese 2:] Nesse caso, temos
 		\begin{align}
 			y &= v_t^2 \\
 			A &= 0 \\
@@ -138,7 +142,7 @@ Para decidirmos qual das hipóteses acima melhor descreve a força de arrasto no
 \section{Experimento}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\textbf{Breve descrição do experimento aqui. Não está claro em nenhum lugar o que os alunos vão efetivamente fazer.}
+Considerando o movimento de uma esfera em um plano inlinado e sujeita a uma força de arrasto, vamos verificar o tempo necessário para que a ela percorra uma distância preestabelecida, porém para diversos ângulos de inclinação distintos. Para que possamos determinar a velocidade de maneira simples, é necessário que a esfera tenha atingido a velocidade terminal antes de passar pela posição que marca o início do intervalo para o qual mediremos a distância e o tempo. Isso significa que a esfera deve ser solta a partir de um ponto que preceda o ponto inicial por alguns centímetros.\footnote[][-3cm]{Como a esfera tem massa pequena e o fluido é razoavelmente viscoso, a distância necessária é pequena, por volta de \np[cm]{3,00} são suficientes.}
 
 %%%%%%%%%%%%%%%%%%%%%%
 \subsection{Objetivos}
@@ -159,6 +163,7 @@ Para decidirmos qual das hipóteses acima melhor descreve a força de arrasto no
 	\item Plano inclinado;
 	\item Cronômetro;
 	\item Ímã;
+	\item Régua.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -166,13 +171,13 @@ Para decidirmos qual das hipóteses acima melhor descreve a força de arrasto no
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{enumerate}
-	\item Ajuste o plano inclinado para um ângulo de \np[\tcdegree]{10,0}.
+	\item Ajuste o plano inclinado para um ângulo de \np[\tcdegree]{5,0}.
 	\item Estabeleça o $x_i$ como \np[cm]{10,00}.
 	\item Estabeleça o $x_f$ como \np[cm]{40,00}.
 	\item Use o ímã para levar a esfera até a posição mais alta do tubo.
 	\item Solte a esfera e cronometre o tempo necessário para atravessar a distância entre $x_i$ e $x_f$. Anote o valor na tabela.
 	\item Repita a tomada de tempo mais duas vezes para este ângulo.
-	\item Aumente o ângulo em \np[\tcdegree]{5,0} e repita os passos acima. Realize este procedimento até atingir o ângulo de \np[\tcdegree]{45,0}.
+	\item Aumente o ângulo em \np[\tcdegree]{5,0} e repita os passos acima. Realize este procedimento até atingir o ângulo de \np[\tcdegree]{40,0}.
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -205,23 +210,26 @@ Para decidirmos qual das hipóteses acima melhor descreve a força de arrasto no
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Questionário}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\emph{Nas questões seguintes, apresente os cálculos requisitados de maneira clara e sucinta, para que o professor possa acompanhar o raciocínio desenvolvido.}
-\vspace{5mm}
 
-\begin{question}[type={exam}]{3}
-Preencha as tabelas com as unidades, erros de escala e com o número de algarismos significativos adequados. Calcule também o erro propagado para os valores da velocidade.
+\begin{question}[type={exam}]{1}
+Apresente os resultados de maneira clara e organizada. Mostre os cálculos requisitados de maneira clara e sucinta, evidenciando o raciocínio desenvolvido.
 \end{question}
 
-\begin{question}[type={exam}]{2.5}
+\begin{question}[type={exam}]{1}
+Preencha as colunas de dados experimentais das tabelas com o número adequado de algarismos significativos e unidades.
+\end{question}
+
+
+\begin{question}[type={exam}]{3}
 Elabore um gráfico $v_t \times \sen\theta$ dos pontos experimentais e um gráfico de $v_t^2 \times \sen\theta$.
 \end{question}
 
-\begin{question}[type={exam}]{2.5}
+\begin{question}[type={exam}]{3}
 Através dos gráficos elaborados no item anterior, para ambos os conjuntos de dados, obtenha os valores de $A$, $B$ e $r^2$ da melhor reta correspondente (a reta da regressão linear). Adicione essa reta ao gráfico e coloque a equação da reta, juntamente com o coeficiente $r^2$ na legenda.
 \end{question}
 
 \begin{question}[type={exam}]{2}
-Através da análise do coeficiente de dispersão linear, indique qual das hipóteses discutidas na Seção~\ref{SecaoF_a} melhor descreve o fenômeno.
+Através da análise do coeficiente de dispersão linear $r^2$, indique qual das hipóteses discutidas na Seção~\ref{SecaoF_a} melhor descreve o fenômeno.
 \end{question}
 \vfill
 
