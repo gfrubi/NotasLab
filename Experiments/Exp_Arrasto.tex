@@ -4,7 +4,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{fullwidth}\it
-	Realizaremos um experimento para a determinação da velocidade terminal de uma esfera que se move em um fluido dentro de um tubo que faz um ângulo com a horizontal. Através de uma análise dos dados obtidos, verificaremos qual é a dependência da força de arrasto na velocidade. Para isso, veremos as expressões para a força de arrasto com dependência linear e quadrática na velocidade, verificando também como obter a expressão para a velocidade terminal em função do ângulo de inclinação. Utilizaremos os conceitos de medidas, algarismos significativos, gráficos, erros de escala e propagados, regressão linear, e linearização.
+	Realizaremos um experimento para a determinação da velocidade terminal de uma esfera que se move em um fluido dentro de um tubo que faz um ângulo com a horizontal. Através de uma análise dos dados obtidos, verificaremos qual é a dependência da força de arrasto na velocidade. Para isso, veremos as expressões para a força de arrasto com dependência linear e quadrática na velocidade, verificando também como obter a expressão para a velocidade terminal em função do ângulo de inclinação. Utilizaremos os conceitos de medidas, algarismos significativos, gráficos, regressão linear, e linearização.
 \end{fullwidth}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -28,15 +28,16 @@ onde
 
 \pagebreak
 
-Esse conjunto de parâmetros às vezes é escrito de uma maneira compacta utilizando a notação $b=C\rho A /2$ e a força de arrasto como
+Esse conjunto de parâmetros às vezes é escrito de uma maneira compacta utilizando a notação $b_2 = C\rho A /2$ e a força de arrasto como
 \begin{equation}
-	F_a = bv^2.
+	F_a = b_2 v^2.
 \end{equation}
 
-Muitas vezes, porém, temos fluidos e/ou regimes de velocidade para os quais a expressão acima falha. A força de arrasto que atua sobre o casco de um navio, por exemplo, é em geral descrita através da equação\footnote{As constantes $b$ e $b'$ em geral não têm o mesmo valor.}
-\begin{equation}
-	F_a = b'v.
-\end{equation}
+Muitas vezes, porém, temos fluidos e/ou regimes de velocidade para os quais a expressão acima falha. A força de arrasto que atua sobre o casco de um navio, por exemplo, é em geral descrita através da equação\footnote{As constantes $b_1$ e $b_2$ em geral não têm o mesmo valor.}
+\begin{align}
+	F_a &= 6\pi\eta R v \\
+	&= b_1 v.
+\end{align}
 
 Podemos dizer, portanto, que existem pelo menos duas hipóteses para a descrição da força de arrasto que age sobre um corpo. Vamos analisar um experimento e realizar um teste para determinar qual hipótese é a mais adequada.
 
@@ -87,25 +88,25 @@ Verificamos para o eixo $y$ que a força normal deve ser equilibrada pela compon
 	P_x - F_{a,x} &= ma_x.
 \end{align}
 %
-Substituindo $F_a = bv^{n}$, onde $n=1$~ou~$2$ ---~de acordo com as hipóteses discutidas na seção anterior~---, temos
+Substituindo $F_a = b_n v^{n}$, onde $n=1$~ou~$2$ ---~de acordo com as hipóteses discutidas na seção anterior~---, temos
 \begin{equation}
-	P_x - bv^n = ma_x.
+	P_x - b_n v^n = ma_x.
 \end{equation}
 
 Verificamos então que conforme a velocidade do objeto aumenta, a força de arrasto também aumenta. Isso dá origem a uma \emph{velocidade limite}, isto é, uma velocidade máxima para a qual a força de arrasto equilibra completamente a componente da força peso na direção do eixo $x$. Temos então uma aceleração nula e, portanto, uma velocidade constante. O valor da velocidade terminal pode ser calculado através de
 \begin{equation}
-	P_x - bv_t^n = 0,
+	P_x - b_n v_t^n = 0,
 \end{equation}
 %
 ou, substituindo $P_x = Mg\sen\theta$,
 \begin{equation}
-	v_t^n = \frac{Mg}{b}\,\sen\theta.
+	v_t^n = \frac{Mg}{b_n}\,\sen\theta.
 \end{equation}
 
 A partir do resultado acima, vemos que a velocidade terminal só depende do ângulo $\theta$ de inclinação do tubo, uma vez que os demais parâmetros são constantes. Substituindo os valores de $n$ na equação acima, temos duas hipóteses
 \begin{align}
-	v_t =\frac{Mg}{b}\sen\theta, \qquad\textrm{Hipótese 1} \\
-	v_t^2 =\frac{Mg}{b}\sen\theta, \qquad\textrm{Hipótese 2.}
+	v_t =\frac{Mg}{b_1}\sen\theta, \qquad\textrm{Hipótese 1} \\
+	v_t^2 =\frac{Mg}{b_2}\sen\theta, \qquad\textrm{Hipótese 2.}
 \end{align}
 
 Como a velocidade terminal é constante, podemos estabelecer uma posição inicial e uma posição final no tubo cujo tempo de deslocamento possa ser cronometrado. Utilizando uma distância $\Delta x$ fixa, temos então que
@@ -125,7 +126,7 @@ Para decidirmos qual das hipóteses acima melhor descreve a força de arrasto no
 		\begin{align}
 			y &= v_t \\
 			A &= 0 \\
-			B &= Mg/b \\
+			B &= Mg/b_1 \\
 			x &= \sen\theta
 		\end{align}
 
@@ -133,7 +134,7 @@ Para decidirmos qual das hipóteses acima melhor descreve a força de arrasto no
 		\begin{align}
 			y &= v_t^2 \\
 			A &= 0 \\
-			B &= Mg/b \\
+			B &= Mg/b_2 \\
 			x &= \sen\theta
 		\end{align}
 \end{description}
@@ -216,7 +217,7 @@ Apresente os resultados de maneira clara e organizada. Mostre os cálculos requi
 \end{question}
 
 \begin{question}[type={exam}]{1}
-Preencha as colunas de dados experimentais das tabelas com o número adequado de algarismos significativos e unidades.
+Preencha as colunas de dados das tabelas com o número adequado de algarismos significativos e unidades.
 \end{question}
 
 

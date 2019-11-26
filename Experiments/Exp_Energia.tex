@@ -1,0 +1,427 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Energia Mecânica} % Sem "Experiência 01" ou qualquer outro número
+\label{Chap:NomeDoExp}        % para poder trocar a ordem com facilidade
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{fullwidth}\it
+Realizaremos um experimento em que determinaremos através da energia mecânica a velocidade de um sistema em função da distância percorrida por uma massa suspensa. Verificaremos através dos dados obtidos a validade da previsão teórica obtida utilizando os conceitos de energia e trabalho. Utilizaremos os conceitos de medidas, algarismos significativos, gráficos, regressão linear, e linearização.
+\end{fullwidth}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conservação da energia mecânica}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Se considerarmos um sistema de partículas, podemos afirmar que a variação da energia mecânica do sistema entre dois estados inicial e final quaisquer está ligada ao trabalho efetuado por forças não conservativas:
+\begin{equation}\label{Eq:VariacaoEnergiaMecanica}
+    \Delta E_{\text{Mec}}^{\text{sis}} = W_{\text{NC}},
+\end{equation}
+%
+onde a energia mecânica do sistema é dada pela soma das energias mecânicas das partículas que o compõe:
+\begin{equation}
+    E_{\text{Mec}}^{\text{sis}} = \sum_{i} E_{\text{Mec}}^i.
+\end{equation}
+%
+O trabalho das forças não conservativas deve ser considerado no deslocamento entre o estado inicial e o estado final, para cada força separadamente. Em um sistema, no entando, é comum que as forças internas realizem trabalhos que se cancelam aos pares, o que garante que a energia do sistema se mantenha constante:
+\begin{equation}
+    \Delta E_{\text{Mec}}^{\text{sis}} = 0,
+\end{equation}
+%
+ou, simplesmente,
+\begin{equation}
+    E_{\text{Mec},i}^{\text{sis}} = E_{\text{Mec},f}^{\text{sis}}.
+\end{equation}
+
+Qualquer sistema real é formado por uma quantidade muito grande de partículas, o que pode tornar muito complexo identificar se o cancelamento dos trabalhos ocorre ou não, se considerarmos que as partículas possam se mover independentemente. Se, no entanto, considerarmos que os corpos são rígidos, garantimos que as partículas que interagem estão sujeitas a deslocamentos idênticos, porém sujeitas a forças cujos sentidos são opostos, o que garante que os trabalhos se cancelem. Resta, portanto, analisar as forças a que os corpos rígidos com um todo estão sujeitos.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Máquina de Atwood}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[!ht] \forceversofloat
+\centering
+\begin{tikzpicture}[>=Stealth,
+     interface/.style={
+        % superfície
+        postaction={draw,decorate,decoration={border,angle=-45,
+                    amplitude=0.2cm,segment length=2mm}}},
+    ]
+
+	% mesa
+	\draw[interface] (-5,0) -- (3,0);
+	\draw[interface] (3,0) -- (3,-1);
+	
+	% roldana	
+	\draw (3.3,0.05) circle[radius = 0.2];
+	\draw[fill] (3.3,0.05) circle[radius = 0.05];
+	\draw[fill] (2.6,0.1) rectangle (3.3,0);
+	\draw[fill] (2.7,0.1) circle[radius = 0.05];
+	\draw[fill] (2.9,0.1) circle[radius = 0.05];
+	\draw[fill, white] (3.3,0.05) circle[radius = 0.02];
+	
+	% bloco superior
+	\begin{scope}[shift={(-5,0)}]
+	   % \node[draw, densely dotted, circle, scale = 0.8] (b1) at (0.3,0.7) {1};
+	    \draw[pattern = north west lines, pattern color = gray, draw = black] (0.5,0) rectangle +(1,0.5);
+	    \draw[densely dotted] (1.5,0.25) -- (8.3,0.25);
+	    \fill (1,0.25) circle (1.5pt);
+	    \draw[->, thick] (1,0.25) -- +(0,-1) node[left]{$\vec{P}_1$};
+	    \draw[->, thick] (1.5,0.25) -- +(0.5,0) node[above]{$\vec{T}_1$};
+	    \draw[->, thick] (1,0.5) -- +(0,1) node[left]{$\vec{N}$};
+    	\draw[->, dashed] (0,0.25) -- (3.5,0.25) node[above]{$x_1$};
+    	\draw[->, dashed] (1,-1.5) -- (1,2) node[below right]{$y_1$};
+    	
+    	\draw[dotted] (6,0) -- (6,1.5) (7.5,0) -- (7.5,1.5) (1.5,0) -- (1.5,1.5);
+    	\draw[|<->|] (6,1) -- node[above]{$d$} (7.5,1);
+    	\draw[|<->|] (1.5,1) -- node[above]{$L$} (6,1);
+	\end{scope}
+	
+	% bloco inferior
+	\begin{scope}[shift={(0,-3)}]
+	   % \node[draw, densely dotted, circle, scale = 0.8] (b2) at (3.1,-1.9) {2};
+	    \draw[densely dotted] (3.5,2.95) -- +(0,-4);
+	    \draw[pattern = north west lines] (3.3,-0.95) rectangle +(0.4,-0.8);
+	    \draw[->, thick] (3.5,-0.95) -- +(0,0.5) node[right]{$\vec{T}_2$};
+	    \fill (3.5,-1.35) circle (1.5pt);
+	    \draw[->, thick] (3.5,-1.35) -- +(0,-0.75) node[right]{$\vec{P}_2$};
+	    \draw[<-, dashed] (3.5, -1.75) +(0,2.25) node[below right]{$y_2$} -- +(0,-1);
+	    \draw[->, dashed] (3.5,-1.35)+(-1,0) -- +(1,0) node[above left]{$x_2$};
+	    
+	    \draw[interface] (3.5,-3)+(-1.25,0) -- +(1.25,0);
+	    \draw[dotted] (4.5,-1.75) -- (3.7,-1.75);
+	    \draw[<->|] (4.5,-3) -- node[right]{$h$}(4.5,-1.75);   
+	\end{scope}
+	
+\end{tikzpicture}
+\caption{Sistema sujeito a um aumento na velocidade devido ao deslocamento vertical de uma massa suspensa.\label{Fig:MaquinaAtwoodHorizEnergia}}
+\end{figure}
+
+Na Figura~\ref{Fig:MaquinaAtwoodHorizEnergia}, temos um sistema formado por dois blocos ligados por uma corda que passa por uma polia. Se considerarmos que não há atrito entre o bloco da esquerda e a superfície sobre a qual se apoia, que não há atrito entre a polia e o eixo em torno do qual ela gira, e também desprezarmos a massa da polia e a força de arrasto oferecida pelo ar, podemos determinar a velocidade final dos blocos após um deslocamento $h$ através da Equação~\eqref{Eq:VariacaoEnergiaMecanica}:
+\begin{align}
+        \Delta E_{\text{Mec}}^{\text{sis}} &= W_{\text{NC}} \\
+        E_{\text{Mec}}^f - E_{\text{Mec}}^i &= W_{T_1} + W_{T_2},
+\end{align}
+%
+onde o estado inicial corresponde ao instante em que o sistema é liberado para se mover, e o estado final  corresponde à iminência do choque do corpo suspenso com o solo.
+
+Note que, se desprezarmos o atrito entre a polia e o eixo e a própria massa da polia temos que as tensões têm o mesmo módulo:
+\begin{equation}
+    T_1 = T_2,
+\end{equation}
+%
+o que implica que os trabalhos dessas duas forças são iguais, porém têm sinais opostos:
+\begin{equation}
+    W_{T_1} = - W_{T_2}.
+\end{equation}
+%
+Utilizando o resultado acima e o fato de que a única força conservativa a que o sistema está sujeito é força peso, temos
+\begin{align}
+    E_{\text{Mec}}^i &= E_{\text{Mec}}^f \\
+    K_{1}^i + U_{g,1}^i + K_{2}^i + U_{g,2}^i &= K_{1}^f + U_{g,1}^f + K_{2}^f + U_{g,2}^f.
+\end{align}
+
+Como os blocos partem do repouso e notando ainda que a posição vertical do bloco da esquerda não muda durante todo o movimento, ou seja,
+\begin{equation}
+    U_{g,1}^i = U_{g,1}^f,
+\end{equation}
+%
+podemos reescrever a equação acima como
+\begin{equation}
+    U_{g,2}^i = K_{1}^f + K_{2}^f + U_{g,2}^f.
+\end{equation}
+
+Podemos agora substituir as expressões para as energias cinética e potencial gravitacional, notando ainda, se a corda é inextensível, que os dois corpos têm a mesma velocidade em módulo. Obtemos então
+\begin{equation}
+    m_2gy_2^i = \frac{1}{2}(m_1+m_2) v_f^2 + m_2gy_2^f,
+\end{equation}
+%
+e, finalmente,
+\begin{equation}\label{Eq:VelocidadeMaquinaDeAtwood}
+    v_f = \sqrt{\frac{2m_2gh}{m_1+m_2}}.
+\end{equation}
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Verificação experimental}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Para que possamos verificar a validade da Expressão~\eqref{Eq:VelocidadeMaquinaDeAtwood}, devemos determinar a velocidade do sistema como função da altura $h$ e das massas $m_1$ e $m_2$. Podemos obter a velocidade do sistema através da cinemática ao considerar o tempo necessário para que o carrinho percorra uma distância $d$ pré-determinada: se a altura $h$ é menor que o comprimento $L$ entre o carrinho e o início do intervalo de comprimento $d$, então o corpo suspenso se choca com o solo e o movimento do corpo sobre a mesa passa a ser com velocidade constante. Assim, basta calcularmos a velocidade através de 
+\begin{equation}
+    v = \frac{d}{\Delta t}.
+\end{equation}
+
+Analisando a Expressão~\eqref{Eq:VelocidadeMaquinaDeAtwood}, verificamos que podemos fazer três gráficos diferentes (veja a Figura~\ref{Fig:GraficosVelEnergiaMecanica}), cujas que expressam as dependências entre entre a velocidade e as variáveis $h$, $m_1$, e $m_2$, são dadas por
+\begin{align}
+    v_t^2 &= B h \\
+    v_t^2 &= B / (A + m_1) \\
+    v_t^2 &= B m_2 / (A + m_2) \\
+    &= B / (1 + A m_2^{-1}).
+\end{align}
+%
+Para que possamos validar a Expressão~\eqref{Eq:VelocidadeMaquinaDeAtwood}, \emph{precisamos que os dados experimentais correspondam de maneira aproximada às curvas} da Figura~\ref{Fig:GraficosVelEnergiaMecanica}. Regressões não-lineares não têm uma expressão fechada como no caso da regressão linear, porém são possíveis através de processos de aproximações sucessivas e podem ser realizadas usando softwares especializados.\footnote[][-2cm]{Na vamos abordar esse tipo de regressão pois ela foge um pouco ao escopo de uma introdução à análise de dados.} 
+\begin{figure*}[!h]
+\begin{tikzpicture}[>=Stealth]
+    \draw[->] (0,0) -- (4,0) node[below left]{$h$};
+    \draw[->] (0,0) -- (0,3) node[below left]{$v_t^2$};
+    
+    \draw[thick,smooth,name path=plot,samples=1000,domain=0:3.8]
+    plot(\x,{0.5 *\x});
+    
+    \begin{scope}[shift={(5,0)}]
+        \draw[->] (0,0) -- (4,0) node[below left]{$m_1$};
+        \draw[->] (0,0) -- (0,3) node[below left]{$v_t^2$};
+        
+        \draw[thick,smooth,name path=plot,samples=1000,domain=0:3.8]
+        plot(\x,{2/(1 + \x)});
+    \end{scope}
+    
+    \begin{scope}[shift={(10,0)}]
+        \draw[->] (0,0) -- (4,0) node[below left]{$m_2$};
+        \draw[->] (0,0) -- (0,3) node[below left]{$v_t^2$};
+        
+        \draw[thick,smooth,name path=plot,samples=1000,domain=0.01:3.8]
+        plot(\x,{3/(1+1/\x)});
+    \end{scope}
+\end{tikzpicture}
+\caption{Curvas que expressão a dependência da velocidade ao quadrado com $h$, $m_1$, e $m_2$ para o sistema retratado na Figura~\label{Fig:MaquinaAtwoodHorizEnergia}.\label{Fig:GraficosVelEnergiaMecanica}}
+\end{figure*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Experimento}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Vamos analisar um sistema composto por um trilho de ar sobre o qual deslisa um carrinho sujeito a uma aceleração devida à tensão em uma corda que sustenta um corpo suspenso e cuja representação esquemática é dada pela Figura~\ref{Fig:MaquinaAtwoodHorizEnergia}. Nos valeremos do choque do corpo suspenso com o solo para que possamos cessar a aceleração do corpo sobre o trilho de ar, permitindo que possamos determinar a velocidade final do sistema através da cinemática, e que possamos compará-la ao valor obtido através da conservação da energia mecânica. Verificaremos a dependência da velocidade com a altura $h$ percorrida pelo corpo suspenso, com massa $m_1$ do carrinho, e com a massa $m_2$ do corpo suspenso.
+
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Objetivos}
+%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+	\item Analisar o sistema do ponto de vista da conservação da energia mecânica;
+	\item Construir gráficos $v_t^2 \times h$, $v_t^2 \times m_1$ e $v_t^2 \times m_2$ para os dados experimentais obtidos;
+	\item Analisar os gráficos obtidos, visando observar a adequação dos dados à curvas esperadas.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Material Necessário}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+	\item Trilho de ar, carrinho, sensores, e cronômetro;
+	\item Balança;
+	\item Régua;
+	\item Fio flexível e tesoura;
+	\item Anilhas para o carrinho;
+	\item Anilhas e gancho.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Procedimento Experimental}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Ajuste do aparato}
+\label{subsec:ajustedoaparatoenergia}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Os itens abaixo descrevem como ajustar o aparato para as tomadas de dados das seções seguintes.
+\begin{enumerate}
+    \item Verifique a massa $m_1$ do carrinho, sem anilhas, e a anote na tabela pertinente;
+	\item Disponha o carrinho, sem anilhas, sobre o trilho de ar. O carrinho deve tocar o eletroímã, de forma que possa ser segurado por ele quando o fluxo de ar for ligado;
+	\item Ligue um segmento do fio flexível desde o carrinho, passando paralelamente ao trilho, passando sobre a polia e então verticalmente, até uma distância de aproximadamente \np[cm]{15,00} do solo;
+	\item Verifique a massa $m_2$ de um gancho e de uma anilha e anote o valor na tabela pertinente.
+	\item Ligue o gancho com as anilhas na extremidade suspensa do fio;
+	\item Meça a distância $h$ até o solo da parte inferior do sistema formado pelo gancho e anilhas e anote na tabela pertinente;
+	\item Disponha os sensores próximos ao fim do trilho e anote a distância $d$ entre eles na tabela pertinente. \emph{Atenção: o primeiro sensor deve ser disposto de maneira a assegurar que o carrinho só passe por ele depois de o gancho com as anilhas ter atingido o chão, pois precisamos que sua velocidade seja constante no trajeto entre os sensores};
+	\item Ligue o cronômetro, o eletroímã, e o fluxo de ar;
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Variação da massa do carrinho $m_1$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+    \item Ajuste o aparato conforme descrito na Seção~\ref{subsec:ajustedoaparatoenergia};
+	\item Desligue o eletroímã, liberando a movimentação do sistema. Registre o tempo medido pelo cronômetro na Tabela~\ref{TabelaDadosEnergiaMecanica1}.
+	\item Religue o eletroímã, reposicione o carrinho e repita o item acima obtendo o valor do tempo mais duas vezes;
+	\item Tome uma anilha para o carrinho e verifique sua massa. Adicione-a ao carrinho e anote na Tabela~\ref{TabelaDadosEnergiaMecanica1} a nova massa \emph{total} $m_1$ do carrinho.
+	\item Repita os itens acima para tantos valores de massa $m_1$ diferentes quanto possível.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Variação da massa suspensa}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+    \item Ajuste o aparato conforme descrito na Seção~\ref{subsec:ajustedoaparatoenergia};
+	\item Desligue o eletroímã, liberando a movimentação do sistema. Registre o tempo medido pelo cronômetro na Tabela~\ref{TabelaDadosEnergiaMecanica1}.
+	\item Religue o eletroímã, reposicione o carrinho e repita o item acima obtendo o valor do tempo mais duas vezes;
+    \item Tome uma anilha para o gancho e verifique sua massa. Adicione-a ao gancho e anote na Tabela~\ref{TabelaDadosEnergiaMecanica1} a nova massa \emph{total} $m_2$ do carrinho.
+	\item Repita os itens acima para tantos valores de massa $m_2$ diferentes quanto possível.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Variação da altura de queda}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+    \item Ajuste o aparato conforme descrito na Seção~\ref{subsec:ajustedoaparatoenergia};
+	\item Desligue o eletroímã, liberando a movimentação do sistema. Registre o tempo medido pelo cronômetro na Tabela~\ref{TabelaDadosEnergiaMecanica1}.
+	\item Religue o eletroímã, reposicione o carrinho e repita o item acima obtendo o valor do tempo mais duas vezes;
+    \item Corte o fio na extremidade suspensa, diminuindo seu comprimento em aproximadamente \np[cm]{5,00} e religue o gancho ao fio. Verifique a nova distância entre o solo e a parte inferior do sistema formado pelo gancho e pelas anilhas;
+	\item Repita os itens acima para tantos valores de altura $h$ diferentes quanto possível. \emph{Atenção: devemos garantir que o gancho com as anilhas colida com o solo antes de o carrinho passar pelo primeiro sensor}.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cleardoublepage
+
+\noindent{}{\huge\textit{Energia Mecânica}}
+
+\vspace{15mm}
+
+\begin{fullwidth}
+\noindent{}\makebox[0.6\linewidth]{Turma:\enspace\hrulefill}\makebox[0.4\textwidth]{  Data:\enspace\hrulefill}
+\vspace{5mm}
+
+\noindent{}\makebox[0.6\linewidth]{Aluno(a):\enspace\hrulefill}\makebox[0.4\textwidth]{  Matrícula:\enspace\hrulefill}
+
+\noindent{}\makebox[0.6\linewidth]{Aluno(a):\enspace\hrulefill}\makebox[0.4\textwidth]{  Matrícula:\enspace\hrulefill}
+
+\noindent{}\makebox[0.6\linewidth]{Aluno(a):\enspace\hrulefill}\makebox[0.4\textwidth]{  Matrícula:\enspace\hrulefill}
+
+\noindent{}\makebox[0.6\linewidth]{Aluno(a):\enspace\hrulefill}\makebox[0.4\textwidth]{  Matrícula:\enspace\hrulefill}
+
+\noindent{}\makebox[0.6\linewidth]{Aluno(a):\enspace\hrulefill}\makebox[0.4\textwidth]{  Matrícula:\enspace\hrulefill}
+\end{fullwidth}
+
+\vspace{5mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Questionário}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{question}[type={exam}]{1}
+Apresente os resultados de maneira clara e organizada. Mostre os cálculos requisitados de maneira clara e sucinta, evidenciando o raciocínio desenvolvido.
+\end{question}
+
+\begin{question}[type={exam}]{1}
+Preencha as colunas de dados das tabelas com o número adequado de algarismos significativos e unidades.
+\end{question}
+
+\begin{question}[type={exam}]{3}
+Elabore os gráficos de $v_t^2 \times m_1$, $v_t^2 \times m_2$ e $v_t^2 \times h$ com os dados obtidos.
+\end{question}
+
+\begin{question}[type={exam}]{2}
+Para o gráfico de $v_t^2 \times h$, faça uma regressão linear e determine o significado físico do coeficiente angular, isto é, determine o que tal coeficiente representa. Determine o valor da aceleração da gravidade usando o coeficiente angular e calcule o erro percentual em relação ao valor de referência.
+\end{question}
+
+\begin{question}[type={exam}]{3}
+Considerando os dados experimentais obtidos, é possível concluir que a Equação~\eqref{Eq:VelocidadeMaquinaDeAtwood} é válida? Justifique sua resposta indicando quais dados suportam suas afirmações.
+\end{question}
+
+\vfill
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
+\section{Tabelas}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table*}[!ht]
+\centering
+\begin{tabular}{lp{25mm}p{25mm}p{25mm}p{25mm}p{25mm}l}
+\toprule
+	& \multicolumn{2}{l}{\textbf{Parâmetros constantes}} & \\
+	\cmidrule{2-3}
+	& $h$ \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+	& $m_2$ \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+	& $d$ \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+	\cmidrule{2-3}
+\\
+	& \multicolumn{2}{l}{\textbf{Dados}} \\
+	\cmidrule{2-6}
+	& $m_1$ & $\Delta t_1$ & $\Delta t_2$ & $\Delta t_3$ & $\mean{\Delta t}$ & \\
+	\cmidrule{2-6}
+	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
+	\cmidrule{2-6}
+\bottomrule
+\end{tabular}
+\caption[][5mm]{Dados para o movimento variando a massa $m_1$ do carrinho.}
+\label{TabelaDadosEnergiaMecanica1}
+\end{table*}
+\vspace{1cm}
+\begin{table*}[!hb]
+\centering
+\begin{tabular}{lp{25mm}p{25mm}p{25mm}p{25mm}p{25mm}l}
+\toprule
+	& \multicolumn{2}{l}{\textbf{Parâmetros constantes}} & \\
+	\cmidrule{2-3}
+	& $m_1$ \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+	& $h$ \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+	& $d$ \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+	\cmidrule{2-3}
+\\
+	& \multicolumn{2}{l}{\textbf{Dados}} \\
+	\cmidrule{2-6}
+	& $m_2$ & $\Delta t_1$ & $\Delta t_2$ & $\Delta t_3$ & $\mean{\Delta t}$ &\\
+	\cmidrule{2-6}
+	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
+	\cmidrule{2-6}
+\bottomrule
+\end{tabular}
+\caption[][5mm]{Dados para o movimento variando a massa suspensa.}
+\label{TabelaDadosEnergiaMecanica2}
+\end{table*}
+
+\begin{table*}[!ht]
+\centering
+\begin{tabular}{lp{25mm}p{25mm}p{25mm}p{25mm}p{25mm}l}
+\toprule
+	& \multicolumn{2}{l}{\textbf{Parâmetros constantes}} & \\
+	\cmidrule{2-3}
+	& $m_1$ \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+	& $m_2$ \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+	& $d$ \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+	\cmidrule{2-3}
+\\
+	& \multicolumn{2}{l}{\textbf{Dados}} \\
+	\cmidrule{2-6}
+	& $h$ & $\Delta t_1$ & $\Delta t_2$ & $\Delta t_3$ & $\mean{\Delta t}$ & \\
+	\cmidrule{2-6}
+	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
+		& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
+	\cmidrule{2-6}
+\bottomrule
+\end{tabular}
+\caption[][5mm]{Dados para o movimento variando a altura de queda da massa suspensa.}
+\label{TabelaDadosEnergiaMecanica3}
+\end{table*}
