@@ -74,16 +74,23 @@ biber
 ```
 
 ### Como gerar o arquivo PDF
-Para gerar o arquivo PDF, é necessário executar o comando `pdflatex`:
+Para gerar o arquivo PDF, é necessário executar o comando `pdflatex` com a opção `-shell-escape`:
 ```
-pdflatex main.tex
+pdflatex -shel-escape NotasLaboratorio.tex
 ```
+A primeira execução será mais demorada, uma vez que é necessário gerar todas
+as figuras. Ao modificar o texto de um capítulo, é interessante desabilitar
+o processamento dos demais capítulos, caso contrário o processamento das figuras
+pode ser muito demorado. (A modificação da ordem, ou a adição de figuras novas
+pode levar ao reprocessamento de todas as figuras subsequentes, o que leva a uma
+demora desnecessária ao processar todos os capítulos.)
+
 Após executar o `pdflatex` uma vez, devemos gerar a bibliografia através do
 comando `biber`:
 ```
-biber main
+biber NotasLaboratorio
 ```
-seguido do comando `pdflatex main.tex` mais algumas vezes (até que
+seguido do comando `pdflatex -shel-escape NotasLaboratorio.tex` mais algumas vezes (até que
 o próprio comando pare de pedir para ser executado novamente; em geral são duas vezes).
 
 ### Exluir arquivos desnecessários

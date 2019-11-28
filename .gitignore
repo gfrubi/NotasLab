@@ -7,3 +7,5 @@
 *.xml
 *.out
 *.ptc
+NotasLaboratorio-figure*
+*.auxlock
