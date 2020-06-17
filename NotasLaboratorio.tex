@@ -1,0 +1,72 @@
+\documentclass[justified,a4paper,symmetric,nobib]{tufte-book}
+
+% Packages setup
+\input{Preamble/Bibliography_fix}
+\input{Preamble/Packages}
+\input{Preamble/Formatting}
+\input{Preamble/Commands}
+
+% Bibliographt file
+\addbibresource{Preamble/References.bib}
+
+% Book metadata
+\title{Notas de aula: \\ Laboratórios de Física 1 e 2}
+\author{Clebson Abati Graeff}
+\publisher{Universidade Tecnológica Federal do Paraná\\câmpus Pato Branco}
+
+\begin{document}
+
+\frontmatter
+\pagestyle{empty}
+
+\input{Front_Matter/Front_Matter}
+
+\mainmatter
+\pagestyle{fancy}
+
+\part{Medidas, Técnicas de Análise de Dados}
+
+\input{Chapters/Medidas}
+\input{Chapters/Graficos}
+\input{Chapters/Erros}
+\input{Chapters/Regressao}
+\input{Chapters/Desvio_Padrao}
+
+\part{Experimentos}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+ 
+%\input{Experiments/Exp_Modelo}
+\input{Experiments/Exp_Medidas}
+\input{Experiments/Exp_MRU_MRUV}
+%\input{Experiments/Exp_Lancamento_obliquo}
+\input{Experiments/Exp_Lei_de_Hooke}
+\input{Experiments/Exp_Leis_de_Newton}
+\input{Experiments/Exp_Atrito}
+\input{Experiments/Exp_Arrasto}
+\input{Experiments/Exp_Energia}
+\input{Experiments/Exp_Elasticidade}
+\input{Experiments/Exp_Empuxo}
+\input{Experiments/Exp_Oscilacoes}
+%\input{Experiments/Exp_Pendulo_Fisico}
+\input{Experiments/Exp_Ondas_Estacionarias}
+\input{Experiments/Exp_Dilatacao_Linear}
+\input{Experiments/Exp_Calor_Especifico}
+\input{Experiments/Exp_Zero_Absoluto}
+
+\printbibliography
+\cleardoublepage
+\thispagestyle{empty}
+\begin{figure*}
+\centering
+\includegraphics[width = 0.5\linewidth]{Ilustrations/Massa-Mola.png}
+\end{figure*}
+\vfill
+\begin{fullwidth}
+\begin{center}\sc
+Elaborado usando \LaTeX \\
+documentclass: tufte-book \\
+imagens tratadas usando Gimp \\
+Figuras elaboradas usando tikz
+\end{center}
+\end{fullwidth}
+\end{document}

@@ -13,14 +13,14 @@
 
 Ao resfriarmos ou aquecermos um objeto, vericamos que ele tem suas dimensões alteradas. Isso é especialmente notável em fios longos, pois a variação do comprimento é proporcional ao comprimento do objeto. Esse fenômeno têm muitas implicações práticas: pontes necessitam de juntas de dilatação, assim como pisos e trilhos de trem. Caso não as tivessem, com um aumento ou diminuição de temperatura, apareceriam deformações e rachaduras que deteriorariam essas estruturas. 
 
-Muitas vezes esse tipo de comportamento pode ser usado de maneira positiva: duas peças metálicas podem ser unidas sem soldas se elas forem feitas de forma que uma das peças encaixe em um orifício da outra somente se a segunda for aquecida --~estando, portanto, dilatada~--. Quando a peça externa for resfriada, ela se contrairá e acabará prendendo a peça interna.
+Muitas vezes esse tipo de comportamento pode ser usado de maneira positiva: duas peças metálicas podem ser unidas sem soldas se elas forem feitas de forma que uma das peças encaixe em um orifício da outra somente se a segunda for aquecida ---~estando, portanto, dilatada~---. Quando a peça externa for resfriada, ela se contrairá e acabará prendendo a peça interna.
 
 Além de notarmos que a dilatação é proporcional às dimensões do objeto, verifica-se experimentalmente que quanto maior a variação de temperatura a que o objeto é submetido, maior é a variação do comprimento. Observamos ainda que materiais diferentes tem variações diferentes de comprimento para uma mesma variação de temperatura. Essas observações podem ser condensadas na seguinte equação:
 \begin{equation}
 	\Delta L = L_0\alpha\Delta T,
 \end{equation}
 %
-onde $\alpha$ é uma constante característica do material, $L_0$ é o comprimento inicial do objeto -- ou seja, seu comprimento antes de sofrer a variação de temperatura -- e $\Delta T = T - T_0$ ($T_0$ é a temperatura inicial e $T$ é a temperatura final do corpo). Podemos usar $\Delta L = L - L_0$ para reescrever esta expressão como
+onde $\alpha$ é uma constante característica do material, $L_0$ é o comprimento inicial do objeto --- ou seja, seu comprimento antes de sofrer a variação de temperatura --- e $\Delta T = T - T_0$ ($T_0$ é a temperatura inicial e $T$ é a temperatura final do corpo). Podemos usar $\Delta L = L - L_0$ para reescrever esta expressão como
 \begin{equation}
 	L = L_0 + \alpha L_0 (T - T_0).
 \end{equation}
@@ -45,11 +45,12 @@ Material & $\alpha$ ($\nicefrac{1}{\tcdegree\textrm{C}}$) \\
   Aço & \np{11e-6} \\
 \bottomrule
 \end{tabular}
+\vspace{1mm}
 \caption{Valores dos coeficientes de expansão térmica para alguns metais.}
 \label{TabelaCoeficientes}
 \end{margintable}
 
-\noindent{}Segundo as relações acima, se realizarmos um experimento no qual variamos a temperatura de -- por exemplo -- uma barra metálica, anotando os valores do comprimento em função da variação de temperatura, verificaremos ao fazer a regressão linear que o coeficiente linear não é zero. Nesse caso o valor obtido para $A$ será igual ao comprimento inicial da barra. O coeficiente angular $B$, por sua vez, será igual ao produto do coeficiente de expansão térmica $\alpha$ pelo comprimento inicial da barra.
+\noindent{}Segundo as relações acima, se realizarmos um experimento no qual variamos a temperatura de --- por exemplo --- uma barra metálica, anotando os valores do comprimento em função da variação de temperatura, verificaremos ao fazer a regressão linear que o coeficiente linear não é zero. Nesse caso o valor obtido para $A$ será igual ao comprimento inicial da barra. O coeficiente angular $B$, por sua vez, será igual ao produto do coeficiente de expansão térmica $\alpha$ pelo comprimento inicial da barra.
 
 \begin{figure}
 \centering
@@ -87,12 +88,17 @@ de onde temos que
 	\frac{dy(t)}{dt} = \frac{dT(t)}{dt} - \frac{dT_a}{dt}.
 \end{equation}
 %
-O segundo termo à direita é zero, pois a temperatura ambiente é constante. Além disso, o primeiro é dado pela Equação~\ref{Eq:VarTIgualKT}, logo,
+O segundo termo à direita é zero, pois a temperatura ambiente é constante, portanto
+\begin{equation}
+	\frac{dy(t)}{dt} = \frac{dT(t)}{dt}.
+\end{equation}
+%
+Substituindo esse resultado e a própria definição de $y(t)$ na Equação~\ref{Eq:VarTIgualKT}, obtemos
 \begin{equation}
 	\frac{dy(t)}{dt} = -ky(t),
 \end{equation}
 %
-onde usamos a definição de $y(t)$. Tal equação pode ser reescrita como
+o que pode ser reescrito como
 \begin{equation}
 	\frac{dy(t)}{y(t)} = -k dt.
 \end{equation}
@@ -166,16 +172,19 @@ Portanto, podemos determinar o valor de $k$ a partir de uma regressão linear.
 \section{Experimento}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Vamos aquecer tubos metálicos em forma de L através de um fluxo de vapor d'água. Como o tubo estará preso próximo da extremidade de sua lateral maior, verificaremos uma leitura no dilatômetro disposto em contato com a extremidade livre. Após isso, cessaremos o fluxo de vapor, permitindo que o tubo inicie um processo de resfriamento. Durante o resfriamento, monitoraremos a leitura do dilatômetro, que registrará o encolhimento do tubo, bem como de sua temperatura.
+
 %%%%%%%%%%%%%%%%%%%%%%
 \subsection{Objetivos}
+\label{Sec:ObjetivosDilatacaoLinear}
 %%%%%%%%%%%%%%%%%%%%%%
 
-\begin{itemize}
+\begin{enumerate}
 	\item Verificar a lineariedade da relação entre o comprimento de barras metálicas de diferentes materiais e a variação da temperatura.
 	\item Calcular o coeficiente de expansão térmica para o material das barras identificando o material da barra com base em tal propriedade.
 	\item Verificar o decaimento exponencial da temperatura, de acordo com a lei do resfriamento de Newton.
 	\item Determinar o valor de $k$ para cada uma das barras.
-\end{itemize}
+\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Material Necessário}
@@ -200,17 +209,19 @@ Portanto, podemos determinar o valor de $k$ a partir de uma regressão linear.
 
 \begin{enumerate}
 \item Coloque o tubo metálico com a extremidade em forma de L em contato com o dilatômetro, com o segmento menor disposto verticalmente para cima.
-\item Prenda a outra extremidade do tubo utilizando o parafuso.
-\item Prenda a mangueira do aquecedor à extremidade do tubo oposta ao dilatômetro.
+\item Posicione a extremidade do tubo de forma que ela pressione o pino do dilatômetro e fique a uma distância de aproximadamente \np[mm]{520,0} do parafuso de fixação (utilize a escala milimetrada do suporte). Prenda a outra extremidade do tubo utilizando o parafuso do suporte.
+\item Prenda a mangueira do aquecedor à extremidade horizontal do tubo (aquela oposta ao dilatômetro).
+\item Adicione água ao aquecedor até uma profundidade de aproximadamente \np[cm]{5,0}. \emph{Importante: o aquecedor não pode ficar sem água durante o experimento, pois isso pode causar um superaquecimento e a consequente queima do aparelho.}
 \item Ligue o aquecedor e aguarde  até que a água ferva.
 \item Quando a água ferver, o tubo dilatará. Quando ele parar de dilatar, coloque o termômetro na extremidade do tubo mais próxima do dilatômetro e aguarde até que sua temperatura pare de variar.
-\item Meça a barra entre o parafuso de fixação e a extremidade próxima ao dilatômetro utilizando a régua. Anote este valor na Tabela~\ref{Tab:DadosTubo1}. Anote também a temperatura indicada pelo termômetro.
+\item Utilizando a régua ou a escala do suporte, meça o comprimento $L_0$ da barra entre o parafuso de fixação e a extremidade próxima ao dilatômetro. Anote este valor na Tabela~\ref{Tab:DadosTubo1}.
+\item Anote também a temperatura $T_0$ indicada pelo termômetro.
 \item Zere o dilatômetro girando a coroa exterior.
 \item Zere o cronômetro.
 \item Desligue o aquecedor e aguarde até que o ponteiro do dilatômetro passe a se mover\footnote{Veja que o dilatômetro sofre uma variação negativa, pois a barra está encolhendo. Faça a leitura nos números pequenos do mostrador.}. Assim que ele o fizer, inicie o cronômetro.
 \item Quando a temperatura atingir \np[\tcdegree]{90}, faça a leitura do dilatômetro e do cronômetro e anote na Tabela~\ref{Tab:DadosTubo1}.
-\item Faça a leitura do dilatômetro e do cronômetro a cada \np[\tcdegree C]{5,0} perdidos. Anote os valores na Tabela~\ref{Tab:DadosTubo1}, incluindo a temperatura. Cesse a leitura quando a temperatura do tubo estiver próxima da temperatura ambiente.
-\item Repita o procedimento para os outros tubos\footnote{Ao dispor os outros dois tubos, procure deixar a distância entre o parafuso de fixação e a extremidade em contato com o dilatômetro igual àquela medida para o primeiro tubo. Isso facilitará a elaboração de um dos gráficos do Questionário.} e anote os dados nas Tabelas~\ref{Tab:DadosTubo2} e~\ref{Tab:DadosTubo3}.
+\item Faça a leitura do dilatômetro e do cronômetro a cada \np[\tcdegree C]{5,0} perdidos. Anote os valores na Tabela~\ref{Tab:DadosTubo1}, incluindo a temperatura. Cesse a leitura quando a temperatura do tubo estiver a aproximadamente \np[\tcdegree]{15,0} acima da temperatura ambiente.
+\item Repita o procedimento para os outros tubos e anote os dados nas Tabelas~\ref{Tab:DadosTubo2} e~\ref{Tab:DadosTubo3}.
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -248,35 +259,47 @@ Portanto, podemos determinar o valor de $k$ a partir de uma regressão linear.
 Apresente os resultados de maneira clara e organizada. Mostre os cálculos requisitados de maneira clara e sucinta, evidenciando o raciocínio desenvolvido.
 \end{question}
 
-\begin{question}[type={exam}]{0.75}
-Liste os equipamentos utilizados descrevendo o tipo do equipamento, sua resolução, e qual é o seu erro de escala.
+\begin{question}[type={exam}]{0.5}
+Liste os equipamentos utilizados. Para os instrumentos de medida, descreva o tipo do equipamento, sua resolução, e seu erro de escala.
 \end{question}
 
-\begin{question}[type={exam}]{0.75}
+\begin{question}[type={exam}]{0.5}
 Preencha as tabelas com o número adequado de algarismos significativos, unidades, e erros de escala apropriados. 
 \end{question}
 
-\begin{question}[type={exam}]{1.5}
-Elabore um gráfico\footnote{Os três conjuntos de dados devem ser representados no mesmo gráfico, possibilitando a comparação entre eles.} de $L \times |T - T_0|$ com os dados das Tabelas~\ref{Tab:DadosTubo1}, \ref{Tab:DadosTubo2} e~\ref{Tab:DadosTubo3}. Calcule as retas que melhor representam os dados experimentais utilizando o método dos mínimos quadrados. Interprete o significado das diferentes inclinações obtidas para os três conjuntos de dados no gráfico.
+\begin{question}[type={exam}]{1.0}
+Elabore um gráfico\footnote{Os três conjuntos de dados devem ser representados no mesmo gráfico, possibilitando a comparação entre eles. Note ainda que o gráfico será decrescente, uma vez que estamos verificando o processo de encolhimento das barras conforme elas resfriam.} de $L \times |T - T_0|$ com os dados das Tabelas~\ref{Tab:DadosTubo1}, \ref{Tab:DadosTubo2} e~\ref{Tab:DadosTubo3}.
+\end{question}
+
+\begin{question}[type={exam}]{0.5}
+Para a questão anterior, calcule as retas que melhor representam os dados experimentais utilizando o método dos mínimos quadrados e as adicione ao gráfico.
 \end{question}
  
-\begin{question}[type={exam}]{1.5}
+\begin{question}[type={exam}]{1}
 Calcule o valor do coeficiente de expansão térmica para os materiais através dos coeficientes angulares e lineares obtidos na questão anterior. Identifique os materiais utilizando os dados da Tabela~\ref{TabelaCoeficientes} e calcule o erro percentual obtido através da expressão
 \begin{equation}
 	E_{\%} = \left|\frac{x-x_{\textrm{ref}}}{x_{\textrm{ref}}}\right| \times 100.
 \end{equation}
 \end{question}
 
-\begin{question}[type={exam}]{1.5}
-Calcule o erro associado às constantes $A$ e $B$ e determine os erros associados aos coeficientes de expansão térmica. 
+\begin{question}[type={exam}]{1}
+Para os dados da Tabela~\ref{Tab:DadosTubo1}, calcule o erro associado às constantes $A$ e $B$ e determine o erro associado ao coeficiente de expansão térmica.
+\end{question}
+
+\begin{question}[type={exam}]{1}
+Elabore um gráfico de $T \times t$ para os dados das  Tabelas~\ref{Tab:DadosTubo1}, \ref{Tab:DadosTubo2} e~\ref{Tab:DadosTubo3}.
+\end{question}
+
+\begin{question}[type={exam}]{1}
+Elabore um gráfico linearizado de acordo com o conjunto de Equações~\eqref{Eq:LinResfriamentoNewton} para os dados das  Tabelas~\ref{Tab:DadosTubo1}, \ref{Tab:DadosTubo2} e~\ref{Tab:DadosTubo3}.
+\end{question}
+
+\begin{question}[type={exam}]{1}
+Para a questão anterior, calcule as melhores retas através do método de mínimos quadrados e as adicione ao gráfico linearizado. Calcule os valores da constante $k$ através dos coeficientes angulares.
 \end{question}
 
 \begin{question}[type={exam}]{1.5}
-Elabore um gráfico de $T \times t$ para os dados das  Tabelas~\ref{Tab:DadosTubo1}, \ref{Tab:DadosTubo2} e~\ref{Tab:DadosTubo3}. Elabore também um gráfico linearizado de acordo com o conjunto de Equações~\eqref{Eq:LinResfriamentoNewton}. Calcule as melhores retas através do método de mínimos quadrados e as adicione ao gráfico linearizado. Calcule os valores da constante $k$ através dos coeficientes angulares.
-\end{question}
-
-\begin{question}[type={exam}]{1.5}
-Através dos resultados obtidos nas questões anteriores, discuta quais objetivos foram atingidos com sucesso, justificando suas conclusões. Se algum objetivo não foi atingido, discuta quais são os possíveis motivos do fracasso e que providências podem ser tomadas para que eles sejam alcançados.
+Considerando os objetivos do experimento, listados na Seção~\ref{Sec:ObjetivosDilatacaoLinear}, e os resultados obtidos nas questões anteriores, discuta quais objetivos foram atingidos com sucesso, justificando suas conclusões. Se algum objetivo não foi atingido, discuta quais são os possíveis motivos do fracasso e que providências podem ser tomadas para que eles sejam alcançados.
 \end{question}
 
 \vfill

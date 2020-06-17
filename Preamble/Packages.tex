@@ -32,6 +32,14 @@
 \usetikzlibrary{shadows}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{decorations.markings}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{calc,positioning,intersections,quotes}
+\usetikzlibrary{patterns,bending}
+\usetikzlibrary{angles}
+\usetikzlibrary{babel}
+\usetikzlibrary{calendar}
+\usetikzlibrary{fadings}
+\usepackage{tkz-euclide}
 \usepackage{microtype}
 \usepackage{booktabs}
 \usepackage{graphicx}
@@ -40,3 +48,21 @@
 \fvset{fontsize=\normalsize}
 \usepackage{xspace}
 \usepackage{units}
+\usepackage{longtable}
+\usepackage{mparhack} % Fix footnotes positioning problem
+\usepackage{wasysym}
+
+\usetikzlibrary{external}
+\tikzexternalize
+
+% Abaixo vão os comandos para usar vírgula na pontuação das questões nos
+% questionários de cada experiência (as questões em si são formatadas
+% pelo pacote exsheets
+\usepackage[locale=DE]{siunitx}
+\usepackage{tasks}
+\ExplSyntaxOn
+\cs_set_protected:Npn \exsheets_num:n #1
+ {
+  \num{\fp_eval:n{#1}}
+ }
+\ExplSyntaxOff

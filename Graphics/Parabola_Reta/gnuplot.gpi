@@ -21,5 +21,5 @@ set format y "%3.1f"
 
 set xrange[-0.2:9.2]
 set yrange[-5:110]
-plot "data.dat" w points pt 7 linecolor rgb "black" t 'Dados experimentais', g(x) w l lt 1 linecolor rgb "black" t '$y = \np{1.03576} \, x^2 + \np{0.93350} \, x + \np{0.60425}$', h(x) linewidth 3 linetype 3 linecolor rgb "red" t '$y = \np{14.24113} \, x - \np{38.07973}$, $r^2 = \np{0.90858}$'
+plot "data.dat" w points pt 7 linecolor rgb "black" t 'Dados experimentais', g(x) w l lt 1 linecolor rgb "black" dashtype 2 t '$y = \np{1.03576} \, x^2 + \np{0.93350} \, x + \np{0.60425}$', h(x) linewidth 3 linecolor rgb "black" t '$y = \np{14.24113} \, x - \np{38.07973}$, $r^2 = \np{0.90858}$'
 

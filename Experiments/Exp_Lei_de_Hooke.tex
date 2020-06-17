@@ -4,60 +4,191 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{fullwidth}\it
-	Realizaremos um experimento em que submeteremos uma mola a forças com intensidades diferentes, observando as distensões correspondentes. Procuramos assim observar experimentalmente a Lei de Hooke -- que afirma que as distensões são diretamente proporcionais à intensidade da força aplicada --. Utilizaremos os seguintes conceitos: medidas, algarismos significativos, gráficos, erros de escala e propagados, e regressão linear.
+	Realizaremos um experimento em que submeteremos uma mola a forças com intensidades diferentes, observando as distensões correspondentes. Procuramos assim observar experimentalmente a Lei de Hooke --- que afirma que as distensões são diretamente proporcionais à intensidade da força aplicada ---. Utilizaremos os seguintes conceitos: medidas, algarismos significativos, gráficos, e regressão linear.
 \end{fullwidth}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Linhas de tendência e regressão linear]{Linhas de tendência e regressão linear\footnote{Esta seção é um resumo do Capítulo~\ref{Chap:RegressoLinear}.}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Quando realizamos um experimento, procuramos relacionar uma variável dependente a uma variável independente. Para visualizarmos a relação entre as duas, é interessante fazer uma representação gráfica da variável dependente em função dos valores da variável independente. Podemos assim verificar uma tendência geral dos pontos, que pode seguir padrões retilíneos, parabólicos, etc. Muitas vezes tal padrão é muito claro, pois os pontos tem uma \emph{dispersão} baixa. Outras vezes a dispersão é razoavelmente alta e fica difícil verificar o padrão seguido pelos pontos.
+
+Mesmo em casos em que podemos verificar um padrão aparente ao fazer um gráfico, determinar a forma mais adequada para a \emph{linha de tendência} que melhor descreve os pontos experimentais ---~ou mesmo afirmar que tais pontos seguem este padrão~--- pode ser complicado. Se, por exemplo, fizermos uma série de medidas que seguem um padrão parabólico, mas com medidas que se restringem a um intervalo pequeno da variável independente, o gráfico terá a aparência de uma reta.
+
+Determinar o padrão seguido pelos pontos, é, portanto, uma tarefa que não pode ser feita a partir de um gráfico: o mais adequado é termos uma \emph{teoria acerca do fenômeno físico} que descreva qual é o padrão que os pontos devem seguir, e usar um gráfico para determinar se tal descrição é coerente. Verificaremos posteriormente como determinar se uma teoria é plausível ou não, por hora vamos nos preocupar em determinar a \emph{melhor reta} que ajusta um conjunto de dados.
+
+Sempre que tivermos um conjunto de dados, podemos calcular a melhor reta que o representa através de um processo de \emph{regressão linear}. Este processo consiste em aplicar um método matemático que tome os dados experimentais e calcule os coeficientes linear $A$ e angular $B$ para a equação da reta:
+\begin{equation}
+	y = A + Bx.
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Mínimos quadrados}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+O método utilizado para obter tais coeficientes é o de \emph{mínimos quadrados}. Nele, são encontrados os coeficientes de forma a minimizar o quadrado da distância entre os pontos experimentais e a ``melhor reta''. É possível mostrar\cite{Taylor}, utilizando técnicas de cálculo, que para minimizarmos a soma do quadrado das distâncias entre os pontos e a melhor reta, os coeficientes linear e angular são dados por
+\begin{align}
+	A &= \frac{\sum x_i^2 \sum y_i - \sum x_i \sum x_iy_i}{N \sum x_i^2 - (\sum x_i)^2} \\
+	B &= \frac{N\sum x_iy_i - \sum x_i \sum y_i}{N \sum x_i^2 - (\sum x_i)^2}.
+\end{align}
+%
+onde as somas se dão sobre todas mas medidas $x_i$ e $y_i$, $N$ representa o número de medidas, e as médias das medidas para as variáveis $x$ e $y$ são representadas por $\mean{x}$ e $\mean{y}$, respectivamente. Após fazer a regressão, podemos utilizar os coeficientes para traçar as \emph{retas de tendência} nos gráficos\footnote{Quando tais retas forem calculadas, adicione as equações resultantes aos gráficos.}.
+
+Ao fazermos o processo de regressão linear, a calculadora também calculará o \emph{coeficiente de correlação linear} $r$, dado por
+\begin{equation}
+	r = \frac{\sum (x_i - \mean{x})(y_i-\mean{y})}{\sqrt{\sum(x_i - \mean{x})^2\sum (y_i - \mean{y})^2}}.
+\end{equation}
+%
+Tal coeficiente pode ser interpretado como um ``índice de confiança'' e geralmente é calculado ao quadrado, pois seus valores podem variar entre $-1$ e $1$. Quanto mais próximo $r$ for de $\pm 1$, menor é a dispersão dos pontos em relação ao comportamento retilíneo, ou seja, maiores são as chances de que o fenômeno estudado e que deu origem aos dados siga uma relação linear. Este número geralmente se parece com algo como $r^2=\np{0,99998}$, $r^2=\np{0,997}$, $r^2= \np{0,990}$, etc., quando os dados são altamente lineares e relativamente abundantes. Se a dispersão em relação ao comportamento linear for grande e forem poucos os pontos, $r^2$ pode cair para \np{0,7}, ou valores menores.
+
+\begin{figure}[!h]
+\centering
+\input{Graphics/Linear_Regression/linear}
+\caption{Exemplo de regressão linear. A reta é dada por $y(x)=\np{2.984480401}x + \np{12.14046264}$, $r^2 = \np{0.998901256}$.}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Interpretação dos coeficientes angular e linear}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+A ideia por trás do cálculo da melhor reta é estabelecer quais seriam os coeficientes mais adequados para uma relação linear que descreve o fenômeno estudado. \emph{Esses coeficientes são importantes pois estão, em geral, ligados a constantes físicas cujo valor estamos interessados em medir}. Além disso, esse processo é mais preciso do que simplesmente calcular o valor dos coeficientes da reta associados aos pontos medidos e depois fazer uma média.
+
+Para dados da posição em função do tempo no caso de um corpo que se move com velocidade constante, por exemplo, esperamos uma relação entre os valores de posição e os valores de tempo de forma que
+\begin{equation}
+    x = x_0 + vt.
+\end{equation}
+%
+Se fizermos uma regressão linear dos dados experimentais obtidos para a posição em função do tempo, verificamos ao comparar a equação acima com a equação da reta que
+\begin{align}
+    y &= x, \\
+    x &= t \\
+    A &= x_0 \\
+    B &= v.
+\end{align}
+%
+Verificamos, portanto, que os coeficientes $A$ e $B$ estão relacionados a parâmetros físicos que temos interesse em calcular.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Lei de Hooke}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Se usarmos uma corda para pendurar uma caixa ao teto de uma sala e passarmos a colocar objetos em tal caixa, não temos nenhuma indicação visual de qual é a força exercida pela corda. Poderíamos aferir a massa de cada objeto antes de os colocar na caixa e assim teríamos condições de saber qual a força exercida pela corda.
+Se usarmos uma corda para pendurar uma caixa ao teto de uma sala e passarmos a colocar objetos em tal caixa, não temos nenhuma indicação visual de qual é a força exercida pela corda. Para determinarmos tal força, poderíamos aferir a massa de cada objeto antes de os colocar na caixa e assim teríamos condições de calcular o valor da força exercida pela corda através da Segunda Lei de Newton.
 
-Para uma mola, se realizássemos o mesmo procedimento, verificaríamos uma \emph{distensão} gradual da mola. Fazendo um \emph{diagrama de corpo livre} (Figura~\ref{DiagramaCorpoLivre}), sabendo ainda que a aceleração do sistema é zero em uma condição de equilíbrio, concluímos que a força exercida pela mola sobre a caixa é igual em módulo e tem direção contrária à força peso da caixa (juntamente com sua carga):
-\begin{equation}
-	\vec{F}_e = -\vec{P}.
-\end{equation}
-
-\begin{marginfigure}
+\begin{marginfigure}[-3cm]
 \includegraphics[width=\textwidth]{Ilustrations/Hooke.png}
-\caption{Aparato para a verificação da distensão de um mola em função da massa por ela suportada.}
+\caption{Aparato para a verificação da distensão de um mola em função da massa por ela suportada.\label{Fig:IlustracaoLeiDeHooke}}
 \end{marginfigure}
-
-Verificando ainda a distensão da mola, podemos relacionar uma maior distensão a uma carga maior na caixa, isto é, quanto maior a força peso dos objetos pendurados na mola, maior a distensão. Experimentalmente, verifica-se que a relação entre o peso aplicado à mola e sua distensão são \emph{diretamente proporcionais}:
-\begin{equation}
-	\Delta x \propto P.
-\end{equation}
-
-Podemos então escrever para a \textbf{força elástica} $F_e$
-\begin{equation}
-	\vec{F}_e \propto -\vec{d},
-\end{equation}
-%
-onde $\vec{d}$ representa o deslocamento $\Delta x$ em módulo e direção. Podemos escrever a relação acima como uma igualdade introduzindo uma constante de proporcionalidade $k$:
-\begin{equation}
-	\vec{F}_e = -k \vec{d}.
-\end{equation}
 
 \begin{marginfigure}
 \centering
 \begin{tikzpicture}[>=Stealth]
+
+    \draw[dashed, ->] (0,-1.5) -- (0,1.5) node[below left]{$y$};
+
 	\draw[fill] (0,0) circle[radius = 0.1];
 	\draw[->] (0,0) -- node[right]{$\vec{F}_e$}(0,1);
 	\draw[->] (0,0) -- node[right]{$\vec{P}$}(0,-1);
+	
 \end{tikzpicture}
 \caption{Diagrama de corpo livre para o corpo sustentado pela mola quando em equilíbrio.}
 \label{DiagramaCorpoLivre}
 \end{marginfigure}
 
-O resultado acima é conhecido como \emph{Lei de Hooke}, em homenagem ao físico inglês Robert Hooke, que o enunciou em 1660. Tal relação, no entanto, só é válida para um intervalo de distensões da mola. As distensões dentro deste limite são denominadas \emph{elásticas} e não deformam a mola permanentemente, caso contrário ao das distensões \emph{plásticas}. Apesar de a validade da Lei de Hooke ser limitada, ela é o modelo mais comum ao se analisar a resposta de um meio a uma deformação e pode ser utilizada como uma primeira aproximação mesmo para casos mais complexos.
+Para uma mola, se realizarmos o mesmo procedimento, verificamos que ele sofre uma distensão \emph{distensão} gradual à medida que sustenta um peso maior. Fazendo um \emph{diagrama de corpo livre} (Figura~\ref{DiagramaCorpoLivre}), sabendo ainda que a aceleração do sistema é zero em uma condição de equilíbrio, concluímos que a força exercida pela mola sobre a caixa é igual em módulo e tem direção contrária à força peso da caixa (juntamente com sua carga):
+\begin{align}
+    F_{R, y} &= ma_y \\
+    F_{e,y} + P_y &= 0 \\
+    F_e - P &= 0 \\
+	F_e &= P.
+\end{align}
+
+\pagebreak
+
+\begin{marginfigure}
+\centering
+\begin{tikzpicture}[>=Stealth,
+     interface/.style={
+        % superfície
+        postaction={draw,decorate,decoration={border,angle=-45,
+                    amplitude=0.2cm,segment length=2mm}}},
+    ]
+    
+    \draw[interface] (1,0) -- (-1,0);
+    \draw[gray] (0,0) -- (0,-0.2);
+    \draw[fill] (0,0) circle (1pt);
+            
+    \draw[decoration={aspect=0.3, segment length=0.8mm, amplitude=2mm,coil},decorate] (0,-0.2) -- +(0,-1);
+    \draw[gray] (0,-1.2) -- (0,-1.4);
+    \draw[fill] (0,-1.2) circle (1pt);
+    
+    \draw[<->|] (-0.5,0) -- node[left]{$L_0$} (-0.5,-1.2);
+    \draw[densely dotted] (-0.5,-1.2) -- (0,-1.2);
+        
+    \begin{scope}[shift={(2.5,0)}]
+        \draw[interface] (1,0) -- (-1,0);
+        
+        \draw[gray] (0,0) -- (0,-0.2);
+        \draw[fill] (0,0) circle (1pt);
+        
+        \draw[decoration={aspect=0.3, segment length=1.5mm, amplitude=2mm,coil},decorate] (0,-0.2) -- +(0,-2);
+        \draw[gray] (0,-2.2) -- (0,-2.4);
+        \draw[fill] (0,-2.2) circle (1pt);
+        
+        \draw[densely dotted, pattern = north west lines] (-0.5, -2.4) rectangle (0.5,-3.4);
+        \draw[<->|] (-0.5,0) -- node[left]{$L_0 + \Delta L$} (-0.5,-2.2);
+        \draw[densely dotted](-0.5,-2.2) -- (0,-2.2);
+        
+%        \draw[fill] (0,-2.9) circle (1pt);
+%        \draw[->, thick] (0, -2.9) -- +(0,-1) node[right]{$\vec{P}$};
+%        \draw[->, thick] (0, -2.4) -- +(0,1) node[right, xshift=2mm]{$\vec{F}_e$};
+        
+%        \draw[dashed,->] (-0.75,-4.9) -- (-0.75,-0.9) node[below left]{$y$};
+        
+    \end{scope}
+    
+\end{tikzpicture}
+\caption{A distensão $\Delta L$ da mola é proporcional à força elástica exercida por ela.}
+\end{marginfigure}
+
+Verificando ainda a distensão $\Delta L$ da mola, podemos relacionar uma maior distensão a uma carga maior na caixa, isto é, quanto maior a força peso dos objetos pendurados na mola, maior a distensão. Experimentalmente, verifica-se que a relação entre o peso aplicado à mola e sua distensão são \emph{diretamente proporcionais}:
+\begin{equation}
+	\Delta L \propto P.
+\end{equation}
+
+Podemos então escrever para o módulo da \textbf{força elástica} $F_e$
+\begin{equation}
+	F_e \propto \Delta L.
+\end{equation}
+%
+Podemos escrever a relação acima como uma igualdade introduzindo uma constante de proporcionalidade $k$:
+\begin{equation}\label{Eq:LeiDeHookeEmModulo}
+	F_e = k \Delta L.
+\end{equation}
+
+O resultado acima é conhecido como \emph{Lei de Hooke}, em homenagem ao físico inglês Robert Hooke, que o verificou em 1660. Tal relação, no entanto, só é válida para um intervalo de distensões da mola. As distensões dentro deste limite são denominadas \emph{elásticas} e não deformam a mola permanentemente, caso contrário ao das distensões \emph{plásticas}. Apesar de a validade da Lei de Hooke ser limitada, ela é o modelo mais comum ao se analisar a resposta de um meio a uma deformação e pode ser utilizada como uma primeira aproximação mesmo para casos mais complexos.
+
+Outro ponto que devemos considerar é o que acontece quando \emph{comprimimos} a mola. Se exercermos uma força conhecida, é possível verificar experimentalmente que a distensão sofrida pela mola segue a mesma relação linear dada pela Equação~\eqref{Eq:LeiDeHookeEmModulo}, com a mesma constante de proporcionalidade. Se considerarmos que a mola é helicoidal ---~como a mostrada na Figura~\ref{Fig:IlustracaoLeiDeHooke}~---, sendo que executamos deslocamentos somente na direção do próprio eixo da mola, podemos escrever uma relação vetorial que denota a direção e o sentido da força tanto para o caso da distensão, quanto para o caso da compressão da mola:
+\begin{equation}
+    \vec{F}_e = - k \vec{\Delta r}.
+\end{equation}
+%
+Note que o sinal negativo implica em uma força que tem sempre o sentido oposto àquele que submetemos a mola, ou seja, a mola sempre exerce uma força no sentido de \emph{restaurar seu comprimento original}.\footnote{ Devido a isso, a força elástica denominada como uma \emph{força restauradora}.} Se optarmos por usar um sistema de referência, podemos colocar um dos eixos na direção do eixo da própria mola. Se nomearmos tal eixo como $x$, temos que
+\begin{align}
+    F_{e,x} &= -k \Delta x \\
+    F_e &= -k \Delta x, \label{Eq:LeiDeHookeComoTodosConhecemos}
+\end{align}
+%
+onde usamos o fato de que o vetor $\vec{F}_{e}$ aponta diretamente na direção de $x$, o que implica em $F_{e,x} \equiv F_e$ e $\Delta x$ representa a projeção do vetor $\Delta \vec{r}$ na direção do eixo $x$.\footnote[][-1cm]{Note que se $\Delta \vec{r}$ aponta na direção do eixo $x$, então $\Delta r = |\Delta \vec{r}| \equiv \Delta x$, mas a notação que todo mundo utiliza é a da Equação~\eqref{Eq:LeiDeHookeComoTodosConhecemos}. Só estou mostrando de onde essa forma vem.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\subsection{Se necessário, usar subsections}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Experimento}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Experimento: Determinação da distensão de uma mola em função da massa suspensa}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Visando verificar a Lei de Hooke, vamos determinar a distensão de uma mola helicoidal posicionada verticalmente em função da massa de um conjunto de anilhas sustentada pela mola e em repouso. As anilhas serão ligadas à mola através de um gancho, permitindo que as depositemos uma a uma, verificando a distensão obtida para cada valor de massa suspensa. Note que devemos tomar o cuidado de verificar a distensão da mola sempre quando as anilhas suspensas se encontram em equilíbrio.
 
 %%%%%%%%%%%%%%%%%%%%%%
 \subsection{Objetivos}
@@ -67,7 +198,7 @@ O resultado acima é conhecido como \emph{Lei de Hooke}, em homenagem ao físico
      \item Verificar a lineariedade da distensão de uma mola em resposta à força peso dos objetos pendurados nela.
 	 \item Relacionar as variáveis da Lei de Hooke às da equação da reta $y = A + Bx$.
      \item Calcular a constante $k$ da mola;
-     \item Elaborar um gráfico $\Delta x \times P$ dos pontos experimentais e adicionar a ele a reta calculada através da regressão linear;
+     \item Elaborar um gráfico $F_e \times \Delta x$ dos pontos experimentais e adicionar a ele a reta calculada através da regressão linear;
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -86,11 +217,62 @@ O resultado acima é conhecido como \emph{Lei de Hooke}, em homenagem ao físico
 \section{Procedimento Experimental}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{marginfigure}
+\centering
+\begin{tikzpicture}[>=Stealth,
+     interface/.style={
+        % superfície
+        postaction={draw,decorate,decoration={border,angle=-45,
+                    amplitude=0.2cm,segment length=2mm}}},
+    ]
+    
+    \draw[interface] (1,0) -- (-1,0);
+    \draw[gray] (0,0) -- (0,-0.2);
+    \draw[fill] (0,0) circle (1pt);
+            
+    \draw[decoration={aspect=0.3, segment length=0.8mm, amplitude=2mm,coil},decorate] (0,-0.2) -- +(0,-1);
+    \draw[gray] (0,-1.2) -- (0,-1.4);
+    \draw[fill] (0,-1.2) circle (1pt);
+    
+    \draw[<->|] (-0.5,0) -- node[left]{$L_0$} (-0.5,-1.2);
+    \draw[densely dotted] (-0.5,-1.2) -- (0,-1.2);
+        
+    \begin{scope}[shift={(2.5,0)}]
+        \draw[interface] (1,0) -- (-1,0);
+        
+        \draw[gray] (0,0) -- (0,-0.2);
+        \draw[fill] (0,0) circle (1pt);
+        
+        \draw[decoration={aspect=0.3, segment length=1.5mm, amplitude=2mm,coil},decorate] (0,-0.2) -- +(0,-2);
+        \draw[gray] (0,-2.2) -- (0,-2.4);
+        \draw[fill] (0,-2.2) circle (1pt);
+
+        \draw[<->|] (-0.5,0) -- node[left]{$L$} (-0.5,-2.2);
+        \draw[densely dotted](-0.5,-2.2) -- (0,-2.2);
+
+        \draw[very thick, gray] ([shift=(-45:2mm)]0,-2.6) arc (-45:225:2mm) -- (-0.5,-3.5) -- (-0.5,-5.5) -- (0.5,-5.5) -- (0.5,-4);
+        
+        \fill[white] (-0.2,-5.48) rectangle (1.2, -5.1);
+        \draw[gray, pattern = north west lines, pattern color = gray] (-0.2,-5.48) rectangle (1.2, -5.1);
+        
+               
+%        \draw[fill] (0,-2.9) circle (1pt);
+%        \draw[->, thick] (0, -2.9) -- +(0,-1) node[right]{$\vec{P}$};
+%        \draw[->, thick] (0, -2.4) -- +(0,1) node[right, xshift=2mm]{$\vec{F}_e$};
+        
+%        \draw[dashed,->] (-0.75,-4.9) -- (-0.75,-0.9) node[below left]{$y$};
+        
+    \end{scope}
+    
+\end{tikzpicture}
+\caption{Para que possamos determinar o valor de $\Delta L$, devemos escolher dois pontos \emph{fixos} de referência. Note que $\Delta L = L - L_0$.\label{Fig:LeiDeHookeMolaPontosDeRef}}
+\end{marginfigure}
 \begin{enumerate}
 	\item Utilize o suporte para fixar a mola por uma extremidade e prenda o gancho à outra extremidade.
-	\item Marque um ponto de referência e meça sua distância a partir da mesa utilizando a régua. Anote o valor na tabela.
-	\item Adicione uma anilha e verifique a nova distância do ponto de referência até a mesa. Anote o valor na tabela.
-	\item Repita este procedimento adicionando anilhas uma a uma. Procure conseguir o máximo número de pontos experimentais possível, porém sem submeter a mola a deformações irreversíveis.
+	\item Marque dois pontos de referência,\footnote[][1cm]{Como estamos interessados em determinar a distensão $\Delta L$ da mola, quaisquer dois pontos que permitam determinar tal valor são adequados. Podemos, por exemplo, colocar o ponto mais baixo na parte inferior do gancho, uma vez que a altura do gancho é constante e não influi no valor de $\Delta L$.}  um na parte superior e outro na parte inferior da mola (veja a Figura~\ref{Fig:LeiDeHookeMolaPontosDeRef}). Meça a distância $L_0$ entre eles e anote na Tabela~\ref{Dados}.
+	\item Verifique a massa de uma anilha, juntamente com o gancho, e os suspenda na mola. Verifique a nova distância $L$ entre os pontos de referência. Anote  na Tabela~\ref{Dados} os valores da massa suspensa $m_s$ e a distância $L$ obtidas.
+	\item Afira a massa de outra anilha e a coloque no gancho. Verifique a nova distância $L$ entre os pontos de referência. Anote na Tabela~\ref{Dados} o novo valor da massa suspensa $m_s$ e o novo valor da distância $L$.
+	\item Repita o passo acima adicionando anilhas ao gancho uma a uma. Procure conseguir o máximo número de pontos experimentais possível, porém sem submeter a mola a deformações irreversíveis.
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -123,15 +305,17 @@ O resultado acima é conhecido como \emph{Lei de Hooke}, em homenagem ao físico
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Questionário}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\emph{Nas questões seguintes, apresente os cálculos requisitados de maneira clara e sucinta, para que o professor possa acompanhar o raciocínio desenvolvido.}
-\vspace{5mm}
 
-\begin{question}[type={exam}]{1.5}
-Preencha as tabelas com as medidas com número adequado de algarismos significativos, erros e unidades. \emph{Atenção: se você aferiu as massas das anilhas individualmente e depois as somou, os erros devem ser somados também!}
+\begin{question}[type={exam}]{1}
+Apresente os resultados de maneira clara e organizada. Mostre os cálculos requisitados de maneira clara e sucinta, evidenciando o raciocínio desenvolvido.
 \end{question}
 
-\begin{question}[type={exam}]{1.5} 
-Calcule a constante $k$ da mola, incluindo o erro, para cada conjunto de valores de peso e distensão.
+\begin{question}[type={exam}]{2}
+Preencha as colunas de dados experimentais das tabelas com o número adequado de algarismos significativos e unidades.
+\end{question}
+
+\begin{question}[type={exam}]{1} 
+Calcule a constante $k$ da mola, para cada conjunto de valores de peso\footnote{O peso deve ser calculado através do produto dos valores de massa suspensa $m_s$ pela aceleração da gravidade $g$.} e distensão.
 \end{question}
 
 \begin{question}[type={exam}]{1} 
@@ -142,8 +326,8 @@ Relacione as variáveis da Lei de Hooke àquelas da equação da reta e intepret
 Determine a constante da mola através da regressão linear.
 \end{question}
 
-\begin{question}[type={exam}]{3} 
-Elabore um gráfico dos pontos experimentais ($\Delta x \times P$) e adicione a reta calculada através da regressão linear.
+\begin{question}[type={exam}]{2} 
+Elabore um gráfico de\footnote{Apesar de o mais adequado ser um gráfico de $\Delta x \times m$, pois controlamos a massa suspensa ($m$ é, portanto, a variável independente) e medimos a distensão correspondente da mola ($\Delta x$ é então a variável dependente), para fins didáticos é melhor elaborarmos um gráfico de  $F_e \times \Delta x$.} $F_e \times \Delta x$ para os dados experimentais obtidos e adicione a ele a reta calculada através da regressão linear.
 \end{question}
 
 \begin{question}[type={exam}]{1} 
@@ -161,26 +345,30 @@ Determine o valor de $r^2$. O valor encontrado demonstra compatibilidade entre o
 \begin{tabular}{lp{25mm}p{25mm}p{25mm}l}
 \toprule
 	& \multicolumn{3}{l}{\textbf{Dados Experimentais}} \\
-	\cmidrule{2-4}
-	& $x_0$ & $x_f$ & $m$ & \\
-	\cmidrule{2-4}
-	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
-	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
-	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
-	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
-	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
-	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
-	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
-	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
-	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
-	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
-	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
-	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\
+	\cmidrule{2-3}
+	& \cellcolor[gray]{0.89} $L_0$ & \cellcolor[gray]{0.92} \\
+	\cmidrule{2-3}
+	\\
+	\cmidrule{2-3}
+	& $L$ & $m_s$ & \\
+	\cmidrule{2-3}
+	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
+	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} \\
+	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} \\
 	\cmidrule{2-4}
 \\
 	& \multicolumn{3}{l}{\textbf{Valores calculados}} \\
 	\cmidrule{2-4}
-	& $|\Delta x|$ & $P$ & $P/\Delta x$ \\
+	& $|\Delta x|$ & $P$ & $k = P/\Delta x$ \\
 	\cmidrule{2-4}
 	& \cellcolor[gray]{0.89} & \cellcolor[gray]{0.92} & \cellcolor[gray]{0.89} \\
 	& \cellcolor[gray]{0.95} & \cellcolor[gray]{0.97} & \cellcolor[gray]{0.95} \\

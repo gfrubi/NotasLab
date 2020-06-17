@@ -7,13 +7,13 @@ set decimalsign ','
 
 set out 'features.tex'
 
-set title 'Temperatura de um tubo durante o processo de resfriamento'
+set title 'Temperatura de um tubo sujeito a um resfriamento convectivo'
 
 #set key reverse left Left box
 set key spacing 3
 
 set xrange[-40:640]
-set yrange[20:105]
+set yrange[15:105]
 
 set format y "%.1f"
 set ylabel '$T~(\tcdegree\textrm{C})$'

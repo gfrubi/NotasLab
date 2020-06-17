@@ -3,7 +3,9 @@
 *.log
 *.bbl
 *.blg
-*.pdf
 *.bcf
 *.xml
 *.out
+*.ptc
+NotasLaboratorio-figure*
+*.auxlock

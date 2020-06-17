@@ -1,4 +1,5 @@
 \usepackage[brazil,safe=bib]{babel}
 \usepackage{hyphenat}
-\usepackage[backend=biber, style = authoryear]{biblatex}
+\usepackage[backend=biber, style = verbose, citetracker=true]{biblatex}
 \renewcommand{\cite}[2][0pt]{\sidenote[][#1]{\fullcite{#2}}} % citations as sidenotes
+%\newcommand{\apud}[3][0pt]{\sidenote[][#1]{\fullcite{#2} \textsc{apud} \fullcite{#3}}}

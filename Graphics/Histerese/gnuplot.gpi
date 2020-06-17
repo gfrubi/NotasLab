@@ -2,9 +2,9 @@ set term tikz size 14cm,9cm
 
 set key reverse Left left
 
-set style line 20 linetype 1 linewidth 2 pointtype 9 pointsize 1 linecolor rgb "black"
+set style line 20 linetype 1 linewidth 2 pointtype 4 pointsize 1 linecolor rgb "black"
 
-set style line 21 linetype 1 linewidth 2 pointtype 11 pointsize 1 linecolor rgb "black"
+set style line 21 linetype 1 linewidth 2 pointtype 6 pointsize 1 linecolor rgb "black"
 
 set xrange [-50:1150]
 set xtics 0, 200
